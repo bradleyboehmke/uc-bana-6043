@@ -43,7 +43,7 @@ TBD
 | **4**         | **Relational Data and Data Aggregations**                           |
 |               | Joining relational data                                             |
 |               | Data aggregation and statistical summaries                          |
-| **5**         | **Data Visualizations & exploration**                               |
+| **5**         | **Data Visualization & Exploration**                                |
 |               | Data visualization                                                  |
 |               | Exploratory data analysis                                           |
 | **6**         | **Creating Efficient Code in Python**                               |
