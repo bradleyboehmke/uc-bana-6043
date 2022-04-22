@@ -13,4 +13,34 @@ parts:
   - file: 02-module/lesson-1
   - file: 02-module/lesson-2
   - file: 02-module/lab
+- caption: Module 3
+  chapters:
+  - file: 03-module/overview
+  - file: 03-module/lesson-1
+  - file: 03-module/lesson-2
+  - file: 03-module/lab
+- caption: Module 4
+  chapters:
+  - file: 04-module/overview
+  - file: 04-module/lesson-1
+  - file: 04-module/lesson-2
+  - file: 04-module/lab
+- caption: Module 5
+  chapters:
+  - file: 05-module/overview
+  - file: 05-module/lesson-1
+  - file: 05-module/lesson-2
+  - file: 05-module/lab
+- caption: Module 6
+  chapters:
+  - file: 06-module/overview
+  - file: 06-module/lesson-1
+  - file: 06-module/lesson-2
+  - file: 06-module/lab
+- caption: Module 7
+  chapters:
+  - file: 07-module/overview
+  - file: 07-module/lesson-1
+  - file: 07-module/lesson-2
+  - file: 07-module/lab
 
