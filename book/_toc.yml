@@ -1,5 +1,5 @@
 format: jb-book
-root: intro
+root: intro.ipynb
 parts:
 - caption: Module 1
   chapters:

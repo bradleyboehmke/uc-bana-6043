@@ -53,7 +53,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Overview" href="01-module/overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -91,8 +90,8 @@ const thebe_selector_output = ".output, .cell_output"
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
- <li class="toctree-l1 current">
-  <a class="reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="into.html">
    Statistical Computing
   </a>
  </li>
@@ -191,9 +190,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/intro2.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -211,10 +210,10 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2Fintro2.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/master/book/_build/intro.ipynb"><button
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/master/book/_build/intro2.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -228,23 +227,6 @@ const thebe_selector_output = ".output, .cell_output"
             class="fas fa-expand"></i></button></a>
 
             <!-- Launch buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/master?urlpath=tree/book/_build/intro.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
         </div>
 
@@ -263,12 +245,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#material">
-   Material
+   Material {-}
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#class-structure">
-   Class structure
+   Class Structure {-}
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -282,8 +264,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feedback">
-   Feedback
+  <a class="reference internal nav-link" href="#feedback-and-communication">
+   Feedback and communication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
   </a>
  </li>
 </ul>
@@ -313,12 +300,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#material">
-   Material
+   Material {-}
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#class-structure">
-   Class structure
+   Class Structure {-}
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -332,8 +319,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#feedback">
-   Feedback
+  <a class="reference internal nav-link" href="#feedback-and-communication">
+   Feedback and communication
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#acknowledgements">
+   Acknowledgements
   </a>
  </li>
 </ul>
@@ -369,11 +361,11 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="material">
-<h2>Material<a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h2>
+<h2>Material {-}<a class="headerlink" href="#material" title="Permalink to this headline">¶</a></h2>
 <p>The bulk of the classroom material will be provided via this book, the recorded lectures, and class notes. In some cases there are additional recommended readings, all of which are readily available online.</p>
 </div>
 <div class="section" id="class-structure">
-<h2>Class structure<a class="headerlink" href="#class-structure" title="Permalink to this headline">¶</a></h2>
+<h2>Class Structure {-}<a class="headerlink" href="#class-structure" title="Permalink to this headline">¶</a></h2>
 <p><strong>Modules</strong>: For this class each module is covered over the course of week. In the “Overview” section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two primary lessons and associated quizzes along with a lab.</p>
 <p><strong>Lessons</strong>: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various “Your Turn” exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.</p>
 <p><strong>Quizzes</strong>: There will be a short quiz associated with <em>each lesson</em>. These quizzes will be hosted in the course website on Canvas. Please check Canvas for due dates for these quizzes.</p>
@@ -461,50 +453,15 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="section" id="conventions-used-in-this-book">
 <h2>Conventions used in this book<a class="headerlink" href="#conventions-used-in-this-book" title="Permalink to this headline">¶</a></h2>
-<p>The following typographical conventions are used in this book:</p>
-<ul class="simple">
-<li><p><em><strong>strong italic</strong></em>: indicates new terms,</p></li>
-<li><p><strong>bold</strong>: indicates package &amp; file names,</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">inline</span> <span class="pre">code</span></code>: monospaced highlighted text indicates functions or other commands that could be typed literally by the user,</p></li>
-<li><p>code chunk: indicates commands or other text that could be typed literally by the user</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">+</span> <span class="mi">2</span>
-</pre></div>
+<p>TBD</p>
 </div>
+<div class="section" id="feedback-and-communication">
+<h2>Feedback and communication<a class="headerlink" href="#feedback-and-communication" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3
-</pre></div>
-</div>
-</div>
-</div>
-<p>In addition to the general text used throughout, you will notice the following code chunks with images:</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Signifies a tip or suggestion</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Signifies a general note</p>
-</div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Signifies a warning or caution</p>
-</div>
-</div>
-<div class="section" id="feedback">
-<h2>Feedback<a class="headerlink" href="#feedback" title="Permalink to this headline">¶</a></h2>
-<p>To report errors or bugs that you find in this course material please post an issue at <a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/issues">https://github.com/bradleyboehmke/uc-bana-6043/issues</a>. For all other communication be sure to use Canvas or the university email.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When communicating with me via email, please always include <strong>BANA6043</strong> in the subject line.</p>
-</div>
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
+<div class="section" id="acknowledgements">
+<h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>TBD</p>
 </div>
 </div>
 
@@ -533,13 +490,6 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="01-module/overview.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             
         </div>
