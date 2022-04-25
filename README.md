@@ -22,25 +22,25 @@ Upon successfully completing this course, you will:
 |:-------------:|:--------------------------------------------------------------------|
 | **1**         | **Introduction**                                                    |
 |               | Intro to statistical computing, Python, and this course             |
-|               | REPL, Jupyter notebooks, and IDEs                                   |
-| **2**         | **Python Fundamentals**                                             |
-|               | Python syntax, semantics, data types & structures                   |
+|               | Python fundamentals                                                 |
+| **2**         | **Python Data Science Ecosystem & Data Transformation**             |
 |               | Modules, packages, and a preview of Python's data science ecosystem |
-| **3**         | **Data Importing and Wrangling**                                    |
-|               | Importing data and understanding the basics of it                   |
-|               | Data tidying, cleaning, and manipulation                            |
-| **4**         | **Relational Data and Data Aggregations**                           |
+|               | Importing and transforming data                                     |
+| **3**         | **Data Cleaning & Joining**                                         |
+|               | Data tidying and cleaning                                           |
 |               | Joining relational data                                             |
-|               | Data aggregation and statistical summaries                          |
-| **5**         | **Data Visualization & Exploration**                                |
+| **4**         | **Data Visualization & Exploration**                                |
 |               | Data visualization                                                  |
 |               | Exploratory data analysis                                           |
-| **6**         | **Creating Efficient Code in Python**                               |
+| **5**         | **Creating Efficient Code in Python**                               |
 |               | Control statements & iteration                                      |
 |               | Writing functions                                                   |
-| **7**         | **Introduction to Applied Modeling**                                |
+| **6**         | **Introduction to Applied Modeling**                                |
 |               | Correlation and covariate pattern discovery                         |
 |               | Introduction to machine learning                                    |
+| **7**         | **Software Engineering Considerations**                             |
+|               | Modular code and unit testing                                       |
+|               | Environment management and version control                          |
 
 ## Getting Started
 

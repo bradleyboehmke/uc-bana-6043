@@ -1,10 +1,14 @@
 # Overview
 
-TBD
+In the last module we discussed general guidelines for first interacting with a new data set along with performing various data transformation tasks. In module 3 we want to build on those activities by learning how to clean and tidy our data. Moreover, it’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called *relational* data because it is the relations, not just the individual datasets, that are important. In this module we’ll explore how to use different join operations when working with relational data.
 
 ## Learning objectives
 
-TBD
+By the end of this module you should be able to:
+
+- Explain the basic concepts of “tidy” data.
+- Perform data tidying tasks with Python such as reshaping, splitting, and combining data along with handling missing values.
+- Describe and apply different join operations for relational datasets.
 
 ## Tasks
 

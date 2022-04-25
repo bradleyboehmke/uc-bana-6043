@@ -32,7 +32,7 @@
 
 # ## Class structure
 # 
-# __Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two primary lessons and associated quizzes along with a lab.
+# __Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two or more primary lessons and associated quizzes along with a lab.
 # 
 # __Lessons__: For each lesson you will read and work through the tutorial. Short videos will be sprinkled throughout the lesson to further discuss and reinforce lesson concepts. Each lesson will have various "Your Turn" exercises throughout, along with end-of-lesson exercises. I highly recommend you work through these exercises as they will prepare you for the quizzes, labs, and project work.
 # 
@@ -52,25 +52,25 @@
 # |:-------------:|:--------------------------------------------------------------------|
 # | **1**         | **Introduction**                                                    |
 # |               | Intro to statistical computing, Python, and this course             |
-# |               | REPL, Jupyter notebooks, and IDEs                                   |
-# | **2**         | **Python Fundamentals**                                             |
-# |               | Python syntax, semantics, data types & structures                   |
+# |               | Python fundamentals                                                 |
+# | **2**         | **Python Data Science Ecosystem & Data Transformation**             |
 # |               | Modules, packages, and a preview of Python's data science ecosystem |
-# | **3**         | **Data Importing and Wrangling**                                    |
-# |               | Importing data and understanding the basics of it                   |
-# |               | Data tidying, cleaning, and manipulation                            |
-# | **4**         | **Relational Data and Data Aggregations**                           |
+# |               | Importing and transforming data                                     |
+# | **3**         | **Data Cleaning & Joining**                                         |
+# |               | Data tidying and cleaning                                           |
 # |               | Joining relational data                                             |
-# |               | Data aggregation and statistical summaries                          |
-# | **5**         | **Data Visualization & Exploration**                                |
+# | **4**         | **Data Visualization & Exploration**                                |
 # |               | Data visualization                                                  |
 # |               | Exploratory data analysis                                           |
-# | **6**         | **Creating Efficient Code in Python**                               |
+# | **5**         | **Creating Efficient Code in Python**                               |
 # |               | Control statements & iteration                                      |
 # |               | Writing functions                                                   |
-# | **7**         | **Introduction to Applied Modeling**                                |
+# | **6**         | **Introduction to Applied Modeling**                                |
 # |               | Correlation and covariate pattern discovery                         |
 # |               | Introduction to machine learning                                    |
+# | **7**         | **Software Engineering Considerations**                             |
+# |               | Modular code and unit testing                                       |
+# |               | Environment management and version control                          |
 
 # ## Conventions used in this book
 # 
