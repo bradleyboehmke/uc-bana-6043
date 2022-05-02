@@ -113,3 +113,11 @@
 # ```{note}
 # When communicating with me via email, please always include **BANA6043** in the subject line.
 # ```
+
+# ## Acknowledgements
+# 
+# This course and its materials have been influenced by the following resources:
+# 
+# * Ethan Swan, [Python for Data Science](https://ethanswan.com/courses/pages/python-for-ds-course)
+# * Justin Bois, [Caltech Intro to Programming for the Biological Sciences Bootcamp](https://github.com/justinbois/bootcamp)
+# * Tomas Beuzen, [Python Programming for Data Science](https://www.tomasbeuzen.com/python-programming-for-data-science/README.html)

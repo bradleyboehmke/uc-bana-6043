@@ -4,10 +4,16 @@
 # # Lesson 3: Introduction to JupyterLab
 # 
 # <hr/>
+# 
+# In this lesson we will introduce the Python interpreter along with JupyterLab and notebooks.
 
 # ## Learning objectives
 # 
-# TBD
+# By the end of this lesson you will be able to:
+# 
+# - Open and execute code in the JupyterLab console.
+# - Execute a simple .py file from the terminal and console within JupyterLab.
+# - Explain the benefits of a Jupyter notebook and create code and markdown cells.
 
 # ## The Python interpreter
 # 
@@ -176,6 +182,21 @@ a
 # |`Alt + Enter` | edit | execute cell and insert a cell below |
 # 
 # There are many others (and they are shown in the pulldown menus within JupyterLab), but these are the ones I seem to encounter most often.
+
+# ## Exercises
+# 
+# ```{admonition} Questions:
+# :class: attention
+# 1. Create or open a notebook in Jupyter.
+# 2. Create a new markdown cell. Write your name in it and execute the cell.
+# 3. Read about the [markdown syntax](https://daringfireball.net/projects/markdown/syntax) and create a new markdown cell that includes:
+#    - a second-level header
+#    - an unordered list
+#    - an ordered list
+#    - a hyperlink
+#    - an image
+# 4. Create a new code cell. Write x = 5 and run it.
+# ```
 
 # ## Onwards!
 # 
