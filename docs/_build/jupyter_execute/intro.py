@@ -100,6 +100,11 @@
 # ```{warning}
 # Signifies a warning or caution
 # ```
+# 
+# ```{admonition} Questions:
+# :class: attention
+# Knowledge check exercises to gauge your learning progress.
+# ```
 
 # ## Feedback
 # 
