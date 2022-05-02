@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Lession 1: Class overview
+# <hr/>
 # 
 # TBD – complete this lesson towards the end of course dev
 

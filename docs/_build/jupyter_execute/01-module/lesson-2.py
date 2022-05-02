@@ -2,6 +2,7 @@
 # coding: utf-8
 
 # # Lesson 2: Configuring your computer
+# <hr/>
 
 # In this lesson, you will set up a Python computing environment for scientific computing (aka data science). There are two main ways people set up Python for scientific computing on their own machine.
 # 
