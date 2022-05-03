@@ -14,6 +14,7 @@
 # - Open and execute code in the JupyterLab console.
 # - Execute a simple .py file from the terminal and console within JupyterLab.
 # - Explain the benefits of a Jupyter notebook and create code and markdown cells.
+#   
 
 # ## The Python interpreter
 # 

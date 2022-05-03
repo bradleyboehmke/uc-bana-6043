@@ -4,7 +4,7 @@
 # # Lession 1: Class overview
 # <hr/>
 # 
-# TBD – complete this lesson towards the end of course dev
+# TBD – complete this lesson towards the end of course dev.
 
 # ## Learning objectives
 # 

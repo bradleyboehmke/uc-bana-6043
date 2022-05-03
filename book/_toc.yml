@@ -8,6 +8,7 @@ parts:
   - file: 01-module/lesson-2
   - file: 01-module/lesson-3
   - file: 01-module/lesson-4
+  - file: 01-module/lesson-5
   - file: 01-module/lab
 - caption: Module 2
   chapters:

@@ -5,7 +5,7 @@
 # 
 # <hr/>
 
-# Whether you are programming in Python or pretty much any other language, you will be working with **variables**.  While the precise definition of a variable will vary from language to language, we'll focus on Python variables here. Like many of the concepts in this bootcamp, though, the knowledge you gain about Python variables will translate to other languages.
+# Whether you are programming in Python or pretty much any other language, you will be working with **variables**.  While the precise definition of a variable will vary from language to language, we'll focus on Python variables here. Like many of the concepts in this class, though, the knowledge you gain about Python variables will translate to other languages.
 # 
 # We will talk more about **objects** later, but a variable, like everything in Python, is an object. For now, you can think of it this way. The following can be properties of a variable:
 # 
@@ -506,6 +506,7 @@ print(int('4') + int('2'))
 # 2. Convert variable `ppsi` to an integer. Now what is the value of `ppsi`.
 # 3. Convert variable `ppsi` to a string. Now what is the value of `ppsi`.
 # ```
+# 
 
 # ## Computing environment
 

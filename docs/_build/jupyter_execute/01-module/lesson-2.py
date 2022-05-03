@@ -9,7 +9,7 @@
 # 1. By downloading and installing package by package with tools like [apt-get](https://help.ubuntu.com/community/AptGet/Howto), [pip](https://docs.python.org/3/installing/), etc.
 # 2. By downloading and installing a Python distribution that contains binaries of many of the scientific packages needed. One widely used distribution is from [Anaconda](https://www.anaconda.com).
 # 
-# In this class, we will use Anaconda, with its associated package manager, `conda`. It has become the de facto package manager/distribution for scientific use.
+# In this class, we will use Anaconda, with its associated package manager, `conda`. It has become the de facto package manager/distribution for scientific use. 
 
 # ## Learning objectives
 # 

@@ -87,7 +87,7 @@
 1 + 2
 
 
-# In addition to the general text used throughout, you will notice the following code chunks with images:
+# In addition to the general text used throughout, you will notice the following cells:
 # 
 # ```{tip}
 # Signifies a tip or suggestion
