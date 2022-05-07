@@ -14,8 +14,8 @@ parts:
 - caption: Module 2
   chapters:
   - file: 02-module/overview
-  - file: 02-module/lesson-1
-  - file: 02-module/lesson-2
+  - file: 02-module/lesson-2a
+  - file: 02-module/lesson-2b
   - file: 02-module/lab
 - caption: Module 3
   chapters:
