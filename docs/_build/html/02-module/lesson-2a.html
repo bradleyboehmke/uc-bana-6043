@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lesson 2" href="lesson-2b.html" />
+    <link rel="next" title="Lesson 2b: Importing data" href="lesson-2b.html" />
     <link rel="prev" title="Overview" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lesson-2b.html">
-   Lesson 2
+   Lesson 2b: Importing data
   </a>
  </li>
  <li class="toctree-l1">
@@ -498,6 +498,11 @@ const thebe_selector_output = ".output, .cell_output"
    Exercises
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -604,6 +609,11 @@ const thebe_selector_output = ".output, .cell_output"
    Exercises
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -706,6 +716,7 @@ effo411                       0.1.3
 effodata                      2.3.1
 effosort                      0.0.0
 entrypoints                   0.3
+et-xmlfile                    1.1.0
 filelock                      3.0.12
 flake8                        3.9.1
 flake8-docstrings             1.6.0
@@ -754,9 +765,7 @@ jupyterlab-spellchecker       0.7.2
 jupyterlab-widgets            1.1.0
 kayday                        1.3.3
 keras                         2.6.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Keras-Preprocessing           1.1.2
+Keras-Preprocessing           1.1.2
 keyring                       21.8.0
 kiwisolver                    1.3.2
 kpi-metrics                   1.3.2
@@ -788,6 +797,7 @@ nest-asyncio                  1.5.1
 notebook                      6.4.2
 numpy                         1.19.5
 oauthlib                      3.1.1
+openpyxl                      3.0.9
 opt-einsum                    3.3.0
 packaging                     20.9
 pandas                        1.2.4
@@ -876,7 +886,9 @@ sphinxcontrib-htmlhelp        2.0.0
 sphinxcontrib-jsmath          1.0.1
 sphinxcontrib-qthelp          1.0.3
 sphinxcontrib-serializinghtml 1.1.5
-SQLAlchemy                    1.4.26
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SQLAlchemy                    1.4.26
 sqlparse                      0.4.2
 tabulate                      0.8.9
 tensorboard                   2.7.0
@@ -911,6 +923,7 @@ wheel                         0.37.0
 widgetsnbextension            3.6.0
 wrapt                         1.12.1
 xarray                        2022.3.0
+xlrd                          2.0.1
 zipp                          3.6.0
 </pre></div>
 </div>
@@ -1211,7 +1224,7 @@ conda install pkg_name
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_68429</span><span class="o">/</span><span class="mf">3655381730.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_764</span><span class="o">/</span><span class="mf">3655381730.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># not supported</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">x_list</span> <span class="o">**</span> <span class="mi">2</span>
@@ -1536,6 +1549,30 @@ Name: label, dtype: object
 </ol>
 </div>
 </div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,numpy,pandas,matplotlib,scipy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.4
+IPython version      : 7.26.0
+
+jupyterlab: 3.1.4
+numpy     : 1.19.5
+pandas    : 1.2.4
+matplotlib: 3.4.3
+scipy     : 1.7.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1573,7 +1610,7 @@ Name: label, dtype: object
     <a class='right-next' id="next-link" href="lesson-2b.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lesson 2</p>
+        <p class="prev-next-title">Lesson 2b: Importing data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -199,10 +199,6 @@ a
 # 4. Create a new code cell. Write x = 5 and run it.
 # ```
 
-# ## Onwards!
-# 
-# You now have been introduced to our main tools for the bootcamp. Next up, we will learn about how to navigate the command line of your computer.
-
 # ## Computing environment
 
 # At the end of every lesson, and indeed at the end (or beginning) of any notebook you make, we should include information about the computing environment including the version numbers of all packages we use. The [watermark package](https://github.com/rasbt/watermark) is quite useful for this. The watermark package is an **IPython magic extension**. These extensions allow convenient functionality within IPython or Jupyter notebooks. In general, to use magic functions, you precede them with a `%` sign or a `%%` in a cell. We use the built-in `%load_ext` magic function to load watermark, and then we use `%watermark` to invoke it.

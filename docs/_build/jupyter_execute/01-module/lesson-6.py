@@ -114,7 +114,7 @@ letters[4]
 # 
 # Now, what if we want to pull out multiple _sequential_ items in a list? We call this **slicing**? We can use colons (`:`) for that.
 
-# In[19]:
+# In[10]:
 
 
 letters_in_my_name = list('brad boehmke')
@@ -131,14 +131,14 @@ letters_in_my_name[0:3]
 # 
 # We can even get away with not specifying the first or last number if we wish to get all elements up to, or all elements starting with, a certain element.
 
-# In[20]:
+# In[11]:
 
 
 # all elements up to element 3
 letters_in_my_name[0:3]
 
 
-# In[21]:
+# In[12]:
 
 
 # all elements starting with element 3
@@ -147,7 +147,7 @@ letters_in_my_name[2:]
 
 # One last thing to note is that we can specify a **stride**. The stride comes after a second colon. For example, if we only wanted to get every other element
 
-# In[22]:
+# In[13]:
 
 
 # stride of 2 will get every other element
@@ -173,7 +173,7 @@ letters_in_my_name[::2]
 # 
 # Operators on lists behave much like operators on strings. The `+` operator on lists means list concatenation.
 
-# In[11]:
+# In[14]:
 
 
 [1, 2, 3] + [4, 5, 6]
@@ -181,7 +181,7 @@ letters_in_my_name[::2]
 
 # The `*` operator on lists means list replication and concatenation.
 
-# In[12]:
+# In[15]:
 
 
 [1, 2, 3] * 3
@@ -196,13 +196,13 @@ letters_in_my_name[::2]
 
 # The result of the operator is `True` or `False`. Let’s look at letters again:
 
-# In[13]:
+# In[16]:
 
 
 'a' in letters
 
 
-# In[14]:
+# In[17]:
 
 
 'z' in letters
@@ -212,7 +212,7 @@ letters_in_my_name[::2]
 # Membership operators are case sensitive!
 # ```
 
-# In[15]:
+# In[18]:
 
 
 'A' not in letters
@@ -220,7 +220,7 @@ letters_in_my_name[::2]
 
 # These membership operators offer a great convenience for conditionals.
 
-# In[16]:
+# In[19]:
 
 
 first_inital = 'b'
@@ -236,7 +236,7 @@ else:
 # 
 # Lists are **mutable**. This means we can change their values without creating a new list. (You cannot change the data type or identity.) Let’s see this by example.
 
-# In[23]:
+# In[20]:
 
 
 my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -247,7 +247,7 @@ my_list
 
 # The other data types we have encountered so far, `int`egers, `float`s, and `str`ings, are immutable. You cannot change their values without reassigning them. To see this, we’ll use the `id()` function, which tells us where in memory that the variable is stored. (Note: this identity is unique to the Python interpreter, and should not be considered an actual physical address in memory.)
 
-# In[24]:
+# In[21]:
 
 
 a = 8451
@@ -259,7 +259,7 @@ print(id(a))
 
 # So, we see that the identity of `a`, an integer, changed when we tried to change its value. So, we didn’t actually change its value; we made a new variable. With lists, though, this is not the case.
 
-# In[25]:
+# In[22]:
 
 
 print(id(my_list))
@@ -295,14 +295,14 @@ print(id(my_list))
 # 
 # A tuple is created just like a list, except we use parentheses `()` instead of brackets. The only watch-out is that a tuple with a single item needs to include a comma after the item.
 
-# In[28]:
+# In[23]:
 
 
 my_tuple = ('a', 'b', 'c')
 type(my_tuple)
 
 
-# In[29]:
+# In[24]:
 
 
 a_tuple = (0,)   # Create a single element tuple
@@ -313,7 +313,7 @@ type(a_tuple), type(not_a_tuple)
 
 # We can also create a tuple by doing a type conversion. We can convert our list to a tuple.
 
-# In[31]:
+# In[25]:
 
 
 name_as_string = 'brad boehmke'
@@ -327,14 +327,14 @@ name_as_tuple
 # 
 # Similar to lists, we can index and slice using `[]` notation and specifying the elements of interest. The only difference is when slicing, we get a tuple in return rather than a list.
 
-# In[33]:
+# In[26]:
 
 
 # Last letter
 name_as_tuple[-1]
 
 
-# In[32]:
+# In[27]:
 
 
 name_as_tuple[0:3]
@@ -345,7 +345,7 @@ name_as_tuple[0:3]
 # 
 # As with lists we can concatenate tuples with the `+` operator.
 
-# In[34]:
+# In[28]:
 
 
 (1, 2, 3) + (4, )
@@ -353,7 +353,7 @@ name_as_tuple[0:3]
 
 # Membership operators work the same as with lists.
 
-# In[35]:
+# In[29]:
 
 
 'z' in name_as_tuple
@@ -365,7 +365,7 @@ name_as_tuple[0:3]
 # 
 # As we stated at the beginning of this section, tuples are immutable. This means once we've created a tuple we can not change the existing elements inside it.
 
-# In[36]:
+# In[30]:
 
 
 name_as_tuple[0] = 'B'
@@ -379,20 +379,20 @@ name_as_tuple[0] = 'B'
 # This is useful when we want to return more than one value from a function and further using the values as stored in different variables. We will make use of this later in this class.
 # ```
 
-# In[37]:
+# In[31]:
 
 
 my_name = ('Brad', 'Boehmke')
 first, last = my_name
 
 
-# In[38]:
+# In[32]:
 
 
 first
 
 
-# In[39]:
+# In[33]:
 
 
 last
@@ -419,7 +419,7 @@ last
 # 
 # In Python, dictionaries are represented with curly braces `{}`. Colons separate a key from its value, and (like lists and tuples) commas delimit elements.
 
-# In[40]:
+# In[34]:
 
 
 brad = {'first_name': 'Brad',
@@ -432,7 +432,7 @@ brad
 
 # Dictionaries, like lists, are very flexible. Keys are generally strings (though some other types are allowed), and values can be anything -- including lists or other dictionaries!
 
-# In[52]:
+# In[35]:
 
 
 ethan = {
@@ -452,7 +452,7 @@ instructors
 # 
 # Similar to lists and tuples, we can index using brackets. However, rather than indexing with an element number we index by passing the key in the brackets (`my_dict['key']`).
 
-# In[42]:
+# In[36]:
 
 
 brad['employer']
@@ -460,7 +460,7 @@ brad['employer']
 
 # You’ll get a `KeyError` if you try to access a non-existent key:
 
-# In[45]:
+# In[37]:
 
 
 brad['undergrad']
@@ -472,13 +472,13 @@ brad['undergrad']
 # Don't worry about the what type of object these outputs are, just realize that we can extract them in this manner.
 # ```
 
-# In[48]:
+# In[38]:
 
 
 brad.keys()
 
 
-# In[49]:
+# In[39]:
 
 
 brad.values()
@@ -488,7 +488,7 @@ brad.values()
 # 
 # Dictionaries do not support concatenation operators like lists and tuples...
 
-# In[46]:
+# In[40]:
 
 
 brad + {'number': '800-867-5309'} # not my number so don't actually call it!
@@ -496,7 +496,7 @@ brad + {'number': '800-867-5309'} # not my number so don't actually call it!
 
 # But they do support membership operators; however, keep in mind that membership operators are focusing on the `key`s, not the values.
 
-# In[47]:
+# In[41]:
 
 
 'zip_code' in brad
@@ -506,7 +506,7 @@ brad + {'number': '800-867-5309'} # not my number so don't actually call it!
 # 
 # Dictionaries are mutable. This means that they can be changed in place. For example, if we want to add an element to a dictionary, we use simple syntax.
 
-# In[50]:
+# In[42]:
 
 
 brad['first_name'] = 'Bradley'   # Change an existing value
@@ -554,3 +554,12 @@ brad
 #    }
 #     
 # ```
+
+# ## Computing environment
+
+# In[43]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas')
+

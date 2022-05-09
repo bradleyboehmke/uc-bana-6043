@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lesson 2 &#8212; UC BANA 6043 Statistical Computing</title>
+    <title>Lesson 2b: Importing data &#8212; UC BANA 6043 Statistical Computing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lesson 2
+   Lesson 2b: Importing data
   </a>
  </li>
  <li class="toctree-l1">
@@ -385,6 +385,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/02-module/lesson-2b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -401,18 +418,72 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-a">
-   Content A
+  <a class="reference internal nav-link" href="#data-memory">
+   Data &amp; memory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-b">
-   Content B
+  <a class="reference internal nav-link" href="#delimited-files">
+   Delimited files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#file-paths">
+     File paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metadata">
+     Metadata
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes-methods">
+     Attributes &amp; methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excel-files">
+   Excel files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql-databases">
+   SQL databases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#many-other-file-types">
+   Many other file types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json-files">
+     JSON files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pickle-files">
+     Pickle files
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -425,7 +496,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 2</h1>
+                <h1>Lesson 2b: Importing data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -441,18 +512,72 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-a">
-   Content A
+  <a class="reference internal nav-link" href="#data-memory">
+   Data &amp; memory
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-b">
-   Content B
+  <a class="reference internal nav-link" href="#delimited-files">
+   Delimited files
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#file-paths">
+     File paths
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#metadata">
+     Metadata
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#attributes-methods">
+     Attributes &amp; methods
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#excel-files">
+   Excel files
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sql-databases">
+   SQL databases
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#many-other-file-types">
+   Many other file types
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#json-files">
+     JSON files
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pickle-files">
+     Pickle files
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -464,24 +589,1437 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-2">
-<h1>Lesson 2<a class="headerlink" href="#lesson-2" title="Permalink to this headline">¶</a></h1>
-<p>TBD</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-2b-importing-data">
+<h1>Lesson 2b: Importing data<a class="headerlink" href="#lesson-2b-importing-data" title="Permalink to this headline">¶</a></h1>
+<p>This lesson introduces you to importing tabular data with Pandas. It also illustrates how you can interact with relational databases via SQL along with how to import common non-tabular data such as JSON and pickle files.</p>
 <div class="section" id="learning-objectives">
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<p>By the end of this lesson you will be able to:</p>
+<ol class="simple">
+<li><p>Describe how imported data affects computer memory.</p></li>
+<li><p>Import tabular data with Pandas.</p></li>
+<li><p>Assess DataFrame attributes and methods.</p></li>
+<li><p>Import alternative data files such as SQL tables, JSON, and pickle files.</p></li>
+</ol>
 </div>
-<div class="section" id="content-a">
-<h2>Content A<a class="headerlink" href="#content-a" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="section" id="data-memory">
+<h2>Data &amp; memory<a class="headerlink" href="#data-memory" title="Permalink to this headline">¶</a></h2>
+<p>Python stores its data in memory - this makes it relatively quickly accessible but can cause size limitations in certain fields. In this class we will mainly work with small to moderate data sets, which means we should not run into any space limitations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Python does provide tooling that allows you to work with <em>big data</em> via distributed data (i.e. <a class="reference external" href="http://spark.apache.org/docs/2.0.0/api/python/index.html">Pyspark</a>) and relational databrases (i.e. SQL).</p>
 </div>
-<div class="section" id="content-b">
-<h2>Content B<a class="headerlink" href="#content-b" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<p>Python memory is session-specific, so quitting Python (i.e. shutting down JupyterLab) removes the data from memory. A general way to conceptualize data import into and use within Python:</p>
+<ol class="simple">
+<li><p>Data sits in on the computer/server - this is frequently called “disk”</p></li>
+<li><p>Python code can be used to copy a data file from disk to the Python session’s memory</p></li>
+<li><p>Python data then sits within Python’s memory ready to be used by other Python code</p></li>
+</ol>
+<p>Here is a visualization of this process:</p>
+<center>
+<img src="https://raw.githubusercontent.com/bradleyboehmke/uc-bana-6043/main/book/images/import-framework.png" alt="import-framework.png" width="80%" height="80%"/>
+</center></div>
+<div class="section" id="delimited-files">
+<h2>Delimited files<a class="headerlink" href="#delimited-files" title="Permalink to this headline">¶</a></h2>
+<p>Text files are a popular way to hold and exchange tabular data as almost any data application supports exporting data to the CSV (or other text file) format. Text file formats use delimiters to separate the different elements in a line, and each line of data is in its own line in the text file. Therefore, importing different kinds of text files can follow a fairly consistent process once you’ve identified the delimiter.</p>
+<p>Although there are other approaches to importing delimited files, Pandas is often the preferred approach as it greatly simplifies the proess and imports the data directly into a DataFrame – the data structure of choice for tabular data in Python.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> function is used to import a tabular data file, a CSV, into a DataFrame. The following will import a data set describing the sale of individual residential property in Ames, Iowa from 2006 to 2010 (<a class="reference external" href="http://jse.amstat.org/v19n3/decock.pdf">source</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ames_raw.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that our imported data is represented as a DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ames</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can look at it in the Jupyter notebook, since Jupyter will display it in a well-organized, pretty way.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2925</th>
+      <td>2926</td>
+      <td>923275080</td>
+      <td>80</td>
+      <td>RL</td>
+      <td>37.0</td>
+      <td>7937</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>GdPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>142500</td>
+    </tr>
+    <tr>
+      <th>2926</th>
+      <td>2927</td>
+      <td>923276100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>NaN</td>
+      <td>8885</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Low</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>131000</td>
+    </tr>
+    <tr>
+      <th>2927</th>
+      <td>2928</td>
+      <td>923400125</td>
+      <td>85</td>
+      <td>RL</td>
+      <td>62.0</td>
+      <td>10441</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>Shed</td>
+      <td>700</td>
+      <td>7</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>132000</td>
+    </tr>
+    <tr>
+      <th>2928</th>
+      <td>2929</td>
+      <td>924100070</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>77.0</td>
+      <td>10010</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>170000</td>
+    </tr>
+    <tr>
+      <th>2929</th>
+      <td>2930</td>
+      <td>924151050</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>9627</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>11</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>188000</td>
+    </tr>
+  </tbody>
+</table>
+<p>2930 rows × 82 columns</p>
+</div></div></div>
+</div>
+<p>This is a nice representation of the data, but we really do not need to display that many rows of the DataFrame in order to understand its structure. Instead, we can use the <code class="docutils literal notranslate"><span class="pre">head()</span></code> method of data frames to look at the first few rows. This is more manageable and gives us an overview of what the columns are. Note also the the missing data was populated with NaN.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 82 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="file-paths">
+<h3>File paths<a class="headerlink" href="#file-paths" title="Permalink to this headline">¶</a></h3>
+<p>It’s important to understand where files exist on your computer and how to reference those paths. There are two main approaches:</p>
+<ol class="simple">
+<li><p>Absolute paths</p></li>
+<li><p>Relative paths</p></li>
+</ol>
+<p>An <strong>absolute path</strong> always contains the root elements and the complete list of directories to locate the specific file or folder. For the ames_raw.csv file, the absolute path on my computer is:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="n">absolute_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="s1">&#39;../data/ames_raw.csv&#39;</span><span class="p">)</span>
+<span class="n">absolute_path</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-6043/book/data/ames_raw.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>I can always use the absolute path in <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">absolute_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In contrast, a <strong>relative path</strong> is a path built starting from the current location. For example, say that I am operating in a directory called “Project A”. If I’m working in “my_notebook.ipynb” and I have a “my_data.csv” file in that same directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># illustration of the directory layout</span>
+Project A
+├── my_notebook.ipynb
+└── my_data.csv
+</pre></div>
+</div>
+<p>Then I can use this relative path to import this file: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('my_data.csv')</span></code>. This just means to look for the ‘my_data.csv’ file relative to the current directory that I am in.</p>
+<p>Often, people store data in a “data” directory. If this directory is a subdirectory within my Project A directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># illustration of the directory layout</span>
+Project A
+├── my_notebook.ipynb
+└── data
+    └── my_data.csv
+</pre></div>
+</div>
+<p>Then I can use this relative path to import this file: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('data/my_data.csv')</span></code>. This just means to look for the ‘data’ subdirectory relative to the current directory that I am in and then look for the ‘my_data.csv’ file.</p>
+<p>Sometimes, the data directory may not be in the current directory. Sometimes a project directory will look the following where there is a subdirectory containing multiple notebooks and then another subdirectory containing data assets. If you are working in “notebook1.ipynb” within the notebooks subdirectory, you will need to tell Pandas to go up one directory relative to the notebook you are working in to the main Project A directory and then go down into the data directory.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># illustration of the directory layout</span>
+Project A
+├── notebooks
+│   ├── notebook1.ipynb
+│   ├── notebook2.ipynb
+│   └── notebook3.ipynb
+└── data
+    └── my_data.csv
+</pre></div>
+</div>
+<p>I can do this by using dot-notation in my relative path specification - here I use ‘..’ to imply “go up one directory relative to my current location”: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('../data/my_data.csv')</span></code>.</p>
+<p>Note that the path specified in <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> does not need to be a local path. For example, the ames_raw.csv data is located online at <a class="reference external" href="https://raw.githubusercontent.com/bradleyboehmke/uc-bana-6043/main/book/data/ames_raw.csv">https://raw.githubusercontent.com/bradleyboehmke/uc-bana-6043/main/book/data/ames_raw.csv</a>. We can use <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code> to import directly from this location:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/bradleyboehmke/uc-bana-6043/main/book/data/ames_raw.csv&#39;</span>
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metadata">
+<h3>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h3>
+<p>Once we’ve imported the data we can get some descriptive metadata about our DataFrame. For example, we can get the dimensions of our DataFrame. Here, we see that we have 2,930 rows and 82 columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2930, 82)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also see what type of data each column is. For example, we see that the first three columns (Order, PID, MS SubClass) are integers, the fourth column (MS Zoning) is an object, and the fifth (Lot Frontage) is a float.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Order               int64
+PID                 int64
+MS SubClass         int64
+MS Zoning          object
+Lot Frontage      float64
+                   ...   
+Mo Sold             int64
+Yr Sold             int64
+Sale Type          object
+Sale Condition     object
+SalePrice           int64
+Length: 82, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>The following are the most common data types that appear frequently in DataFrames.</p>
+<ul class="simple">
+<li><p><strong>boolean</strong> - only two possible values, True and False</p></li>
+<li><p><strong>integer</strong> - whole numbers without decimals</p></li>
+<li><p><strong>float</strong> - numbers with decimals</p></li>
+<li><p><strong>object</strong> - typically strings, but may contain any object</p></li>
+<li><p><strong>datetime</strong> - a specific date and time with nanosecond precision</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Booleans, integers, floats, and datetimes all use a particular amount of memory for each of their values. The memory is measured in bits. The number of bits used for each value is the number appended to the end of the data type name. For instance, integers can be either 8, 16, 32, or 64 bits while floats can be 16, 32, 64, or 128. A 128-bit float column will show up as float128.
+Technically a float128 is a different data type than a float64 but generally you will not have to worry about such a distinction as the operations between different float columns will be the same.</p>
+</div>
+<p>We can also use the <code class="docutils literal notranslate"><span class="pre">info()</span></code> method, which provides output similar to dtypes, but also shows the number of non-missing values
+in each column along with more info such as:</p>
+<ul class="simple">
+<li><p>Type of object (always a DataFrame)</p></li>
+<li><p>The type of index and number of rows</p></li>
+<li><p>The number of columns</p></li>
+<li><p>The data types of each column and the number of non-missing (a.k.a non-null)</p></li>
+<li><p>The frequency count of all data types</p></li>
+<li><p>The total memory usage</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2930 entries, 0 to 2929
+Data columns (total 82 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   Order            2930 non-null   int64  
+ 1   PID              2930 non-null   int64  
+ 2   MS SubClass      2930 non-null   int64  
+ 3   MS Zoning        2930 non-null   object 
+ 4   Lot Frontage     2440 non-null   float64
+ 5   Lot Area         2930 non-null   int64  
+ 6   Street           2930 non-null   object 
+ 7   Alley            198 non-null    object 
+ 8   Lot Shape        2930 non-null   object 
+ 9   Land Contour     2930 non-null   object 
+ 10  Utilities        2930 non-null   object 
+ 11  Lot Config       2930 non-null   object 
+ 12  Land Slope       2930 non-null   object 
+ 13  Neighborhood     2930 non-null   object 
+ 14  Condition 1      2930 non-null   object 
+ 15  Condition 2      2930 non-null   object 
+ 16  Bldg Type        2930 non-null   object 
+ 17  House Style      2930 non-null   object 
+ 18  Overall Qual     2930 non-null   int64  
+ 19  Overall Cond     2930 non-null   int64  
+ 20  Year Built       2930 non-null   int64  
+ 21  Year Remod/Add   2930 non-null   int64  
+ 22  Roof Style       2930 non-null   object 
+ 23  Roof Matl        2930 non-null   object 
+ 24  Exterior 1st     2930 non-null   object 
+ 25  Exterior 2nd     2930 non-null   object 
+ 26  Mas Vnr Type     2907 non-null   object 
+ 27  Mas Vnr Area     2907 non-null   float64
+ 28  Exter Qual       2930 non-null   object 
+ 29  Exter Cond       2930 non-null   object 
+ 30  Foundation       2930 non-null   object 
+ 31  Bsmt Qual        2850 non-null   object 
+ 32  Bsmt Cond        2850 non-null   object 
+ 33  Bsmt Exposure    2847 non-null   object 
+ 34  BsmtFin Type 1   2850 non-null   object 
+ 35  BsmtFin SF 1     2929 non-null   float64
+ 36  BsmtFin Type 2   2849 non-null   object 
+ 37  BsmtFin SF 2     2929 non-null   float64
+ 38  Bsmt Unf SF      2929 non-null   float64
+ 39  Total Bsmt SF    2929 non-null   float64
+ 40  Heating          2930 non-null   object 
+ 41  Heating QC       2930 non-null   object 
+ 42  Central Air      2930 non-null   object 
+ 43  Electrical       2929 non-null   object 
+ 44  1st Flr SF       2930 non-null   int64  
+ 45  2nd Flr SF       2930 non-null   int64  
+ 46  Low Qual Fin SF  2930 non-null   int64  
+ 47  Gr Liv Area      2930 non-null   int64  
+ 48  Bsmt Full Bath   2928 non-null   float64
+ 49  Bsmt Half Bath   2928 non-null   float64
+ 50  Full Bath        2930 non-null   int64  
+ 51  Half Bath        2930 non-null   int64  
+ 52  Bedroom AbvGr    2930 non-null   int64  
+ 53  Kitchen AbvGr    2930 non-null   int64  
+ 54  Kitchen Qual     2930 non-null   object 
+ 55  TotRms AbvGrd    2930 non-null   int64  
+ 56  Functional       2930 non-null   object 
+ 57  Fireplaces       2930 non-null   int64  
+ 58  Fireplace Qu     1508 non-null   object 
+ 59  Garage Type      2773 non-null   object 
+ 60  Garage Yr Blt    2771 non-null   float64
+ 61  Garage Finish    2771 non-null   object 
+ 62  Garage Cars      2929 non-null   float64
+ 63  Garage Area      2929 non-null   float64
+ 64  Garage Qual      2771 non-null   object 
+ 65  Garage Cond      2771 non-null   object 
+ 66  Paved Drive      2930 non-null   object 
+ 67  Wood Deck SF     2930 non-null   int64  
+ 68  Open Porch SF    2930 non-null   int64  
+ 69  Enclosed Porch   2930 non-null   int64  
+ 70  3Ssn Porch       2930 non-null   int64  
+ 71  Screen Porch     2930 non-null   int64  
+ 72  Pool Area        2930 non-null   int64  
+ 73  Pool QC          13 non-null     object 
+ 74  Fence            572 non-null    object 
+ 75  Misc Feature     106 non-null    object 
+ 76  Misc Val         2930 non-null   int64  
+ 77  Mo Sold          2930 non-null   int64  
+ 78  Yr Sold          2930 non-null   int64  
+ 79  Sale Type        2930 non-null   object 
+ 80  Sale Condition   2930 non-null   object 
+ 81  SalePrice        2930 non-null   int64  
+dtypes: float64(11), int64(28), object(43)
+memory usage: 1.8+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="attributes-methods">
+<h3>Attributes &amp; methods<a class="headerlink" href="#attributes-methods" title="Permalink to this headline">¶</a></h3>
+<p>We’ve seen that we can use the dot-notation to access functions in libraries (i.e. <code class="docutils literal notranslate"><span class="pre">pd.read_csv()</span></code>). We can use this same approach to access things inside of <em>objects</em>. What’s an object? Basically, a variable that contains other data or functionality inside of it that is exposed to users. Consequently, our DataFrame item is an object.</p>
+<p>In the above code, we saw that we can make different calls with our DataFrame such as <code class="docutils literal notranslate"><span class="pre">ames.shape</span></code> and <code class="docutils literal notranslate"><span class="pre">ames.head()</span></code>. An observant reader probably noticed the difference between the two – one has parentheses and the other does not.</p>
+<p>An <strong>attribute</strong> inside an object is simply a variable that is unique to that object and a <strong>method</strong> is just a function inside an object that is unique to that object.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Variables inside an object are often called attributes and functions inside objects are called methods.</p>
+<p><strong>attribute</strong>: A variable associated with an object and is referenced by name using dotted expressions. For example, if an object <code class="docutils literal notranslate"><span class="pre">o</span></code> has an attribute <code class="docutils literal notranslate"><span class="pre">a</span></code> it would be referenced as <code class="docutils literal notranslate"><span class="pre">o.a</span></code></p>
+<p><strong>method</strong>: A function associated with an object and is also referenced using dotted expressions but will include parentheses. For example, if an object <code class="docutils literal notranslate"><span class="pre">o</span></code> has a method <code class="docutils literal notranslate"><span class="pre">m</span></code> it would be called as <code class="docutils literal notranslate"><span class="pre">o.m()</span></code></p>
+</div>
+<p>Earlier, we saw the attributes <code class="docutils literal notranslate"><span class="pre">shape</span></code> and <code class="docutils literal notranslate"><span class="pre">dtypes</span></code>. Another attribute is <code class="docutils literal notranslate"><span class="pre">columns</span></code>, which will list all column names in our DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Order&#39;, &#39;PID&#39;, &#39;MS SubClass&#39;, &#39;MS Zoning&#39;, &#39;Lot Frontage&#39;, &#39;Lot Area&#39;,
+       &#39;Street&#39;, &#39;Alley&#39;, &#39;Lot Shape&#39;, &#39;Land Contour&#39;, &#39;Utilities&#39;,
+       &#39;Lot Config&#39;, &#39;Land Slope&#39;, &#39;Neighborhood&#39;, &#39;Condition 1&#39;,
+       &#39;Condition 2&#39;, &#39;Bldg Type&#39;, &#39;House Style&#39;, &#39;Overall Qual&#39;,
+       &#39;Overall Cond&#39;, &#39;Year Built&#39;, &#39;Year Remod/Add&#39;, &#39;Roof Style&#39;,
+       &#39;Roof Matl&#39;, &#39;Exterior 1st&#39;, &#39;Exterior 2nd&#39;, &#39;Mas Vnr Type&#39;,
+       &#39;Mas Vnr Area&#39;, &#39;Exter Qual&#39;, &#39;Exter Cond&#39;, &#39;Foundation&#39;, &#39;Bsmt Qual&#39;,
+       &#39;Bsmt Cond&#39;, &#39;Bsmt Exposure&#39;, &#39;BsmtFin Type 1&#39;, &#39;BsmtFin SF 1&#39;,
+       &#39;BsmtFin Type 2&#39;, &#39;BsmtFin SF 2&#39;, &#39;Bsmt Unf SF&#39;, &#39;Total Bsmt SF&#39;,
+       &#39;Heating&#39;, &#39;Heating QC&#39;, &#39;Central Air&#39;, &#39;Electrical&#39;, &#39;1st Flr SF&#39;,
+       &#39;2nd Flr SF&#39;, &#39;Low Qual Fin SF&#39;, &#39;Gr Liv Area&#39;, &#39;Bsmt Full Bath&#39;,
+       &#39;Bsmt Half Bath&#39;, &#39;Full Bath&#39;, &#39;Half Bath&#39;, &#39;Bedroom AbvGr&#39;,
+       &#39;Kitchen AbvGr&#39;, &#39;Kitchen Qual&#39;, &#39;TotRms AbvGrd&#39;, &#39;Functional&#39;,
+       &#39;Fireplaces&#39;, &#39;Fireplace Qu&#39;, &#39;Garage Type&#39;, &#39;Garage Yr Blt&#39;,
+       &#39;Garage Finish&#39;, &#39;Garage Cars&#39;, &#39;Garage Area&#39;, &#39;Garage Qual&#39;,
+       &#39;Garage Cond&#39;, &#39;Paved Drive&#39;, &#39;Wood Deck SF&#39;, &#39;Open Porch SF&#39;,
+       &#39;Enclosed Porch&#39;, &#39;3Ssn Porch&#39;, &#39;Screen Porch&#39;, &#39;Pool Area&#39;, &#39;Pool QC&#39;,
+       &#39;Fence&#39;, &#39;Misc Feature&#39;, &#39;Misc Val&#39;, &#39;Mo Sold&#39;, &#39;Yr Sold&#39;, &#39;Sale Type&#39;,
+       &#39;Sale Condition&#39;, &#39;SalePrice&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Similar to regular functions, methods are called with parentheses and often take arguments. For example, we can use the <code class="docutils literal notranslate"><span class="pre">tail()</span></code> method to see the last <em>n</em> rows in our DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2927</th>
+      <td>2928</td>
+      <td>923400125</td>
+      <td>85</td>
+      <td>RL</td>
+      <td>62.0</td>
+      <td>10441</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>Shed</td>
+      <td>700</td>
+      <td>7</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>132000</td>
+    </tr>
+    <tr>
+      <th>2928</th>
+      <td>2929</td>
+      <td>924100070</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>77.0</td>
+      <td>10010</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>170000</td>
+    </tr>
+    <tr>
+      <th>2929</th>
+      <td>2930</td>
+      <td>924151050</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>9627</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>11</td>
+      <td>2006</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>188000</td>
+    </tr>
+  </tbody>
+</table>
+<p>3 rows × 82 columns</p>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will be exposed to <em>many</em> of the available DataFrame methods throughout this course!</p>
+</div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Check out the help documentation for <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> by executing <code class="docutils literal notranslate"><span class="pre">pd.read_csv?</span></code> in a code cell. What parameter in <code class="docutils literal notranslate"><span class="pre">read_csv()</span></code> allows us to specify values that represent missing values?</p></li>
+<li><p>Read in this <a class="reference external" href="https://raw.githubusercontent.com/bradleyboehmke/uc-bana-6043/main/book/data/energy_consumption.csv">energy_consumption.csv file</a>.</p></li>
+<li><p>What are the dimesions of this data? What information does the <code class="docutils literal notranslate"><span class="pre">size</span></code> attribute provide?</p></li>
+<li><p>Check out the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method. What information does this provide?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="excel-files">
+<h2>Excel files<a class="headerlink" href="#excel-files" title="Permalink to this headline">¶</a></h2>
+<p>With Excel still being the spreadsheet software of choice its important to be able to efficiently import and export data from these files. Often, many users will simply resort to exporting the Excel file as a CSV file and then import into Python using pandas.read_csv; however, this is far from efficient. This section will teach you how to eliminate the CSV step and to import data directly from Excel using pandas’ built-in <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> function.</p>
+<p>To illustrate, we’ll import so mock grocery store products data located in a products.xlsx file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may need to install the openpyxl dependency. You can do so with either of the following:</p>
+<ul class="simple">
+<li><p>pip install openpyxl</p></li>
+<li><p>conda install openpyxl</p></li>
+</ul>
+</div>
+<p>To read in Excel data with pandas, you will use the <code class="docutils literal notranslate"><span class="pre">ExcelFile()</span></code> and <code class="docutils literal notranslate"><span class="pre">read_excel()</span></code> functions. ExcelFile allows you to read the names of the different worksheets in the Excel workbook. This allows you to identify the specific worksheet of interest and then specify that in <code class="docutils literal notranslate"><span class="pre">read_excel</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">products_excel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">ExcelFile</span><span class="p">(</span><span class="s1">&#39;../data/products.xlsx&#39;</span><span class="p">)</span>
+<span class="n">products_excel</span><span class="o">.</span><span class="n">sheet_names</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;metadata&#39;, &#39;products data&#39;, &#39;grocery list&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you don’t explicitly specify a sheet then the first worksheet will be imported.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;../data/products.xlsx&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;products data&#39;</span><span class="p">)</span>
+<span class="n">products</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_num</th>
+      <th>department</th>
+      <th>commodity</th>
+      <th>brand_ty</th>
+      <th>x5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>92993</td>
+      <td>NON-FOOD</td>
+      <td>PET</td>
+      <td>PRIVATE</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>93924</td>
+      <td>NON-FOOD</td>
+      <td>PET</td>
+      <td>PRIVATE</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>94272</td>
+      <td>NON-FOOD</td>
+      <td>PET</td>
+      <td>PRIVATE</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>94299</td>
+      <td>NON-FOOD</td>
+      <td>PET</td>
+      <td>PRIVATE</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>94594</td>
+      <td>NON-FOOD</td>
+      <td>PET</td>
+      <td>PRIVATE</td>
+      <td>N</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="sql-databases">
+<h2>SQL databases<a class="headerlink" href="#sql-databases" title="Permalink to this headline">¶</a></h2>
+<p>Many organizations continue to use relational databases along with SQL to interact with these data assets. Python has many tools to interact with these databases and you can even query SQL database tables with Panda’s <code class="docutils literal notranslate"><span class="pre">read_sql</span></code> command. Pandas relies on a third-party library called <a class="reference external" href="https://www.sqlalchemy.org/">SQLAlechmy</a> to establish a connection to a database.</p>
+<p>To connect to a database, we need to pass a connection string to SQLAlechmy’s <code class="docutils literal notranslate"><span class="pre">create_engine()</span></code> function. The general form of a connection string is the following: <code class="docutils literal notranslate"><span class="pre">dialect+driver://username:password&#64;host:port/database</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Read more about <a class="reference external" href="https://docs.sqlalchemy.org/en/latest/core/engines.html">engine configuration here</a>.</p>
+</div>
+<p>In this example I will illustrate connecting to a local sqlite database. To do so the connection string looks like: <code class="docutils literal notranslate"><span class="pre">sqlite:///&lt;path_to_db&gt;</span></code>.  The following illustrates with the example <a class="reference external" href="https://www.sqlitetutorial.net/sqlite-sample-database/">Chinook Database</a>, which I’ve downloaded to my data directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s1">&#39;sqlite:///../data/chinook.db&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Once I’ve made the connection, I can use <code class="docutils literal notranslate"><span class="pre">pd.read_sql()</span></code> to read in the “tracks” table directly as a Pandas DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tracks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="s1">&#39;tracks&#39;</span><span class="p">,</span> <span class="n">con</span><span class="o">=</span><span class="n">engine</span><span class="p">)</span>
+<span class="n">tracks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>TrackId</th>
+      <th>Name</th>
+      <th>AlbumId</th>
+      <th>MediaTypeId</th>
+      <th>GenreId</th>
+      <th>Composer</th>
+      <th>Milliseconds</th>
+      <th>Bytes</th>
+      <th>UnitPrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>For Those About To Rock (We Salute You)</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>Angus Young, Malcolm Young, Brian Johnson</td>
+      <td>343719</td>
+      <td>11170334</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>Balls to the Wall</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>None</td>
+      <td>342562</td>
+      <td>5510424</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>Fast As a Shark</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>F. Baltes, S. Kaufman, U. Dirkscneider &amp; W. Ho...</td>
+      <td>230619</td>
+      <td>3990994</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>Restless and Wild</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>F. Baltes, R.A. Smith-Diesel, S. Kaufman, U. D...</td>
+      <td>252051</td>
+      <td>4331779</td>
+      <td>0.99</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>Princess of the Dawn</td>
+      <td>3</td>
+      <td>2</td>
+      <td>1</td>
+      <td>Deaffy &amp; R.A. Smith-Diesel</td>
+      <td>375418</td>
+      <td>6290521</td>
+      <td>0.99</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If you are familiar with SQL then you can even pass a SQL query directly in the <code class="docutils literal notranslate"><span class="pre">pd.read_sql()</span></code> call. For example, the following SQL query:</p>
+<ol class="simple">
+<li><p>SELECTS the name, composer, and milliseconds columns,</p></li>
+<li><p>FROM the tracks table,</p></li>
+<li><p>WHERE observations in the milliseconds column are greater than 200,000 and WHERE observations in the composer column are not missing (NULL)</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sql_query</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;SELECT name, composer, milliseconds</span>
+<span class="s1">               FROM tracks</span>
+<span class="s1">               WHERE milliseconds &gt; 200000 and composer is not null&#39;&#39;&#39;</span>
+
+<span class="n">long_tracks</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql</span><span class="p">(</span><span class="n">sql_query</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+<span class="n">long_tracks</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Name</th>
+      <th>Composer</th>
+      <th>Milliseconds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>For Those About To Rock (We Salute You)</td>
+      <td>Angus Young, Malcolm Young, Brian Johnson</td>
+      <td>343719</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Fast As a Shark</td>
+      <td>F. Baltes, S. Kaufman, U. Dirkscneider &amp; W. Ho...</td>
+      <td>230619</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Restless and Wild</td>
+      <td>F. Baltes, R.A. Smith-Diesel, S. Kaufman, U. D...</td>
+      <td>252051</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Princess of the Dawn</td>
+      <td>Deaffy &amp; R.A. Smith-Diesel</td>
+      <td>375418</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Put The Finger On You</td>
+      <td>Angus Young, Malcolm Young, Brian Johnson</td>
+      <td>205662</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="many-other-file-types">
+<h2>Many other file types<a class="headerlink" href="#many-other-file-types" title="Permalink to this headline">¶</a></h2>
+<p>There are many other file types that you may encounter in your career. Most of which we can import into Python one way or another. Most tabular (2-dimensional data sets) can be imported directly with Pandas. For example, <a class="reference external" href="https://pandas.pydata.org/docs/search.html?q=read_">this page</a> shows a list of the many <code class="docutils literal notranslate"><span class="pre">pandas.read_xxx()</span></code> functions that allow you to read various data file types.</p>
+<p>While tabular data is the most popular in data science, other types of data will are used as well. These are not as important as the pandas DataFrame, but it is good to be exposed to them. These additional data formats are going to be more common in a fully functional programming language like Python.</p>
+<div class="section" id="json-files">
+<h3>JSON files<a class="headerlink" href="#json-files" title="Permalink to this headline">¶</a></h3>
+<p>A common example is a <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JSON</a> file – these are non-tabular data files that are popular in data engineering due to their space efficiency and flexibility. Here is an example JSON file:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;planeId&quot;</span><span class="p">:</span> <span class="s2">&quot;1xc2345g&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;manufacturerDetails&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;manufacturer&quot;</span><span class="p">:</span> <span class="s2">&quot;Airbus&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;model&quot;</span><span class="p">:</span> <span class="s2">&quot;A330&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;year&quot;</span><span class="p">:</span> <span class="mi">1999</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;airlineDetails&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;currentAirline&quot;</span><span class="p">:</span> <span class="s2">&quot;Southwest&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;previousAirlines&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;1st&quot;</span><span class="p">:</span> <span class="s2">&quot;Delta&quot;</span>
+        <span class="p">},</span>
+        <span class="nt">&quot;lastPurchased&quot;</span><span class="p">:</span> <span class="mi">2013</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;numberOfFlights&quot;</span><span class="p">:</span> <span class="mi">4654</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Does this JSON data structure remind you of a Python data structure? The JSON file bears a striking resemblance to the Python <code class="docutils literal notranslate"><span class="pre">dict</span></code>ionary structure due to the key-value pairings.</p>
+</div>
+<p>JSON Files can be imported using the json library (from the Standard library) paired with the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement and the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/json_example.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">imported_json</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then verify that our imported object is a <code class="docutils literal notranslate"><span class="pre">dict</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">imported_json</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<p>And we can view the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imported_json</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;planeId&#39;: &#39;1xc2345g&#39;,
+ &#39;manufacturerDetails&#39;: {&#39;manufacturer&#39;: &#39;Airbus&#39;,
+  &#39;model&#39;: &#39;A330&#39;,
+  &#39;year&#39;: 1999},
+ &#39;airlineDetails&#39;: {&#39;currentAirline&#39;: &#39;Southwest&#39;,
+  &#39;previousAirlines&#39;: {&#39;1st&#39;: &#39;Delta&#39;},
+  &#39;lastPurchased&#39;: 2013},
+ &#39;numberOfFlights&#39;: 4654}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="pickle-files">
+<h3>Pickle files<a class="headerlink" href="#pickle-files" title="Permalink to this headline">¶</a></h3>
+<p>So far, we’ve seen that tabular data files can be imported and represented as DataFrames and JSON files can be imported and represented as dicts, but what about other, more complex data?</p>
+<p>Python’s native data files are known as <strong>Pickle</strong> files:</p>
+<ul class="simple">
+<li><p>All Pickle files have the <code class="docutils literal notranslate"><span class="pre">.pickle</span></code> extension</p></li>
+<li><p>Pickle files are great for saving native Python data that can’t easily be represented by other file types such as:</p>
+<ul>
+<li><p>pre-processed data,</p></li>
+<li><p>models,</p></li>
+<li><p>any other Python object…</p></li>
+</ul>
+</li>
+</ul>
+<p>Similar to JSON files, pickle files can be imported using the pickle library paired with the <code class="docutils literal notranslate"><span class="pre">with</span></code> statement and the <code class="docutils literal notranslate"><span class="pre">open()</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;../data/pickle_example.pickle&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">imported_pickle</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can view this file and see it’s the same data as the JSON:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">imported_pickle</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;planeId&#39;: &#39;1xc2345g&#39;,
+ &#39;manufacturerDetails&#39;: {&#39;manufacturer&#39;: &#39;Airbus&#39;,
+  &#39;model&#39;: &#39;A330&#39;,
+  &#39;year&#39;: 1999},
+ &#39;airlineDetails&#39;: {&#39;currentAirline&#39;: &#39;Southwest&#39;,
+  &#39;previousAirlines&#39;: {&#39;1st&#39;: &#39;Delta&#39;},
+  &#39;lastPurchased&#39;: 2013},
+ &#39;numberOfFlights&#39;: 4654}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Python stores its data in _______ .</p></li>
+<li><p>What happens to Python’s data when the Python session is terminated?</p></li>
+<li><p>Load the hearts.csv data file into Python using the pandas library.</p></li>
+<li><p>What are the dimensions of this data? What data types are the variables in this data set?</p></li>
+<li><p>Assess the first 10 rows of this data set.</p></li>
+<li><p>Now import the hearts_data_dictionary.csv file, which provides some information on each variable. Do the data types of the hearts.csv variables align with the description of each variable?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,sqlalchemy
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.4
+IPython version      : 7.26.0
+
+jupyterlab: 3.1.4
+pandas    : 1.2.4
+sqlalchemy: 1.4.26
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 

@@ -278,7 +278,7 @@ x_list ** 2
 # Don't worry about the syntax, you will learn about this in a later lesson. Just note how the above approach with Numpy is far more convenient!
 # ```
 
-# In[17]:
+# In[15]:
 
 
 x_squared = [val ** 2 for val in x_list]
@@ -287,7 +287,7 @@ x_squared
 
 # Numpy also provides a host of other vectorized arithmetic capabilities. For example, we can compute the mean of a list with the following:
 
-# In[19]:
+# In[16]:
 
 
 np.mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -295,7 +295,7 @@ np.mean([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 
 # Unlike Python lists (which are limited to one dimension), NumPy arrays can be multi-dimensional. For example, here we will reshape our `x` array into a 3x3 matrix:
 
-# In[21]:
+# In[17]:
 
 
 m = x.reshape((3, 3))
@@ -304,7 +304,7 @@ m
 
 # A two-dimensional array is one representation of a matrix, and NumPy knows how to efficiently do typical matrix operations. For example, you can compute the transpose using `.T`:
 
-# In[22]:
+# In[18]:
 
 
 m.T
@@ -312,7 +312,7 @@ m.T
 
 # or a matrix-vector product using `np.dot`:
 
-# In[24]:
+# In[19]:
 
 
 np.dot(m, [5, 6, 7])
@@ -320,7 +320,7 @@ np.dot(m, [5, 6, 7])
 
 # and even more sophisticated operations like eigenvalue decomposition:
 
-# In[25]:
+# In[20]:
 
 
 np.linalg.eigvals(m)
@@ -338,7 +338,7 @@ np.linalg.eigvals(m)
 # It is a common convention to import Pandas with the **pd** alias.
 # ```
 
-# In[27]:
+# In[21]:
 
 
 import pandas as pd
@@ -353,7 +353,7 @@ df = pd.DataFrame({'label': ['A', 'B', 'C', 'A', 'B', 'C'],
 
 # The Pandas interface allows you to do things like select columns by name:
 
-# In[28]:
+# In[22]:
 
 
 df['label']
@@ -361,7 +361,7 @@ df['label']
 
 # Apply string operations across string entries:
 
-# In[29]:
+# In[23]:
 
 
 df['label'].str.lower()
@@ -370,7 +370,7 @@ df['label'].str.lower()
 # Compute statistical aggregations for numerical columns:
 # 
 
-# In[30]:
+# In[24]:
 
 
 df['value'].sum()
@@ -378,7 +378,7 @@ df['value'].sum()
 
 # And, perhaps most importantly, do efficient database-style joins and groupings:
 
-# In[31]:
+# In[25]:
 
 
 df.groupby('label').sum()
@@ -398,7 +398,7 @@ df.groupby('label').sum()
 # It is a common convention to import Matplotlib with the **plt** alias.
 # ```
 
-# In[32]:
+# In[26]:
 
 
 import matplotlib.pyplot as plt
@@ -408,7 +408,7 @@ plt.style.use('ggplot')  # make graphs in the style of R's ggplot
 
 # Now let’s create some data and plot the results:
 
-# In[33]:
+# In[27]:
 
 
 x = np.linspace(0, 10)  # range of values from 0 to 10
@@ -436,7 +436,7 @@ plt.plot(x, y);         # plot as a line
 # 
 # For example, let’s take a look at interpolating a smooth curve between some data
 
-# In[34]:
+# In[28]:
 
 
 from scipy import interpolate
@@ -475,3 +475,18 @@ plt.plot(x_interp, y_interp);
 # 3. Read [A landscape diagram for Python data](https://community.ibm.com/community/user/datascience/blogs/paco-nathan/2019/03/12/a-landscape-diagram-for-python-data)
 # 4. Read [20 Python Libraries Every Data Scientist Needs to Know](https://builtin.com/data-science/python-libraries-data-science)
 # ```
+
+# ## Computing environment
+
+# In[29]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p jupyterlab,numpy,pandas,matplotlib,scipy')
+
+
+# In[ ]:
+
+
+
+
