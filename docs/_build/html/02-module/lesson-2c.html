@@ -100,6 +100,23 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Module 1
  </span>
 </p>
@@ -110,33 +127,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1.html">
-   Lession 1: Class overview
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-2.html">
-   Lesson 2: Configuring your computer
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators, and types
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-3.html">
-   Lesson 3: Introduction to JupyterLab
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators and conditionals
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-4.html">
-   Lesson 4: Variables, operators, and types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-5.html">
-   Lesson 5: More operators and conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-6.html">
-   Lesson 6: Data structures
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
   </a>
  </li>
  <li class="toctree-l1">
@@ -189,13 +196,8 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-1.html">
-   Lession 1
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-2.html">
-   Lesson 2
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Selecting and Filtering
   </a>
  </li>
  <li class="toctree-l1">
@@ -629,6 +631,7 @@ Name: carrier, dtype: object
 <center>
 <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/series-illustration.png?raw=true" alt="import-framework.png" width="80%" height="80%"/>
 </center>
+<p>Source: <a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science">Python Programming for Data Science</a></p>
 <p>How are Series different from DataFrames?</p>
 <ul class="simple">
 <li><p>They’re always 1-dimensional</p></li>
@@ -704,7 +707,7 @@ Name: carrier, dtype: object
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_85858</span><span class="o">/</span><span class="mf">33797969.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_93666</span><span class="o">/</span><span class="mf">33797969.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># DataFrames don&#39;t have this method so we&#39;ll get an error!</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span><span class="o">.</span><span class="n">to_list</span><span class="p">()</span>
 
@@ -724,6 +727,7 @@ Name: carrier, dtype: object
 <center>
 <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/dataframe-illustration.png?raw=true" alt="import-framework.png" width="80%" height="80%"/>
 </center>
+<p>Source: <a class="reference external" href="https://www.tomasbeuzen.com/python-programming-for-data-science">Python Programming for Data Science</a></p>
 <p>Not only are columns represented as Series, but so are rows!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

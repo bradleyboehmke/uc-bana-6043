@@ -1,0 +1,1979 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manipulating and Creating Columns &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators, and types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators and conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-3a.html">
+   Lesson 3a: Selecting and Filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03-module/lesson-3b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F03-module/lesson-3b.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/03-module/lesson-3b.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/03-module/lesson-3b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Manipulating and Creating Columns
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applied-review">
+     Applied Review
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-structures-and-dataframes">
+       Data Structures and DataFrames
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#importing-data">
+       Importing Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selecting-and-filtering-data">
+       Selecting and Filtering Data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations-using-columns">
+     Calculations Using Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overwriting-columns">
+     Overwriting Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-values-based-on-multiple-columns">
+     Calculating Values Based on Multiple Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-numeric-column-operations">
+     Non-numeric Column Operations
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-complex-column-manipulation">
+     More Complex Column Manipulation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#replacing-values">
+       Replacing Values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-apply-method-and-beyond">
+       The
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         apply
+        </span>
+       </code>
+       Method and Beyond
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions">
+   Questions
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Manipulating and Creating Columns</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Manipulating and Creating Columns
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applied-review">
+     Applied Review
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#data-structures-and-dataframes">
+       Data Structures and DataFrames
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#importing-data">
+       Importing Data
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#selecting-and-filtering-data">
+       Selecting and Filtering Data
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculations-using-columns">
+     Calculations Using Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#overwriting-columns">
+     Overwriting Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calculating-values-based-on-multiple-columns">
+     Calculating Values Based on Multiple Columns
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#non-numeric-column-operations">
+     Non-numeric Column Operations
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-complex-column-manipulation">
+     More Complex Column Manipulation
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#replacing-values">
+       Replacing Values
+      </a>
+     </li>
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#the-apply-method-and-beyond">
+       The
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         apply
+        </span>
+       </code>
+       Method and Beyond
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#questions">
+   Questions
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="manipulating-and-creating-columns">
+<h1>Manipulating and Creating Columns<a class="headerlink" href="#manipulating-and-creating-columns" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>During the course of doing data analysis and modeling, a significant amount of time is spent on data preparation: loading, cleaning, transforming, and rearranging. Such tasks are often reported to take up 80% or more of an analyst’s time.</p>
+<p>- Wes McKinney, the creator of Pandas, in his book <em>Python for Data Analysis</em></p>
+</div></blockquote>
+<div class="section" id="applied-review">
+<h2>Applied Review<a class="headerlink" href="#applied-review" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="data-structures-and-dataframes">
+<h3>Data Structures and DataFrames<a class="headerlink" href="#data-structures-and-dataframes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>We use <strong>DataFrames</strong> to represent tables in Python.</p></li>
+<li><p>Python also supports other data structures for storing information that isn’t tabular. Examples include lists and dictionaries.</p></li>
+<li><p>DataFrames have many <strong>methods</strong>, or functions that access their internal data. Some examples we saw were <code class="docutils literal notranslate"><span class="pre">describe()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_index()</span></code>.</p></li>
+<li><p>DataFrames are composed of <strong>Series</strong>, 1-D data structures (like a vector). DataFrame columns can be thought of as Series.</p></li>
+</ul>
+</div>
+<div class="section" id="importing-data">
+<h3>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python can read in data from CSVs, JSON files, and pickle files with just a few lines of code.</p></li>
+</ul>
+</div>
+<div class="section" id="selecting-and-filtering-data">
+<h3>Selecting and Filtering Data<a class="headerlink" href="#selecting-and-filtering-data" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Python’s pandas library supports limiting rows (via <em>filtering</em> and <em>slicing</em>), as well as <em>selecting</em> columns.</p></li>
+<li><p>All of these operations use the bracket operators, but row syntax includes the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> <em>accessor</em>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="calculations-using-columns">
+<h2>Calculations Using Columns<a class="headerlink" href="#calculations-using-columns" title="Permalink to this headline">¶</a></h2>
+<p>It’s common to want to modify a column of a DataFrame, or sometimes even to create a new column.
+Let’s take a look at our planes data again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">planes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/planes.csv&#39;</span><span class="p">)</span>
+<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Suppose we wanted to know the total capacity of each plane, including the crew.
+We have data on how many seats each plane has (in the <code class="docutils literal notranslate"><span class="pre">seats</span></code> column), but that only includes paying passengers.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seats</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span>
+<span class="n">seats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     55
+1    182
+2    182
+3    182
+4     55
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>For simplicity, let’s say a full flight crew is always 5 people.
+Series objects allow us to perform addition with the regular <code class="docutils literal notranslate"><span class="pre">+</span></code> syntax –- in this case, <code class="docutils literal notranslate"><span class="pre">seats</span> <span class="pre">+</span> <span class="pre">5</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacity</span> <span class="o">=</span> <span class="n">seats</span> <span class="o">+</span> <span class="mi">5</span>
+<span class="n">capacity</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     60
+1    187
+2    187
+3    187
+4     60
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip alert alert-warning">
+    <b><p class="first admonition-title" style="font-weight: bold">Question</p></b>
+    <p>What happens if you switch the order? (i.e. <tt class=\"docutils literal\">5 + seats</tt>)? Does this make sense?</p>
+</div><p>So we’ve create a new series, <code class="docutils literal notranslate"><span class="pre">capacity</span></code>, with the total capacity of the plane.
+Right now it’s totally separate from our original <code class="docutils literal notranslate"><span class="pre">planes</span></code> DataFrame, but we can make it a column of <code class="docutils literal notranslate"><span class="pre">planes</span></code> using the assignment syntax with the column reference syntax.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_column_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_column_series</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">capacity</span>
+<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">planes</span></code> now has a “capacity” column at the end.</p>
+<div class="admonition note alert alert-info">
+    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
+    <p>Also note that in the code above, the <b><i>column name</i></b> goes in quotes within the bracket syntax, while the <b><i>values that will become the column</i></b> -- the Series we're using -- are on the right side of the statement, without any brackets or quotes.</p>
+</div><p>This sequence of operations can be expressed as a single line:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a capacity column filled with the values in the seats column added with 5.</span>
+<span class="n">planes</span><span class="p">[</span><span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From a mathematical perspective, what we’re doing here is adding a <em>scalar</em> – a single value – to a <em>vector</em> – a series of values (aka a <code class="docutils literal notranslate"><span class="pre">Series</span></code>).
+Other vector-scalar math is supported as well.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subtraction</span>
+<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     43
+1    170
+2    170
+3    170
+4     43
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication</span>
+<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     550
+1    1820
+2    1820
+3    1820
+4     550
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exponentiation</span>
+<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     3025
+1    33124
+2    33124
+3    33124
+4     3025
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<font class="your_turn">
+    Your Turn
+</font>
+<p>Create a new column named “first_class_seats” that is 1/5 of the total seats on the plane. You will have some results with fractional seats; don’t worry about this.</p>
+</div>
+<div class="section" id="overwriting-columns">
+<h2>Overwriting Columns<a class="headerlink" href="#overwriting-columns" title="Permalink to this headline">¶</a></h2>
+<p>What if we discovered a systematic error in our data?
+Perhaps we find out that the “engines” column is only the number of engines <em>per wing</em> – so the total number of engines is actually double the value in that column.</p>
+<p>We could create a new column, “real_engine_count” or “total_engines”.
+But we’re not going to need the original “engines” column, and leaving it could cause confusion for others looking at our data.</p>
+<p>A better solution would be to replace the original column with the new, recalculated, values.
+We can do so using the same syntax as for creating a new column.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiply the engines column by 2, and then overwrite the original data.</span>
+<span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="calculating-values-based-on-multiple-columns">
+<h2>Calculating Values Based on Multiple Columns<a class="headerlink" href="#calculating-values-based-on-multiple-columns" title="Permalink to this headline">¶</a></h2>
+<p>So far we’ve only seen vector-scalar math.
+But vector-vector math is supported as well.</p>
+<p>Let’s look at a toy example of creating a column that contains the number of seats per engine.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seats_per_engine</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span>
+<span class="n">seats_per_engine</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    13.75
+1    45.50
+2    45.50
+3    45.50
+4    13.75
+dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats_per_engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seats_per_engine</span>
+<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+      <th>seats_per_engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You can combine vector-vector and vector-scalar calculations in arbitrarily complex ways.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;nonsense&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">9</span>
+<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+      <th>seats_per_engine</th>
+      <th>nonsense</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+      <td>8110.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8213.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8217.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8217.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+      <td>8102.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<font class="your_turn">
+    Your Turn
+</font>
+<p>Create a new column in the planes DataFrame, “technology_index”, that is calculated with the formula:</p>
+<p><code class="docutils literal notranslate"><span class="pre">technology_index</span> <span class="pre">=</span> <span class="pre">(year-1900)</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">engines</span> <span class="pre">*</span> <span class="pre">2</span></code></p>
+<p>Remember order of operations!</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;technology_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1900</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">planes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+      <th>capacity</th>
+      <th>seats_per_engine</th>
+      <th>nonsense</th>
+      <th>technology_index</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+      <td>8110.0</td>
+      <td>34.00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8213.0</td>
+      <td>32.50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8217.0</td>
+      <td>32.75</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>4</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>187</td>
+      <td>45.50</td>
+      <td>8217.0</td>
+      <td>32.75</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>4</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>60</td>
+      <td>13.75</td>
+      <td>8102.0</td>
+      <td>33.50</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3317</th>
+      <td>N997AT</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>BOEING</td>
+      <td>717-200</td>
+      <td>4</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>105</td>
+      <td>25.00</td>
+      <td>8147.0</td>
+      <td>33.50</td>
+    </tr>
+    <tr>
+      <th>3318</th>
+      <td>N997DL</td>
+      <td>1992.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>MCDONNELL DOUGLAS AIRCRAFT CO</td>
+      <td>MD-88</td>
+      <td>4</td>
+      <td>142</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>147</td>
+      <td>35.50</td>
+      <td>8149.0</td>
+      <td>31.00</td>
+    </tr>
+    <tr>
+      <th>3319</th>
+      <td>N998AT</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>BOEING</td>
+      <td>717-200</td>
+      <td>4</td>
+      <td>100</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+      <td>105</td>
+      <td>25.00</td>
+      <td>8147.0</td>
+      <td>33.50</td>
+    </tr>
+    <tr>
+      <th>3320</th>
+      <td>N998DL</td>
+      <td>1992.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>MCDONNELL DOUGLAS CORPORATION</td>
+      <td>MD-88</td>
+      <td>4</td>
+      <td>142</td>
+      <td>NaN</td>
+      <td>Turbo-jet</td>
+      <td>147</td>
+      <td>35.50</td>
+      <td>8149.0</td>
+      <td>31.00</td>
+    </tr>
+    <tr>
+      <th>3321</th>
+      <td>N999DN</td>
+      <td>1992.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>MCDONNELL DOUGLAS CORPORATION</td>
+      <td>MD-88</td>
+      <td>4</td>
+      <td>142</td>
+      <td>NaN</td>
+      <td>Turbo-jet</td>
+      <td>147</td>
+      <td>35.50</td>
+      <td>8149.0</td>
+      <td>31.00</td>
+    </tr>
+  </tbody>
+</table>
+<p>3322 rows × 13 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="non-numeric-column-operations">
+<h2>Non-numeric Column Operations<a class="headerlink" href="#non-numeric-column-operations" title="Permalink to this headline">¶</a></h2>
+<p>For simplicity, we started with mathematical operations.
+However, pandas supports string operations as well.</p>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">+</span></code> to concatenate strings, with both vectors and scalars.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;Tailnum is &#39;</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;tailnum&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and Model is &#39;</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>
+<span class="n">summary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Tailnum is N10156 and Model is EMB-145XR
+1     Tailnum is N102UW and Model is A320-214
+2     Tailnum is N103US and Model is A320-214
+3     Tailnum is N104UW and Model is A320-214
+4    Tailnum is N10575 and Model is EMB-145LR
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>More complex string operations are possible using methods available through the <code class="docutils literal notranslate"><span class="pre">.str</span></code> <em>accessor</em>.
+We won’t cover them in detail, so refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">documentation</a> if you’re interested.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the manufacturer field lowercase.</span>
+<span class="n">lowercase_mfctr</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">lowercase_mfctr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0             embraer
+1    airbus industrie
+2    airbus industrie
+3    airbus industrie
+4             embraer
+Name: manufacturer, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the length of the tail number.</span>
+<span class="n">tailnum_len</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;tailnum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+<span class="n">tailnum_len</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    6
+1    6
+2    6
+3    6
+4    6
+Name: tailnum, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-complex-column-manipulation">
+<h2>More Complex Column Manipulation<a class="headerlink" href="#more-complex-column-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="replacing-values">
+<h3>Replacing Values<a class="headerlink" href="#replacing-values" title="Permalink to this headline">¶</a></h3>
+<p>One fairly common situation in data wrangling is needing to convert one set of values to another, where there is a one-to-one correspondence between the values currently in the column and the new values that should replace them.
+This operation can be described as “mapping one set of values to another”.</p>
+<p>Let’s look at an example of this.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/airlines.csv&#39;</span><span class="p">)</span>
+<span class="c1"># Keep just the first 5 rows for this example.</span>
+<span class="n">airlines</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<span class="n">airlines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9E</td>
+      <td>Endeavor Air Inc.</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AA</td>
+      <td>American Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AS</td>
+      <td>Alaska Airlines Inc.</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B6</td>
+      <td>JetBlue Airways</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>Delta Air Lines Inc.</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Suppose we learn that there is a mistake in the carrier codes and they should be updated.</p>
+<ul class="simple">
+<li><p>9E should be PE</p></li>
+<li><p>B6 should be BB</p></li>
+<li><p>The other codes should stay as they are.</p></li>
+</ul>
+<p>We can express this <em>mapping</em> of old values to new values using a Python dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only specify the values we want to replace; don&#39;t include the ones that should stay the same.</span>
+<span class="n">value_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;9E&#39;</span><span class="p">:</span> <span class="s1">&#39;PE&#39;</span><span class="p">,</span>
+                 <span class="s1">&#39;B6&#39;</span><span class="p">:</span> <span class="s1">&#39;BB&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas provides a handy method on Series, <code class="docutils literal notranslate"><span class="pre">.replace</span></code>, that accepts this value mapping and updates the Series accordingly.
+We can use it to create a new column, “updated_carrier”, with the proper carrier code values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="p">[</span><span class="s1">&#39;updated_carrier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">airlines</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">value_mapping</span><span class="p">)</span>
+<span class="n">airlines</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>carrier</th>
+      <th>name</th>
+      <th>updated_carrier</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>9E</td>
+      <td>Endeavor Air Inc.</td>
+      <td>PE</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>AA</td>
+      <td>American Airlines Inc.</td>
+      <td>AA</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>AS</td>
+      <td>Alaska Airlines Inc.</td>
+      <td>AS</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>B6</td>
+      <td>JetBlue Airways</td>
+      <td>BB</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>DL</td>
+      <td>Delta Air Lines Inc.</td>
+      <td>DL</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If you are a SQL user, this workflow may look familiar to you;
+it’s quite similar to a <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span></code> statement in SQL.</p>
+<font class="your_turn">
+    Your Turn
+</font>
+<ol class="simple">
+<li><p>Open the weather CSV (path: <code class="docutils literal notranslate"><span class="pre">../data/weather.csv</span></code>) and store it in a variable called <code class="docutils literal notranslate"><span class="pre">weather</span></code>.</p></li>
+<li><p>Take a look at the “month” column. Observe that its values are numeric, not strings. How do you think these values relate to months of the year?</p></li>
+<li><p>Create a mapping from each number to the corresponding month name, as a dictionary. For example, one of the keys would be <code class="docutils literal notranslate"><span class="pre">5</span></code> and its value would be <code class="docutils literal notranslate"><span class="pre">May</span></code>. Store it in a variable called <code class="docutils literal notranslate"><span class="pre">month_mapping</span></code>.</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.replace</span></code> method to overwrite the current month column with the month names as strings, using your newly created mapping.</p></li>
+</ol>
+</div>
+<div class="section" id="the-apply-method-and-beyond">
+<h3>The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method and Beyond<a class="headerlink" href="#the-apply-method-and-beyond" title="Permalink to this headline">¶</a></h3>
+<p>If you can think of a way to express a new column as a combination of other columns and constants, it can be created using Python and Pandas.
+However, column calculations beyond the above are outside the scope of this training.</p>
+<p>If you wish to learn more, take a look at the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.apply</span></code> method</a>.</p>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="questions">
+<h1>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
+<p>Are there any questions before we move on?</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

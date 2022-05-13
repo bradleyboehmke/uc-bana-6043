@@ -48,6 +48,8 @@ type(carrier_column)
 # <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/series-illustration.png?raw=true" alt="import-framework.png" width="80%" height="80%"/>
 # </center>
 # 
+# Source: [Python Programming for Data Science](https://www.tomasbeuzen.com/python-programming-for-data-science)
+# 
 # How are Series different from DataFrames?
 # 
 # - They're always 1-dimensional
@@ -90,6 +92,8 @@ df.to_list()
 # <center>
 # <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/dataframe-illustration.png?raw=true" alt="import-framework.png" width="80%" height="80%"/>
 # </center>
+# 
+# Source: [Python Programming for Data Science](https://www.tomasbeuzen.com/python-programming-for-data-science)
 # 
 # Not only are columns represented as Series, but so are rows!
 

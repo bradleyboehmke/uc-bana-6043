@@ -1,0 +1,2526 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 3a: Selecting and filtering &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators, and types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators and conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 3a: Selecting and filtering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/03-module/lesson-3a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F03-module/lesson-3a.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/03-module/lesson-3a.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/03-module/lesson-3a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-dimensions">
+   Subsetting dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-variables">
+   Subsetting variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-rows">
+   Subsetting rows
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-rows">
+     Slicing rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-rows">
+     Filtering rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-variables-and-filtering-rows">
+   Selecting variables and filtering rows
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequential-operations">
+     Sequential Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simultaneous-operations">
+     Simultaneous operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#views-vs-copies">
+   Views vs copies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 3a: Selecting and filtering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-dimensions">
+   Subsetting dimensions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-variables">
+   Subsetting variables
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#subsetting-rows">
+   Subsetting rows
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#slicing-rows">
+     Slicing rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-rows">
+     Filtering rows
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selecting-variables-and-filtering-rows">
+   Selecting variables and filtering rows
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sequential-operations">
+     Sequential Operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#simultaneous-operations">
+     Simultaneous operations
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#views-vs-copies">
+   Views vs copies
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-3a-selecting-and-filtering">
+<h1>Lesson 3a: Selecting and filtering<a class="headerlink" href="#lesson-3a-selecting-and-filtering" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>“Every second of every day, our senses bring in way too much data than we can possibly process in our brains.”</p>
+<p>- Peter Diamandis, Founder of the X-Prize for human-AI collaboration</p>
+</div></blockquote>
+<p>When performing data analysis tasks, rarely do we want to use <em>all</em> our data. Often, we want to focus in on specific variables of interest and/or observations of interest. This requires us to be able to subset our DataFrame in various ways, which is the emphasis of this lesson.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you’ll be able to:</p>
+<ul class="simple">
+<li><p>Differentiate between the different ways to subset DataFrames.</p></li>
+<li><p>Select columns of a DataFrame.</p></li>
+<li><p>Slice and filter specific rows of a DataFrame.</p></li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To illustrate selecting and filtering let’s go ahead and load the pandas library and import some data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">planes_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/planes.csv&#39;</span><span class="p">)</span>
+<span class="n">planes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="subsetting-dimensions">
+<h2>Subsetting dimensions<a class="headerlink" href="#subsetting-dimensions" title="Permalink to this headline">¶</a></h2>
+<p>We don’t always want all of the data in a DataFrame, so we need to take subsets of the DataFrame. In general, <strong>subsetting</strong> is extracting a small portion of a DataFrame – making the DataFrame smaller. Since the DataFrame is two-dimensional, there are two dimensions on which to subset.</p>
+<p><strong>Dimension 1:</strong> We may only want to consider certain <em>variables</em>. For example, we may only care about the <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">engines</span></code> variables:</p>
+<p><a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/selecting_columns.png?raw=true"><img alt="" src="../_images/selecting_columns.png" /></a></p>
+<p>We call this <strong>selecting</strong> columns/variables – this is similar to SQL’s <code class="docutils literal notranslate"><span class="pre">SELECT</span></code> or R’s dplyr package’s <code class="docutils literal notranslate"><span class="pre">select()</span></code>.</p>
+<p><strong>Dimension 2:</strong> We may only want to consider certain <em>cases</em>. For example, we may only care about the cases where the manufacturer is Embraer.</p>
+<p><a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/selecting_rows.png?raw=true"><img alt="" src="../_images/selecting_rows.png" /></a></p>
+<p>We call this <strong>filtering</strong> or <strong>slicing</strong> – this is similar to SQL’s <code class="docutils literal notranslate"><span class="pre">WHERE</span></code> or R’s dplyr package’s <code class="docutils literal notranslate"><span class="pre">filter()</span></code> or <code class="docutils literal notranslate"><span class="pre">slice()</span></code>. And we can combine these two options to subset in both dimensions – the <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">engines</span></code> variables where the manufacturer is Embraer:</p>
+<p><a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/selecting_rows_columns.png?raw=true"><img alt="" src="../_images/selecting_rows_columns.png" /></a></p>
+<p>In the previous example, we want to do two things using <code class="docutils literal notranslate"><span class="pre">planes_df</span></code>:</p>
+<ol class="simple">
+<li><p><strong>select</strong> the <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">engines</span></code> variables</p></li>
+<li><p><strong>filter</strong> to cases where the manufacturer is Embraer</p></li>
+</ol>
+<p>But we also want to return a new DataFrame – not just highlight certain cells. In other words, we want to turn this:</p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Into this:</p>
+<p><a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/subsetting_result.png?raw=true"><img alt="" src="../_images/subsetting_result.png" /></a></p>
+<p>So we really have a third need: return the resulting DataFrame so we can continue our analysis:</p>
+<ol class="simple">
+<li><p><strong>select</strong> the <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">engines</span></code> variables</p></li>
+<li><p><strong>filter</strong> to cases where the manufacturer is Embraer</p></li>
+<li><p>Return a DataFrame to continue the analysis</p></li>
+</ol>
+</div>
+<div class="section" id="subsetting-variables">
+<h2>Subsetting variables<a class="headerlink" href="#subsetting-variables" title="Permalink to this headline">¶</a></h2>
+<p>Recall that the subsetting of variables/columns is called <strong>selecting</strong> variables/columns. In a simple example, we can select a single variable using bracket subsetting notation:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    2004.0
+1    1998.0
+2    1999.0
+3    1999.0
+4    2002.0
+Name: year, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the <code class="docutils literal notranslate"><span class="pre">head()</span></code> method also works on <code class="docutils literal notranslate"><span class="pre">planes_df['year']</span></code> to return the first five elements.</p>
+<div class="attention admonition">
+<p class="admonition-title">Question:</p>
+<p>What is the data type of <code class="docutils literal notranslate"><span class="pre">planes_df['year']</span></code>?</p>
+</div>
+<p>This returns <code class="docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code>, referred to simply as a “Series”, rather than a DataFrame.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.series.Series
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is okay – the Series is a popular data structure in Python. Recall from a previous lesson:</p>
+<ul class="simple">
+<li><p>A Series is a one-dimensional data structure – this is similar to a Python <code class="docutils literal notranslate"><span class="pre">list</span></code></p></li>
+<li><p>Note that all objects in a Series are usually of the same type (but this isn’t a strict requirement)</p></li>
+<li><p>Each DataFrame can be thought of as a list of equal-length Series (plus an Index)</p></li>
+</ul>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/dataframe-series.png?raw=true" alt="dataframe-series.png" width="300" height="300">
+</center>
+<p>Series can be useful, but for now, we are interested in <em>returning a DataFrame</em> rather than a series. We can select a single variable and return a DataFrame by still using bracket subsetting notation, but this time we will <span style="color: blue">pass a <u><code class="docutils literal notranslate"><span class="pre">list</span></code></u> of variables names</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1998.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1999.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And we can see that we’ve returned a DataFrame:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">planes_df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.frame.DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Question:</p>
+<p>What’s another advantage of this passing a <code class="docutils literal notranslate"><span class="pre">list</span></code>?</p>
+</div>
+<p>Passing a list into the bracket subsetting notation allows us to select multiple variables at once:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;engines&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>engines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1998.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1999.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1999.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In another example, assume we are interested in the <code class="docutils literal notranslate"><span class="pre">model</span></code> of plane, number of <code class="docutils literal notranslate"><span class="pre">seats</span></code> and <code class="docutils literal notranslate"><span class="pre">engine</span></code> type:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[[</span><span class="s1">&#39;model&#39;</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">,</span> <span class="s1">&#39;engine&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>model</th>
+      <th>seats</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>EMB-145XR</td>
+      <td>55</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>A320-214</td>
+      <td>182</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>A320-214</td>
+      <td>182</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>A320-214</td>
+      <td>182</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>EMB-145LR</td>
+      <td>55</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol>
+<li><p>______ is a common term for subsetting DataFrame variables.</p></li>
+<li><p>What type of object is a DataFrame column?</p></li>
+<li><p>What will be returned by the following code?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;model&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="subsetting-rows">
+<h2>Subsetting rows<a class="headerlink" href="#subsetting-rows" title="Permalink to this headline">¶</a></h2>
+<p>When we subset rows (aka cases, records, observations) we primarily use two names: <strong>slicing</strong> and <strong>filtering</strong>, but <em>these are not the same</em>:</p>
+<ul class="simple">
+<li><p><strong>slicing</strong>, similar to row <strong>indexing</strong>, subsets observations by the value of the Index</p></li>
+<li><p><strong>filtering</strong> subsets observations using a conditional test</p></li>
+</ul>
+<div class="section" id="slicing-rows">
+<h3>Slicing rows<a class="headerlink" href="#slicing-rows" title="Permalink to this headline">¶</a></h3>
+<p>Remember that all DataFrames have an Index:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can <strong>slice</strong> cases/rows using the values in the Index and bracket subsetting notation. It’s common practice to use <code class="docutils literal notranslate"><span class="pre">.loc</span></code> to slice cases/rows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N102UW</td>
+      <td>1998.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N104UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>N105UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that since this is <em><strong>not</strong></em> “indexing”, the last element is inclusive.</p>
+</div>
+<p>We can also pass a <code class="docutils literal notranslate"><span class="pre">list</span></code> of Index values:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>N103US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>N107US</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>N109UW</td>
+      <td>1999.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>AIRBUS INDUSTRIE</td>
+      <td>A320-214</td>
+      <td>2</td>
+      <td>182</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="filtering-rows">
+<h3>Filtering rows<a class="headerlink" href="#filtering-rows" title="Permalink to this headline">¶</a></h3>
+<p>We can <strong>filter</strong> rows using a logical sequence equal in length to the number of rows in the DataFrame.</p>
+<p>Continuing our example, assume we want to determine whether each case’s <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> is Embraer. We can use the <code class="docutils literal notranslate"><span class="pre">manufacturer</span></code> Series and a logical equivalency test to find the result for each row:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0        True
+1       False
+2       False
+3       False
+4        True
+        ...  
+3317    False
+3318    False
+3319    False
+3320    False
+3321    False
+Name: manufacturer, Length: 3322, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use this resulting logical sequence to test <strong>filter</strong> cases – rows that are <code class="docutils literal notranslate"><span class="pre">True</span></code> will be returned while those that are <code class="docutils literal notranslate"><span class="pre">False</span></code> will be removed:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>N11106</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>N11107</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>N11109</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This also works with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N10575</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145LR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>N11106</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>N11107</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>N11109</td>
+      <td>2002.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Any conditional test can be used to <strong>filter</strong> DataFrame rows:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2002</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>N11121</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>N11127</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>N11137</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>N11140</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>And multiple conditional tests can be combined using logical operators:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2002</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2004</span><span class="p">)]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>N11121</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>N11127</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>N11137</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>N11140</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>N11150</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that each condition is wrapped in parentheses – this is required.</p>
+</div>
+<p>Often, as your condition gets more complex, it can be easier to read if you separate out the condition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cond</span> <span class="o">=</span> <span class="p">(</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">2002</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2004</span><span class="p">)</span>
+<span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>15</th>
+      <td>N11121</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>N11127</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>N11137</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>N11140</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>N11150</td>
+      <td>2003.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol>
+<li><p>What’s the difference between <strong>slicing</strong> cases and <strong>filtering</strong> cases?</p></li>
+<li><p>Fill in the blanks to fix the following code to find planes that have more than three engines:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">______</span><span class="p">[</span><span class="s1">&#39;______&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="selecting-variables-and-filtering-rows">
+<h2>Selecting variables and filtering rows<a class="headerlink" href="#selecting-variables-and-filtering-rows" title="Permalink to this headline">¶</a></h2>
+<p>If we want to select variables and filter cases at the same time, we have a few options:</p>
+<ol class="simple">
+<li><p>Sequential operations</p></li>
+<li><p>Simultaneous operations</p></li>
+</ol>
+<div class="section" id="sequential-operations">
+<h3>Sequential Operations<a class="headerlink" href="#sequential-operations" title="Permalink to this headline">¶</a></h3>
+<p>We can use what we’ve previously learned to select variables and filter cases in multiple steps:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df_filtered</span> <span class="o">=</span> <span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span><span class="p">]</span>
+<span class="n">planes_df_filtered_and_selected</span> <span class="o">=</span> <span class="n">planes_df_filtered</span><span class="p">[[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;engines&#39;</span><span class="p">]]</span>
+<span class="n">planes_df_filtered_and_selected</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>engines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This is a good way to learn how to select and filter independently, and it also reads very clearly.</p>
+</div>
+<div class="section" id="simultaneous-operations">
+<h3>Simultaneous operations<a class="headerlink" href="#simultaneous-operations" title="Permalink to this headline">¶</a></h3>
+<p>However, we can also do both selecting and filtering in a single step with <code class="docutils literal notranslate"><span class="pre">.loc</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;engines&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>engines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This option is more succinct and also reduces programming time. As before, as your filtering and selecting conditions get longer and/or more complex, it can make it easier to read to break it up into separate lines:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rows</span> <span class="o">=</span> <span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;engines&#39;</span><span class="p">]</span>
+<span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>engines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Knowledge check<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Question:</p>
+<p>Subset <code class="docutils literal notranslate"><span class="pre">planes_df</span></code> to only include planes made by Boeing and the <code class="docutils literal notranslate"><span class="pre">seats</span></code> and <code class="docutils literal notranslate"><span class="pre">model</span></code> variables.</p>
+</div>
+</div>
+</div>
+<div class="section" id="views-vs-copies">
+<h2>Views vs copies<a class="headerlink" href="#views-vs-copies" title="Permalink to this headline">¶</a></h2>
+<p>One thing to be aware of, as you will likely experience it eventually, is the concept of returning a <em><strong>view</strong></em> (“looking” at a part of an existing object) versus a <em><strong>copy</strong></em> (making a new copy of the object in memory). This can be a bit abstract and even <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">this section in the Pandas docs</a> states <em>“…it’s very hard to predict whether it will return a view or a copy.”</em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The concept of views and copies is confusing and you can read more about it <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy">here</a>.</p>
+</div>
+<p>The main takeaway is that the most common warning you’ll encounter in Pandas is the <code class="docutils literal notranslate"><span class="pre">SettingWithCopyWarning</span></code>; Pandas raises it as a warning that you might not be doing what you think you’re doing or because the operation you are performing may behave unpredictably.</p>
+<p>Let’s look at an example. Say the number of seats on this particular plane was recorded incorrectly. Instead of 55 seats it should actually be 60 seats.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tailnum_of_interest</span> <span class="o">=</span> <span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;tailnum&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;N10156&#39;</span>
+<span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Instead of using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, we could actually filter and select this element in our DataFrame with the following bracket notation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">][</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    55
+Name: seats, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we use this approach to then assign our new value to this element we’ll get a <code class="docutils literal notranslate"><span class="pre">SettingWithCopyWarning</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">][</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_94485/2190037627.py:1: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame.
+Try using .loc[row_indexer,col_indexer] = value instead
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  planes_df[tailnum_of_interest][&#39;seats&#39;] = 60
+</pre></div>
+</div>
+</div>
+</div>
+<p>So what’s going on? Did our DataFrame get changed?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>55</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>No it didn’t, even though you probably thought it did. What happened above is that <code class="docutils literal notranslate"><span class="pre">planes_df[tailnum_of_interest]['seats']</span></code> was executed first and returned a copy of the DataFrame, which is an entirely different object. We can confirm by using <code class="docutils literal notranslate"><span class="pre">id()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The id of the original dataframe is: </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">planes_df</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot; The id of the indexed dataframe is: </span><span class="si">{</span><span class="nb">id</span><span class="p">(</span><span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">])</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 4441394144
+ The id of the indexed dataframe is: 4442333536
+</pre></div>
+</div>
+</div>
+</div>
+<p>We then tried to set a value on this new object by appending <code class="docutils literal notranslate"><span class="pre">['seats']</span> <span class="pre">=</span> <span class="pre">60</span></code>. Pandas is warning us that we are doing that operation on a copy of the original dataframe, which is probably not what we want. To fix this, you need to index in a single go, using <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> for example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">,</span> <span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>No error this time! And let’s confirm the change:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="p">[</span><span class="n">tailnum_of_interest</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tailnum</th>
+      <th>year</th>
+      <th>type</th>
+      <th>manufacturer</th>
+      <th>model</th>
+      <th>engines</th>
+      <th>seats</th>
+      <th>speed</th>
+      <th>engine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>N10156</td>
+      <td>2004.0</td>
+      <td>Fixed wing multi engine</td>
+      <td>EMBRAER</td>
+      <td>EMB-145XR</td>
+      <td>2</td>
+      <td>60</td>
+      <td>NaN</td>
+      <td>Turbo-fan</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>When in doubt, always use <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> for combined filtering and selecting!</p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Import the heart.csv</p></li>
+<li><p>Select the age column and return a Series. Select the age column and return a DataFrame. Select the age, sex, and max_hr columns.</p></li>
+<li><p>Slice the DataFrame to get the first 25 rows and save as <code class="docutils literal notranslate"><span class="pre">first_25</span></code>. What is the age of the last observation in this sliced DataFrame?</p></li>
+<li><p>Using the original DataFrame (not the sliced DataFrame), filter for all observations where the person is 50 years or older. How many observations are there?</p></li>
+<li><p>Using the original DataFrame, filter for those observations that are male and 50 years or older. How many observations are there.</p></li>
+<li><p>Using the original DataFrame, filter for those observations that are female, 50 years or younger, and have the disease (disease = 1). Select <code class="docutils literal notranslate"><span class="pre">chest_pain</span></code>, <code class="docutils literal notranslate"><span class="pre">chol</span></code>, and <code class="docutils literal notranslate"><span class="pre">max_hr</span></code> columns. How many rows and columns are in the resulting DataFrame?</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./03-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
