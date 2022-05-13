@@ -1,15 +1,18 @@
 format: jb-book
 root: intro.ipynb
 parts:
+- caption: Module 0 (Pre-class)
+  chapters:
+  - file: 00-module/overview
+  - file: 00-module/lesson-0a
+  - file: 00-module/lesson-0b
 - caption: Module 1
   chapters:
   - file: 01-module/overview
-  - file: 01-module/lesson-1
-  - file: 01-module/lesson-2
-  - file: 01-module/lesson-3
-  - file: 01-module/lesson-4
-  - file: 01-module/lesson-5
-  - file: 01-module/lesson-6
+  - file: 01-module/lesson-1a
+  - file: 01-module/lesson-1b
+  - file: 01-module/lesson-1c
+  - file: 01-module/lesson-1d
   - file: 01-module/lab
 - caption: Module 2
   chapters:
@@ -21,7 +24,7 @@ parts:
 - caption: Module 3
   chapters:
   - file: 03-module/overview
-  - file: 03-module/lesson-1
+  - file: 03-module/lesson-3a
   - file: 03-module/lesson-2
   - file: 03-module/lab
 - caption: Module 4
