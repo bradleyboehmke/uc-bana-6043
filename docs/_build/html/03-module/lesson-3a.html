@@ -852,7 +852,50 @@ const thebe_selector_output = ".output, .cell_output"
 </div></div></div>
 </div>
 <p>Into this:</p>
-<p><a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/subsetting_result.png?raw=true"><img alt="" src="../_images/subsetting_result.png" /></a></p>
+<div class="cell tag_hide-input docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">planes_df</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;EMBRAER&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;engines&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year</th>
+      <th>engines</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2004.0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2002.0</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
 <p>So we really have a third need: return the resulting DataFrame so we can continue our analysis:</p>
 <ol class="simple">
 <li><p><strong>select</strong> the <code class="docutils literal notranslate"><span class="pre">year</span></code> and <code class="docutils literal notranslate"><span class="pre">engines</span></code> variables</p></li>
@@ -2301,7 +2344,7 @@ Name: seats, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_94485/2190037627.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_99385/2190037627.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -2374,8 +2417,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 4441394144
- The id of the indexed dataframe is: 4442333536
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 4535745168
+ The id of the indexed dataframe is: 4536425728
 </pre></div>
 </div>
 </div>

@@ -62,9 +62,13 @@ planes_df.head()
 
 
 # Into this:
-# 
-# [![](../images/subsetting_result.png)](https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/subsetting_result.png?raw=true)
-# 
+
+# In[3]:
+
+
+planes_df.head().loc[planes_df['manufacturer'] == 'EMBRAER', ['year', 'engines']]
+
+
 # So we really have a third need: return the resulting DataFrame so we can continue our analysis:
 # 
 #   1. **select** the `year` and `engines` variables
@@ -76,7 +80,7 @@ planes_df.head()
 # Recall that the subsetting of variables/columns is called **selecting** variables/columns. In a simple example, we can select a single variable using bracket subsetting notation:
 # 
 
-# In[3]:
+# In[4]:
 
 
 planes_df['year'].head()
@@ -91,7 +95,7 @@ planes_df['year'].head()
 
 # This returns `pandas.core.series.Series`, referred to simply as a "Series", rather than a DataFrame.
 
-# In[4]:
+# In[5]:
 
 
 type(planes_df['year'])
@@ -109,7 +113,7 @@ type(planes_df['year'])
 # 
 # Series can be useful, but for now, we are interested in *returning a DataFrame* rather than a series. We can select a single variable and return a DataFrame by still using bracket subsetting notation, but this time we will <span style="color: blue">pass a <u>`list`</u> of variables names</span>:
 
-# In[5]:
+# In[6]:
 
 
 planes_df[['year']].head()
@@ -117,7 +121,7 @@ planes_df[['year']].head()
 
 # And we can see that we've returned a DataFrame:
 
-# In[6]:
+# In[7]:
 
 
 type(planes_df[['year']].head())
@@ -130,7 +134,7 @@ type(planes_df[['year']].head())
 # 
 # Passing a list into the bracket subsetting notation allows us to select multiple variables at once:
 
-# In[7]:
+# In[8]:
 
 
 planes_df[['year', 'engines']].head()
@@ -138,7 +142,7 @@ planes_df[['year', 'engines']].head()
 
 # In another example, assume we are interested in the `model` of plane, number of `seats` and `engine` type:
 
-# In[8]:
+# In[9]:
 
 
 planes_df[['model', 'seats', 'engine']].head()
@@ -168,7 +172,7 @@ planes_df[['model', 'seats', 'engine']].head()
 # 
 # Remember that all DataFrames have an Index:
 
-# In[9]:
+# In[10]:
 
 
 planes_df.head()
@@ -176,7 +180,7 @@ planes_df.head()
 
 # We can **slice** cases/rows using the values in the Index and bracket subsetting notation. It's common practice to use `.loc` to slice cases/rows:
 
-# In[10]:
+# In[11]:
 
 
 planes_df.loc[0:5]
@@ -188,7 +192,7 @@ planes_df.loc[0:5]
 # 
 # We can also pass a `list` of Index values:
 
-# In[11]:
+# In[12]:
 
 
 planes_df.loc[[0, 2, 4, 6, 8]]
@@ -200,7 +204,7 @@ planes_df.loc[[0, 2, 4, 6, 8]]
 # 
 # Continuing our example, assume we want to determine whether each case's `manufacturer` is Embraer. We can use the `manufacturer` Series and a logical equivalency test to find the result for each row:
 
-# In[12]:
+# In[13]:
 
 
 planes_df['manufacturer'] == 'EMBRAER'
@@ -208,7 +212,7 @@ planes_df['manufacturer'] == 'EMBRAER'
 
 # We can use this resulting logical sequence to test **filter** cases -- rows that are `True` will be returned while those that are `False` will be removed:
 
-# In[13]:
+# In[14]:
 
 
 planes_df[planes_df['manufacturer'] == 'EMBRAER'].head()
@@ -216,7 +220,7 @@ planes_df[planes_df['manufacturer'] == 'EMBRAER'].head()
 
 # This also works with `.loc`:
 
-# In[14]:
+# In[15]:
 
 
 planes_df.loc[planes_df['manufacturer'] == 'EMBRAER'].head()
@@ -224,7 +228,7 @@ planes_df.loc[planes_df['manufacturer'] == 'EMBRAER'].head()
 
 # Any conditional test can be used to **filter** DataFrame rows:
 
-# In[15]:
+# In[16]:
 
 
 planes_df.loc[planes_df['year'] > 2002].head()
@@ -232,7 +236,7 @@ planes_df.loc[planes_df['year'] > 2002].head()
 
 # And multiple conditional tests can be combined using logical operators:
 
-# In[16]:
+# In[17]:
 
 
 planes_df.loc[(planes_df['year'] > 2002) & (planes_df['year'] < 2004)].head()
@@ -244,7 +248,7 @@ planes_df.loc[(planes_df['year'] > 2002) & (planes_df['year'] < 2004)].head()
 # 
 # Often, as your condition gets more complex, it can be easier to read if you separate out the condition:
 
-# In[17]:
+# In[18]:
 
 
 cond = (planes_df['year'] > 2002) & (planes_df['year'] < 2004)
@@ -274,7 +278,7 @@ planes_df.loc[cond].head()
 # 
 # We can use what we've previously learned to select variables and filter cases in multiple steps:
 
-# In[18]:
+# In[19]:
 
 
 planes_df_filtered = planes_df.loc[planes_df['manufacturer'] == 'EMBRAER']
@@ -288,7 +292,7 @@ planes_df_filtered_and_selected.head()
 # 
 # However, we can also do both selecting and filtering in a single step with `.loc`:
 
-# In[19]:
+# In[20]:
 
 
 planes_df.loc[planes_df['manufacturer'] == 'EMBRAER', ['year', 'engines']].head()
@@ -296,7 +300,7 @@ planes_df.loc[planes_df['manufacturer'] == 'EMBRAER', ['year', 'engines']].head(
 
 # This option is more succinct and also reduces programming time. As before, as your filtering and selecting conditions get longer and/or more complex, it can make it easier to read to break it up into separate lines:
 
-# In[20]:
+# In[21]:
 
 
 rows = planes_df['manufacturer'] == 'EMBRAER'
@@ -323,7 +327,7 @@ planes_df.loc[rows, cols].head()
 # 
 # Let's look at an example. Say the number of seats on this particular plane was recorded incorrectly. Instead of 55 seats it should actually be 60 seats.
 
-# In[21]:
+# In[22]:
 
 
 tailnum_of_interest = planes_df['tailnum'] == 'N10156'
@@ -332,7 +336,7 @@ planes_df[tailnum_of_interest]
 
 # Instead of using `.iloc`, we could actually filter and select this element in our DataFrame with the following bracket notation.
 
-# In[22]:
+# In[23]:
 
 
 planes_df[tailnum_of_interest]['seats']
@@ -340,7 +344,7 @@ planes_df[tailnum_of_interest]['seats']
 
 # If we use this approach to then assign our new value to this element we'll get a `SettingWithCopyWarning`.
 
-# In[23]:
+# In[24]:
 
 
 planes_df[tailnum_of_interest]['seats'] = 60
@@ -348,7 +352,7 @@ planes_df[tailnum_of_interest]['seats'] = 60
 
 # So what's going on? Did our DataFrame get changed?
 
-# In[24]:
+# In[25]:
 
 
 planes_df[tailnum_of_interest]
@@ -356,7 +360,7 @@ planes_df[tailnum_of_interest]
 
 # No it didn’t, even though you probably thought it did. What happened above is that `planes_df[tailnum_of_interest]['seats']` was executed first and returned a copy of the DataFrame, which is an entirely different object. We can confirm by using `id()`:
 
-# In[25]:
+# In[26]:
 
 
 print(f"The id of the original dataframe is: {id(planes_df)}")
@@ -366,7 +370,7 @@ print(f" The id of the indexed dataframe is: {id(planes_df[tailnum_of_interest])
 # We then tried to set a value on this new object by appending `['seats'] = 60`. Pandas is warning us that we are doing that operation on a copy of the original dataframe, which is probably not what we want. To fix this, you need to index in a single go, using `.loc[]` for example:
 # 
 
-# In[26]:
+# In[27]:
 
 
 planes_df.loc[tailnum_of_interest, 'seats'] = 60
@@ -374,7 +378,7 @@ planes_df.loc[tailnum_of_interest, 'seats'] = 60
 
 # No error this time! And let’s confirm the change:
 
-# In[27]:
+# In[28]:
 
 
 planes_df[tailnum_of_interest]
