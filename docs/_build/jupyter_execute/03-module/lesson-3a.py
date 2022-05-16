@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Lesson 3a: Selecting and filtering
+# # Lesson 3a: Subsetting data
 
 # > “Every second of every day, our senses bring in way too much data than we can possibly process in our brains.”
 # >
@@ -399,3 +399,12 @@ planes_df[tailnum_of_interest]
 # 5. Using the original DataFrame, filter for those observations that are male and 50 years or older. How many observations are there.
 # 6. Using the original DataFrame, filter for those observations that are female, 50 years or younger, and have the disease (disease = 1). Select `chest_pain`, `chol`, and `max_hr` columns. How many rows and columns are in the resulting DataFrame?
 # ```
+
+# ## Computing environment
+
+# In[29]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas')
+

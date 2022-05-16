@@ -1,300 +1,517 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Manipulating and Creating Columns
-
+# # Lesson 3b: Manipulating data
+# 
 # > During the course of doing data analysis and modeling, a significant amount of time is spent on data preparation: loading, cleaning, transforming, and rearranging. Such tasks are often reported to take up 80% or more of an analyst's time.
 # >
 # > \- Wes McKinney, the creator of Pandas, in his book *Python for Data Analysis*
+# 
+# We've learned how to subset our DataFrames, in this lesson we'll focus on how to manipulate, create, drop, even identify missing value patterns across our DataFrame's columns.
 
-# ## Applied Review
+# ## Learning objectives
+# 
+# By the end of this lesson you will be able to:
+# 
+# - Rename columns
+# - Perform calculations and operations with one or more columns
+# - Add, drop, and overwrite columns in your DataFrame
+# - Identify missing values and replace these (and even non-missing) values.
 
-# ### Data Structures and DataFrames
-# - We use **DataFrames** to represent tables in Python.
-# - Python also supports other data structures for storing information that isn't tabular. Examples include lists and dictionaries.
-# - DataFrames have many **methods**, or functions that access their internal data. Some examples we saw were `describe()` and `set_index()`.
-# - DataFrames are composed of **Series**, 1-D data structures (like a vector). DataFrame columns can be thought of as Series.
-
-# ### Importing Data
-# - Python can read in data from CSVs, JSON files, and pickle files with just a few lines of code.
-
-# ### Selecting and Filtering Data
-# - Python's pandas library supports limiting rows (via *filtering* and *slicing*), as well as *selecting* columns.
-# - All of these operations use the bracket operators, but row syntax includes the `.loc` *accessor*.
-
-# ## Calculations Using Columns
-
-# It's common to want to modify a column of a DataFrame, or sometimes even to create a new column.
-# Let's take a look at our planes data again.
+# ## Renaming columns
+# 
+# Often, one of the first things we want to do with a new data set is clean up the column names. We can do this a few different ways and to illustrate, let's look at the Ames housing data:
 
 # In[1]:
 
 
 import pandas as pd
 
-planes = pd.read_csv('../data/planes.csv')
-planes.head()
+ames = pd.read_csv('../data/ames_raw.csv')
+ames.head()
 
 
-# Suppose we wanted to know the total capacity of each plane, including the crew.
-# We have data on how many seats each plane has (in the `seats` column), but that only includes paying passengers.
-# 
-# 
+# Say we want to rename the "MS SubClass" and "MS Zoning" columns. We can do so with the `rename` method and passing a dictionary that maps old names to new names: `df.rename(columns={'old_name1': 'new_name1', 'old_name2': 'new_name2'})`.
 
 # In[2]:
 
 
-seats = planes['seats']
-seats.head()
+ames.rename(columns={'MS SubClass': 'ms_subclass', 'MS Zoning': 'ms_zoning'})
+ames.head()
 
 
-# For simplicity, let's say a full flight crew is always 5 people.
-# Series objects allow us to perform addition with the regular `+` syntax –- in this case, `seats + 5`.
+# Wait? What happened? Nothing changed? In the code above we did actually rename columns of our DataFrame but we didn’t modify the DataFrame inplace, we made a copy of it. There are generally two options for making permanent DataFrame changes:
+# 
+# 1. Use the argument `inplace=True`, e.g., `df.rename(..., inplace=True)`, available in most Pandas functions/methods
+# 2. Re-assign, e.g., `df = df.rename(...)` The Pandas team recommends **Method 2 (re-assign)**, for a [few reasons](https://www.youtube.com/watch?v=hK6o_TDXXN8&t=700) (mostly to do with how memory is allocated under the hood).
+# 
+# ```{warning}
+# Be sure to include the `columns=` when providing the argument dictionary. `rename` can be used to rename index values as well, which is actually the default behavior. So if you don't specify `columns=` it'll behave differently then expected and no error/warning messages will be provided.
+# ```
 
 # In[3]:
 
 
-capacity = seats + 5
-capacity.head()
+ames = ames.rename(columns={'MS SubClass': 'ms_subclass', 'MS Zoning': 'ms_zoning'})
+ames.head()
 
 
-# <div class="admonition tip alert alert-warning">
-#     <b><p class="first admonition-title" style="font-weight: bold">Question</p></b>
-#     <p>What happens if you switch the order? (i.e. <tt class=\"docutils literal\">5 + seats</tt>)? Does this make sense?</p>
-# </div>
-
-# So we've create a new series, `capacity`, with the total capacity of the plane.
-# Right now it's totally separate from our original `planes` DataFrame, but we can make it a column of `planes` using the assignment syntax with the column reference syntax.
-# ```python
-# df['new_column_name'] = new_column_series
-# ```
+# Using `rename` is great for renaming a single or even a handful of columns but can be tedious for renaming _many_ columns. For this we can use the `.columns` attribute, which just returns all the column names. 
 
 # In[4]:
 
 
-planes['capacity'] = capacity
-planes.head()
+ames.columns
 
 
-# Note that `planes` now has a "capacity" column at the end.
-
-# <div class="admonition note alert alert-info">
-#     <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-#     <p>Also note that in the code above, the <b><i>column name</i></b> goes in quotes within the bracket syntax, while the <b><i>values that will become the column</i></b> -- the Series we're using -- are on the right side of the statement, without any brackets or quotes.</p>
-# </div>
-
-# This sequence of operations can be expressed as a single line:
+#  Pandas offers a lot of string methods that we can apply to string objects.
+# 
+# ```{tip}
+# Check out some of the more common string methods [here](https://pandas.pydata.org/docs/user_guide/text.html#string-methods).
+# ```
+# 
+# We can manipulate these column name values by using string methods that you can access via `.str.xxxx()`. For example, we can coerce all the column names to lower case with:
 
 # In[5]:
 
 
-# Create a capacity column filled with the values in the seats column added with 5.
-planes['capacity'] = planes['seats'] + 5
+ames.columns.str.lower()
+
+
+# We can even chain multiple string methods together. For example the following coerces the column names to lower case, replaces all white space in the column names with an underscore, and then assigns these converted values back to the `.columns` attribute.
+
+# In[6]:
+
+
+ames.columns = ames.columns.str.lower().str.replace(" ", "_")
+ames.head()
+
+
+# ## Calculations using columns
+
+# It's common to want to modify a column of a DataFrame, or sometimes even to create a new column. For example, let's look at the `saleprice` column in our data.
+
+# In[7]:
+
+
+sale_price = ames['saleprice']
+sale_price
+
+
+# Say we wanted to convert the sales price of our homes to be represented as thousands; so rather than "215000" we want to represent it as "215"? To do this we can simply divide by 1,000.
+
+# In[8]:
+
+
+sale_price_k = sale_price / 1000
+sale_price_k
+
+
+# ## Adding & removing columns
+# 
+# So we've create a new series, `sale_price_k`. Right now it's totally separate from our original `ames` DataFrame, but we can make it a column of `ames` using the assignment syntax with the column reference syntax.
+# ```python
+# df['new_column_name'] = new_column_series
+# ```
+
+# In[9]:
+
+
+ames['sale_price_k'] = sale_price_k
+ames.head()
+
+
+# Note that `ames` now has a "sale_price_k" column at the end.
+# 
+# ```{note}
+# Also note that in the code above, the column name goes in quotes within the bracket syntax, while the values that will become the column -- the Series we're using -- are on the right side of the statement, without any brackets or quotes.
+# ```
+# 
+# This sequence of operations can be expressed as a single line:
+
+# In[10]:
+
+
+ames['sale_price_k'] = ames['saleprice'] / 1000
 
 
 # From a mathematical perspective, what we're doing here is adding a *scalar* -- a single value -- to a *vector* -- a series of values (aka a `Series`).
 # Other vector-scalar math is supported as well.
 
-# In[6]:
-
-
-# Subtraction
-(planes['seats'] - 12).head()
-
-
-# In[7]:
-
-
-# Multiplication
-(planes['seats'] * 10).head()
-
-
-# In[8]:
-
-
-# Exponentiation
-(planes['seats'] ** 2).head()
-
-
-# <font class="your_turn">
-#     Your Turn
-# </font>
-# 
-# Create a new column named "first_class_seats" that is 1/5 of the total seats on the plane. You will have some results with fractional seats; don't worry about this.
-
-# ## Overwriting Columns
-# 
-
-# What if we discovered a systematic error in our data?
-# Perhaps we find out that the "engines" column is only the number of engines *per wing* -- so the total number of engines is actually double the value in that column.
-
-# We could create a new column, "real_engine_count" or "total_engines".
-# But we're not going to need the original "engines" column, and leaving it could cause confusion for others looking at our data.
-
-# A better solution would be to replace the original column with the new, recalculated, values.
-# We can do so using the same syntax as for creating a new column.
-
-# In[9]:
-
-
-planes.head()
-
-
-# In[10]:
-
-
-# Multiply the engines column by 2, and then overwrite the original data.
-planes['engines'] = planes['engines'] * 2
-
-
 # In[11]:
 
 
-planes.head()
+# Subtraction
+(ames['saleprice']- 12).head()
 
-
-# ## Calculating Values Based on Multiple Columns
-
-# So far we've only seen vector-scalar math.
-# But vector-vector math is supported as well.
-
-# Let's look at a toy example of creating a column that contains the number of seats per engine.
 
 # In[12]:
 
 
-seats_per_engine = planes['seats'] / planes['engines']
-seats_per_engine.head()
+# Multiplication
+(ames['saleprice'] * 10).head()
 
 
 # In[13]:
 
 
-planes['seats_per_engine'] = seats_per_engine
-planes.head()
+# Exponentiation
+(ames['saleprice'] ** 2).head()
 
 
-# You can combine vector-vector and vector-scalar calculations in arbitrarily complex ways.
+# We may want to drop columns as well. For this we can use the `.drop()` method:
 
 # In[14]:
 
 
-planes['nonsense'] = (planes['year'] + 12) * planes['engines'] + planes['seats'] - 9
-planes.head()
+ames = ames.drop(columns=['order', 'sale_price_k'])
+ames.head()
 
 
-# <font class="your_turn">
-#     Your Turn
-# </font>
+# ### Knowledge check
 # 
-# Create a new column in the planes DataFrame, "technology_index", that is calculated with the formula:
+# ```{admonition} Question:
+# :class: attention
+# 1. Create a new column `utility_space` that is 1/5 of the above ground living space (`gr_liv_area`). 
+# 2. You will get fractional output with step #1. See if you can figure out how to round this output to the nearest integer.
+# 3. Now remove this column from your DataFrame
+# ```
+
+# ## Overwriting columns
 # 
-# `technology_index = (year-1900) / 4 + engines * 2`
+
+# What if we discovered a systematic error in our data? Perhaps we find out that the "lot_area" column is not entirely accurate because the recording process includes an extra 50 square feet for every property. We could create a new column, "real_lot_area" but we're not going to need the original "lot_area" column, and leaving it could cause confusion for others looking at our data.
 # 
-# Remember order of operations!
+# A better solution would be to replace the original column with the new, recalculated, values. We can do so using the same syntax as for creating a new column.
 
 # In[15]:
 
 
-planes['technology_index'] = (planes['year'] - 1900) / 4 + planes['engines'] * 2
-planes
+ames.head()
 
-
-# ## Non-numeric Column Operations
-
-# For simplicity, we started with mathematical operations.
-# However, pandas supports string operations as well.
-
-# We can use `+` to concatenate strings, with both vectors and scalars.
 
 # In[16]:
 
 
-summary = 'Tailnum is ' + planes['tailnum'] + ' and Model is ' + planes['model']
-summary.head()
+# Subtract 50 from lot area, and then overwrite the original data.
+ames['lot_area'] = ames['lot_area'] - 50
 
-
-# More complex string operations are possible using methods available through the `.str` *accessor*.
-# We won't cover them in detail, so refer to the [documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html) if you're interested.
 
 # In[17]:
 
 
-# Make the manufacturer field lowercase.
-lowercase_mfctr = planes['manufacturer'].str.lower()
-lowercase_mfctr.head()
+ames.head()
 
+
+# ## Calculating based on multiple columns
+
+# So far we've only seen vector-scalar math. But vector-vector math is supported as well. Let's look at a toy example of creating a column that contains the price per square foot.
 
 # In[18]:
 
 
-# Get the length of the tail number.
-tailnum_len = planes['tailnum'].str.len()
-tailnum_len.head()
+price_per_sqft = ames['saleprice'] / ames['gr_liv_area']
+price_per_sqft.head()
+
+
+# In[19]:
+
+
+ames['price_per_sqft'] = price_per_sqft
+ames.head()
+
+
+# You can combine vector-vector and vector-scalar calculations in arbitrarily complex ways.
+
+# In[20]:
+
+
+ames['nonsense'] = (ames['yr_sold'] + 12) * ames['gr_liv_area'] + ames['lot_area'] - 50
+ames.head()
+
+
+# ### Knowledge check
+# 
+# ```{admonition} Question:
+# :class: attention
+# Create a new column `price_per_total_sqft` that is `saleprice` divided by the sum of `gr_liv_area`, `total_bsmt_sf`, `wood_deck_sf`, `open_porch_sf`.
+# ```
+
+# In[21]:
+
+
+ames.filter(regex='sf')
+
+
+# ## Non-numeric column operations
+
+# For simplicity, we started with mathematical operations. However, pandas supports string operations as well. We can use `+` to concatenate strings, with both vectors and scalars.
+
+# In[22]:
+
+
+'Home in ' + ames['neighborhood'] + ' neighborhood sold under ' + ames['sale_condition'] + ' condition'
+
+
+# More complex string operations are possible using methods available through the `.str` *accessor*.
+# 
+# 
+# ```{tip}
+# We won't cover them in detail, so refer to the [documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html) if you're interested. But realize that we can do _many_ different manipulations with string columns and its worth taking time to familiarize yourself with Pandas string capabilities.
+# ```
+
+# In[23]:
+
+
+# number of characters in string
+ames['neighborhood'].str.len()
+
+
+# In[24]:
+
+
+ames['garage_type'].str.lower().str.replace('tchd', 'tached')
 
 
 # ## More Complex Column Manipulation
 
 # ### Replacing Values
-
+# 
 # One fairly common situation in data wrangling is needing to convert one set of values to another, where there is a one-to-one correspondence between the values currently in the column and the new values that should replace them.
 # This operation can be described as "mapping one set of values to another".
+# 
+# Let's look at an example of this. In our Ames data the month sold is represented numerically:
 
-# Let's look at an example of this.
-
-# In[19]:
-
-
-airlines = pd.read_csv('../data/airlines.csv')
-# Keep just the first 5 rows for this example.
-airlines = airlines.iloc[:5]
-airlines
+# In[25]:
 
 
-# Suppose we learn that there is a mistake in the carrier codes and they should be updated.
-# - 9E should be PE
-# - B6 should be BB
-# - The other codes should stay as they are.
+ames['mo_sold'].head()
 
+
+# Suppose we want to change this so that values are represented by the month name:
+# 
+# - 1 = 'Jan'
+# - 2 = 'Feb'
+# - ...
+# - 12 = 'Dec'
+# 
 # We can express this *mapping* of old values to new values using a Python dictionary.
 
-# In[20]:
+# In[26]:
 
 
 # Only specify the values we want to replace; don't include the ones that should stay the same.
-value_mapping = {'9E': 'PE',
-                 'B6': 'BB'}
+value_mapping = {
+    1: 'Jan',
+    2: 'Feb',
+    3: 'Mar',
+    4: 'Apr',
+    5: 'May',
+    6: 'Jun',
+    7: 'Jul',
+    8: 'Aug',
+    9: 'Sep',
+    10: 'Oct',
+    11: 'Nov',
+    12: 'Dec'
+    }
 
 
 # Pandas provides a handy method on Series, `.replace`, that accepts this value mapping and updates the Series accordingly.
-# We can use it to create a new column, "updated_carrier", with the proper carrier code values.
+# We can use it to recode our values.
 
-# In[21]:
+# In[27]:
 
 
-airlines['updated_carrier'] = airlines['carrier'].replace(value_mapping)
-airlines
+ames['mo_sold'].replace(value_mapping).head()
 
 
 # If you are a SQL user, this workflow may look familiar to you;
 # it's quite similar to a `CASE WHEN` statement in SQL.
 
-# <font class="your_turn">
-#     Your Turn
-# </font>
+# ### Missing values
 # 
-# 1. Open the weather CSV (path: `../data/weather.csv`) and store it in a variable called `weather`.
-# 2. Take a look at the "month" column. Observe that its values are numeric, not strings. How do you think these values relate to months of the year?
-# 3. Create a mapping from each number to the corresponding month name, as a dictionary. For example, one of the keys would be `5` and its value would be `May`. Store it in a variable called `month_mapping`.
-# 4. Use the `.replace` method to overwrite the current month column with the month names as strings, using your newly created mapping.
+# Missing values are typically denoted with NaN. We can use `df.isnull()` to find missing values in a dataframe. It returns a boolean for each element in the dataframe:
 
-# ### The `apply` Method and Beyond
+# In[28]:
 
-# If you can think of a way to express a new column as a combination of other columns and constants, it can be created using Python and Pandas.
-# However, column calculations beyond the above are outside the scope of this training.
 
-# If you wish to learn more, take a look at the [`DataFrame.apply` method](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html).
+ames.isnull()
 
-# # Questions
+
+# We can use this to easily compute the total number of missing values in each column:
+
+# In[29]:
+
+
+ames.isnull().sum()
+
+
+# Recall we also get this information with `.info()`. Actually, we get the inverse as `.info()` tells us how many non-null values exist in each column.
+
+# In[30]:
+
+
+ames.info()
+
+
+# We can use `any()` to identify which columns have missing values. We can use this information for various reasons such as subsetting for just those columns that have missing values.
+
+# In[31]:
+
+
+missing = ames.isnull().any() # identify if missing values exist in each column
+ames[missing[missing].index]  # subset for just those columns that have missing values
+
+
+# When you have missing values, we usually either drop them or impute them.You can drop missing values with `.dropna()`:
+
+# In[32]:
+
+
+ames.dropna()
+
+
+# Whoa! What just happened? Well, this data set actually has a missing value in every single row. `.dropna()` drops every row that contains a missing value so we end up dropping _all_ observations.  Consequently, we probably want to figure out what's going on with these missing values and isolate the column causing the problem and imputing the values if possible.
 # 
-# Are there any questions before we move on?
+# ```{tip}
+# Another "drop" method is `.drop_duplcates()` which will drop duplicated rows in your DataFrame.
+# ```
+# 
+
+# Sometimes visualizations help identify patterns in missing values. One thing I often do is print a heatmap of my dataframe to get a feel for where my missing values are. We'll get into data visualization in future lessons but for now here is an example using the **searborn** library. We can see that several variables have a lot of missing values (`alley`, `fireplace_qu`, `pool_qc`, `fence`, `misc_feature`).
+
+# In[33]:
+
+
+import seaborn as sns
+sns.set(rc={'figure.figsize':(12, 8)})
+
+
+# In[34]:
+
+
+ames_missing = ames[missing[missing].index]
+sns.heatmap(ames_missing.isnull(), cmap='viridis', cbar=False);
+
+
+# Since we can't drop all missing values in this data set (since it leaves us with no rows), we need to impute ("fill") them in. There are several approaches we can use to do this; one of which uses the `.fillna()` method. This method has various options for filling, you can use a fixed value, the mean of the column, the previous non-nan value, etc:
+
+# In[35]:
+
+
+import numpy as np
+
+# example DataFrame with missing values
+df = pd.DataFrame([[np.nan, 2, np.nan, 0],
+                   [3, 4, np.nan, 1],
+                   [np.nan, np.nan, np.nan, 5],
+                   [np.nan, 3, np.nan, 4]],
+                  columns=list('ABCD'))
+df
+
+
+# In[36]:
+
+
+df.fillna(0)  # fill with 0
+
+
+# In[37]:
+
+
+df.fillna(df.mean())  # fill with the mean
+
+
+# In[38]:
+
+
+df.fillna(method='bfill')  # backward (upwards) fill from non-nan values
+
+
+# In[39]:
+
+
+df.fillna(method='ffill')  # forward (downward) fill from non-nan values
+
+
+# ### Applying custom functions
+# 
+# There will be times when you want to apply a function that is not built-in to Pandas. For this, we have methods:
+# 
+# * `df.apply()`, applies a function column-wise or row-wise across a dataframe (the function must be able to accept/return an array)
+# * `df.applymap()`, applies a function element-wise (for functions that accept/return single values at a time)
+# * `series.apply()`/`series.map()`, same as above but for Pandas series
+# 
+# For example, say you had the following custom function that defines if a home is considered a luxery home simply based on the price sold.
+# 
+# ```{note}
+# Don't worry, you'll learn more about writing your own functions in future lessons!
+# ```
+
+# In[40]:
+
+
+def is_luxery_home(x):
+    if x > 500000:
+        return 'Luxery'
+    else:
+        return 'Non-luxery'
+
+ames['saleprice'].apply(is_luxery_home)
+
+
+# This may have been better as a lambda function, which is just a shorter approach to writing functions. This may be a bit confusing but we'll talk more about lambda functions in the writing functions lesson. For now, just think of it as being able to write a function for single use application on the fly.
+
+# In[41]:
+
+
+ames['saleprice'].apply(lambda x: 'Luxery' if x > 500000 else 'Non-luxery')
+
+
+# You can even use functions that require additional arguments. Just specify the arguments in `.apply()`:
+
+# In[42]:
+
+
+def is_luxery_home(x, price):
+    if x > price:
+        return 'Luxery'
+    else:
+        return 'Non-luxery'
+
+ames['saleprice'].apply(is_luxery_home, price=200000)
+
+
+# Sometimes we may have a function that we want to apply to every element across multiple columns. For example, say we wanted to convert several of the square footage variables to be represented as square meters. For this we can use the [`.applymap()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.applymap.html) method.
+
+# In[43]:
+
+
+def convert_to_sq_meters(x):
+    return x*0.092903
+
+ames[['gr_liv_area', 'garage_area', 'lot_area']].applymap(convert_to_sq_meters)
+
+
+# ## Exercises
+# 
+# ```{admonition} Questions:
+# :class: attention
+# 1. Import the heart.csv dataset.
+# 2. Are there any missing values in this data? If so, which columns? For these columns, fill the missing values with the value that appears most often (aka "mode"). This is a multi-step process and it would be worth reviewing the [`.fillna()` docs](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html).
+# 3. Create a new column called `risk` that is equal to $ \frac{age}{\text{res_bp} + chol + \text{max_hr}} $
+# 4. Replace the values in the `rest_ecg` column so that:
+#    - normal = normal
+#    - left ventricular hypertrophy = lvh
+#    - ST-T wave abnormality = stt_wav_abn
+# ```
+
+# ## Computing environment
+
+# In[44]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas,numpy,seaborn')
+

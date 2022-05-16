@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manipulating and Creating Columns &#8212; UC BANA 6043 Statistical Computing</title>
+    <title>Lesson 3b: Manipulating data &#8212; UC BANA 6043 Statistical Computing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -51,8 +51,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lesson 3a: Subsetting data" href="lesson-3a.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -131,12 +135,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators, and types
+   Lesson 1b: Variables, operators &amp; types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators and conditionals
+   Lesson 1c: More operators &amp; conditionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -187,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
   Module 3
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    Overview
@@ -195,7 +199,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="lesson-3a.html">
-   Lesson 3a: Selecting and Filtering
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 3b: Manipulating data
   </a>
  </li>
  <li class="toctree-l1">
@@ -417,81 +426,85 @@ const thebe_selector_output = ".output, .cell_output"
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Manipulating and Creating Columns
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#applied-review">
-     Applied Review
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#renaming-columns">
+   Renaming columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculations-using-columns">
+   Calculations using columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-removing-columns">
+   Adding &amp; removing columns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-structures-and-dataframes">
-       Data Structures and DataFrames
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#importing-data">
-       Importing Data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#selecting-and-filtering-data">
-       Selecting and Filtering Data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculations-using-columns">
-     Calculations Using Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#overwriting-columns">
-     Overwriting Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculating-values-based-on-multiple-columns">
-     Calculating Values Based on Multiple Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-numeric-column-operations">
-     Non-numeric Column Operations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-complex-column-manipulation">
-     More Complex Column Manipulation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#replacing-values">
-       Replacing Values
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-apply-method-and-beyond">
-       The
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         apply
-        </span>
-       </code>
-       Method and Beyond
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overwriting-columns">
+   Overwriting columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-based-on-multiple-columns">
+   Calculating based on multiple columns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-numeric-column-operations">
+   Non-numeric column operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-complex-column-manipulation">
+   More Complex Column Manipulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replacing-values">
+     Replacing Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-values">
+     Missing values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applying-custom-functions">
+     Applying custom functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -504,7 +517,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Manipulating and Creating Columns</h1>
+                <h1>Lesson 3b: Manipulating data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -514,81 +527,85 @@ const thebe_selector_output = ".output, .cell_output"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Manipulating and Creating Columns
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#applied-review">
-     Applied Review
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#renaming-columns">
+   Renaming columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculations-using-columns">
+   Calculations using columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#adding-removing-columns">
+   Adding &amp; removing columns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#data-structures-and-dataframes">
-       Data Structures and DataFrames
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#importing-data">
-       Importing Data
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#selecting-and-filtering-data">
-       Selecting and Filtering Data
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculations-using-columns">
-     Calculations Using Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#overwriting-columns">
-     Overwriting Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculating-values-based-on-multiple-columns">
-     Calculating Values Based on Multiple Columns
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#non-numeric-column-operations">
-     Non-numeric Column Operations
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#more-complex-column-manipulation">
-     More Complex Column Manipulation
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#replacing-values">
-       Replacing Values
-      </a>
-     </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#the-apply-method-and-beyond">
-       The
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         apply
-        </span>
-       </code>
-       Method and Beyond
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overwriting-columns">
+   Overwriting columns
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#calculating-based-on-multiple-columns">
+   Calculating based on multiple columns
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#non-numeric-column-operations">
+   Non-numeric column operations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#more-complex-column-manipulation">
+   More Complex Column Manipulation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#replacing-values">
+     Replacing Values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#missing-values">
+     Missing values
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#applying-custom-functions">
+     Applying custom functions
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -600,47 +617,32 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="manipulating-and-creating-columns">
-<h1>Manipulating and Creating Columns<a class="headerlink" href="#manipulating-and-creating-columns" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-3b-manipulating-data">
+<h1>Lesson 3b: Manipulating data<a class="headerlink" href="#lesson-3b-manipulating-data" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>During the course of doing data analysis and modeling, a significant amount of time is spent on data preparation: loading, cleaning, transforming, and rearranging. Such tasks are often reported to take up 80% or more of an analyst’s time.</p>
 <p>- Wes McKinney, the creator of Pandas, in his book <em>Python for Data Analysis</em></p>
 </div></blockquote>
-<div class="section" id="applied-review">
-<h2>Applied Review<a class="headerlink" href="#applied-review" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="data-structures-and-dataframes">
-<h3>Data Structures and DataFrames<a class="headerlink" href="#data-structures-and-dataframes" title="Permalink to this headline">¶</a></h3>
+<p>We’ve learned how to subset our DataFrames, in this lesson we’ll focus on how to manipulate, create, drop, even identify missing value patterns across our DataFrame’s columns.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
 <ul class="simple">
-<li><p>We use <strong>DataFrames</strong> to represent tables in Python.</p></li>
-<li><p>Python also supports other data structures for storing information that isn’t tabular. Examples include lists and dictionaries.</p></li>
-<li><p>DataFrames have many <strong>methods</strong>, or functions that access their internal data. Some examples we saw were <code class="docutils literal notranslate"><span class="pre">describe()</span></code> and <code class="docutils literal notranslate"><span class="pre">set_index()</span></code>.</p></li>
-<li><p>DataFrames are composed of <strong>Series</strong>, 1-D data structures (like a vector). DataFrame columns can be thought of as Series.</p></li>
+<li><p>Rename columns</p></li>
+<li><p>Perform calculations and operations with one or more columns</p></li>
+<li><p>Add, drop, and overwrite columns in your DataFrame</p></li>
+<li><p>Identify missing values and replace these (and even non-missing) values.</p></li>
 </ul>
 </div>
-<div class="section" id="importing-data">
-<h3>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Python can read in data from CSVs, JSON files, and pickle files with just a few lines of code.</p></li>
-</ul>
-</div>
-<div class="section" id="selecting-and-filtering-data">
-<h3>Selecting and Filtering Data<a class="headerlink" href="#selecting-and-filtering-data" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Python’s pandas library supports limiting rows (via <em>filtering</em> and <em>slicing</em>), as well as <em>selecting</em> columns.</p></li>
-<li><p>All of these operations use the bracket operators, but row syntax includes the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> <em>accessor</em>.</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="calculations-using-columns">
-<h2>Calculations Using Columns<a class="headerlink" href="#calculations-using-columns" title="Permalink to this headline">¶</a></h2>
-<p>It’s common to want to modify a column of a DataFrame, or sometimes even to create a new column.
-Let’s take a look at our planes data again.</p>
+<div class="section" id="renaming-columns">
+<h2>Renaming columns<a class="headerlink" href="#renaming-columns" title="Permalink to this headline">¶</a></h2>
+<p>Often, one of the first things we want to do with a new data set is clean up the column names. We can do this a few different ways and to illustrate, let’s look at the Ames housing data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
-<span class="n">planes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/planes.csv&#39;</span><span class="p">)</span>
-<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ames_raw.csv&#39;</span><span class="p">)</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -663,134 +665,824 @@ Let’s take a look at our planes data again.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>2</td>
-      <td>55</td>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
       <td>2</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>2</td>
-      <td>55</td>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 82 columns</p>
 </div></div></div>
 </div>
-<p>Suppose we wanted to know the total capacity of each plane, including the crew.
-We have data on how many seats each plane has (in the <code class="docutils literal notranslate"><span class="pre">seats</span></code> column), but that only includes paying passengers.</p>
+<p>Say we want to rename the “MS SubClass” and “MS Zoning” columns. We can do so with the <code class="docutils literal notranslate"><span class="pre">rename</span></code> method and passing a dictionary that maps old names to new names: <code class="docutils literal notranslate"><span class="pre">df.rename(columns={'old_name1':</span> <span class="pre">'new_name1',</span> <span class="pre">'old_name2':</span> <span class="pre">'new_name2'})</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seats</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span>
-<span class="n">seats</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MS SubClass&#39;</span><span class="p">:</span> <span class="s1">&#39;ms_subclass&#39;</span><span class="p">,</span> <span class="s1">&#39;MS Zoning&#39;</span><span class="p">:</span> <span class="s1">&#39;ms_zoning&#39;</span><span class="p">})</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     55
-1    182
-2    182
-3    182
-4     55
-Name: seats, dtype: int64
-</pre></div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 82 columns</p>
+</div></div></div>
 </div>
+<p>Wait? What happened? Nothing changed? In the code above we did actually rename columns of our DataFrame but we didn’t modify the DataFrame inplace, we made a copy of it. There are generally two options for making permanent DataFrame changes:</p>
+<ol class="simple">
+<li><p>Use the argument <code class="docutils literal notranslate"><span class="pre">inplace=True</span></code>, e.g., <code class="docutils literal notranslate"><span class="pre">df.rename(...,</span> <span class="pre">inplace=True)</span></code>, available in most Pandas functions/methods</p></li>
+<li><p>Re-assign, e.g., <code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.rename(...)</span></code> The Pandas team recommends <strong>Method 2 (re-assign)</strong>, for a <a class="reference external" href="https://www.youtube.com/watch?v=hK6o_TDXXN8&amp;t=700">few reasons</a> (mostly to do with how memory is allocated under the hood).</p></li>
+</ol>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be sure to include the <code class="docutils literal notranslate"><span class="pre">columns=</span></code> when providing the argument dictionary. <code class="docutils literal notranslate"><span class="pre">rename</span></code> can be used to rename index values as well, which is actually the default behavior. So if you don’t specify <code class="docutils literal notranslate"><span class="pre">columns=</span></code> it’ll behave differently then expected and no error/warning messages will be provided.</p>
 </div>
-</div>
-<p>For simplicity, let’s say a full flight crew is always 5 people.
-Series objects allow us to perform addition with the regular <code class="docutils literal notranslate"><span class="pre">+</span></code> syntax –- in this case, <code class="docutils literal notranslate"><span class="pre">seats</span> <span class="pre">+</span> <span class="pre">5</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">capacity</span> <span class="o">=</span> <span class="n">seats</span> <span class="o">+</span> <span class="mi">5</span>
-<span class="n">capacity</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span> <span class="o">=</span> <span class="n">ames</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;MS SubClass&#39;</span><span class="p">:</span> <span class="s1">&#39;ms_subclass&#39;</span><span class="p">,</span> <span class="s1">&#39;MS Zoning&#39;</span><span class="p">:</span> <span class="s1">&#39;ms_zoning&#39;</span><span class="p">})</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     60
-1    187
-2    187
-3    187
-4     60
-Name: seats, dtype: int64
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 82 columns</p>
+</div></div></div>
+</div>
+<p>Using <code class="docutils literal notranslate"><span class="pre">rename</span></code> is great for renaming a single or even a handful of columns but can be tedious for renaming <em>many</em> columns. For this we can use the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attribute, which just returns all the column names.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Order&#39;, &#39;PID&#39;, &#39;ms_subclass&#39;, &#39;ms_zoning&#39;, &#39;Lot Frontage&#39;, &#39;Lot Area&#39;,
+       &#39;Street&#39;, &#39;Alley&#39;, &#39;Lot Shape&#39;, &#39;Land Contour&#39;, &#39;Utilities&#39;,
+       &#39;Lot Config&#39;, &#39;Land Slope&#39;, &#39;Neighborhood&#39;, &#39;Condition 1&#39;,
+       &#39;Condition 2&#39;, &#39;Bldg Type&#39;, &#39;House Style&#39;, &#39;Overall Qual&#39;,
+       &#39;Overall Cond&#39;, &#39;Year Built&#39;, &#39;Year Remod/Add&#39;, &#39;Roof Style&#39;,
+       &#39;Roof Matl&#39;, &#39;Exterior 1st&#39;, &#39;Exterior 2nd&#39;, &#39;Mas Vnr Type&#39;,
+       &#39;Mas Vnr Area&#39;, &#39;Exter Qual&#39;, &#39;Exter Cond&#39;, &#39;Foundation&#39;, &#39;Bsmt Qual&#39;,
+       &#39;Bsmt Cond&#39;, &#39;Bsmt Exposure&#39;, &#39;BsmtFin Type 1&#39;, &#39;BsmtFin SF 1&#39;,
+       &#39;BsmtFin Type 2&#39;, &#39;BsmtFin SF 2&#39;, &#39;Bsmt Unf SF&#39;, &#39;Total Bsmt SF&#39;,
+       &#39;Heating&#39;, &#39;Heating QC&#39;, &#39;Central Air&#39;, &#39;Electrical&#39;, &#39;1st Flr SF&#39;,
+       &#39;2nd Flr SF&#39;, &#39;Low Qual Fin SF&#39;, &#39;Gr Liv Area&#39;, &#39;Bsmt Full Bath&#39;,
+       &#39;Bsmt Half Bath&#39;, &#39;Full Bath&#39;, &#39;Half Bath&#39;, &#39;Bedroom AbvGr&#39;,
+       &#39;Kitchen AbvGr&#39;, &#39;Kitchen Qual&#39;, &#39;TotRms AbvGrd&#39;, &#39;Functional&#39;,
+       &#39;Fireplaces&#39;, &#39;Fireplace Qu&#39;, &#39;Garage Type&#39;, &#39;Garage Yr Blt&#39;,
+       &#39;Garage Finish&#39;, &#39;Garage Cars&#39;, &#39;Garage Area&#39;, &#39;Garage Qual&#39;,
+       &#39;Garage Cond&#39;, &#39;Paved Drive&#39;, &#39;Wood Deck SF&#39;, &#39;Open Porch SF&#39;,
+       &#39;Enclosed Porch&#39;, &#39;3Ssn Porch&#39;, &#39;Screen Porch&#39;, &#39;Pool Area&#39;, &#39;Pool QC&#39;,
+       &#39;Fence&#39;, &#39;Misc Feature&#39;, &#39;Misc Val&#39;, &#39;Mo Sold&#39;, &#39;Yr Sold&#39;, &#39;Sale Type&#39;,
+       &#39;Sale Condition&#39;, &#39;SalePrice&#39;],
+      dtype=&#39;object&#39;)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="admonition tip alert alert-warning">
-    <b><p class="first admonition-title" style="font-weight: bold">Question</p></b>
-    <p>What happens if you switch the order? (i.e. <tt class=\"docutils literal\">5 + seats</tt>)? Does this make sense?</p>
-</div><p>So we’ve create a new series, <code class="docutils literal notranslate"><span class="pre">capacity</span></code>, with the total capacity of the plane.
-Right now it’s totally separate from our original <code class="docutils literal notranslate"><span class="pre">planes</span></code> DataFrame, but we can make it a column of <code class="docutils literal notranslate"><span class="pre">planes</span></code> using the assignment syntax with the column reference syntax.</p>
+<p>Pandas offers a lot of string methods that we can apply to string objects.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check out some of the more common string methods <a class="reference external" href="https://pandas.pydata.org/docs/user_guide/text.html#string-methods">here</a>.</p>
+</div>
+<p>We can manipulate these column name values by using string methods that you can access via <code class="docutils literal notranslate"><span class="pre">.str.xxxx()</span></code>. For example, we can coerce all the column names to lower case with:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;order&#39;, &#39;pid&#39;, &#39;ms_subclass&#39;, &#39;ms_zoning&#39;, &#39;lot frontage&#39;, &#39;lot area&#39;,
+       &#39;street&#39;, &#39;alley&#39;, &#39;lot shape&#39;, &#39;land contour&#39;, &#39;utilities&#39;,
+       &#39;lot config&#39;, &#39;land slope&#39;, &#39;neighborhood&#39;, &#39;condition 1&#39;,
+       &#39;condition 2&#39;, &#39;bldg type&#39;, &#39;house style&#39;, &#39;overall qual&#39;,
+       &#39;overall cond&#39;, &#39;year built&#39;, &#39;year remod/add&#39;, &#39;roof style&#39;,
+       &#39;roof matl&#39;, &#39;exterior 1st&#39;, &#39;exterior 2nd&#39;, &#39;mas vnr type&#39;,
+       &#39;mas vnr area&#39;, &#39;exter qual&#39;, &#39;exter cond&#39;, &#39;foundation&#39;, &#39;bsmt qual&#39;,
+       &#39;bsmt cond&#39;, &#39;bsmt exposure&#39;, &#39;bsmtfin type 1&#39;, &#39;bsmtfin sf 1&#39;,
+       &#39;bsmtfin type 2&#39;, &#39;bsmtfin sf 2&#39;, &#39;bsmt unf sf&#39;, &#39;total bsmt sf&#39;,
+       &#39;heating&#39;, &#39;heating qc&#39;, &#39;central air&#39;, &#39;electrical&#39;, &#39;1st flr sf&#39;,
+       &#39;2nd flr sf&#39;, &#39;low qual fin sf&#39;, &#39;gr liv area&#39;, &#39;bsmt full bath&#39;,
+       &#39;bsmt half bath&#39;, &#39;full bath&#39;, &#39;half bath&#39;, &#39;bedroom abvgr&#39;,
+       &#39;kitchen abvgr&#39;, &#39;kitchen qual&#39;, &#39;totrms abvgrd&#39;, &#39;functional&#39;,
+       &#39;fireplaces&#39;, &#39;fireplace qu&#39;, &#39;garage type&#39;, &#39;garage yr blt&#39;,
+       &#39;garage finish&#39;, &#39;garage cars&#39;, &#39;garage area&#39;, &#39;garage qual&#39;,
+       &#39;garage cond&#39;, &#39;paved drive&#39;, &#39;wood deck sf&#39;, &#39;open porch sf&#39;,
+       &#39;enclosed porch&#39;, &#39;3ssn porch&#39;, &#39;screen porch&#39;, &#39;pool area&#39;, &#39;pool qc&#39;,
+       &#39;fence&#39;, &#39;misc feature&#39;, &#39;misc val&#39;, &#39;mo sold&#39;, &#39;yr sold&#39;, &#39;sale type&#39;,
+       &#39;sale condition&#39;, &#39;saleprice&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can even chain multiple string methods together. For example the following coerces the column names to lower case, replaces all white space in the column names with an underscore, and then assigns these converted values back to the <code class="docutils literal notranslate"><span class="pre">.columns</span></code> attribute.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">ames</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s2">&quot;_&quot;</span><span class="p">)</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>order</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>...</th>
+      <th>pool_area</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 82 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="calculations-using-columns">
+<h2>Calculations using columns<a class="headerlink" href="#calculations-using-columns" title="Permalink to this headline">¶</a></h2>
+<p>It’s common to want to modify a column of a DataFrame, or sometimes even to create a new column. For example, let’s look at the <code class="docutils literal notranslate"><span class="pre">saleprice</span></code> column in our data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sale_price</span> <span class="o">=</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span>
+<span class="n">sale_price</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       215000
+1       105000
+2       172000
+3       244000
+4       189900
+         ...  
+2925    142500
+2926    131000
+2927    132000
+2928    170000
+2929    188000
+Name: saleprice, Length: 2930, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Say we wanted to convert the sales price of our homes to be represented as thousands; so rather than “215000” we want to represent it as “215”? To do this we can simply divide by 1,000.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sale_price_k</span> <span class="o">=</span> <span class="n">sale_price</span> <span class="o">/</span> <span class="mi">1000</span>
+<span class="n">sale_price_k</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       215.0
+1       105.0
+2       172.0
+3       244.0
+4       189.9
+        ...  
+2925    142.5
+2926    131.0
+2927    132.0
+2928    170.0
+2929    188.0
+Name: saleprice, Length: 2930, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-removing-columns">
+<h2>Adding &amp; removing columns<a class="headerlink" href="#adding-removing-columns" title="Permalink to this headline">¶</a></h2>
+<p>So we’ve create a new series, <code class="docutils literal notranslate"><span class="pre">sale_price_k</span></code>. Right now it’s totally separate from our original <code class="docutils literal notranslate"><span class="pre">ames</span></code> DataFrame, but we can make it a column of <code class="docutils literal notranslate"><span class="pre">ames</span></code> using the assignment syntax with the column reference syntax.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;new_column_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_column_series</span>
 </pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">capacity</span>
-<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;sale_price_k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sale_price_k</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -813,97 +1505,164 @@ Right now it’s totally separate from our original <code class="docutils litera
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
+      <th>order</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>...</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+      <th>sale_price_k</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>2</td>
-      <td>55</td>
+      <td>1</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+      <td>215.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
       <td>2</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+      <td>105.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>3</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+      <td>172.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>4</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+      <td>244.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>2</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>5</td>
+      <td>527105010</td>
       <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+      <td>189.9</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 83 columns</p>
 </div></div></div>
 </div>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">planes</span></code> now has a “capacity” column at the end.</p>
-<div class="admonition note alert alert-info">
-    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-    <p>Also note that in the code above, the <b><i>column name</i></b> goes in quotes within the bracket syntax, while the <b><i>values that will become the column</i></b> -- the Series we're using -- are on the right side of the statement, without any brackets or quotes.</p>
-</div><p>This sequence of operations can be expressed as a single line:</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">ames</span></code> now has a “sale_price_k” column at the end.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Also note that in the code above, the column name goes in quotes within the bracket syntax, while the values that will become the column – the Series we’re using – are on the right side of the statement, without any brackets or quotes.</p>
+</div>
+<p>This sequence of operations can be expressed as a single line:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a capacity column filled with the values in the seats column added with 5.</span>
-<span class="n">planes</span><span class="p">[</span><span class="s1">&#39;capacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;sale_price_k&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="mi">1000</span>
 </pre></div>
 </div>
 </div>
@@ -913,17 +1672,17 @@ Other vector-scalar math is supported as well.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subtraction</span>
-<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span><span class="o">-</span> <span class="mi">12</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     43
-1    170
-2    170
-3    170
-4     43
-Name: seats, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    214988
+1    104988
+2    171988
+3    243988
+4    189888
+Name: saleprice, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -931,17 +1690,17 @@ Name: seats, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiplication</span>
-<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     550
-1    1820
-2    1820
-3    1820
-4     550
-Name: seats, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    2150000
+1    1050000
+2    1720000
+3    2440000
+4    1899000
+Name: saleprice, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -949,37 +1708,216 @@ Name: seats, dtype: int64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Exponentiation</span>
-<span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     3025
-1    33124
-2    33124
-3    33124
-4     3025
-Name: seats, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    46225000000
+1    11025000000
+2    29584000000
+3    59536000000
+4    36062010000
+Name: saleprice, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<font class="your_turn">
-    Your Turn
-</font>
-<p>Create a new column named “first_class_seats” that is 1/5 of the total seats on the plane. You will have some results with fractional seats; don’t worry about this.</p>
+<p>We may want to drop columns as well. For this we can use the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span> <span class="o">=</span> <span class="n">ames</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;order&#39;</span><span class="p">,</span> <span class="s1">&#39;sale_price_k&#39;</span><span class="p">])</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>pool_area</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>527105010</td>
+      <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 81 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Question:</p>
+<ol class="simple">
+<li><p>Create a new column <code class="docutils literal notranslate"><span class="pre">utility_space</span></code> that is 1/5 of the above ground living space (<code class="docutils literal notranslate"><span class="pre">gr_liv_area</span></code>).</p></li>
+<li><p>You will get fractional output with step #1. See if you can figure out how to round this output to the nearest integer.</p></li>
+<li><p>Now remove this column from your DataFrame</p></li>
+</ol>
+</div>
+</div>
 </div>
 <div class="section" id="overwriting-columns">
-<h2>Overwriting Columns<a class="headerlink" href="#overwriting-columns" title="Permalink to this headline">¶</a></h2>
-<p>What if we discovered a systematic error in our data?
-Perhaps we find out that the “engines” column is only the number of engines <em>per wing</em> – so the total number of engines is actually double the value in that column.</p>
-<p>We could create a new column, “real_engine_count” or “total_engines”.
-But we’re not going to need the original “engines” column, and leaving it could cause confusion for others looking at our data.</p>
-<p>A better solution would be to replace the original column with the new, recalculated, values.
-We can do so using the same syntax as for creating a new column.</p>
+<h2>Overwriting columns<a class="headerlink" href="#overwriting-columns" title="Permalink to this headline">¶</a></h2>
+<p>What if we discovered a systematic error in our data? Perhaps we find out that the “lot_area” column is not entirely accurate because the recording process includes an extra 50 square feet for every property. We could create a new column, “real_lot_area” but we’re not going to need the original “lot_area” column, and leaving it could cause confusion for others looking at our data.</p>
+<p>A better solution would be to replace the original column with the new, recalculated, values. We can do so using the same syntax as for creating a new column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1002,99 +1940,166 @@ We can do so using the same syntax as for creating a new column.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>pool_area</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>2</td>
-      <td>55</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31770</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11622</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14267</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>2</td>
-      <td>182</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11160</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>2</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>527105010</td>
       <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13830</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 81 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiply the engines column by 2, and then overwrite the original data.</span>
-<span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Subtract 50 from lot area, and then overwrite the original data.</span>
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;lot_area&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;lot_area&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">50</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1117,107 +2122,172 @@ We can do so using the same syntax as for creating a new column.</p>
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>pool_area</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>4</td>
-      <td>55</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31720</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11572</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14217</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11110</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>4</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>527105010</td>
       <td>60</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13780</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 81 columns</p>
 </div></div></div>
 </div>
 </div>
-<div class="section" id="calculating-values-based-on-multiple-columns">
-<h2>Calculating Values Based on Multiple Columns<a class="headerlink" href="#calculating-values-based-on-multiple-columns" title="Permalink to this headline">¶</a></h2>
-<p>So far we’ve only seen vector-scalar math.
-But vector-vector math is supported as well.</p>
-<p>Let’s look at a toy example of creating a column that contains the number of seats per engine.</p>
+<div class="section" id="calculating-based-on-multiple-columns">
+<h2>Calculating based on multiple columns<a class="headerlink" href="#calculating-based-on-multiple-columns" title="Permalink to this headline">¶</a></h2>
+<p>So far we’ve only seen vector-scalar math. But vector-vector math is supported as well. Let’s look at a toy example of creating a column that contains the price per square foot.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seats_per_engine</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span>
-<span class="n">seats_per_engine</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">price_per_sqft</span> <span class="o">=</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;gr_liv_area&#39;</span><span class="p">]</span>
+<span class="n">price_per_sqft</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    13.75
-1    45.50
-2    45.50
-3    45.50
-4    13.75
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    129.830918
+1    117.187500
+2    129.420617
+3    115.639810
+4    116.574586
 dtype: float64
 </pre></div>
 </div>
@@ -1225,8 +2295,8 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats_per_engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">seats_per_engine</span>
-<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;price_per_sqft&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">price_per_sqft</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1249,99 +2319,160 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
-      <th>seats_per_engine</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+      <th>price_per_sqft</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>4</td>
-      <td>55</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31720</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
-      <td>13.75</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+      <td>129.830918</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11572</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+      <td>117.187500</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14217</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+      <td>129.420617</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11110</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+      <td>115.639810</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>4</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>527105010</td>
       <td>60</td>
-      <td>13.75</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13780</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+      <td>116.574586</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 82 columns</p>
 </div></div></div>
 </div>
 <p>You can combine vector-vector and vector-scalar calculations in arbitrarily complex ways.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;nonsense&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;seats&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">9</span>
-<span class="n">planes</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;nonsense&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;yr_sold&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">12</span><span class="p">)</span> <span class="o">*</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;gr_liv_area&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;lot_area&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">50</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1364,110 +2495,164 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
-      <th>seats_per_engine</th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+      <th>price_per_sqft</th>
       <th>nonsense</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>4</td>
-      <td>55</td>
+      <td>526301100</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>141.0</td>
+      <td>31720</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
-      <td>13.75</td>
-      <td>8110.0</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>215000</td>
+      <td>129.830918</td>
+      <td>3380102</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526350040</td>
+      <td>20</td>
+      <td>RH</td>
+      <td>80.0</td>
+      <td>11572</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8213.0</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>105000</td>
+      <td>117.187500</td>
+      <td>1823234</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526351010</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>81.0</td>
+      <td>14217</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8217.0</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Gar2</td>
+      <td>12500</td>
+      <td>6</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>172000</td>
+      <td>129.420617</td>
+      <td>2701405</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
+      <td>526353030</td>
+      <td>20</td>
+      <td>RL</td>
+      <td>93.0</td>
+      <td>11110</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8217.0</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>244000</td>
+      <td>115.639810</td>
+      <td>4277480</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>4</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
+      <td>527105010</td>
       <td>60</td>
-      <td>13.75</td>
-      <td>8102.0</td>
+      <td>RL</td>
+      <td>74.0</td>
+      <td>13780</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>IR1</td>
+      <td>Lvl</td>
+      <td>AllPub</td>
+      <td>...</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>3</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>189900</td>
+      <td>116.574586</td>
+      <td>3307568</td>
     </tr>
   </tbody>
 </table>
+<p>5 rows × 83 columns</p>
 </div></div></div>
 </div>
-<font class="your_turn">
-    Your Turn
-</font>
-<p>Create a new column in the planes DataFrame, “technology_index”, that is calculated with the formula:</p>
-<p><code class="docutils literal notranslate"><span class="pre">technology_index</span> <span class="pre">=</span> <span class="pre">(year-1900)</span> <span class="pre">/</span> <span class="pre">4</span> <span class="pre">+</span> <span class="pre">engines</span> <span class="pre">*</span> <span class="pre">2</span></code></p>
-<p>Remember order of operations!</p>
+<div class="section" id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Question:</p>
+<p>Create a new column <code class="docutils literal notranslate"><span class="pre">price_per_total_sqft</span></code> that is <code class="docutils literal notranslate"><span class="pre">saleprice</span></code> divided by the sum of <code class="docutils literal notranslate"><span class="pre">gr_liv_area</span></code>, <code class="docutils literal notranslate"><span class="pre">total_bsmt_sf</span></code>, <code class="docutils literal notranslate"><span class="pre">wood_deck_sf</span></code>, <code class="docutils literal notranslate"><span class="pre">open_porch_sf</span></code>.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;technology_index&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">planes</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1900</span><span class="p">)</span> <span class="o">/</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;engines&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mi">2</span>
-<span class="n">planes</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s1">&#39;sf&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1490,101 +2675,482 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>tailnum</th>
-      <th>year</th>
-      <th>type</th>
-      <th>manufacturer</th>
-      <th>model</th>
-      <th>engines</th>
-      <th>seats</th>
-      <th>speed</th>
-      <th>engine</th>
-      <th>capacity</th>
-      <th>seats_per_engine</th>
-      <th>nonsense</th>
-      <th>technology_index</th>
+      <th>bsmtfin_sf_1</th>
+      <th>bsmtfin_sf_2</th>
+      <th>bsmt_unf_sf</th>
+      <th>total_bsmt_sf</th>
+      <th>1st_flr_sf</th>
+      <th>2nd_flr_sf</th>
+      <th>low_qual_fin_sf</th>
+      <th>wood_deck_sf</th>
+      <th>open_porch_sf</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>N10156</td>
-      <td>2004.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145XR</td>
-      <td>4</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
-      <td>13.75</td>
-      <td>8110.0</td>
-      <td>34.00</td>
+      <td>639.0</td>
+      <td>0.0</td>
+      <td>441.0</td>
+      <td>1080.0</td>
+      <td>1656</td>
+      <td>0</td>
+      <td>0</td>
+      <td>210</td>
+      <td>62</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>N102UW</td>
-      <td>1998.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8213.0</td>
-      <td>32.50</td>
+      <td>468.0</td>
+      <td>144.0</td>
+      <td>270.0</td>
+      <td>882.0</td>
+      <td>896</td>
+      <td>0</td>
+      <td>0</td>
+      <td>140</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>N103US</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8217.0</td>
-      <td>32.75</td>
+      <td>923.0</td>
+      <td>0.0</td>
+      <td>406.0</td>
+      <td>1329.0</td>
+      <td>1329</td>
+      <td>0</td>
+      <td>0</td>
+      <td>393</td>
+      <td>36</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>N104UW</td>
-      <td>1999.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>AIRBUS INDUSTRIE</td>
-      <td>A320-214</td>
-      <td>4</td>
-      <td>182</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>187</td>
-      <td>45.50</td>
-      <td>8217.0</td>
-      <td>32.75</td>
+      <td>1065.0</td>
+      <td>0.0</td>
+      <td>1045.0</td>
+      <td>2110.0</td>
+      <td>2110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>N10575</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>EMBRAER</td>
-      <td>EMB-145LR</td>
-      <td>4</td>
-      <td>55</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>60</td>
-      <td>13.75</td>
-      <td>8102.0</td>
-      <td>33.50</td>
+      <td>791.0</td>
+      <td>0.0</td>
+      <td>137.0</td>
+      <td>928.0</td>
+      <td>928</td>
+      <td>701</td>
+      <td>0</td>
+      <td>212</td>
+      <td>34</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2925</th>
+      <td>819.0</td>
+      <td>0.0</td>
+      <td>184.0</td>
+      <td>1003.0</td>
+      <td>1003</td>
+      <td>0</td>
+      <td>0</td>
+      <td>120</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2926</th>
+      <td>301.0</td>
+      <td>324.0</td>
+      <td>239.0</td>
+      <td>864.0</td>
+      <td>902</td>
+      <td>0</td>
+      <td>0</td>
+      <td>164</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2927</th>
+      <td>337.0</td>
+      <td>0.0</td>
+      <td>575.0</td>
+      <td>912.0</td>
+      <td>970</td>
+      <td>0</td>
+      <td>0</td>
+      <td>80</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>2928</th>
+      <td>1071.0</td>
+      <td>123.0</td>
+      <td>195.0</td>
+      <td>1389.0</td>
+      <td>1389</td>
+      <td>0</td>
+      <td>0</td>
+      <td>240</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>2929</th>
+      <td>758.0</td>
+      <td>0.0</td>
+      <td>238.0</td>
+      <td>996.0</td>
+      <td>996</td>
+      <td>1004</td>
+      <td>0</td>
+      <td>190</td>
+      <td>48</td>
+    </tr>
+  </tbody>
+</table>
+<p>2930 rows × 9 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="non-numeric-column-operations">
+<h2>Non-numeric column operations<a class="headerlink" href="#non-numeric-column-operations" title="Permalink to this headline">¶</a></h2>
+<p>For simplicity, we started with mathematical operations. However, pandas supports string operations as well. We can use <code class="docutils literal notranslate"><span class="pre">+</span></code> to concatenate strings, with both vectors and scalars.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;Home in &#39;</span> <span class="o">+</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; neighborhood sold under &#39;</span> <span class="o">+</span> <span class="n">ames</span><span class="p">[</span><span class="s1">&#39;sale_condition&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; condition&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Home in NAmes neighborhood sold under Normal c...
+1       Home in NAmes neighborhood sold under Normal c...
+2       Home in NAmes neighborhood sold under Normal c...
+3       Home in NAmes neighborhood sold under Normal c...
+4       Home in Gilbert neighborhood sold under Normal...
+                              ...                        
+2925    Home in Mitchel neighborhood sold under Normal...
+2926    Home in Mitchel neighborhood sold under Normal...
+2927    Home in Mitchel neighborhood sold under Normal...
+2928    Home in Mitchel neighborhood sold under Normal...
+2929    Home in Mitchel neighborhood sold under Normal...
+Length: 2930, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>More complex string operations are possible using methods available through the <code class="docutils literal notranslate"><span class="pre">.str</span></code> <em>accessor</em>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We won’t cover them in detail, so refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">documentation</a> if you’re interested. But realize that we can do <em>many</em> different manipulations with string columns and its worth taking time to familiarize yourself with Pandas string capabilities.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of characters in string</span>
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       5
+1       5
+2       5
+3       5
+4       7
+       ..
+2925    7
+2926    7
+2927    7
+2928    7
+2929    7
+Name: neighborhood, Length: 2930, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;garage_type&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;tchd&#39;</span><span class="p">,</span> <span class="s1">&#39;tached&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       attached
+1       attached
+2       attached
+3       attached
+4       attached
+          ...   
+2925    detached
+2926    attached
+2927         NaN
+2928    attached
+2929    attached
+Name: garage_type, Length: 2930, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="more-complex-column-manipulation">
+<h2>More Complex Column Manipulation<a class="headerlink" href="#more-complex-column-manipulation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="replacing-values">
+<h3>Replacing Values<a class="headerlink" href="#replacing-values" title="Permalink to this headline">¶</a></h3>
+<p>One fairly common situation in data wrangling is needing to convert one set of values to another, where there is a one-to-one correspondence between the values currently in the column and the new values that should replace them.
+This operation can be described as “mapping one set of values to another”.</p>
+<p>Let’s look at an example of this. In our Ames data the month sold is represented numerically:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;mo_sold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    5
+1    6
+2    6
+3    4
+4    3
+Name: mo_sold, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Suppose we want to change this so that values are represented by the month name:</p>
+<ul class="simple">
+<li><p>1 = ‘Jan’</p></li>
+<li><p>2 = ‘Feb’</p></li>
+<li><p>…</p></li>
+<li><p>12 = ‘Dec’</p></li>
+</ul>
+<p>We can express this <em>mapping</em> of old values to new values using a Python dictionary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only specify the values we want to replace; don&#39;t include the ones that should stay the same.</span>
+<span class="n">value_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;Jan&#39;</span><span class="p">,</span>
+    <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;Feb&#39;</span><span class="p">,</span>
+    <span class="mi">3</span><span class="p">:</span> <span class="s1">&#39;Mar&#39;</span><span class="p">,</span>
+    <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;Apr&#39;</span><span class="p">,</span>
+    <span class="mi">5</span><span class="p">:</span> <span class="s1">&#39;May&#39;</span><span class="p">,</span>
+    <span class="mi">6</span><span class="p">:</span> <span class="s1">&#39;Jun&#39;</span><span class="p">,</span>
+    <span class="mi">7</span><span class="p">:</span> <span class="s1">&#39;Jul&#39;</span><span class="p">,</span>
+    <span class="mi">8</span><span class="p">:</span> <span class="s1">&#39;Aug&#39;</span><span class="p">,</span>
+    <span class="mi">9</span><span class="p">:</span> <span class="s1">&#39;Sep&#39;</span><span class="p">,</span>
+    <span class="mi">10</span><span class="p">:</span> <span class="s1">&#39;Oct&#39;</span><span class="p">,</span>
+    <span class="mi">11</span><span class="p">:</span> <span class="s1">&#39;Nov&#39;</span><span class="p">,</span>
+    <span class="mi">12</span><span class="p">:</span> <span class="s1">&#39;Dec&#39;</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Pandas provides a handy method on Series, <code class="docutils literal notranslate"><span class="pre">.replace</span></code>, that accepts this value mapping and updates the Series accordingly.
+We can use it to recode our values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;mo_sold&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">value_mapping</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    May
+1    Jun
+2    Jun
+3    Apr
+4    Mar
+Name: mo_sold, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>If you are a SQL user, this workflow may look familiar to you;
+it’s quite similar to a <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span></code> statement in SQL.</p>
+</div>
+<div class="section" id="missing-values">
+<h3>Missing values<a class="headerlink" href="#missing-values" title="Permalink to this headline">¶</a></h3>
+<p>Missing values are typically denoted with NaN. We can use <code class="docutils literal notranslate"><span class="pre">df.isnull()</span></code> to find missing values in a dataframe. It returns a boolean for each element in the dataframe:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+      <th>price_per_sqft</th>
+      <th>nonsense</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1601,170 +3167,271 @@ dtype: float64
       <td>...</td>
       <td>...</td>
       <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
-      <th>3317</th>
-      <td>N997AT</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>BOEING</td>
-      <td>717-200</td>
-      <td>4</td>
-      <td>100</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>105</td>
-      <td>25.00</td>
-      <td>8147.0</td>
-      <td>33.50</td>
+      <th>2925</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>3318</th>
-      <td>N997DL</td>
-      <td>1992.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>MCDONNELL DOUGLAS AIRCRAFT CO</td>
-      <td>MD-88</td>
-      <td>4</td>
-      <td>142</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>147</td>
-      <td>35.50</td>
-      <td>8149.0</td>
-      <td>31.00</td>
+      <th>2926</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>3319</th>
-      <td>N998AT</td>
-      <td>2002.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>BOEING</td>
-      <td>717-200</td>
-      <td>4</td>
-      <td>100</td>
-      <td>NaN</td>
-      <td>Turbo-fan</td>
-      <td>105</td>
-      <td>25.00</td>
-      <td>8147.0</td>
-      <td>33.50</td>
+      <th>2927</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>3320</th>
-      <td>N998DL</td>
-      <td>1992.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>MCDONNELL DOUGLAS CORPORATION</td>
-      <td>MD-88</td>
-      <td>4</td>
-      <td>142</td>
-      <td>NaN</td>
-      <td>Turbo-jet</td>
-      <td>147</td>
-      <td>35.50</td>
-      <td>8149.0</td>
-      <td>31.00</td>
+      <th>2928</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>3321</th>
-      <td>N999DN</td>
-      <td>1992.0</td>
-      <td>Fixed wing multi engine</td>
-      <td>MCDONNELL DOUGLAS CORPORATION</td>
-      <td>MD-88</td>
-      <td>4</td>
-      <td>142</td>
-      <td>NaN</td>
-      <td>Turbo-jet</td>
-      <td>147</td>
-      <td>35.50</td>
-      <td>8149.0</td>
-      <td>31.00</td>
+      <th>2929</th>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>...</td>
+      <td>True</td>
+      <td>True</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
-<p>3322 rows × 13 columns</p>
+<p>2930 rows × 83 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="non-numeric-column-operations">
-<h2>Non-numeric Column Operations<a class="headerlink" href="#non-numeric-column-operations" title="Permalink to this headline">¶</a></h2>
-<p>For simplicity, we started with mathematical operations.
-However, pandas supports string operations as well.</p>
-<p>We can use <code class="docutils literal notranslate"><span class="pre">+</span></code> to concatenate strings, with both vectors and scalars.</p>
+<p>We can use this to easily compute the total number of missing values in each column:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summary</span> <span class="o">=</span> <span class="s1">&#39;Tailnum is &#39;</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;tailnum&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; and Model is &#39;</span> <span class="o">+</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;model&#39;</span><span class="p">]</span>
-<span class="n">summary</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    Tailnum is N10156 and Model is EMB-145XR
-1     Tailnum is N102UW and Model is A320-214
-2     Tailnum is N103US and Model is A320-214
-3     Tailnum is N104UW and Model is A320-214
-4    Tailnum is N10575 and Model is EMB-145LR
-dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pid                 0
+ms_subclass         0
+ms_zoning           0
+lot_frontage      490
+lot_area            0
+                 ... 
+sale_type           0
+sale_condition      0
+saleprice           0
+price_per_sqft      0
+nonsense            0
+Length: 83, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-<p>More complex string operations are possible using methods available through the <code class="docutils literal notranslate"><span class="pre">.str</span></code> <em>accessor</em>.
-We won’t cover them in detail, so refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">documentation</a> if you’re interested.</p>
+<p>Recall we also get this information with <code class="docutils literal notranslate"><span class="pre">.info()</span></code>. Actually, we get the inverse as <code class="docutils literal notranslate"><span class="pre">.info()</span></code> tells us how many non-null values exist in each column.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make the manufacturer field lowercase.</span>
-<span class="n">lowercase_mfctr</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;manufacturer&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="n">lowercase_mfctr</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0             embraer
-1    airbus industrie
-2    airbus industrie
-3    airbus industrie
-4             embraer
-Name: manufacturer, dtype: object
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 2930 entries, 0 to 2929
+Data columns (total 83 columns):
+ #   Column           Non-Null Count  Dtype  
+---  ------           --------------  -----  
+ 0   pid              2930 non-null   int64  
+ 1   ms_subclass      2930 non-null   int64  
+ 2   ms_zoning        2930 non-null   object 
+ 3   lot_frontage     2440 non-null   float64
+ 4   lot_area         2930 non-null   int64  
+ 5   street           2930 non-null   object 
+ 6   alley            198 non-null    object 
+ 7   lot_shape        2930 non-null   object 
+ 8   land_contour     2930 non-null   object 
+ 9   utilities        2930 non-null   object 
+ 10  lot_config       2930 non-null   object 
+ 11  land_slope       2930 non-null   object 
+ 12  neighborhood     2930 non-null   object 
+ 13  condition_1      2930 non-null   object 
+ 14  condition_2      2930 non-null   object 
+ 15  bldg_type        2930 non-null   object 
+ 16  house_style      2930 non-null   object 
+ 17  overall_qual     2930 non-null   int64  
+ 18  overall_cond     2930 non-null   int64  
+ 19  year_built       2930 non-null   int64  
+ 20  year_remod/add   2930 non-null   int64  
+ 21  roof_style       2930 non-null   object 
+ 22  roof_matl        2930 non-null   object 
+ 23  exterior_1st     2930 non-null   object 
+ 24  exterior_2nd     2930 non-null   object 
+ 25  mas_vnr_type     2907 non-null   object 
+ 26  mas_vnr_area     2907 non-null   float64
+ 27  exter_qual       2930 non-null   object 
+ 28  exter_cond       2930 non-null   object 
+ 29  foundation       2930 non-null   object 
+ 30  bsmt_qual        2850 non-null   object 
+ 31  bsmt_cond        2850 non-null   object 
+ 32  bsmt_exposure    2847 non-null   object 
+ 33  bsmtfin_type_1   2850 non-null   object 
+ 34  bsmtfin_sf_1     2929 non-null   float64
+ 35  bsmtfin_type_2   2849 non-null   object 
+ 36  bsmtfin_sf_2     2929 non-null   float64
+ 37  bsmt_unf_sf      2929 non-null   float64
+ 38  total_bsmt_sf    2929 non-null   float64
+ 39  heating          2930 non-null   object 
+ 40  heating_qc       2930 non-null   object 
+ 41  central_air      2930 non-null   object 
+ 42  electrical       2929 non-null   object 
+ 43  1st_flr_sf       2930 non-null   int64  
+ 44  2nd_flr_sf       2930 non-null   int64  
+ 45  low_qual_fin_sf  2930 non-null   int64  
+ 46  gr_liv_area      2930 non-null   int64  
+ 47  bsmt_full_bath   2928 non-null   float64
+ 48  bsmt_half_bath   2928 non-null   float64
+ 49  full_bath        2930 non-null   int64  
+ 50  half_bath        2930 non-null   int64  
+ 51  bedroom_abvgr    2930 non-null   int64  
+ 52  kitchen_abvgr    2930 non-null   int64  
+ 53  kitchen_qual     2930 non-null   object 
+ 54  totrms_abvgrd    2930 non-null   int64  
+ 55  functional       2930 non-null   object 
+ 56  fireplaces       2930 non-null   int64  
+ 57  fireplace_qu     1508 non-null   object 
+ 58  garage_type      2773 non-null   object 
+ 59  garage_yr_blt    2771 non-null   float64
+ 60  garage_finish    2771 non-null   object 
+ 61  garage_cars      2929 non-null   float64
+ 62  garage_area      2929 non-null   float64
+ 63  garage_qual      2771 non-null   object 
+ 64  garage_cond      2771 non-null   object 
+ 65  paved_drive      2930 non-null   object 
+ 66  wood_deck_sf     2930 non-null   int64  
+ 67  open_porch_sf    2930 non-null   int64  
+ 68  enclosed_porch   2930 non-null   int64  
+ 69  3ssn_porch       2930 non-null   int64  
+ 70  screen_porch     2930 non-null   int64  
+ 71  pool_area        2930 non-null   int64  
+ 72  pool_qc          13 non-null     object 
+ 73  fence            572 non-null    object 
+ 74  misc_feature     106 non-null    object 
+ 75  misc_val         2930 non-null   int64  
+ 76  mo_sold          2930 non-null   int64  
+ 77  yr_sold          2930 non-null   int64  
+ 78  sale_type        2930 non-null   object 
+ 79  sale_condition   2930 non-null   object 
+ 80  saleprice        2930 non-null   int64  
+ 81  price_per_sqft   2930 non-null   float64
+ 82  nonsense         2930 non-null   int64  
+dtypes: float64(12), int64(28), object(43)
+memory usage: 1.9+ MB
 </pre></div>
 </div>
 </div>
 </div>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">any()</span></code> to identify which columns have missing values. We can use this information for various reasons such as subsetting for just those columns that have missing values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the length of the tail number.</span>
-<span class="n">tailnum_len</span> <span class="o">=</span> <span class="n">planes</span><span class="p">[</span><span class="s1">&#39;tailnum&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">()</span>
-<span class="n">tailnum_len</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    6
-1    6
-2    6
-3    6
-4    6
-Name: tailnum, dtype: int64
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="more-complex-column-manipulation">
-<h2>More Complex Column Manipulation<a class="headerlink" href="#more-complex-column-manipulation" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="replacing-values">
-<h3>Replacing Values<a class="headerlink" href="#replacing-values" title="Permalink to this headline">¶</a></h3>
-<p>One fairly common situation in data wrangling is needing to convert one set of values to another, where there is a one-to-one correspondence between the values currently in the column and the new values that should replace them.
-This operation can be described as “mapping one set of values to another”.</p>
-<p>Let’s look at an example of this.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/airlines.csv&#39;</span><span class="p">)</span>
-<span class="c1"># Keep just the first 5 rows for this example.</span>
-<span class="n">airlines</span> <span class="o">=</span> <span class="n">airlines</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
-<span class="n">airlines</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">missing</span> <span class="o">=</span> <span class="n">ames</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">()</span> <span class="c1"># identify if missing values exist in each column</span>
+<span class="n">ames</span><span class="p">[</span><span class="n">missing</span><span class="p">[</span><span class="n">missing</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>  <span class="c1"># subset for just those columns that have missing values</span>
 </pre></div>
 </div>
 </div>
@@ -1787,62 +3454,812 @@ This operation can be described as “mapping one set of values to another”.</
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>carrier</th>
-      <th>name</th>
+      <th>lot_frontage</th>
+      <th>alley</th>
+      <th>mas_vnr_type</th>
+      <th>mas_vnr_area</th>
+      <th>bsmt_qual</th>
+      <th>bsmt_cond</th>
+      <th>bsmt_exposure</th>
+      <th>bsmtfin_type_1</th>
+      <th>bsmtfin_sf_1</th>
+      <th>bsmtfin_type_2</th>
+      <th>...</th>
+      <th>garage_type</th>
+      <th>garage_yr_blt</th>
+      <th>garage_finish</th>
+      <th>garage_cars</th>
+      <th>garage_area</th>
+      <th>garage_qual</th>
+      <th>garage_cond</th>
+      <th>pool_qc</th>
+      <th>fence</th>
+      <th>misc_feature</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>9E</td>
-      <td>Endeavor Air Inc.</td>
+      <td>141.0</td>
+      <td>NaN</td>
+      <td>Stone</td>
+      <td>112.0</td>
+      <td>TA</td>
+      <td>Gd</td>
+      <td>Gd</td>
+      <td>BLQ</td>
+      <td>639.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1960.0</td>
+      <td>Fin</td>
+      <td>2.0</td>
+      <td>528.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AA</td>
-      <td>American Airlines Inc.</td>
+      <td>80.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>Rec</td>
+      <td>468.0</td>
+      <td>LwQ</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1961.0</td>
+      <td>Unf</td>
+      <td>1.0</td>
+      <td>730.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AS</td>
-      <td>Alaska Airlines Inc.</td>
+      <td>81.0</td>
+      <td>NaN</td>
+      <td>BrkFace</td>
+      <td>108.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>ALQ</td>
+      <td>923.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1958.0</td>
+      <td>Unf</td>
+      <td>1.0</td>
+      <td>312.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Gar2</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>B6</td>
-      <td>JetBlue Airways</td>
+      <td>93.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>ALQ</td>
+      <td>1065.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1968.0</td>
+      <td>Fin</td>
+      <td>2.0</td>
+      <td>522.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>DL</td>
-      <td>Delta Air Lines Inc.</td>
+      <td>74.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>Gd</td>
+      <td>TA</td>
+      <td>No</td>
+      <td>GLQ</td>
+      <td>791.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1997.0</td>
+      <td>Fin</td>
+      <td>2.0</td>
+      <td>482.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2925</th>
+      <td>37.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>GLQ</td>
+      <td>819.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Detchd</td>
+      <td>1984.0</td>
+      <td>Unf</td>
+      <td>2.0</td>
+      <td>588.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>GdPrv</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2926</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>Gd</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>BLQ</td>
+      <td>301.0</td>
+      <td>ALQ</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1983.0</td>
+      <td>Unf</td>
+      <td>2.0</td>
+      <td>484.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2927</th>
+      <td>62.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>Gd</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>GLQ</td>
+      <td>337.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>MnPrv</td>
+      <td>Shed</td>
+    </tr>
+    <tr>
+      <th>2928</th>
+      <td>77.0</td>
+      <td>NaN</td>
+      <td>None</td>
+      <td>0.0</td>
+      <td>Gd</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>ALQ</td>
+      <td>1071.0</td>
+      <td>LwQ</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1975.0</td>
+      <td>RFn</td>
+      <td>2.0</td>
+      <td>418.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2929</th>
+      <td>74.0</td>
+      <td>NaN</td>
+      <td>BrkFace</td>
+      <td>94.0</td>
+      <td>Gd</td>
+      <td>TA</td>
+      <td>Av</td>
+      <td>LwQ</td>
+      <td>758.0</td>
+      <td>Unf</td>
+      <td>...</td>
+      <td>Attchd</td>
+      <td>1993.0</td>
+      <td>Fin</td>
+      <td>3.0</td>
+      <td>650.0</td>
+      <td>TA</td>
+      <td>TA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>2930 rows × 27 columns</p>
+</div></div></div>
+</div>
+<p>When you have missing values, we usually either drop them or impute them.You can drop missing values with <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pid</th>
+      <th>ms_subclass</th>
+      <th>ms_zoning</th>
+      <th>lot_frontage</th>
+      <th>lot_area</th>
+      <th>street</th>
+      <th>alley</th>
+      <th>lot_shape</th>
+      <th>land_contour</th>
+      <th>utilities</th>
+      <th>...</th>
+      <th>fence</th>
+      <th>misc_feature</th>
+      <th>misc_val</th>
+      <th>mo_sold</th>
+      <th>yr_sold</th>
+      <th>sale_type</th>
+      <th>sale_condition</th>
+      <th>saleprice</th>
+      <th>price_per_sqft</th>
+      <th>nonsense</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+<p>0 rows × 83 columns</p>
+</div></div></div>
+</div>
+<p>Whoa! What just happened? Well, this data set actually has a missing value in every single row. <code class="docutils literal notranslate"><span class="pre">.dropna()</span></code> drops every row that contains a missing value so we end up dropping <em>all</em> observations.  Consequently, we probably want to figure out what’s going on with these missing values and isolate the column causing the problem and imputing the values if possible.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Another “drop” method is <code class="docutils literal notranslate"><span class="pre">.drop_duplcates()</span></code> which will drop duplicated rows in your DataFrame.</p>
+</div>
+<p>Sometimes visualizations help identify patterns in missing values. One thing I often do is print a heatmap of my dataframe to get a feel for where my missing values are. We’ll get into data visualization in future lessons but for now here is an example using the <strong>searborn</strong> library. We can see that several variables have a lot of missing values (<code class="docutils literal notranslate"><span class="pre">alley</span></code>, <code class="docutils literal notranslate"><span class="pre">fireplace_qu</span></code>, <code class="docutils literal notranslate"><span class="pre">pool_qc</span></code>, <code class="docutils literal notranslate"><span class="pre">fence</span></code>, <code class="docutils literal notranslate"><span class="pre">misc_feature</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">rc</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_missing</span> <span class="o">=</span> <span class="n">ames</span><span class="p">[</span><span class="n">missing</span><span class="p">[</span><span class="n">missing</span><span class="p">]</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">ames_missing</span><span class="o">.</span><span class="n">isnull</span><span class="p">(),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">cbar</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-3b_70_0.png" src="../_images/lesson-3b_70_0.png" />
+</div>
+</div>
+<p>Since we can’t drop all missing values in this data set (since it leaves us with no rows), we need to impute (“fill”) them in. There are several approaches we can use to do this; one of which uses the <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code> method. This method has various options for filling, you can use a fixed value, the mean of the column, the previous non-nan value, etc:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># example DataFrame with missing values</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                   <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                   <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span>
+                   <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span> <span class="mi">4</span><span class="p">]],</span>
+                  <span class="n">columns</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="s1">&#39;ABCD&#39;</span><span class="p">))</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<p>Suppose we learn that there is a mistake in the carrier codes and they should be updated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># fill with 0</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>2.0</td>
+      <td>0.0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>0.0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>3.0</td>
+      <td>0.0</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>  <span class="c1"># fill with the mean</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;bfill&#39;</span><span class="p">)</span>  <span class="c1"># backward (upwards) fill from non-nan values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>3.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s1">&#39;ffill&#39;</span><span class="p">)</span>  <span class="c1"># forward (downward) fill from non-nan values</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>A</th>
+      <th>B</th>
+      <th>C</th>
+      <th>D</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="applying-custom-functions">
+<h3>Applying custom functions<a class="headerlink" href="#applying-custom-functions" title="Permalink to this headline">¶</a></h3>
+<p>There will be times when you want to apply a function that is not built-in to Pandas. For this, we have methods:</p>
 <ul class="simple">
-<li><p>9E should be PE</p></li>
-<li><p>B6 should be BB</p></li>
-<li><p>The other codes should stay as they are.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.apply()</span></code>, applies a function column-wise or row-wise across a dataframe (the function must be able to accept/return an array)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.applymap()</span></code>, applies a function element-wise (for functions that accept/return single values at a time)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">series.apply()</span></code>/<code class="docutils literal notranslate"><span class="pre">series.map()</span></code>, same as above but for Pandas series</p></li>
 </ul>
-<p>We can express this <em>mapping</em> of old values to new values using a Python dictionary.</p>
+<p>For example, say you had the following custom function that defines if a home is considered a luxery home simply based on the price sold.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don’t worry, you’ll learn more about writing your own functions in future lessons!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Only specify the values we want to replace; don&#39;t include the ones that should stay the same.</span>
-<span class="n">value_mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;9E&#39;</span><span class="p">:</span> <span class="s1">&#39;PE&#39;</span><span class="p">,</span>
-                 <span class="s1">&#39;B6&#39;</span><span class="p">:</span> <span class="s1">&#39;BB&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_luxery_home</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">500000</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Luxery&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Non-luxery&#39;</span>
+
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_luxery_home</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Non-luxery
+1       Non-luxery
+2       Non-luxery
+3       Non-luxery
+4       Non-luxery
+           ...    
+2925    Non-luxery
+2926    Non-luxery
+2927    Non-luxery
+2928    Non-luxery
+2929    Non-luxery
+Name: saleprice, Length: 2930, dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<p>Pandas provides a handy method on Series, <code class="docutils literal notranslate"><span class="pre">.replace</span></code>, that accepts this value mapping and updates the Series accordingly.
-We can use it to create a new column, “updated_carrier”, with the proper carrier code values.</p>
+<p>This may have been better as a lambda function, which is just a shorter approach to writing functions. This may be a bit confusing but we’ll talk more about lambda functions in the writing functions lesson. For now, just think of it as being able to write a function for single use application on the fly.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">airlines</span><span class="p">[</span><span class="s1">&#39;updated_carrier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">airlines</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">value_mapping</span><span class="p">)</span>
-<span class="n">airlines</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;Luxery&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">500000</span> <span class="k">else</span> <span class="s1">&#39;Non-luxery&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       Non-luxery
+1       Non-luxery
+2       Non-luxery
+3       Non-luxery
+4       Non-luxery
+           ...    
+2925    Non-luxery
+2926    Non-luxery
+2927    Non-luxery
+2928    Non-luxery
+2929    Non-luxery
+Name: saleprice, Length: 2930, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can even use functions that require additional arguments. Just specify the arguments in <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_luxery_home</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">price</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">price</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Luxery&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s1">&#39;Non-luxery&#39;</span>
+
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;saleprice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">is_luxery_home</span><span class="p">,</span> <span class="n">price</span><span class="o">=</span><span class="mi">200000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0           Luxery
+1       Non-luxery
+2       Non-luxery
+3           Luxery
+4       Non-luxery
+           ...    
+2925    Non-luxery
+2926    Non-luxery
+2927    Non-luxery
+2928    Non-luxery
+2929    Non-luxery
+Name: saleprice, Length: 2930, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Sometimes we may have a function that we want to apply to every element across multiple columns. For example, say we wanted to convert several of the square footage variables to be represented as square meters. For this we can use the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.applymap.html"><code class="docutils literal notranslate"><span class="pre">.applymap()</span></code></a> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">convert_to_sq_meters</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span><span class="o">*</span><span class="mf">0.092903</span>
+
+<span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;gr_liv_area&#39;</span><span class="p">,</span> <span class="s1">&#39;garage_area&#39;</span><span class="p">,</span> <span class="s1">&#39;lot_area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">applymap</span><span class="p">(</span><span class="n">convert_to_sq_meters</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1865,69 +4282,126 @@ We can use it to create a new column, “updated_carrier”, with the proper car
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>carrier</th>
-      <th>name</th>
-      <th>updated_carrier</th>
+      <th>gr_liv_area</th>
+      <th>garage_area</th>
+      <th>lot_area</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>9E</td>
-      <td>Endeavor Air Inc.</td>
-      <td>PE</td>
+      <td>153.847368</td>
+      <td>49.052784</td>
+      <td>2946.883160</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>AA</td>
-      <td>American Airlines Inc.</td>
-      <td>AA</td>
+      <td>83.241088</td>
+      <td>67.819190</td>
+      <td>1075.073516</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>AS</td>
-      <td>Alaska Airlines Inc.</td>
-      <td>AS</td>
+      <td>123.468087</td>
+      <td>28.985736</td>
+      <td>1320.801951</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>B6</td>
-      <td>JetBlue Airways</td>
-      <td>BB</td>
+      <td>196.025330</td>
+      <td>48.495366</td>
+      <td>1032.152330</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>DL</td>
-      <td>Delta Air Lines Inc.</td>
-      <td>DL</td>
+      <td>151.338987</td>
+      <td>44.779246</td>
+      <td>1280.203340</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2925</th>
+      <td>93.181709</td>
+      <td>54.626964</td>
+      <td>732.725961</td>
+    </tr>
+    <tr>
+      <th>2926</th>
+      <td>83.798506</td>
+      <td>44.965052</td>
+      <td>820.798005</td>
+    </tr>
+    <tr>
+      <th>2927</th>
+      <td>90.115910</td>
+      <td>0.000000</td>
+      <td>965.355073</td>
+    </tr>
+    <tr>
+      <th>2928</th>
+      <td>129.042267</td>
+      <td>38.833454</td>
+      <td>925.313880</td>
+    </tr>
+    <tr>
+      <th>2929</th>
+      <td>185.806000</td>
+      <td>60.386950</td>
+      <td>889.732031</td>
     </tr>
   </tbody>
 </table>
+<p>2930 rows × 3 columns</p>
 </div></div></div>
 </div>
-<p>If you are a SQL user, this workflow may look familiar to you;
-it’s quite similar to a <code class="docutils literal notranslate"><span class="pre">CASE</span> <span class="pre">WHEN</span></code> statement in SQL.</p>
-<font class="your_turn">
-    Your Turn
-</font>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
 <ol class="simple">
-<li><p>Open the weather CSV (path: <code class="docutils literal notranslate"><span class="pre">../data/weather.csv</span></code>) and store it in a variable called <code class="docutils literal notranslate"><span class="pre">weather</span></code>.</p></li>
-<li><p>Take a look at the “month” column. Observe that its values are numeric, not strings. How do you think these values relate to months of the year?</p></li>
-<li><p>Create a mapping from each number to the corresponding month name, as a dictionary. For example, one of the keys would be <code class="docutils literal notranslate"><span class="pre">5</span></code> and its value would be <code class="docutils literal notranslate"><span class="pre">May</span></code>. Store it in a variable called <code class="docutils literal notranslate"><span class="pre">month_mapping</span></code>.</p></li>
-<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.replace</span></code> method to overwrite the current month column with the month names as strings, using your newly created mapping.</p></li>
+<li><p>Import the heart.csv dataset.</p></li>
+<li><p>Are there any missing values in this data? If so, which columns? For these columns, fill the missing values with the value that appears most often (aka “mode”). This is a multi-step process and it would be worth reviewing the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.fillna.html"><code class="docutils literal notranslate"><span class="pre">.fillna()</span></code> docs</a>.</p></li>
+<li><p>Create a new column called <code class="docutils literal notranslate"><span class="pre">risk</span></code> that is equal to <span class="math notranslate nohighlight">\( \frac{age}{\text{res_bp} + chol + \text{max_hr}} \)</span></p></li>
+<li><p>Replace the values in the <code class="docutils literal notranslate"><span class="pre">rest_ecg</span></code> column so that:</p>
+<ul class="simple">
+<li><p>normal = normal</p></li>
+<li><p>left ventricular hypertrophy = lvh</p></li>
+<li><p>ST-T wave abnormality = stt_wav_abn</p></li>
+</ul>
+</li>
 </ol>
 </div>
-<div class="section" id="the-apply-method-and-beyond">
-<h3>The <code class="docutils literal notranslate"><span class="pre">apply</span></code> Method and Beyond<a class="headerlink" href="#the-apply-method-and-beyond" title="Permalink to this headline">¶</a></h3>
-<p>If you can think of a way to express a new column as a combination of other columns and constants, it can be created using Python and Pandas.
-However, column calculations beyond the above are outside the scope of this training.</p>
-<p>If you wish to learn more, take a look at the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.apply.html"><code class="docutils literal notranslate"><span class="pre">DataFrame.apply</span></code> method</a>.</p>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,numpy,seaborn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.4
+IPython version      : 7.26.0
+
+jupyterlab: 3.1.4
+pandas    : 1.2.4
+numpy     : 1.19.5
+seaborn   : 0.11.2
+</pre></div>
 </div>
 </div>
 </div>
-<div class="tex2jax_ignore mathjax_ignore section" id="questions">
-<h1>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h1>
-<p>Are there any questions before we move on?</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -1954,7 +4428,21 @@ However, column calculations beyond the above are outside the scope of this trai
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-3a.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 3a: Subsetting data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>

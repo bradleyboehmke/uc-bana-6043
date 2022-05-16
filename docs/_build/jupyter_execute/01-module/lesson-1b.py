@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Lesson 1b: Variables, operators, and types
+# # Lesson 1b: Variables, operators & types
 # 
 # <hr/>
 

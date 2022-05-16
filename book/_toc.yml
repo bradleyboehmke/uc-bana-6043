@@ -3,7 +3,6 @@ root: intro.ipynb
 parts:
 - caption: Module 0 (Pre-class)
   chapters:
-  - file: 00-module/overview
   - file: 00-module/lesson-0a
   - file: 00-module/lesson-0b
 - caption: Module 1
@@ -25,7 +24,7 @@ parts:
   chapters:
   - file: 03-module/overview
   - file: 03-module/lesson-3a
-  - file: 03-module/lesson-2
+  - file: 03-module/lesson-3b
   - file: 03-module/lab
 - caption: Module 4
   chapters:

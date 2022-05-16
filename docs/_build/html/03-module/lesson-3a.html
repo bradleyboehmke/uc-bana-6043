@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lesson 3a: Selecting and filtering &#8212; UC BANA 6043 Statistical Computing</title>
+    <title>Lesson 3a: Subsetting data &#8212; UC BANA 6043 Statistical Computing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="next" title="Lesson 3b: Manipulating data" href="lesson-3b.html" />
     <link rel="prev" title="Overview" href="overview.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -133,12 +133,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators, and types
+   Lesson 1b: Variables, operators &amp; types
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators and conditionals
+   Lesson 1c: More operators &amp; conditionals
   </a>
  </li>
  <li class="toctree-l1">
@@ -197,7 +197,12 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Lesson 3a: Selecting and filtering
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-3b.html">
+   Lesson 3b: Manipulating data
   </a>
  </li>
  <li class="toctree-l1">
@@ -500,6 +505,11 @@ const thebe_selector_output = ".output, .cell_output"
    Exercises
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -510,7 +520,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 3a: Selecting and filtering</h1>
+                <h1>Lesson 3a: Subsetting data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -601,6 +611,11 @@ const thebe_selector_output = ".output, .cell_output"
    Exercises
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -610,8 +625,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-3a-selecting-and-filtering">
-<h1>Lesson 3a: Selecting and filtering<a class="headerlink" href="#lesson-3a-selecting-and-filtering" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-3a-subsetting-data">
+<h1>Lesson 3a: Subsetting data<a class="headerlink" href="#lesson-3a-subsetting-data" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>“Every second of every day, our senses bring in way too much data than we can possibly process in our brains.”</p>
 <p>- Peter Diamandis, Founder of the X-Prize for human-AI collaboration</p>
@@ -2344,7 +2359,7 @@ Name: seats, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_99385/2190037627.py:1: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_42403/2190037627.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -2417,8 +2432,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 4535745168
- The id of the indexed dataframe is: 4536425728
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The id of the original dataframe is: 4594613216
+ The id of the indexed dataframe is: 4595569088
 </pre></div>
 </div>
 </div>
@@ -2504,6 +2519,27 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </ol>
 </div>
 </div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.4
+IPython version      : 7.26.0
+
+jupyterlab: 3.1.4
+pandas    : 1.2.4
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -2538,10 +2574,10 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
             <p class="prev-next-title">Overview</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <a class='right-next' id="next-link" href="lesson-3b.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Lab</p>
+        <p class="prev-next-title">Lesson 3b: Manipulating data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

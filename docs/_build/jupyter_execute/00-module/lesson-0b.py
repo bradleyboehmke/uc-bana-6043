@@ -131,7 +131,7 @@
 #     
 # Now, we can proceed with the rest of our installations.
 # 
-#     conda install colorcet holoviews hvplot param panel datashader pyserial hypothesis netcdf4
+#     conda install colorcet holoviews hvplot param panel datashader pyserial hypothesis netcdf4 seaborn
 #         
 # There are a few other packages from pip we will need for the class, so we can go ahead and install those now.
 # 

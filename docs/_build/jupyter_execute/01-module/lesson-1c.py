@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Lesson 1c: More operators and conditionals
+# # Lesson 1c: More operators & conditionals
 # 
 # <hr/>
 
