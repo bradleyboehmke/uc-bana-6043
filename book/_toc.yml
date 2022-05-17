@@ -25,6 +25,7 @@ parts:
   - file: 03-module/overview
   - file: 03-module/lesson-3a
   - file: 03-module/lesson-3b
+  - file: 03-module/lesson-3c
   - file: 03-module/lab
 - caption: Module 4
   chapters:

@@ -1,341 +1,401 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# # Summarizing Data
+# # Lesson 3c: Summarizing data
 # 
 # > What we have is a data glut.
 # >
 # > \- Vernor Vinge, Professor Emeritus of Mathematics, San Diego State University
-
-# ## Applied Review
-
-# ### Dictionaries
-
-# * The `dict` structure is used to represent **key-value pairs**
-
-# * Like a real dictionary, you look up a word (**key**) and get its definition (**value**)
-
-# * Below is an example:
 # 
-# ```python
-# ethan = {
-#     'first_name': 'Ethan',
-#     'last_name': 'Swan',
-#     'alma_mater': 'Notre Dame',
-#     'employer': '84.51˚',
-#     'zip_code': 45208
-# }
+# Computing summary statistics across columns and various groupings within your dataset is a fundamental task in creating insights from your data. This lesson will focus on how we can compute various aggregations with Pandas Series and DataFrames. 
+
+# ## Learning objectives
+# 
+# By the end of this lesson you will be able to:
+# 
+# - Compute summary statistics across an entire Series
+# - Compute summary statistics across one or more columns in a DataFrame
+# - Compute grouped-level summary statistics across one or more columns in a DataFrame
+
+# ## Simple aggregation
+# 
+# In the previous lesson we learned how to manipulate data across one or more variables within the row(s):
+# 
+# <center>
+# <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/series-plus-series.png?raw=true" alt="series-plus-series.png" width="60%" height="60%">
+# </center>
+# 
+# ```{note}
+# We return the same number of elements that we started with. This is known as a **window function**, but you can also think of it as summarizing at the row-level.
 # ```
-
-# ### DataFrame Structure
-
-# * We will start by importing the `flights` data set as a DataFrame:
-
-# In[1]:
-
-
-import pandas as pd
-flights_df = pd.read_csv('../data/flights.csv')
-
-
-# * Each DataFrame variable is a **Series** and can be accessed with bracket subsetting notation: `DataFrame['SeriesName']`
-
-# * The DataFrame has an **Index** that is visible the far left side and can be used to slice the DataFrame
-
-# ### Methods
-
-# * Methods are *operations* that are specific to Python classes
-
-# * These operations end in parentheses and *make something happen*
-
-# * An example of a method is `DataFrame.head()`
-
-# ## General Model
-
-# ### Window Operations
-
-# Yesterday we learned how to manipulate data across one or more variables within the row(s):
 # 
-# <img src="images/series-plus-series.png" alt="series-plus-series.png" width="80%" height="80%">
-
-# <div class="admonition note alert alert-info">
-#     <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-#     <p>We return the same number of elements that we started with. This is known as a <b>window function</b>, but you can also think of it as summarizing at the row-level.</p>
-# </div>
-
 # We could achieve this result with the following code:
 # 
 # ```python
 # DataFrame['A'] + DataFrame['B']
 # ```
-
-# We subset the two Series and then add them together using the `+` operator to achieve the sum.
-
-# Note that we could also use some other operation on `DataFrame['B']` as long as it returns the same number of elements.
-
-# ### Summary Operations
-
+# 
+# We subset the two Series and then add them together using the `+` operator to achieve the sum. Note that we could also use some other operation on `DataFrame['B']` as long as it returns the same number of elements.
+# 
 # However, sometimes we want to work with data across rows within a variable -- that is, aggregate/summarize values rowwise rather than columnwise.
+# 
+# <center>
+# <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/aggregate-series.png?raw=true" alt="aggregate-series.png" width="50%" height="50%">
+# </center>
+# 
+# ```{note}
+# We return a single value representing some aggregation of the elements we started with. This is known as a **summary function**, but you can think of it as aggregating values across rows.
+# ```
 
-# <img src="images/aggregate-series.png" alt="aggregate-series.png" width="50%" height="50%">
-
-# <div class="admonition note alert alert-info">
-#     <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-#     <p>We return a single value representing some aggregation of the elements we started with. This is known as a <b>summary function</b>, but you can think of it as summarizing across rows.</p>
-# </div>
-
-# This is what we are going to talk about next.
-
-# ## Summarizing a Series
-
-# ### Summary Methods
-
+# ### Summarizing a series
+# 
 # The easiest way to summarize a specific series is by using bracket subsetting notation and the built-in Series methods (i.e. `col.sum()`):
+
+# In[1]:
+
+
+import pandas as pd
+
+ames = pd.read_csv('../data/ames_raw.csv')
+
+ames['SalePrice'].sum()
+
+
+# Note that a *single value* was returned because this is a **summary operation** -- we are summing the `SalePrice` variable across all rows.
+# 
+# There are other summary methods with a series:
 
 # In[2]:
 
 
-flights_df['distance'].sum()
+ames['SalePrice'].mean()
 
-
-# Note that a *single value* was returned because this is a **summary operation** -- we are summing the `distance` variable across all rows.
-
-# There are other summary methods with a series:
 
 # In[3]:
 
 
-flights_df['distance'].mean()
+ames['SalePrice'].median()
 
 
 # In[4]:
 
 
-flights_df['distance'].median()
-
-
-# In[5]:
-
-
-flights_df['distance'].std()
+ames['SalePrice'].std()
 
 
 # All of the above methods work on quantitative variables but not character variables. However, there are summary methods that will work on all types of variables:
 
+# In[5]:
+
+
+# Number of unique values in the neighborhood variable
+ames['Neighborhood'].nunique()
+
+
 # In[6]:
 
 
-# Number of unique values in the carrier variable
-flights_df['carrier'].nunique()
+# Most frequent value observed in the neighborhood variable
+ames['Neighborhood'].mode()
 
+
+# ### Knowledge check
+# 
+# ```{admonition} Questions:
+# :class: attention
+# 1. What is the difference between a window operation and a summary operation?
+# 2. What is the mean, median, and standard deviation of the above ground square footage (`Gr Liv Area` variable)?  
+# 3. Find the count of each value observed in the `Neighborhood` column. This may take a Google search. Would you consider the output a summary operation?
+# ```
+
+# ### Describe method
+# 
+# There is also a method `describe()` that provides a lot of this summary information -- this is especially useful in initial exploratory data analysis.
 
 # In[7]:
 
 
-# Most frequent value observed in the carrier variable
-flights_df['carrier'].mode()
+ames['SalePrice'].describe()
 
 
-# <font class="your_turn">
-#     Your Turn
-# </font>
-# 
-# 1\. What is the difference between a window operation and a summary operation?
-# 
-# 2\. Fill in the blanks in the following code to calculate the mean delay in departure:
-# 
-#    ```python
-#    flights_df['_____']._____()
-#    ```
-# 
-# 
-# 3\. Find the count of each value observed in the carriers column. This may take a Google search. Would you consider the output a summary operation?
-
-# ### Describe Method
-
-# There is also a method `describe()` that provides a lot of this summary information -- this is especially useful in initial exploratory data analysis.
+# ```{note}
+# The `describe()` method will return different results depending on the `type` of the Series.
+# ```
 
 # In[8]:
 
 
-flights_df['distance'].describe()
+ames['Neighborhood'].describe()
 
 
-# <div class="admonition note alert alert-info">
-#     <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-#     <p>The <tt class=\"docutils literal\">describe()</tt> method will return different results depending on the <tt class=\"docutils literal\">type</tt> of the Series.</p>
-# </div>
+# ### Summarizing a DataFrame
+# 
+# The above methods and operations are nice, but sometimes we want to work with multiple variables rather than just one. Recall how we select variables from a DataFrame:
+# 
+# * Single-bracket subset notation
+# * Pass a list of quoted variable names into the list
+# 
+# ```python
+# ames[['SalePrice', 'Gr Liv Area']]
+# ```
+# 
+# We can use *the same summary methods from the Series on the DataFrame* to summarize data:
 
 # In[9]:
 
 
-flights_df['carrier'].describe()
+ames[['SalePrice', 'Gr Liv Area']].mean()
 
-
-# ## Summarizing a DataFrame
-
-# The above methods and operations are nice, but sometimes we want to work with multiple variables rather than just one.
-
-# ### Extending Summary Methods to DataFrames
-
-# Recall how we select variables from a DataFrame:
-
-# * Single-bracket subset notation
-
-# * Pass a list of quoted variable names into the list
-
-# ```python
-# flights_df[['sched_dep_time', 'dep_time']]
-# ```
-
-# We can use *the same summary methods from the Series on the DataFrame* to summarize data:
 
 # In[10]:
 
 
-flights_df[['sched_dep_time', 'dep_time']].mean()
+ames[['SalePrice', 'Gr Liv Area']].median()
 
+
+# This returns a `pandas.core.series.Series` object  -- the Index is the variable name and the values are the summarized values.
+
+# ### The Aggregation method
+# 
+# While summary methods can be convenient, there are a few drawbacks to using them on DataFrames:
+# 
+# 1. You can only apply one summary method at a time
+# 2. You have to apply the same summary method to all variables
+# 3. A Series is returned rather than a DataFrame -- this makes it difficult to use the values in our analysis later
+# 
+# In order to get around these problems, the DataFrame has a powerful method `.agg()`:
 
 # In[11]:
 
 
-flights_df[['sched_dep_time', 'dep_time']].median()
-
-
-# <div class="admonition tip alert alert-warning">
-#     <b><p class="first admonition-title" style="font-weight: bold">Question</p></b>
-#     <p>What is the type of...<br> <tt class=\"docutils literal\">flights_df[['sched_dep_time', 'dep_time']].median()</tt>?</p>
-# </div>
-
-# This returns a `pandas.core.series.Series` object  -- the Index is the variable name and the values are the summarized values.
-
-# ### The Aggregation Method
-
-# While summary methods can be convenient, there are a few drawbacks to using them on DataFrames:
-
-# 1. You have to look up or remember the method names each time
-# 2. You can only apply one summary method at a time
-# 3. You have to apply the same summary method to all variables
-# 4. A Series is returned rather than a DataFrame -- this makes it difficult to use the values in our analysis later
-
-# In order to get around these problems, the DataFrame has a powerful method `agg()`:
-
-# In[12]:
-
-
-flights_df.agg({
-    'sched_dep_time': ['mean']
+ames.agg({
+    'SalePrice': ['mean']
 })
 
 
 # There are a few things to notice about the `agg()` method:
-
+# 
 # 1. A `dict` is passed to the method with variable names as keys and a list of quoted summaries as values
-
 # 2. *A DataFrame is returned* with variable names as variables and summaries as rows
+# 
+# ```{tip}
+# The `.agg()` method is just shorthand for `.aggregate()`.
+# ```
 
-# <div class="admonition tip alert alert-warning">
-#     <b><p class="first admonition-title" style="font-weight: bold">Tip!</p></b>
-#     <p>The <tt class=\"docutils literal\">.agg()</tt> method is just shorthand for <tt class=\"docutils literal\">.aggregate()</tt>.</p>
-# </div>
+# In[12]:
+
+
+# I'm feeling quite verbose today!
+ames.aggregate({
+    'SalePrice': ['mean']
+})
+
 
 # In[13]:
 
 
-# I'm feeling quite verbose today!
-flights_df.aggregate({
-    'sched_dep_time': ['mean']
-})
-
-
-# In[14]:
-
-
 # I don't have that kind of time!
-flights_df.agg({
-    'sched_dep_time': ['mean']
+ames.agg({
+    'SalePrice': ['mean']
 })
 
 
 # We can extend this to multiple variables by adding elements to the `dict`:
 
-# In[15]:
+# In[14]:
 
 
-flights_df.agg({
-    'sched_dep_time': ['mean'],
-    'dep_time': ['mean']
+ames.agg({
+    'SalePrice': ['mean'],
+    'Gr Liv Area': ['mean']
 })
 
 
 # And because the values of the `dict` are lists, we can do additional aggregations at the same time:
 
-# In[16]:
+# In[15]:
 
 
-flights_df.agg({
-    'sched_dep_time': ['mean', 'median'],
-    'dep_time': ['mean', 'min']
+ames.agg({
+    'SalePrice': ['mean', 'median'],
+    'Gr Liv Area': ['mean', 'min']
 })
 
 
-# <div class="admonition note alert alert-info">
-#     <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-#     <p>Not all variables have to have the same list of summaries.</p>
-# </div>
-
-# <font class="your_turn">
-#     Your Turn
-# </font>
-
-# 1\. What class of object is the returned by the below code?
-# 
-# ```python
-# flights_df[['air_time', 'distance']].mean()
+# ```{note}
+# Not all variables have to have the same list of summaries. Note how `NaN` values fill in for those summary statistics _not_ computed on a given variable.
 # ```
 
-# 2\. What class of object is returned by the below code?
+# ### Knowledge check
 # 
-# ```python
-# flights_df.agg({
-#     'air_time': ['mean'],
-#     'distance': ['mean']
-# })
+# ```{admonition} Questions:
+# :class: attention
+# 1. Fill in the blanks to compute the average number of rooms above ground (`TotRms AbvGrd`) and the average number of bedrooms above ground (`Bedroom AbvGr`). What type of object is returned?
+# 
+#    ```python
+#    ames[['______', '______']].______()
+# 
+# 2. Use the `.agg()` method to complete the same computation as above. How does the output differ?
+# 3. Fill in the blanks in the below code to calculate the minimum and maximum year built (`Year Built`) and the mean and median number of garage stalls (`Garage Cars`):
+# 
+#    ```python
+#    ames.agg({
+#        '_____': ['min', '_____'],
+#        '_____': ['_____', 'median']
+#    })
+# 
 # ```
 
-# 3\. Fill in the blanks in the below code to calculate the minimum and maximum distances traveled and the mean and median arrival delay:
+# ### Describe method
 # 
-# ```python
-# flights_df.agg({
-#     '_____': ['min', '_____'],
-#     '_____': ['_____', 'median']
-# })
-# ```
-
-# ### Describe Method
-
 # While `agg()` is a powerful method, the `describe()` method -- similar to the Series `describe()` method -- is a great choice during exploratory data analysis:
+
+# In[16]:
+
+
+ames.describe()
+
+
+# ```{warning}
+# What is missing from the above result?
+# ```
+# 
+# The string variables are missing! We can make `describe()` compute on all variable types using the `include` parameter and passing a list of data types to include:
 
 # In[17]:
 
 
-flights_df.describe()
+ames.describe(include = ['int', 'float', 'object'])
 
 
-# <font class="question">
-#     <strong>Question</strong>:<br><em>What is missing from the above result?</em>
-# </font>
-
-# The string variables are missing!
-
-# We can make `describe()` compute on all variable types using the `include` parameter and passing a list of data types to include:
+# ## Grouped aggregation
+# 
+# In the section above, we talked about **summary** operations in the context of collapsing a DataFrame to a single row. This is not always the case -- often we are interested in examining specific groups in our data and we want to perform summary operations for these groups. Thus, we are interested in collapsing to a *single row per group*. This is known as a **grouped aggregation**.
+# 
+# For example, in the following illustration we are interested in finding the sum of variable `B` for each category/value in variable `A`.
+# 
+# <center>
+# <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/summarizing-by-groups.png?raw=true" alt="summarizing-by-groups.png" width="80%" height="80%">
+# </center>
+# 
+# This can be useful when we want to aggregate by category:
+#   * Maximum temperature *by month*
+#   * Total home runs *by team*
+#   * Total sales *by neighborhood*
+#   * Average number of seats *by plane manufacturer*
+# 
+# When we summarize by groups, we can use the same aggregation methods we previously did
+#   * Summary methods for a specific summary operation: `DataFrame.sum()`
+#   * Describe method for a collection of summary operations: `DataFrame.describe()`
+#   * Agg method for flexibility in summary operations: `DataFrame.agg({'VariableName': ['sum', 'mean']})`
+# 
+# The only difference is the need to **set the DataFrame group prior to aggregating**. We can set the DataFrame group by calling the `DataFrame.groupby()` method and passing a variable name:
 
 # In[18]:
 
 
-flights_df.describe(include = ['int', 'float', 'object'])
+ames_grp = ames.groupby('Neighborhood')
+ames_grp
 
 
-# ## Questions
+# Notice that a DataFrame doesn't print when it's grouped. The `groupby()` method is just setting the group - you can see the changed DataFrame class:
+
+# In[19]:
+
+
+type(ames_grp)
+
+
+# The groupby object is really just a dictionary of index-mappings, which we could look at if we wanted to:
+
+# In[20]:
+
+
+ames_grp.groups
+
+
+# We can also access a group using the `.get_group()` method:
+
+# In[21]:
+
+
+# get the Bloomington neighborhood group
+ames_grp.get_group('Blmngtn').head()
+
+
+# If we then call an aggregation method after our `groupby()` call, we will see the DataFrame returned with group-level aggregations:
+
+# In[22]:
+
+
+ames.groupby('Neighborhood').agg({'SalePrice': ['mean', 'median']}).head()
+
+
+# This process always follows this model:
 # 
-# Are there any questions before we move on?
+# <center>
+# <img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/model-for-grouped-aggs.png?raw=true" alt="model-for-grouped-aggs.png" width="80%" height="80%">
+# </center>
+
+# ### Groups as index vs. variables
+# 
+# ```{note}
+# Notice that the grouped variable becomes the Index in our example!
+# ```
+
+# In[23]:
+
+
+ames.groupby('Neighborhood').agg({'SalePrice': ['mean', 'median']}).index
+
+
+# This is the default behavior of pandas, and probably how pandas wants to be used.  In fact, this is the fastest way to do it, but it's a matter of less than a millisecond. However, you aren't always going to see people group by the index. Instead of setting the group as the index, we can set the group as a variable.
+# 
+# ```{tip}
+# The grouped variable can remain a Series/variable by adding the `as_index = False` parameter/argument to `groupby()`.
+# ```
+
+# In[24]:
+
+
+ames.groupby('Neighborhood', as_index=False).agg({'SalePrice': ['mean', 'median']}).head()
+
+
+# ### Grouping by multiple variables
+# 
+# Sometimes we have multiple categories by which we'd like to group. To extend our example, assume we want to find the average sale price by neighborhood ***AND*** year sold. We can pass a list of variable names to the `groupby()` method:
+
+# In[25]:
+
+
+ames.groupby(['Neighborhood', 'Yr Sold'], as_index=False).agg({'SalePrice': 'mean'})
+
+
+# ### Knowledge check
+# 
+# ```{admonition} Questions:
+# :class: attention
+# 1. How would you convert the following statement into a grouped aggregation syntax: "what is the average above ground square footage of homes based on neighbhorhood and bedroom count"?
+# 2. Compute the above statement (variable hints: `Gr Liv Area` = above ground square footage, `Neighborhood` = neighborhood, `Bedroom AbvGr` = bedroom count).
+# 3. Using the results from #2, find out which neighborhoods have 1 bedrooms homes that average more than 1500 above ground square feet.
+# ```
+
+# ## Exercises
+# 
+# ```{admonition} Questions:
+# :class: attention
+# Using the Ames housing data...
+# 1. What neighbhorhood has the largest median sales price? (hint: check out `sort_values()`)
+# 2. What is the mean and median sales price based on the number of bedrooms (`Bedroom AbvGr`)?
+# 3. Which neighbhorhood has the largest median sales price for 3 bedroom homes? Which neighborhood has the smallest median sales price for 3 bedroom homes?
+# 4. Compute the sales price per square footage (`Gr Liv Area`) per home. Call this variable `price_per_sqft`. Now compute the median `price_per_sqft` per neighborhood. Which neighborhood has the largest median `price_per_sqft`? Does this differ from the neighborhood identified in #1? What information does this provide you?
+# ```
+
+# ## Computing environment
+
+# In[26]:
+
+
+get_ipython().run_line_magic('load_ext', 'watermark')
+get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas')
+

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summarizing Data &#8212; UC BANA 6043 Statistical Computing</title>
+    <title>Lesson 3c: Summarizing data &#8212; UC BANA 6043 Statistical Computing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lesson 3b: Manipulating data" href="lesson-3b.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -187,7 +189,7 @@ const thebe_selector_output = ".output, .cell_output"
   Module 3
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    Overview
@@ -201,6 +203,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="lesson-3b.html">
    Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 3c: Summarizing data
   </a>
  </li>
  <li class="toctree-l1">
@@ -423,86 +430,82 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#applied-review">
-   Applied Review
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dictionaries">
-     Dictionaries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-structure">
-     DataFrame Structure
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-model">
-   General Model
+  <a class="reference internal nav-link" href="#simple-aggregation">
+   Simple aggregation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#window-operations">
-     Window Operations
+    <a class="reference internal nav-link" href="#summarizing-a-series">
+     Summarizing a series
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-operations">
-     Summary Operations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-a-series">
-   Summarizing a Series
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-methods">
-     Summary Methods
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#describe-method">
-     Describe Method
+     Describe method
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-a-dataframe">
-   Summarizing a DataFrame
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extending-summary-methods-to-dataframes">
-     Extending Summary Methods to DataFrames
+    <a class="reference internal nav-link" href="#summarizing-a-dataframe">
+     Summarizing a DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-aggregation-method">
-     The Aggregation Method
+     The Aggregation method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Describe Method
+     Knowledge check
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Describe method
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+  <a class="reference internal nav-link" href="#grouped-aggregation">
+   Grouped aggregation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groups-as-index-vs-variables">
+     Groups as index vs. variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-multiple-variables">
+     Grouping by multiple variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -515,7 +518,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Summarizing Data</h1>
+                <h1>Lesson 3c: Summarizing data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -526,86 +529,82 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#applied-review">
-   Applied Review
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dictionaries">
-     Dictionaries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#dataframe-structure">
-     DataFrame Structure
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#methods">
-     Methods
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#general-model">
-   General Model
+  <a class="reference internal nav-link" href="#simple-aggregation">
+   Simple aggregation
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#window-operations">
-     Window Operations
+    <a class="reference internal nav-link" href="#summarizing-a-series">
+     Summarizing a series
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-operations">
-     Summary Operations
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-a-series">
-   Summarizing a Series
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#summary-methods">
-     Summary Methods
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#describe-method">
-     Describe Method
+     Describe method
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summarizing-a-dataframe">
-   Summarizing a DataFrame
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extending-summary-methods-to-dataframes">
-     Extending Summary Methods to DataFrames
+    <a class="reference internal nav-link" href="#summarizing-a-dataframe">
+     Summarizing a DataFrame
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#the-aggregation-method">
-     The Aggregation Method
+     The Aggregation method
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id1">
-     Describe Method
+     Knowledge check
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Describe method
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#questions">
-   Questions
+  <a class="reference internal nav-link" href="#grouped-aggregation">
+   Grouped aggregation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#groups-as-index-vs-variables">
+     Groups as index vs. variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#grouping-by-multiple-variables">
+     Grouping by multiple variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -617,203 +616,98 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="summarizing-data">
-<h1>Summarizing Data<a class="headerlink" href="#summarizing-data" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-3c-summarizing-data">
+<h1>Lesson 3c: Summarizing data<a class="headerlink" href="#lesson-3c-summarizing-data" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>What we have is a data glut.</p>
 <p>- Vernor Vinge, Professor Emeritus of Mathematics, San Diego State University</p>
 </div></blockquote>
-<div class="section" id="applied-review">
-<h2>Applied Review<a class="headerlink" href="#applied-review" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="dictionaries">
-<h3>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">¶</a></h3>
+<p>Computing summary statistics across columns and various groupings within your dataset is a fundamental task in creating insights from your data. This lesson will focus on how we can compute various aggregations with Pandas Series and DataFrames.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
 <ul class="simple">
-<li><p>The <code class="docutils literal notranslate"><span class="pre">dict</span></code> structure is used to represent <strong>key-value pairs</strong></p></li>
-</ul>
-<ul class="simple">
-<li><p>Like a real dictionary, you look up a word (<strong>key</strong>) and get its definition (<strong>value</strong>)</p></li>
-</ul>
-<ul class="simple">
-<li><p>Below is an example:</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ethan</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;first_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Ethan&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;last_name&#39;</span><span class="p">:</span> <span class="s1">&#39;Swan&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;alma_mater&#39;</span><span class="p">:</span> <span class="s1">&#39;Notre Dame&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;employer&#39;</span><span class="p">:</span> <span class="s1">&#39;84.51˚&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;zip_code&#39;</span><span class="p">:</span> <span class="mi">45208</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="dataframe-structure">
-<h3>DataFrame Structure<a class="headerlink" href="#dataframe-structure" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>We will start by importing the <code class="docutils literal notranslate"><span class="pre">flights</span></code> data set as a DataFrame:</p></li>
-</ul>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">flights_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/flights.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_42434</span><span class="o">/</span><span class="mf">2136333627.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">flights_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/flights.csv&#39;</span><span class="p">)</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">609</span> 
-<span class="ne">--&gt; </span><span class="mi">610</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span> 
-<span class="g g-Whitespace">    </span><span class="mi">612</span> 
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">460</span> 
-<span class="g g-Whitespace">    </span><span class="mi">461</span>     <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">462</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">463</span> 
-<span class="g g-Whitespace">    </span><span class="mi">464</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">817</span>             <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">818</span> 
-<span class="ne">--&gt; </span><span class="mi">819</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">820</span> 
-<span class="g g-Whitespace">    </span><span class="mi">821</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1048</span>             <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1049</span>         <span class="c1"># error: Too many arguments for &quot;ParserBase&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1050</span>         <span class="k">return</span> <span class="n">mapping</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span><span class="bp">self</span><span class="o">.</span><span class="n">f</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">)</span>  <span class="c1"># type: ignore[call-arg]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1051</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1052</span>     <span class="k">def</span> <span class="nf">_failover_to_python</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">__init__</span><span class="nt">(self, src, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1865</span> 
-<span class="g g-Whitespace">   </span><span class="mi">1866</span>         <span class="c1"># open handles</span>
-<span class="ne">-&gt; </span><span class="mi">1867</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_open_handles</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1868</span>         <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1869</span>         <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="s2">&quot;compression&quot;</span><span class="p">):</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/parsers.py</span> in <span class="ni">_open_handles</span><span class="nt">(self, src, kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1360</span>         <span class="n">Let</span> <span class="n">the</span> <span class="n">readers</span> <span class="nb">open</span> <span class="n">IOHanldes</span> <span class="n">after</span> <span class="n">they</span> <span class="n">are</span> <span class="n">done</span> <span class="k">with</span> <span class="n">their</span> <span class="n">potential</span> <span class="n">raises</span><span class="o">.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1361</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1362</span><span class="s2">         self.handles = get_handle(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1363</span><span class="s2">             src,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1364</span><span class="s2">             &quot;r&quot;,</span>
-
-<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">640</span><span class="s2">                 errors = &quot;replace&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">641</span><span class="s2">             # Encoding</span>
-<span class="ne">--&gt; </span><span class="mi">642</span><span class="s2">             handle = open(</span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span><span class="s2">                 handle,</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span><span class="s2">                 ioargs.mode,</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../data/flights.csv&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<ul class="simple">
-<li><p>Each DataFrame variable is a <strong>Series</strong> and can be accessed with bracket subsetting notation: <code class="docutils literal notranslate"><span class="pre">DataFrame['SeriesName']</span></code></p></li>
-</ul>
-<ul class="simple">
-<li><p>The DataFrame has an <strong>Index</strong> that is visible the far left side and can be used to slice the DataFrame</p></li>
+<li><p>Compute summary statistics across an entire Series</p></li>
+<li><p>Compute summary statistics across one or more columns in a DataFrame</p></li>
+<li><p>Compute grouped-level summary statistics across one or more columns in a DataFrame</p></li>
 </ul>
 </div>
-<div class="section" id="methods">
-<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>Methods are <em>operations</em> that are specific to Python classes</p></li>
-</ul>
-<ul class="simple">
-<li><p>These operations end in parentheses and <em>make something happen</em></p></li>
-</ul>
-<ul class="simple">
-<li><p>An example of a method is <code class="docutils literal notranslate"><span class="pre">DataFrame.head()</span></code></p></li>
-</ul>
+<div class="section" id="simple-aggregation">
+<h2>Simple aggregation<a class="headerlink" href="#simple-aggregation" title="Permalink to this headline">¶</a></h2>
+<p>In the previous lesson we learned how to manipulate data across one or more variables within the row(s):</p>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/series-plus-series.png?raw=true" alt="series-plus-series.png" width="60%" height="60%">
+</center>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We return the same number of elements that we started with. This is known as a <strong>window function</strong>, but you can also think of it as summarizing at the row-level.</p>
 </div>
-</div>
-<div class="section" id="general-model">
-<h2>General Model<a class="headerlink" href="#general-model" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="window-operations">
-<h3>Window Operations<a class="headerlink" href="#window-operations" title="Permalink to this headline">¶</a></h3>
-<p>Yesterday we learned how to manipulate data across one or more variables within the row(s):</p>
-<img src="images/series-plus-series.png" alt="series-plus-series.png" width="80%" height="80%"><div class="admonition note alert alert-info">
-    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-    <p>We return the same number of elements that we started with. This is known as a <b>window function</b>, but you can also think of it as summarizing at the row-level.</p>
-</div><p>We could achieve this result with the following code:</p>
+<p>We could achieve this result with the following code:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">DataFrame</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">DataFrame</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>We subset the two Series and then add them together using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to achieve the sum.</p>
-<p>Note that we could also use some other operation on <code class="docutils literal notranslate"><span class="pre">DataFrame['B']</span></code> as long as it returns the same number of elements.</p>
-</div>
-<div class="section" id="summary-operations">
-<h3>Summary Operations<a class="headerlink" href="#summary-operations" title="Permalink to this headline">¶</a></h3>
+<p>We subset the two Series and then add them together using the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator to achieve the sum. Note that we could also use some other operation on <code class="docutils literal notranslate"><span class="pre">DataFrame['B']</span></code> as long as it returns the same number of elements.</p>
 <p>However, sometimes we want to work with data across rows within a variable – that is, aggregate/summarize values rowwise rather than columnwise.</p>
-<img src="images/aggregate-series.png" alt="aggregate-series.png" width="50%" height="50%"><div class="admonition note alert alert-info">
-    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-    <p>We return a single value representing some aggregation of the elements we started with. This is known as a <b>summary function</b>, but you can think of it as summarizing across rows.</p>
-</div><p>This is what we are going to talk about next.</p>
-</div>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/aggregate-series.png?raw=true" alt="aggregate-series.png" width="50%" height="50%">
+</center>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We return a single value representing some aggregation of the elements we started with. This is known as a <strong>summary function</strong>, but you can think of it as aggregating values across rows.</p>
 </div>
 <div class="section" id="summarizing-a-series">
-<h2>Summarizing a Series<a class="headerlink" href="#summarizing-a-series" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="summary-methods">
-<h3>Summary Methods<a class="headerlink" href="#summary-methods" title="Permalink to this headline">¶</a></h3>
+<h3>Summarizing a series<a class="headerlink" href="#summarizing-a-series" title="Permalink to this headline">¶</a></h3>
 <p>The easiest way to summarize a specific series is by using bracket subsetting notation and the built-in Series methods (i.e. <code class="docutils literal notranslate"><span class="pre">col.sum()</span></code>):</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">ames</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ames_raw.csv&#39;</span><span class="p">)</span>
+
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>350217607
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>529732456
 </pre></div>
 </div>
 </div>
 </div>
-<p>Note that a <em>single value</em> was returned because this is a <strong>summary operation</strong> – we are summing the <code class="docutils literal notranslate"><span class="pre">distance</span></code> variable across all rows.</p>
+<p>Note that a <em>single value</em> was returned because this is a <strong>summary operation</strong> – we are summing the <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code> variable across all rows.</p>
 <p>There are other summary methods with a series:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1039.9126036297123
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>180796.0600682594
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>872.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>160000.0
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>733.2330333236778
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79886.692356665
 </pre></div>
 </div>
 </div>
@@ -821,110 +715,107 @@ const thebe_selector_output = ".output, .cell_output"
 <p>All of the above methods work on quantitative variables but not character variables. However, there are summary methods that will work on all types of variables:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of unique values in the carrier variable</span>
-<span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of unique values in the neighborhood variable</span>
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most frequent value observed in the carrier variable</span>
-<span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most frequent value observed in the neighborhood variable</span>
+<span class="n">ames</span><span class="p">[</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mode</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    UA
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0    NAmes
 dtype: object
 </pre></div>
 </div>
 </div>
 </div>
-<font class="your_turn">
-    Your Turn
-</font>
-<p>1. What is the difference between a window operation and a summary operation?</p>
-<p>2. Fill in the blanks in the following code to calculate the mean delay in departure:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;_____&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">_____</span><span class="p">()</span>
-</pre></div>
 </div>
-<p>3. Find the count of each value observed in the carriers column. This may take a Google search. Would you consider the output a summary operation?</p>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>What is the difference between a window operation and a summary operation?</p></li>
+<li><p>What is the mean, median, and standard deviation of the above ground square footage (<code class="docutils literal notranslate"><span class="pre">Gr</span> <span class="pre">Liv</span> <span class="pre">Area</span></code> variable)?</p></li>
+<li><p>Find the count of each value observed in the <code class="docutils literal notranslate"><span class="pre">Neighborhood</span></code> column. This may take a Google search. Would you consider the output a summary operation?</p></li>
+</ol>
+</div>
 </div>
 <div class="section" id="describe-method">
-<h3>Describe Method<a class="headerlink" href="#describe-method" title="Permalink to this headline">¶</a></h3>
+<h3>Describe method<a class="headerlink" href="#describe-method" title="Permalink to this headline">¶</a></h3>
 <p>There is also a method <code class="docutils literal notranslate"><span class="pre">describe()</span></code> that provides a lot of this summary information – this is especially useful in initial exploratory data analysis.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;distance&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count    336776.000000
-mean       1039.912604
-std         733.233033
-min          17.000000
-25%         502.000000
-50%         872.000000
-75%        1389.000000
-max        4983.000000
-Name: distance, dtype: float64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      2930.000000
+mean     180796.060068
+std       79886.692357
+min       12789.000000
+25%      129500.000000
+50%      160000.000000
+75%      213500.000000
+max      755000.000000
+Name: SalePrice, dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<div class="admonition note alert alert-info">
-    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-    <p>The <tt class=\"docutils literal\">describe()</tt> method will return different results depending on the <tt class=\"docutils literal\">type</tt> of the Series.</p>
-</div><div class="cell docutils container">
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method will return different results depending on the <code class="docutils literal notranslate"><span class="pre">type</span></code> of the Series.</p>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[</span><span class="s1">&#39;carrier&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count     336776
-unique        16
-top           UA
-freq       58665
-Name: carrier, dtype: object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      2930
+unique       28
+top       NAmes
+freq        443
+Name: Neighborhood, dtype: object
 </pre></div>
-</div>
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="summarizing-a-dataframe">
-<h2>Summarizing a DataFrame<a class="headerlink" href="#summarizing-a-dataframe" title="Permalink to this headline">¶</a></h2>
-<p>The above methods and operations are nice, but sometimes we want to work with multiple variables rather than just one.</p>
-<div class="section" id="extending-summary-methods-to-dataframes">
-<h3>Extending Summary Methods to DataFrames<a class="headerlink" href="#extending-summary-methods-to-dataframes" title="Permalink to this headline">¶</a></h3>
-<p>Recall how we select variables from a DataFrame:</p>
+<h3>Summarizing a DataFrame<a class="headerlink" href="#summarizing-a-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>The above methods and operations are nice, but sometimes we want to work with multiple variables rather than just one. Recall how we select variables from a DataFrame:</p>
 <ul class="simple">
 <li><p>Single-bracket subset notation</p></li>
-</ul>
-<ul class="simple">
 <li><p>Pass a list of quoted variable names into the list</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[[</span><span class="s1">&#39;sched_dep_time&#39;</span><span class="p">,</span> <span class="s1">&#39;dep_time&#39;</span><span class="p">]]</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">,</span> <span class="s1">&#39;Gr Liv Area&#39;</span><span class="p">]]</span>
 </pre></div>
 </div>
 <p>We can use <em>the same summary methods from the Series on the DataFrame</em> to summarize data:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[[</span><span class="s1">&#39;sched_dep_time&#39;</span><span class="p">,</span> <span class="s1">&#39;dep_time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">,</span> <span class="s1">&#39;Gr Liv Area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sched_dep_time    1344.254840
-dep_time          1349.109947
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SalePrice      180796.060068
+Gr Liv Area      1499.690444
 dtype: float64
 </pre></div>
 </div>
@@ -932,37 +823,33 @@ dtype: float64
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[[</span><span class="s1">&#39;sched_dep_time&#39;</span><span class="p">,</span> <span class="s1">&#39;dep_time&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">,</span> <span class="s1">&#39;Gr Liv Area&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sched_dep_time    1359.0
-dep_time          1401.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SalePrice      160000.0
+Gr Liv Area      1442.0
 dtype: float64
 </pre></div>
 </div>
 </div>
 </div>
-<div class="admonition tip alert alert-warning">
-    <b><p class="first admonition-title" style="font-weight: bold">Question</p></b>
-    <p>What is the type of...<br> <tt class=\"docutils literal\">flights_df[['sched_dep_time', 'dep_time']].median()</tt>?</p>
-</div><p>This returns a <code class="docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code> object  – the Index is the variable name and the values are the summarized values.</p>
+<p>This returns a <code class="docutils literal notranslate"><span class="pre">pandas.core.series.Series</span></code> object  – the Index is the variable name and the values are the summarized values.</p>
 </div>
 <div class="section" id="the-aggregation-method">
-<h3>The Aggregation Method<a class="headerlink" href="#the-aggregation-method" title="Permalink to this headline">¶</a></h3>
+<h3>The Aggregation method<a class="headerlink" href="#the-aggregation-method" title="Permalink to this headline">¶</a></h3>
 <p>While summary methods can be convenient, there are a few drawbacks to using them on DataFrames:</p>
 <ol class="simple">
-<li><p>You have to look up or remember the method names each time</p></li>
 <li><p>You can only apply one summary method at a time</p></li>
 <li><p>You have to apply the same summary method to all variables</p></li>
 <li><p>A Series is returned rather than a DataFrame – this makes it difficult to use the values in our analysis later</p></li>
 </ol>
-<p>In order to get around these problems, the DataFrame has a powerful method <code class="docutils literal notranslate"><span class="pre">agg()</span></code>:</p>
+<p>In order to get around these problems, the DataFrame has a powerful method <code class="docutils literal notranslate"><span class="pre">.agg()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;sched_dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -986,13 +873,13 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sched_dep_time</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean</th>
-      <td>1344.25484</td>
+      <td>180796.060068</td>
     </tr>
   </tbody>
 </table>
@@ -1001,18 +888,17 @@ dtype: float64
 <p>There are a few things to notice about the <code class="docutils literal notranslate"><span class="pre">agg()</span></code> method:</p>
 <ol class="simple">
 <li><p>A <code class="docutils literal notranslate"><span class="pre">dict</span></code> is passed to the method with variable names as keys and a list of quoted summaries as values</p></li>
-</ol>
-<ol class="simple">
 <li><p><em>A DataFrame is returned</em> with variable names as variables and summaries as rows</p></li>
 </ol>
-<div class="admonition tip alert alert-warning">
-    <b><p class="first admonition-title" style="font-weight: bold">Tip!</p></b>
-    <p>The <tt class=\"docutils literal\">.agg()</tt> method is just shorthand for <tt class=\"docutils literal\">.aggregate()</tt>.</p>
-</div><div class="cell docutils container">
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> method is just shorthand for <code class="docutils literal notranslate"><span class="pre">.aggregate()</span></code>.</p>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I&#39;m feeling quite verbose today!</span>
-<span class="n">flights_df</span><span class="o">.</span><span class="n">aggregate</span><span class="p">({</span>
-    <span class="s1">&#39;sched_dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">aggregate</span><span class="p">({</span>
+    <span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -1036,13 +922,13 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sched_dep_time</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean</th>
-      <td>1344.25484</td>
+      <td>180796.060068</td>
     </tr>
   </tbody>
 </table>
@@ -1051,8 +937,8 @@ dtype: float64
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># I don&#39;t have that kind of time!</span>
-<span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;sched_dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<span class="n">ames</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -1076,13 +962,13 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sched_dep_time</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean</th>
-      <td>1344.25484</td>
+      <td>180796.060068</td>
     </tr>
   </tbody>
 </table>
@@ -1091,9 +977,9 @@ dtype: float64
 <p>We can extend this to multiple variables by adding elements to the <code class="docutils literal notranslate"><span class="pre">dict</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;sched_dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Gr Liv Area&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -1117,15 +1003,15 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sched_dep_time</th>
-      <th>dep_time</th>
+      <th>SalePrice</th>
+      <th>Gr Liv Area</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean</th>
-      <td>1344.25484</td>
-      <td>1349.109947</td>
+      <td>180796.060068</td>
+      <td>1499.690444</td>
     </tr>
   </tbody>
 </table>
@@ -1134,9 +1020,9 @@ dtype: float64
 <p>And because the values of the <code class="docutils literal notranslate"><span class="pre">dict</span></code> are lists, we can do additional aggregations at the same time:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;sched_dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;dep_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+    <span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Gr Liv Area&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
@@ -1160,60 +1046,64 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>sched_dep_time</th>
-      <th>dep_time</th>
+      <th>SalePrice</th>
+      <th>Gr Liv Area</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>mean</th>
-      <td>1344.25484</td>
-      <td>1349.109947</td>
+      <td>180796.060068</td>
+      <td>1499.690444</td>
     </tr>
     <tr>
       <th>median</th>
-      <td>1359.00000</td>
+      <td>160000.000000</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>min</th>
       <td>NaN</td>
-      <td>1.000000</td>
+      <td>334.000000</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-<div class="admonition note alert alert-info">
-    <b><p class="first admonition-title" style="font-weight: bold">Note</p></b>
-    <p>Not all variables have to have the same list of summaries.</p>
-</div><font class="your_turn">
-    Your Turn
-</font><p>1. What class of object is the returned by the below code?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="p">[[</span><span class="s1">&#39;air_time&#39;</span><span class="p">,</span> <span class="s1">&#39;distance&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Not all variables have to have the same list of summaries. Note how <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values fill in for those summary statistics <em>not</em> computed on a given variable.</p>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol>
+<li><p>Fill in the blanks to compute the average number of rooms above ground (<code class="docutils literal notranslate"><span class="pre">TotRms</span> <span class="pre">AbvGrd</span></code>) and the average number of bedrooms above ground (<code class="docutils literal notranslate"><span class="pre">Bedroom</span> <span class="pre">AbvGr</span></code>). What type of object is returned?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="p">[[</span><span class="s1">&#39;______&#39;</span><span class="p">,</span> <span class="s1">&#39;______&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">______</span><span class="p">()</span>
+
 </pre></div>
 </div>
-<p>2. What class of object is returned by the below code?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
-    <span class="s1">&#39;air_time&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;distance&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span>
-<span class="p">})</span>
-</pre></div>
-</div>
-<p>3. Fill in the blanks in the below code to calculate the minimum and maximum distances traveled and the mean and median arrival delay:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+</li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">.agg()</span></code> method to complete the same computation as above. How does the output differ?</p></li>
+<li><p>Fill in the blanks in the below code to calculate the minimum and maximum year built (<code class="docutils literal notranslate"><span class="pre">Year</span> <span class="pre">Built</span></code>) and the mean and median number of garage stalls (<code class="docutils literal notranslate"><span class="pre">Garage</span> <span class="pre">Cars</span></code>):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">&#39;_____&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="s1">&#39;_____&#39;</span><span class="p">],</span>
     <span class="s1">&#39;_____&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;_____&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">]</span>
 <span class="p">})</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </div>
-<div class="section" id="id1">
-<h3>Describe Method<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="id2">
+<h3>Describe method<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>While <code class="docutils literal notranslate"><span class="pre">agg()</span></code> is a powerful method, the <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method – similar to the Series <code class="docutils literal notranslate"><span class="pre">describe()</span></code> method – is a great choice during exploratory data analysis:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1236,170 +1126,235 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>day</th>
-      <th>dep_time</th>
-      <th>sched_dep_time</th>
-      <th>dep_delay</th>
-      <th>arr_time</th>
-      <th>sched_arr_time</th>
-      <th>arr_delay</th>
-      <th>flight</th>
-      <th>air_time</th>
-      <th>distance</th>
-      <th>hour</th>
-      <th>minute</th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Overall Qual</th>
+      <th>Overall Cond</th>
+      <th>Year Built</th>
+      <th>Year Remod/Add</th>
+      <th>Mas Vnr Area</th>
+      <th>...</th>
+      <th>Wood Deck SF</th>
+      <th>Open Porch SF</th>
+      <th>Enclosed Porch</th>
+      <th>3Ssn Porch</th>
+      <th>Screen Porch</th>
+      <th>Pool Area</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>336776.0</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
-      <td>328521.000000</td>
-      <td>336776.000000</td>
-      <td>328521.000000</td>
-      <td>328063.000000</td>
-      <td>336776.000000</td>
-      <td>327346.000000</td>
-      <td>336776.000000</td>
-      <td>327346.000000</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
+      <td>2930.00000</td>
+      <td>2.930000e+03</td>
+      <td>2930.000000</td>
+      <td>2440.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2907.000000</td>
+      <td>...</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>2013.0</td>
-      <td>6.548510</td>
-      <td>15.710787</td>
-      <td>1349.109947</td>
-      <td>1344.254840</td>
-      <td>12.639070</td>
-      <td>1502.054999</td>
-      <td>1536.380220</td>
-      <td>6.895377</td>
-      <td>1971.923620</td>
-      <td>150.686460</td>
-      <td>1039.912604</td>
-      <td>13.180247</td>
-      <td>26.230100</td>
+      <td>1465.50000</td>
+      <td>7.144645e+08</td>
+      <td>57.387372</td>
+      <td>69.224590</td>
+      <td>10147.921843</td>
+      <td>6.094881</td>
+      <td>5.563140</td>
+      <td>1971.356314</td>
+      <td>1984.266553</td>
+      <td>101.896801</td>
+      <td>...</td>
+      <td>93.751877</td>
+      <td>47.533447</td>
+      <td>23.011604</td>
+      <td>2.592491</td>
+      <td>16.002048</td>
+      <td>2.243345</td>
+      <td>50.635154</td>
+      <td>6.216041</td>
+      <td>2007.790444</td>
+      <td>180796.060068</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.0</td>
-      <td>3.414457</td>
-      <td>8.768607</td>
-      <td>488.281791</td>
-      <td>467.335756</td>
-      <td>40.210061</td>
-      <td>533.264132</td>
-      <td>497.457142</td>
-      <td>44.633292</td>
-      <td>1632.471938</td>
-      <td>93.688305</td>
-      <td>733.233033</td>
-      <td>4.661316</td>
-      <td>19.300846</td>
+      <td>845.96247</td>
+      <td>1.887308e+08</td>
+      <td>42.638025</td>
+      <td>23.365335</td>
+      <td>7880.017759</td>
+      <td>1.411026</td>
+      <td>1.111537</td>
+      <td>30.245361</td>
+      <td>20.860286</td>
+      <td>179.112611</td>
+      <td>...</td>
+      <td>126.361562</td>
+      <td>67.483400</td>
+      <td>64.139059</td>
+      <td>25.141331</td>
+      <td>56.087370</td>
+      <td>35.597181</td>
+      <td>566.344288</td>
+      <td>2.714492</td>
+      <td>1.316613</td>
+      <td>79886.692357</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>2013.0</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>106.000000</td>
-      <td>-43.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>-86.000000</td>
-      <td>1.000000</td>
+      <td>1.00000</td>
+      <td>5.263011e+08</td>
       <td>20.000000</td>
-      <td>17.000000</td>
+      <td>21.000000</td>
+      <td>1300.000000</td>
       <td>1.000000</td>
+      <td>1.000000</td>
+      <td>1872.000000</td>
+      <td>1950.000000</td>
       <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>2006.000000</td>
+      <td>12789.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>2013.0</td>
+      <td>733.25000</td>
+      <td>5.284770e+08</td>
+      <td>20.000000</td>
+      <td>58.000000</td>
+      <td>7440.250000</td>
+      <td>5.000000</td>
+      <td>5.000000</td>
+      <td>1954.000000</td>
+      <td>1965.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
       <td>4.000000</td>
-      <td>8.000000</td>
-      <td>907.000000</td>
-      <td>906.000000</td>
-      <td>-5.000000</td>
-      <td>1104.000000</td>
-      <td>1124.000000</td>
-      <td>-17.000000</td>
-      <td>553.000000</td>
-      <td>82.000000</td>
-      <td>502.000000</td>
-      <td>9.000000</td>
-      <td>8.000000</td>
+      <td>2007.000000</td>
+      <td>129500.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2013.0</td>
-      <td>7.000000</td>
-      <td>16.000000</td>
-      <td>1401.000000</td>
-      <td>1359.000000</td>
-      <td>-2.000000</td>
-      <td>1535.000000</td>
-      <td>1556.000000</td>
-      <td>-5.000000</td>
-      <td>1496.000000</td>
-      <td>129.000000</td>
-      <td>872.000000</td>
-      <td>13.000000</td>
-      <td>29.000000</td>
+      <td>1465.50000</td>
+      <td>5.354536e+08</td>
+      <td>50.000000</td>
+      <td>68.000000</td>
+      <td>9436.500000</td>
+      <td>6.000000</td>
+      <td>5.000000</td>
+      <td>1973.000000</td>
+      <td>1993.000000</td>
+      <td>0.000000</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>27.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>6.000000</td>
+      <td>2008.000000</td>
+      <td>160000.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2013.0</td>
-      <td>10.000000</td>
-      <td>23.000000</td>
-      <td>1744.000000</td>
-      <td>1729.000000</td>
-      <td>11.000000</td>
-      <td>1940.000000</td>
-      <td>1945.000000</td>
-      <td>14.000000</td>
-      <td>3465.000000</td>
-      <td>192.000000</td>
-      <td>1389.000000</td>
-      <td>17.000000</td>
-      <td>44.000000</td>
+      <td>2197.75000</td>
+      <td>9.071811e+08</td>
+      <td>70.000000</td>
+      <td>80.000000</td>
+      <td>11555.250000</td>
+      <td>7.000000</td>
+      <td>6.000000</td>
+      <td>2001.000000</td>
+      <td>2004.000000</td>
+      <td>164.000000</td>
+      <td>...</td>
+      <td>168.000000</td>
+      <td>70.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>8.000000</td>
+      <td>2009.000000</td>
+      <td>213500.000000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2013.0</td>
+      <td>2930.00000</td>
+      <td>1.007100e+09</td>
+      <td>190.000000</td>
+      <td>313.000000</td>
+      <td>215245.000000</td>
+      <td>10.000000</td>
+      <td>9.000000</td>
+      <td>2010.000000</td>
+      <td>2010.000000</td>
+      <td>1600.000000</td>
+      <td>...</td>
+      <td>1424.000000</td>
+      <td>742.000000</td>
+      <td>1012.000000</td>
+      <td>508.000000</td>
+      <td>576.000000</td>
+      <td>800.000000</td>
+      <td>17000.000000</td>
       <td>12.000000</td>
-      <td>31.000000</td>
-      <td>2400.000000</td>
-      <td>2359.000000</td>
-      <td>1301.000000</td>
-      <td>2400.000000</td>
-      <td>2359.000000</td>
-      <td>1272.000000</td>
-      <td>8500.000000</td>
-      <td>695.000000</td>
-      <td>4983.000000</td>
-      <td>23.000000</td>
-      <td>59.000000</td>
+      <td>2010.000000</td>
+      <td>755000.000000</td>
     </tr>
   </tbody>
 </table>
+<p>8 rows × 39 columns</p>
 </div></div></div>
 </div>
-<font class="question">
-    <strong>Question</strong>:<br><em>What is missing from the above result?</em>
-</font><p>The string variables are missing!</p>
-<p>We can make <code class="docutils literal notranslate"><span class="pre">describe()</span></code> compute on all variable types using the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter and passing a list of data types to include:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>What is missing from the above result?</p>
+</div>
+<p>The string variables are missing! We can make <code class="docutils literal notranslate"><span class="pre">describe()</span></code> compute on all variable types using the <code class="docutils literal notranslate"><span class="pre">include</span></code> parameter and passing a list of data types to include:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flights_df</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">describe</span><span class="p">(</span><span class="n">include</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;int&#39;</span><span class="p">,</span> <span class="s1">&#39;float&#39;</span><span class="p">,</span> <span class="s1">&#39;object&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1422,279 +1377,863 @@ dtype: float64
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>year</th>
-      <th>month</th>
-      <th>day</th>
-      <th>dep_time</th>
-      <th>sched_dep_time</th>
-      <th>dep_delay</th>
-      <th>arr_time</th>
-      <th>sched_arr_time</th>
-      <th>arr_delay</th>
-      <th>carrier</th>
-      <th>flight</th>
-      <th>tailnum</th>
-      <th>origin</th>
-      <th>dest</th>
-      <th>air_time</th>
-      <th>distance</th>
-      <th>hour</th>
-      <th>minute</th>
-      <th>time_hour</th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>336776.0</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
-      <td>328521.000000</td>
-      <td>336776.000000</td>
-      <td>328521.000000</td>
-      <td>328063.000000</td>
-      <td>336776.000000</td>
-      <td>327346.000000</td>
-      <td>336776</td>
-      <td>336776.000000</td>
-      <td>334264</td>
-      <td>336776</td>
-      <td>336776</td>
-      <td>327346.000000</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
-      <td>336776.000000</td>
-      <td>336776</td>
+      <td>2930.00000</td>
+      <td>2.930000e+03</td>
+      <td>2930.000000</td>
+      <td>2930</td>
+      <td>2440.000000</td>
+      <td>2930.000000</td>
+      <td>2930</td>
+      <td>198</td>
+      <td>2930</td>
+      <td>2930</td>
+      <td>...</td>
+      <td>2930.000000</td>
+      <td>13</td>
+      <td>572</td>
+      <td>106</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930.000000</td>
+      <td>2930</td>
+      <td>2930</td>
+      <td>2930.000000</td>
     </tr>
     <tr>
       <th>unique</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2</td>
+      <td>2</td>
+      <td>4</td>
+      <td>4</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>4</td>
+      <td>5</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>10</td>
+      <td>6</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>16</td>
-      <td>NaN</td>
-      <td>4043</td>
-      <td>3</td>
-      <td>105</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>6936</td>
     </tr>
     <tr>
       <th>top</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>RL</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>Pave</td>
+      <td>Grvl</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>Gd</td>
+      <td>MnPrv</td>
+      <td>Shed</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>WD</td>
+      <td>Normal</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>UA</td>
-      <td>NaN</td>
-      <td>N725MQ</td>
-      <td>EWR</td>
-      <td>ORD</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>2013-09-20 08:00:00</td>
     </tr>
     <tr>
       <th>freq</th>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>2273</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2918</td>
+      <td>120</td>
+      <td>1859</td>
+      <td>2633</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>4</td>
+      <td>330</td>
+      <td>95</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>2536</td>
+      <td>2413</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>58665</td>
-      <td>NaN</td>
-      <td>575</td>
-      <td>120835</td>
-      <td>17283</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>94</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>2013.0</td>
-      <td>6.548510</td>
-      <td>15.710787</td>
-      <td>1349.109947</td>
-      <td>1344.254840</td>
-      <td>12.639070</td>
-      <td>1502.054999</td>
-      <td>1536.380220</td>
-      <td>6.895377</td>
+      <td>1465.50000</td>
+      <td>7.144645e+08</td>
+      <td>57.387372</td>
       <td>NaN</td>
-      <td>1971.923620</td>
+      <td>69.224590</td>
+      <td>10147.921843</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>150.686460</td>
-      <td>1039.912604</td>
-      <td>13.180247</td>
-      <td>26.230100</td>
       <td>NaN</td>
+      <td>...</td>
+      <td>2.243345</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>50.635154</td>
+      <td>6.216041</td>
+      <td>2007.790444</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>180796.060068</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>0.0</td>
-      <td>3.414457</td>
-      <td>8.768607</td>
-      <td>488.281791</td>
-      <td>467.335756</td>
-      <td>40.210061</td>
-      <td>533.264132</td>
-      <td>497.457142</td>
-      <td>44.633292</td>
+      <td>845.96247</td>
+      <td>1.887308e+08</td>
+      <td>42.638025</td>
       <td>NaN</td>
-      <td>1632.471938</td>
+      <td>23.365335</td>
+      <td>7880.017759</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>93.688305</td>
-      <td>733.233033</td>
-      <td>4.661316</td>
-      <td>19.300846</td>
       <td>NaN</td>
+      <td>...</td>
+      <td>35.597181</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>566.344288</td>
+      <td>2.714492</td>
+      <td>1.316613</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>79886.692357</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>2013.0</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>106.000000</td>
-      <td>-43.000000</td>
-      <td>1.000000</td>
-      <td>1.000000</td>
-      <td>-86.000000</td>
-      <td>NaN</td>
-      <td>1.000000</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>1.00000</td>
+      <td>5.263011e+08</td>
       <td>20.000000</td>
-      <td>17.000000</td>
-      <td>1.000000</td>
+      <td>NaN</td>
+      <td>21.000000</td>
+      <td>1300.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
       <td>0.000000</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>2006.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>12789.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>2013.0</td>
+      <td>733.25000</td>
+      <td>5.284770e+08</td>
+      <td>20.000000</td>
+      <td>NaN</td>
+      <td>58.000000</td>
+      <td>7440.250000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000</td>
       <td>4.000000</td>
-      <td>8.000000</td>
-      <td>907.000000</td>
-      <td>906.000000</td>
-      <td>-5.000000</td>
-      <td>1104.000000</td>
-      <td>1124.000000</td>
-      <td>-17.000000</td>
-      <td>NaN</td>
-      <td>553.000000</td>
+      <td>2007.000000</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>82.000000</td>
-      <td>502.000000</td>
-      <td>9.000000</td>
-      <td>8.000000</td>
-      <td>NaN</td>
+      <td>129500.000000</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>2013.0</td>
-      <td>7.000000</td>
-      <td>16.000000</td>
-      <td>1401.000000</td>
-      <td>1359.000000</td>
-      <td>-2.000000</td>
-      <td>1535.000000</td>
-      <td>1556.000000</td>
-      <td>-5.000000</td>
+      <td>1465.50000</td>
+      <td>5.354536e+08</td>
+      <td>50.000000</td>
       <td>NaN</td>
-      <td>1496.000000</td>
+      <td>68.000000</td>
+      <td>9436.500000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>129.000000</td>
-      <td>872.000000</td>
-      <td>13.000000</td>
-      <td>29.000000</td>
       <td>NaN</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>6.000000</td>
+      <td>2008.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>160000.000000</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>2013.0</td>
-      <td>10.000000</td>
-      <td>23.000000</td>
-      <td>1744.000000</td>
-      <td>1729.000000</td>
-      <td>11.000000</td>
-      <td>1940.000000</td>
-      <td>1945.000000</td>
-      <td>14.000000</td>
+      <td>2197.75000</td>
+      <td>9.071811e+08</td>
+      <td>70.000000</td>
       <td>NaN</td>
-      <td>3465.000000</td>
+      <td>80.000000</td>
+      <td>11555.250000</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>192.000000</td>
-      <td>1389.000000</td>
-      <td>17.000000</td>
-      <td>44.000000</td>
       <td>NaN</td>
+      <td>...</td>
+      <td>0.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0.000000</td>
+      <td>8.000000</td>
+      <td>2009.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>213500.000000</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>2013.0</td>
+      <td>2930.00000</td>
+      <td>1.007100e+09</td>
+      <td>190.000000</td>
+      <td>NaN</td>
+      <td>313.000000</td>
+      <td>215245.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>800.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>17000.000000</td>
       <td>12.000000</td>
-      <td>31.000000</td>
-      <td>2400.000000</td>
-      <td>2359.000000</td>
-      <td>1301.000000</td>
-      <td>2400.000000</td>
-      <td>2359.000000</td>
-      <td>1272.000000</td>
-      <td>NaN</td>
-      <td>8500.000000</td>
+      <td>2010.000000</td>
       <td>NaN</td>
       <td>NaN</td>
+      <td>755000.000000</td>
+    </tr>
+  </tbody>
+</table>
+<p>11 rows × 82 columns</p>
+</div></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="grouped-aggregation">
+<h2>Grouped aggregation<a class="headerlink" href="#grouped-aggregation" title="Permalink to this headline">¶</a></h2>
+<p>In the section above, we talked about <strong>summary</strong> operations in the context of collapsing a DataFrame to a single row. This is not always the case – often we are interested in examining specific groups in our data and we want to perform summary operations for these groups. Thus, we are interested in collapsing to a <em>single row per group</em>. This is known as a <strong>grouped aggregation</strong>.</p>
+<p>For example, in the following illustration we are interested in finding the sum of variable <code class="docutils literal notranslate"><span class="pre">B</span></code> for each category/value in variable <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/summarizing-by-groups.png?raw=true" alt="summarizing-by-groups.png" width="80%" height="80%">
+</center>
+<p>This can be useful when we want to aggregate by category:</p>
+<ul class="simple">
+<li><p>Maximum temperature <em>by month</em></p></li>
+<li><p>Total home runs <em>by team</em></p></li>
+<li><p>Total sales <em>by neighborhood</em></p></li>
+<li><p>Average number of seats <em>by plane manufacturer</em></p></li>
+</ul>
+<p>When we summarize by groups, we can use the same aggregation methods we previously did</p>
+<ul class="simple">
+<li><p>Summary methods for a specific summary operation: <code class="docutils literal notranslate"><span class="pre">DataFrame.sum()</span></code></p></li>
+<li><p>Describe method for a collection of summary operations: <code class="docutils literal notranslate"><span class="pre">DataFrame.describe()</span></code></p></li>
+<li><p>Agg method for flexibility in summary operations: <code class="docutils literal notranslate"><span class="pre">DataFrame.agg({'VariableName':</span> <span class="pre">['sum',</span> <span class="pre">'mean']})</span></code></p></li>
+</ul>
+<p>The only difference is the need to <strong>set the DataFrame group prior to aggregating</strong>. We can set the DataFrame group by calling the <code class="docutils literal notranslate"><span class="pre">DataFrame.groupby()</span></code> method and passing a variable name:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_grp</span> <span class="o">=</span> <span class="n">ames</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">)</span>
+<span class="n">ames_grp</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;pandas.core.groupby.generic.DataFrameGroupBy object at 0x10dceb760&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that a DataFrame doesn’t print when it’s grouped. The <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method is just setting the group - you can see the changed DataFrame class:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ames_grp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pandas.core.groupby.generic.DataFrameGroupBy
+</pre></div>
+</div>
+</div>
+</div>
+<p>The groupby object is really just a dictionary of index-mappings, which we could look at if we wanted to:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_grp</span><span class="o">.</span><span class="n">groups</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Blmngtn&#39;: [52, 53, 468, 469, 470, 471, 472, 473, 1080, 1081, 1082, 1083, 1084, 1741, 1742, 1743, 1744, 2419, 2420, 2421, 2422, 2423, 2424, 2425, 2426, 2427, 2428, 2429], &#39;Blueste&#39;: [298, 299, 932, 933, 934, 935, 1542, 1543, 2225, 2227], &#39;BrDale&#39;: [29, 30, 31, 402, 403, 404, 405, 406, 407, 1039, 1040, 1041, 1042, 1043, 1044, 1045, 1675, 1676, 1677, 1678, 1679, 2364, 2365, 2366, 2367, 2368, 2369, 2370, 2371, 2372], &#39;BrkSide&#39;: [129, 130, 191, 192, 193, 194, 195, 196, 197, 198, 199, 614, 615, 728, 729, 730, 731, 732, 733, 734, 735, 736, 737, 738, 739, 740, 741, 742, 743, 744, 745, 746, 747, 748, 1219, 1220, 1221, 1222, 1327, 1328, 1329, 1330, 1331, 1332, 1333, 1334, 1335, 1336, 1337, 1338, 1339, 1340, 1341, 1342, 1343, 1344, 1345, 1348, 1349, 1350, 1351, 1352, 1353, 1354, 1355, 1901, 1902, 1903, 1904, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2022, 2023, 2024, 2025, 2554, 2555, 2556, 2557, 2670, 2671, 2672, 2673, 2675, 2676, 2677, ...], &#39;ClearCr&#39;: [208, 209, 210, 228, 229, 232, 233, 255, 779, 781, 782, 785, 833, 834, 1374, 1392, 1395, 1398, 1399, 1400, 1401, 1402, 1406, 1429, 1430, 2045, 2071, 2072, 2073, 2077, 2115, 2116, 2117, 2118, 2701, 2725, 2726, 2727, 2730, 2731, 2764, 2765, 2766, 2767], &#39;CollgCr&#39;: [249, 250, 251, 252, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 818, 819, 820, 821, 822, 823, 824, 825, 826, 827, 828, 829, 830, 831, 835, 836, 837, 838, 839, 840, 841, 842, 843, 844, 845, 846, 847, 848, 849, 850, 851, 852, 853, 854, 855, 856, 857, 858, 859, 860, 861, 862, 863, 864, 865, 866, 867, 868, 869, 870, 871, 872, 873, 874, 875, 876, 877, 878, 879, 880, 881, 882, 883, 1423, 1424, 1425, 1426, 1431, 1432, 1433, 1434, 1435, 1436, 1437, 1438, 1439, 1440, 1441, 1442, ...], &#39;Crawfor&#39;: [293, 294, 295, 296, 297, 300, 308, 912, 915, 917, 918, 919, 920, 921, 922, 923, 924, 925, 926, 927, 928, 929, 930, 931, 936, 937, 938, 944, 1523, 1524, 1525, 1526, 1528, 1530, 1531, 1532, 1533, 1534, 1535, 1536, 1537, 1538, 1539, 1540, 1541, 1559, 1560, 1561, 1562, 2196, 2197, 2198, 2199, 2201, 2202, 2203, 2204, 2205, 2206, 2207, 2208, 2209, 2210, 2211, 2212, 2213, 2214, 2215, 2216, 2217, 2218, 2219, 2220, 2221, 2222, 2223, 2224, 2226, 2228, 2229, 2230, 2245, 2246, 2850, 2853, 2854, 2857, 2858, 2859, 2860, 2861, 2862, 2863, 2864, 2865, 2866, 2867, 2868, 2869, 2870, ...], &#39;Edwards&#39;: [234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 287, 762, 763, 764, 765, 766, 767, 783, 784, 786, 787, 788, 789, 790, 791, 792, 793, 794, 795, 796, 797, 798, 884, 885, 886, 887, 888, 889, 890, 891, 892, 893, 894, 895, 896, 897, 898, 899, 900, 901, 902, 903, 904, 1375, 1403, 1404, 1405, 1407, 1408, 1409, 1410, 1411, 1412, 1413, 1414, 1415, 1416, 1417, 1485, 1486, 1487, 1488, 1489, 1490, 1491, 1492, 1493, 1494, 1495, 1496, 1497, 1498, 1499, 1500, 1501, 1502, 1503, 1504, ...], &#39;Gilbert&#39;: [4, 5, 9, 10, 11, 12, 13, 16, 18, 51, 54, 55, 56, 57, 58, 344, 345, 346, 347, 348, 353, 354, 355, 356, 357, 358, 359, 360, 361, 362, 363, 364, 369, 464, 465, 466, 467, 474, 475, 476, 477, 478, 479, 480, 481, 483, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 992, 993, 994, 995, 996, 997, 998, 1003, 1004, 1005, 1006, 1007, 1013, 1015, 1085, 1086, 1087, 1088, 1089, 1090, 1092, 1093, 1094, 1095, 1096, 1097, 1615, 1616, 1617, 1618, 1619, 1621, 1622, 1623, 1624, 1625, 1626, 1627, 1628, 1629, 1630, 1638, 1727, 1728, ...], &#39;Greens&#39;: [106, 107, 575, 1857, 2518, 2519, 2520, 2521], &#39;GrnHill&#39;: [2256, 2892], &#39;IDOTRR&#39;: [205, 206, 301, 302, 303, 304, 305, 306, 307, 726, 727, 754, 755, 758, 759, 760, 939, 940, 941, 942, 943, 945, 1359, 1360, 1361, 1362, 1363, 1364, 1365, 1368, 1369, 1370, 1544, 1545, 1546, 1547, 1548, 1549, 1550, 1551, 1552, 1553, 1554, 1555, 1556, 1557, 1558, 1610, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037, 2038, 2039, 2043, 2231, 2232, 2233, 2234, 2235, 2236, 2237, 2238, 2239, 2240, 2241, 2242, 2243, 2244, 2669, 2690, 2691, 2692, 2693, 2694, 2695, 2696, 2697, 2872, 2873, 2874, 2875, 2876, 2877, 2878, 2879, 2880, 2881, 2882], &#39;Landmrk&#39;: [2788], &#39;MeadowV&#39;: [326, 327, 328, 329, 330, 331, 332, 973, 975, 977, 978, 979, 1593, 1594, 1595, 1596, 1597, 1599, 1600, 2283, 2284, 2285, 2286, 2287, 2288, 2289, 2290, 2908, 2909, 2910, 2913, 2914, 2916, 2917, 2918, 2919, 2920], &#39;Mitchel&#39;: [309, 310, 311, 312, 313, 322, 323, 324, 325, 333, 334, 335, 336, 337, 338, 339, 340, 946, 947, 948, 949, 950, 951, 952, 953, 954, 969, 970, 971, 972, 974, 976, 980, 981, 982, 983, 984, 985, 986, 987, 988, 1563, 1564, 1565, 1566, 1567, 1568, 1569, 1588, 1589, 1590, 1591, 1592, 1598, 1601, 1602, 1603, 1604, 1605, 1606, 1607, 1608, 1609, 2247, 2248, 2249, 2250, 2251, 2252, 2253, 2254, 2277, 2278, 2279, 2280, 2281, 2282, 2291, 2292, 2293, 2294, 2295, 2296, 2297, 2298, 2299, 2300, 2301, 2302, 2303, 2304, 2885, 2886, 2887, 2888, 2889, 2890, 2903, 2904, 2905, ...], &#39;NAmes&#39;: [0, 1, 2, 3, 23, 24, 25, 26, 27, 28, 117, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 159, 160, 161, 162, 163, 164, 165, 166, 167, 168, 341, 342, 343, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 418, 419, 593, 594, 595, 599, 600, 601, 602, 603, 604, 605, 606, 607, 608, 609, 610, 611, 612, 613, 616, 617, 618, 619, 620, 621, 622, 623, 624, ...], &#39;NPkVill&#39;: [32, 33, 34, 35, 408, 409, 410, 411, 412, 413, 414, 415, 416, 417, 1046, 1047, 1048, 1680, 1681, 1682, 2373, 2376, 2377], &#39;NWAmes&#39;: [19, 20, 21, 110, 111, 112, 113, 114, 115, 116, 118, 370, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380, 381, 382, 387, 388, 389, 390, 391, 579, 580, 581, 582, 583, 584, 585, 586, 587, 588, 589, 590, 591, 592, 596, 597, 598, 1016, 1017, 1018, 1019, 1020, 1021, 1022, 1023, 1024, 1025, 1026, 1027, 1028, 1029, 1030, 1031, 1032, 1185, 1186, 1187, 1188, 1189, 1190, 1191, 1197, 1198, 1199, 1200, 1201, 1203, 1643, 1644, 1645, 1646, 1647, 1648, 1649, 1650, 1651, 1652, 1653, 1654, 1655, 1656, 1657, 1658, 1659, 1660, 1661, 1863, 1864, 1865, 1866, 1867, ...], &#39;NoRidge&#39;: [59, 60, 61, 62, 63, 64, 65, 90, 91, 92, 494, 495, 496, 497, 498, 499, 500, 501, 502, 503, 504, 505, 564, 1098, 1099, 1100, 1101, 1102, 1103, 1104, 1105, 1106, 1107, 1108, 1109, 1157, 1158, 1760, 1761, 1762, 1763, 1764, 1765, 1766, 1767, 1768, 1769, 1770, 1771, 1772, 1773, 1774, 1832, 1833, 2442, 2443, 2444, 2445, 2446, 2447, 2448, 2449, 2450, 2451, 2452, 2453, 2499, 2500, 2501, 2502, 2503], &#39;NridgHt&#39;: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 420, 421, 422, 423, 424, 425, 426, 427, 428, 429, 430, 431, 432, 433, 434, 435, 436, 437, 438, 439, 440, 441, 442, 443, 444, 445, 446, 447, 448, 449, 450, 451, 452, 453, 454, 455, 456, 457, 458, 459, 460, 461, 462, 463, 482, 1050, 1051, 1052, 1053, 1054, 1055, 1056, 1057, 1058, 1059, 1060, 1061, 1062, 1063, 1064, 1065, 1066, 1067, 1068, 1069, 1070, 1071, 1072, 1073, 1074, 1075, 1076, 1077, 1078, 1079, 1091, 1684, 1685, 1686, 1687, 1688, 1689, 1690, 1691, 1692, ...], &#39;OldTown&#39;: [158, 169, 170, 171, 172, 173, 174, 175, 176, 177, 178, 179, 180, 181, 182, 183, 184, 185, 186, 187, 188, 189, 190, 200, 201, 202, 203, 204, 207, 650, 654, 655, 656, 657, 658, 659, 660, 661, 662, 663, 664, 665, 691, 692, 693, 694, 695, 696, 697, 698, 699, 700, 701, 702, 703, 704, 705, 706, 707, 708, 709, 710, 711, 712, 713, 714, 715, 716, 717, 718, 719, 720, 721, 722, 723, 724, 725, 749, 750, 751, 752, 753, 756, 757, 1254, 1255, 1257, 1258, 1259, 1283, 1284, 1285, 1286, 1287, 1288, 1289, 1290, 1291, 1292, 1293, ...], &#39;SWISU&#39;: [211, 212, 213, 214, 285, 286, 288, 289, 290, 291, 292, 905, 906, 907, 908, 909, 910, 911, 913, 914, 916, 1515, 1516, 1517, 1518, 1519, 1520, 1521, 1522, 1527, 1529, 2047, 2080, 2194, 2195, 2200, 2703, 2704, 2842, 2845, 2846, 2847, 2848, 2849, 2851, 2852, 2855, 2856], &#39;Sawyer&#39;: [83, 84, 85, 86, 87, 88, 89, 108, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 230, 231, 554, 555, 556, 557, 558, 559, 560, 561, 562, 578, 761, 768, 769, 770, 771, 772, 773, 774, 775, 776, 777, 778, 780, 1149, 1150, 1151, 1152, 1153, 1154, 1156, 1371, 1372, 1373, 1376, 1377, 1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386, 1387, 1388, 1389, 1390, 1391, 1393, 1394, 1396, 1397, 1818, 1819, 1820, 1821, 1822, 1823, 1824, 1825, 1826, 1829, 1830, 1831, 1861, 2044, 2048, 2049, 2050, 2051, 2052, 2053, 2054, 2055, 2056, 2057, ...], &#39;SawyerW&#39;: [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 244, 245, 246, 247, 248, 253, 254, 533, 534, 535, 536, 537, 538, 539, 540, 541, 542, 543, 544, 545, 546, 547, 548, 549, 550, 551, 552, 553, 799, 800, 801, 802, 803, 804, 805, 806, 807, 808, 809, 810, 811, 812, 813, 814, 815, 816, 817, 832, 1131, 1132, 1133, 1134, 1135, 1136, 1137, 1138, 1139, 1140, 1141, 1142, 1143, 1144, 1145, 1146, 1147, 1148, 1418, 1419, 1420, 1421, 1422, 1427, 1428, 1806, 1807, 1808, 1809, 1810, 1811, 1812, 1813, 1814, 1815, 1816, 1817, 2089, 2090, 2091, 2092, ...], &#39;Somerst&#39;: [22, 66, 67, 68, 69, 70, 71, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 109, 383, 384, 385, 386, 506, 507, 508, 509, 510, 511, 512, 513, 514, 515, 516, 517, 518, 519, 520, 521, 522, 523, 524, 525, 526, 527, 528, 529, 530, 531, 532, 565, 566, 567, 568, 569, 570, 571, 572, 573, 1110, 1111, 1112, 1113, 1114, 1115, 1116, 1117, 1118, 1119, 1120, 1121, 1122, 1123, 1124, 1125, 1126, 1127, 1128, 1129, 1130, 1159, 1160, 1161, 1162, 1163, 1164, 1165, 1166, 1167, 1168, 1169, 1170, 1171, 1172, 1173, 1174, 1175, 1176, ...], &#39;StoneBr&#39;: [6, 7, 8, 14, 15, 17, 349, 350, 351, 352, 365, 366, 367, 368, 999, 1000, 1001, 1002, 1008, 1009, 1010, 1011, 1012, 1014, 1620, 1631, 1632, 1633, 1634, 1635, 1636, 1637, 1639, 1640, 1641, 1642, 2322, 2326, 2327, 2328, 2329, 2330, 2331, 2332, 2333, 2334, 2335, 2336, 2339, 2340, 2341], &#39;Timber&#39;: [314, 315, 316, 317, 318, 319, 320, 321, 955, 956, 957, 958, 959, 960, 961, 962, 963, 964, 965, 966, 967, 968, 1570, 1571, 1572, 1573, 1574, 1575, 1576, 1577, 1578, 1579, 1580, 1581, 1582, 1583, 1584, 1585, 1586, 1587, 2255, 2257, 2258, 2259, 2260, 2261, 2262, 2263, 2264, 2265, 2266, 2267, 2268, 2269, 2270, 2271, 2272, 2273, 2274, 2275, 2276, 2891, 2893, 2894, 2895, 2896, 2897, 2898, 2899, 2900, 2901, 2902], &#39;Veenker&#39;: [563, 574, 576, 577, 1155, 1178, 1179, 1180, 1181, 1182, 1183, 1827, 1828, 1853, 1854, 1855, 1856, 1858, 1859, 1860, 2498, 2516, 2517, 2522]}
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also access a group using the <code class="docutils literal notranslate"><span class="pre">.get_group()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the Bloomington neighborhood group</span>
+<span class="n">ames_grp</span><span class="o">.</span><span class="n">get_group</span><span class="p">(</span><span class="s1">&#39;Blmngtn&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Order</th>
+      <th>PID</th>
+      <th>MS SubClass</th>
+      <th>MS Zoning</th>
+      <th>Lot Frontage</th>
+      <th>Lot Area</th>
+      <th>Street</th>
+      <th>Alley</th>
+      <th>Lot Shape</th>
+      <th>Land Contour</th>
+      <th>...</th>
+      <th>Pool Area</th>
+      <th>Pool QC</th>
+      <th>Fence</th>
+      <th>Misc Feature</th>
+      <th>Misc Val</th>
+      <th>Mo Sold</th>
+      <th>Yr Sold</th>
+      <th>Sale Type</th>
+      <th>Sale Condition</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>52</th>
+      <td>53</td>
+      <td>528228285</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>43.0</td>
+      <td>3203</td>
+      <td>Pave</td>
       <td>NaN</td>
-      <td>695.000000</td>
-      <td>4983.000000</td>
-      <td>23.000000</td>
-      <td>59.000000</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
       <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>1</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>160000</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>54</td>
+      <td>528228440</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>43.0</td>
+      <td>3182</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>4</td>
+      <td>2010</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>192000</td>
+    </tr>
+    <tr>
+      <th>468</th>
+      <td>469</td>
+      <td>528228290</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>53.0</td>
+      <td>3684</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>6</td>
+      <td>2009</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>174000</td>
+    </tr>
+    <tr>
+      <th>469</th>
+      <td>470</td>
+      <td>528228295</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>51.0</td>
+      <td>3635</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2009</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>175900</td>
+    </tr>
+    <tr>
+      <th>470</th>
+      <td>471</td>
+      <td>528228435</td>
+      <td>120</td>
+      <td>RL</td>
+      <td>43.0</td>
+      <td>3182</td>
+      <td>Pave</td>
+      <td>NaN</td>
+      <td>Reg</td>
+      <td>Lvl</td>
+      <td>...</td>
+      <td>0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>5</td>
+      <td>2009</td>
+      <td>WD</td>
+      <td>Normal</td>
+      <td>192500</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 82 columns</p>
+</div></div></div>
+</div>
+<p>If we then call an aggregation method after our <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> call, we will see the DataFrame returned with group-level aggregations:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+
+    .dataframe thead tr:last-of-type th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">SalePrice</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+    </tr>
+    <tr>
+      <th>Neighborhood</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Blmngtn</th>
+      <td>196661.678571</td>
+      <td>191500.0</td>
+    </tr>
+    <tr>
+      <th>Blueste</th>
+      <td>143590.000000</td>
+      <td>130500.0</td>
+    </tr>
+    <tr>
+      <th>BrDale</th>
+      <td>105608.333333</td>
+      <td>106000.0</td>
+    </tr>
+    <tr>
+      <th>BrkSide</th>
+      <td>124756.250000</td>
+      <td>126750.0</td>
+    </tr>
+    <tr>
+      <th>ClearCr</th>
+      <td>208662.090909</td>
+      <td>197500.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This process always follows this model:</p>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/model-for-grouped-aggs.png?raw=true" alt="model-for-grouped-aggs.png" width="80%" height="80%">
+</center><div class="section" id="groups-as-index-vs-variables">
+<h3>Groups as index vs. variables<a class="headerlink" href="#groups-as-index-vs-variables" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that the grouped variable becomes the Index in our example!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">index</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;Blmngtn&#39;, &#39;Blueste&#39;, &#39;BrDale&#39;, &#39;BrkSide&#39;, &#39;ClearCr&#39;, &#39;CollgCr&#39;,
+       &#39;Crawfor&#39;, &#39;Edwards&#39;, &#39;Gilbert&#39;, &#39;Greens&#39;, &#39;GrnHill&#39;, &#39;IDOTRR&#39;,
+       &#39;Landmrk&#39;, &#39;MeadowV&#39;, &#39;Mitchel&#39;, &#39;NAmes&#39;, &#39;NPkVill&#39;, &#39;NWAmes&#39;,
+       &#39;NoRidge&#39;, &#39;NridgHt&#39;, &#39;OldTown&#39;, &#39;SWISU&#39;, &#39;Sawyer&#39;, &#39;SawyerW&#39;,
+       &#39;Somerst&#39;, &#39;StoneBr&#39;, &#39;Timber&#39;, &#39;Veenker&#39;],
+      dtype=&#39;object&#39;, name=&#39;Neighborhood&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This is the default behavior of pandas, and probably how pandas wants to be used.  In fact, this is the fastest way to do it, but it’s a matter of less than a millisecond. However, you aren’t always going to see people group by the index. Instead of setting the group as the index, we can set the group as a variable.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The grouped variable can remain a Series/variable by adding the <code class="docutils literal notranslate"><span class="pre">as_index</span> <span class="pre">=</span> <span class="pre">False</span></code> parameter/argument to <code class="docutils literal notranslate"><span class="pre">groupby()</span></code>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;median&#39;</span><span class="p">]})</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Neighborhood</th>
+      <th colspan="2" halign="left">SalePrice</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th></th>
+      <th>mean</th>
+      <th>median</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>196661.678571</td>
+      <td>191500.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blueste</td>
+      <td>143590.000000</td>
+      <td>130500.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BrDale</td>
+      <td>105608.333333</td>
+      <td>106000.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BrkSide</td>
+      <td>124756.250000</td>
+      <td>126750.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ClearCr</td>
+      <td>208662.090909</td>
+      <td>197500.0</td>
     </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
 </div>
+<div class="section" id="grouping-by-multiple-variables">
+<h3>Grouping by multiple variables<a class="headerlink" href="#grouping-by-multiple-variables" title="Permalink to this headline">¶</a></h3>
+<p>Sometimes we have multiple categories by which we’d like to group. To extend our example, assume we want to find the average sale price by neighborhood <em><strong>AND</strong></em> year sold. We can pass a list of variable names to the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;Neighborhood&#39;</span><span class="p">,</span> <span class="s1">&#39;Yr Sold&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;SalePrice&#39;</span><span class="p">:</span> <span class="s1">&#39;mean&#39;</span><span class="p">})</span>
+</pre></div>
 </div>
-<div class="section" id="questions">
-<h2>Questions<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
-<p>Are there any questions before we move on?</p>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Neighborhood</th>
+      <th>Yr Sold</th>
+      <th>SalePrice</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>2006</td>
+      <td>214424.454545</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blmngtn</td>
+      <td>2007</td>
+      <td>194671.500000</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Blmngtn</td>
+      <td>2008</td>
+      <td>190714.400000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Blmngtn</td>
+      <td>2009</td>
+      <td>177266.666667</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Blmngtn</td>
+      <td>2010</td>
+      <td>176000.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>Timber</td>
+      <td>2010</td>
+      <td>224947.625000</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>Veenker</td>
+      <td>2006</td>
+      <td>270000.000000</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>Veenker</td>
+      <td>2007</td>
+      <td>253577.777778</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>Veenker</td>
+      <td>2008</td>
+      <td>225928.571429</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>Veenker</td>
+      <td>2009</td>
+      <td>253962.500000</td>
+    </tr>
+  </tbody>
+</table>
+<p>130 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h3>Knowledge check<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>How would you convert the following statement into a grouped aggregation syntax: “what is the average above ground square footage of homes based on neighbhorhood and bedroom count”?</p></li>
+<li><p>Compute the above statement (variable hints: <code class="docutils literal notranslate"><span class="pre">Gr</span> <span class="pre">Liv</span> <span class="pre">Area</span></code> = above ground square footage, <code class="docutils literal notranslate"><span class="pre">Neighborhood</span></code> = neighborhood, <code class="docutils literal notranslate"><span class="pre">Bedroom</span> <span class="pre">AbvGr</span></code> = bedroom count).</p></li>
+<li><p>Using the results from #2, find out which neighborhoods have 1 bedrooms homes that average more than 1500 above ground square feet.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Using the Ames housing data…</p>
+<ol class="simple">
+<li><p>What neighbhorhood has the largest median sales price? (hint: check out <code class="docutils literal notranslate"><span class="pre">sort_values()</span></code>)</p></li>
+<li><p>What is the mean and median sales price based on the number of bedrooms (<code class="docutils literal notranslate"><span class="pre">Bedroom</span> <span class="pre">AbvGr</span></code>)?</p></li>
+<li><p>Which neighbhorhood has the largest median sales price for 3 bedroom homes? Which neighborhood has the smallest median sales price for 3 bedroom homes?</p></li>
+<li><p>Compute the sales price per square footage (<code class="docutils literal notranslate"><span class="pre">Gr</span> <span class="pre">Liv</span> <span class="pre">Area</span></code>) per home. Call this variable <code class="docutils literal notranslate"><span class="pre">price_per_sqft</span></code>. Now compute the median <code class="docutils literal notranslate"><span class="pre">price_per_sqft</span></code> per neighborhood. Which neighborhood has the largest median <code class="docutils literal notranslate"><span class="pre">price_per_sqft</span></code>? Does this differ from the neighborhood identified in #1? What information does this provide you?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.4
+IPython version      : 7.26.0
+
+jupyterlab: 3.1.4
+pandas    : 1.2.4
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -1722,7 +2261,21 @@ dtype: float64
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-3b.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 3b: Manipulating data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
