@@ -1,0 +1,2496 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lession 4a: Tidy data &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/04-module/lesson-4a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F04-module/lesson-4a.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/04-module/lesson-4a.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/04-module/lesson-4a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tools-for-reshaping">
+   Tools for reshaping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#melting-wide-data">
+   Melting wide data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-long-data">
+   Pivoting long data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-with-special-needs">
+   Pivoting with special needs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lession 4a: Tidy data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tools-for-reshaping">
+   Tools for reshaping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#melting-wide-data">
+   Melting wide data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-long-data">
+   Pivoting long data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pivoting-with-special-needs">
+   Pivoting with special needs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lession-4a-tidy-data">
+<h1>Lession 4a: Tidy data<a class="headerlink" href="#lession-4a-tidy-data" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://vita.had.co.nz/papers/tidy-data.pdf">Tidy data</a> is about “linking the structure of a dataset with its semantics (its meaning)”. It is defined by:</p>
+<ol class="simple">
+<li><p>Each variable forms a column</p></li>
+<li><p>Each observation forms a row</p></li>
+<li><p>Each type of observational unit forms a table</p></li>
+</ol>
+<p>Often you’ll need to reshape a dataframe to make it tidy (or for some other purpose).</p>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/tidy.png?raw=true" alt="tidy-data" width="80%" height="80%">
+</center>
+<p>Source: <a class="reference external" href="https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure">R4DS</a></p>
+<p>Once a DataFrame is tidy, it becomes much easier to compute summary statistics, join with other datasets, visualize, apply machine learning models, etc. In this lesson we will focus on ways to reshape DataFrames so that they meet the tidy guidelines.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul class="simple">
+<li><p>Reshape data from wide to long</p></li>
+<li><p>Reshape data from long to wide</p></li>
+</ul>
+</div>
+<div class="section" id="tools-for-reshaping">
+<h2>Tools for reshaping<a class="headerlink" href="#tools-for-reshaping" title="Permalink to this headline">¶</a></h2>
+<p>Pandas provides multiple methods that help to reshape DataFrames:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.melt()</span></code>: make wide data long.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.pivot()</span></code>: make long data width.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code>: same as <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code> but can handle multiple indexes.</p></li>
+</ul>
+<center>
+<img src="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/images/melt_pivot.gif?raw=true" alt="melt-pivot" width="60%" height="60%">
+</center>
+<p>Source: <a class="reference external" href="https://github.com/gadenbuie/tidyexplain#spread-and-gather">Garrick Aden-Buie</a></p>
+<p>The following will illustrate each of these for their unique purpose.</p>
+</div>
+<div class="section" id="melting-wide-data">
+<h2>Melting wide data<a class="headerlink" href="#melting-wide-data" title="Permalink to this headline">¶</a></h2>
+<p>The below data shows how many homes were sold within each neighborhood across the different years. Is this considered ‘tidy data’?  No because we have a variable (year sold) that is represented as the columns and another variable (number of homes sold) filled in as the element values.</p>
+<p>If you wanted to answer questions like: “Does the number of homes sold vary depending on year?” then the below data is not in the appropriate form to answer this question.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">ames_wide</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ames_wide.csv&#39;</span><span class="p">)</span>
+<span class="n">ames_wide</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blueste</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BrDale</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BrkSide</td>
+      <td>19.0</td>
+      <td>24.0</td>
+      <td>31.0</td>
+      <td>23.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ClearCr</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In this example we would consider this data “wide” and our objective is to convert it into a DataFrame with three variables:</p>
+<ol class="simple">
+<li><p>neighborhood</p></li>
+<li><p>year</p></li>
+<li><p>homes_sold</p></li>
+</ol>
+<p>To do so we’ll use the <code class="docutils literal notranslate"><span class="pre">.melt()</span></code> method. <code class="docutils literal notranslate"><span class="pre">.melt()</span></code> arguments include:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id_vars</span></code>: Identifier column</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">var_name</span></code>: Name to give the new variable represented by the old column headers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">value_name</span></code>: Name to give the new variable represented by the old element values</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_melt</span> <span class="o">=</span> <span class="n">ames_wide</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span><span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+<span class="n">ames_melt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>year</th>
+      <th>homes_sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>2006</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blueste</td>
+      <td>2006</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BrDale</td>
+      <td>2006</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BrkSide</td>
+      <td>2006</td>
+      <td>19.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ClearCr</td>
+      <td>2006</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>SawyerW</td>
+      <td>2010</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Somerst</td>
+      <td>2010</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>StoneBr</td>
+      <td>2010</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Timber</td>
+      <td>2010</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Veenker</td>
+      <td>2010</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>140 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">value_vars</span></code> argument allows us to select which specific variables we want to “melt” (if you don’t specify <code class="docutils literal notranslate"><span class="pre">value_vars</span></code>, all non-identifier columns will be used). For example, below I’m omitting the 2006 column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_wide</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>
+    <span class="n">id_vars</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span>
+    <span class="n">value_vars</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2008&#39;</span><span class="p">,</span> <span class="s1">&#39;2009&#39;</span><span class="p">,</span> <span class="s1">&#39;2010&#39;</span><span class="p">],</span> 
+    <span class="n">var_name</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> 
+    <span class="n">value_name</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>year</th>
+      <th>homes_sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>2007</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blueste</td>
+      <td>2007</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BrDale</td>
+      <td>2007</td>
+      <td>5.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BrkSide</td>
+      <td>2007</td>
+      <td>24.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ClearCr</td>
+      <td>2007</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>SawyerW</td>
+      <td>2010</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>Somerst</td>
+      <td>2010</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>StoneBr</td>
+      <td>2010</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>Timber</td>
+      <td>2010</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Veenker</td>
+      <td>2010</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>112 rows × 3 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="pivoting-long-data">
+<h2>Pivoting long data<a class="headerlink" href="#pivoting-long-data" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes, you want to make long data wide, which we can do with <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code>. When using <code class="docutils literal notranslate"><span class="pre">.pivot()</span></code> we need to specify the index to pivot on, and the columns that will be used to make the new columns of the wider dataframe. Let’s convert our <code class="docutils literal notranslate"><span class="pre">ames_melt</span></code> DataFrame back to the wide format:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_pivot</span> <span class="o">=</span> <span class="n">ames_melt</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+<span class="n">ames_pivot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>neighborhood</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Blmngtn</th>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Blueste</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BrDale</th>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>BrkSide</th>
+      <td>19.0</td>
+      <td>24.0</td>
+      <td>31.0</td>
+      <td>23.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>ClearCr</th>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>CollgCr</th>
+      <td>60.0</td>
+      <td>65.0</td>
+      <td>58.0</td>
+      <td>63.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>Crawfor</th>
+      <td>20.0</td>
+      <td>34.0</td>
+      <td>21.0</td>
+      <td>21.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Edwards</th>
+      <td>43.0</td>
+      <td>41.0</td>
+      <td>45.0</td>
+      <td>42.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>Gilbert</th>
+      <td>38.0</td>
+      <td>45.0</td>
+      <td>26.0</td>
+      <td>41.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>Greens</th>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>GrnHill</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>IDOTRR</th>
+      <td>20.0</td>
+      <td>25.0</td>
+      <td>26.0</td>
+      <td>13.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>Landmrk</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>MeadowV</th>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Mitchel</th>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>22.0</td>
+      <td>24.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>NAmes</th>
+      <td>99.0</td>
+      <td>105.0</td>
+      <td>86.0</td>
+      <td>95.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>NPkVill</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>NWAmes</th>
+      <td>25.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>35.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>NoRidge</th>
+      <td>17.0</td>
+      <td>17.0</td>
+      <td>14.0</td>
+      <td>13.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>NridgHt</th>
+      <td>32.0</td>
+      <td>43.0</td>
+      <td>31.0</td>
+      <td>45.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>OldTown</th>
+      <td>51.0</td>
+      <td>48.0</td>
+      <td>56.0</td>
+      <td>55.0</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>SWISU</th>
+      <td>12.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>Sawyer</th>
+      <td>38.0</td>
+      <td>37.0</td>
+      <td>30.0</td>
+      <td>23.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>SawyerW</th>
+      <td>20.0</td>
+      <td>21.0</td>
+      <td>25.0</td>
+      <td>41.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>Somerst</th>
+      <td>29.0</td>
+      <td>51.0</td>
+      <td>41.0</td>
+      <td>40.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>StoneBr</th>
+      <td>15.0</td>
+      <td>12.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>Timber</th>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>18.0</td>
+      <td>14.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Veenker</th>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>You’ll notice that Pandas set our specified index as the index of the new DataFrame and preserved the label of the columns. We can easily remove these names and reset the index to make our DataFrame look like it originally did:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames_pivot</span> <span class="o">=</span> <span class="n">ames_pivot</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ames_pivot</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ames_pivot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blueste</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>BrDale</td>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>BrkSide</td>
+      <td>19.0</td>
+      <td>24.0</td>
+      <td>31.0</td>
+      <td>23.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>ClearCr</td>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>CollgCr</td>
+      <td>60.0</td>
+      <td>65.0</td>
+      <td>58.0</td>
+      <td>63.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Crawfor</td>
+      <td>20.0</td>
+      <td>34.0</td>
+      <td>21.0</td>
+      <td>21.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Edwards</td>
+      <td>43.0</td>
+      <td>41.0</td>
+      <td>45.0</td>
+      <td>42.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Gilbert</td>
+      <td>38.0</td>
+      <td>45.0</td>
+      <td>26.0</td>
+      <td>41.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Greens</td>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>GrnHill</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>IDOTRR</td>
+      <td>20.0</td>
+      <td>25.0</td>
+      <td>26.0</td>
+      <td>13.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Landmrk</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>MeadowV</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Mitchel</td>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>22.0</td>
+      <td>24.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>NAmes</td>
+      <td>99.0</td>
+      <td>105.0</td>
+      <td>86.0</td>
+      <td>95.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>NPkVill</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>NWAmes</td>
+      <td>25.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>35.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>NoRidge</td>
+      <td>17.0</td>
+      <td>17.0</td>
+      <td>14.0</td>
+      <td>13.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>NridgHt</td>
+      <td>32.0</td>
+      <td>43.0</td>
+      <td>31.0</td>
+      <td>45.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>OldTown</td>
+      <td>51.0</td>
+      <td>48.0</td>
+      <td>56.0</td>
+      <td>55.0</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>SWISU</td>
+      <td>12.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Sawyer</td>
+      <td>38.0</td>
+      <td>37.0</td>
+      <td>30.0</td>
+      <td>23.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>SawyerW</td>
+      <td>20.0</td>
+      <td>21.0</td>
+      <td>25.0</td>
+      <td>41.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Somerst</td>
+      <td>29.0</td>
+      <td>51.0</td>
+      <td>41.0</td>
+      <td>40.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>StoneBr</td>
+      <td>15.0</td>
+      <td>12.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Timber</td>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>18.0</td>
+      <td>14.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Veenker</td>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="pivoting-with-special-needs">
+<h2>Pivoting with special needs<a class="headerlink" href="#pivoting-with-special-needs" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">.pivot()</span></code> will often get you what you want, but it won’t work if you want to:</p>
+<ul class="simple">
+<li><p>Use multiple indexes or</p></li>
+<li><p>Have duplicate index/column labels</p></li>
+</ul>
+<p>For example, let’s look at pivoting the below data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/ames_wide2.csv&#39;</span><span class="p">)</span>
+<span class="n">ames2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>year_sold</th>
+      <th>bedrooms</th>
+      <th>homes_sold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>2006</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blmngtn</td>
+      <td>2006</td>
+      <td>2</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Blmngtn</td>
+      <td>2007</td>
+      <td>2</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Blmngtn</td>
+      <td>2008</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Blmngtn</td>
+      <td>2009</td>
+      <td>1</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>430</th>
+      <td>Veenker</td>
+      <td>2007</td>
+      <td>3</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>431</th>
+      <td>Veenker</td>
+      <td>2008</td>
+      <td>1</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>432</th>
+      <td>Veenker</td>
+      <td>2008</td>
+      <td>3</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>433</th>
+      <td>Veenker</td>
+      <td>2009</td>
+      <td>2</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>434</th>
+      <td>Veenker</td>
+      <td>2009</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>435 rows × 4 columns</p>
+</div></div></div>
+</div>
+<p>In this example, say you wanted to pivot <code class="docutils literal notranslate"><span class="pre">ames_wide2</span></code> so that the <code class="docutils literal notranslate"><span class="pre">year_sold</span></code> is represented as columns and <code class="docutils literal notranslate"><span class="pre">homes_sold</span></code> values are the elements. If we try to do this similar to the last section’s example we get an error stating <code class="docutils literal notranslate"><span class="pre">ValueError:</span> <span class="pre">Index</span> <span class="pre">contains</span> <span class="pre">duplicate</span> <span class="pre">entries,</span> <span class="pre">cannot</span> <span class="pre">reshape</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames2</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year_sold&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_34518</span><span class="o">/</span><span class="mf">2062246961.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">ames2</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year_sold&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/frame.py</span> in <span class="ni">pivot</span><span class="nt">(self, index, columns, values)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6877</span>         <span class="kn">from</span> <span class="nn">pandas.core.reshape.pivot</span> <span class="kn">import</span> <span class="n">pivot</span>
+<span class="g g-Whitespace">   </span><span class="mi">6878</span> 
+<span class="ne">-&gt; </span><span class="mi">6879</span>         <span class="k">return</span> <span class="n">pivot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="n">values</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">6880</span> 
+<span class="g g-Whitespace">   </span><span class="mi">6881</span>     <span class="n">_shared_docs</span><span class="p">[</span>
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/reshape/pivot.py</span> in <span class="ni">pivot</span><span class="nt">(data, index, columns, values)</span>
+<span class="g g-Whitespace">    </span><span class="mi">459</span>         <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">460</span>             <span class="n">indexed</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">_constructor_sliced</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">values</span><span class="p">]</span><span class="o">.</span><span class="n">_values</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">index</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">461</span>     <span class="k">return</span> <span class="n">indexed</span><span class="o">.</span><span class="n">unstack</span><span class="p">(</span><span class="n">columns</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">462</span> 
+<span class="g g-Whitespace">    </span><span class="mi">463</span> 
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/series.py</span> in <span class="ni">unstack</span><span class="nt">(self, level, fill_value)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3827</span>         <span class="kn">from</span> <span class="nn">pandas.core.reshape.reshape</span> <span class="kn">import</span> <span class="n">unstack</span>
+<span class="g g-Whitespace">   </span><span class="mi">3828</span> 
+<span class="ne">-&gt; </span><span class="mi">3829</span>         <span class="k">return</span> <span class="n">unstack</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">3830</span> 
+<span class="g g-Whitespace">   </span><span class="mi">3831</span>     <span class="c1"># ----------------------------------------------------------------------</span>
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/reshape/reshape.py</span> in <span class="ni">unstack</span><span class="nt">(obj, level, fill_value)</span>
+<span class="g g-Whitespace">    </span><span class="mi">428</span>         <span class="k">if</span> <span class="n">is_extension_array_dtype</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">dtype</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">429</span>             <span class="k">return</span> <span class="n">_unstack_extension_series</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">level</span><span class="p">,</span> <span class="n">fill_value</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">430</span>         <span class="n">unstacker</span> <span class="o">=</span> <span class="n">_Unstacker</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">431</span>             <span class="n">obj</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">level</span><span class="p">,</span> <span class="n">constructor</span><span class="o">=</span><span class="n">obj</span><span class="o">.</span><span class="n">_constructor_expanddim</span>
+<span class="g g-Whitespace">    </span><span class="mi">432</span>         <span class="p">)</span>
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/reshape/reshape.py</span> in <span class="ni">__init__</span><span class="nt">(self, index, level, constructor)</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Unstacked DataFrame is too big, causing int32 overflow&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span> 
+<span class="ne">--&gt; </span><span class="mi">118</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_make_selectors</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span> 
+<span class="g g-Whitespace">    </span><span class="mi">120</span>     <span class="nd">@cache_readonly</span>
+
+<span class="nn">~/.pyenv/versions/3.9.4/lib/python3.9/site-packages/pandas/core/reshape/reshape.py</span> in <span class="ni">_make_selectors</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> 
+<span class="g g-Whitespace">    </span><span class="mi">166</span>         <span class="k">if</span> <span class="n">mask</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">index</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">167</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Index contains duplicate entries, cannot reshape&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">168</span> 
+<span class="g g-Whitespace">    </span><span class="mi">169</span>         <span class="bp">self</span><span class="o">.</span><span class="n">group_index</span> <span class="o">=</span> <span class="n">comp_index</span>
+
+<span class="ne">ValueError</span>: Index contains duplicate entries, cannot reshape
+</pre></div>
+</div>
+</div>
+</div>
+<p>The reason is we have duplicate values in our neighborhood column and Pandas doesn’t know how to isolate the index values to properly align the pivoted data. In such a case, we’d use <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code>. It will apply an aggregation function to our duplicates, in this case, we’ll <code class="docutils literal notranslate"><span class="pre">sum()</span></code> them up:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames2</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year_sold&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">,</span> <span class="n">aggfunc</span><span class="o">=</span><span class="s1">&#39;sum&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>year_sold</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>neighborhood</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Blmngtn</th>
+      <td>11.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>6.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>Blueste</th>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>2.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>BrDale</th>
+      <td>9.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+      <td>6.0</td>
+      <td>3.0</td>
+    </tr>
+    <tr>
+      <th>BrkSide</th>
+      <td>19.0</td>
+      <td>24.0</td>
+      <td>31.0</td>
+      <td>23.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>ClearCr</th>
+      <td>10.0</td>
+      <td>9.0</td>
+      <td>11.0</td>
+      <td>6.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>CollgCr</th>
+      <td>60.0</td>
+      <td>65.0</td>
+      <td>58.0</td>
+      <td>63.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>Crawfor</th>
+      <td>20.0</td>
+      <td>34.0</td>
+      <td>21.0</td>
+      <td>21.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Edwards</th>
+      <td>43.0</td>
+      <td>41.0</td>
+      <td>45.0</td>
+      <td>42.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>Gilbert</th>
+      <td>38.0</td>
+      <td>45.0</td>
+      <td>26.0</td>
+      <td>41.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>Greens</th>
+      <td>4.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>GrnHill</th>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>IDOTRR</th>
+      <td>20.0</td>
+      <td>25.0</td>
+      <td>26.0</td>
+      <td>13.0</td>
+      <td>9.0</td>
+    </tr>
+    <tr>
+      <th>Landmrk</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>MeadowV</th>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>7.0</td>
+      <td>5.0</td>
+      <td>7.0</td>
+    </tr>
+    <tr>
+      <th>Mitchel</th>
+      <td>23.0</td>
+      <td>28.0</td>
+      <td>22.0</td>
+      <td>24.0</td>
+      <td>17.0</td>
+    </tr>
+    <tr>
+      <th>NAmes</th>
+      <td>99.0</td>
+      <td>105.0</td>
+      <td>86.0</td>
+      <td>95.0</td>
+      <td>58.0</td>
+    </tr>
+    <tr>
+      <th>NPkVill</th>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
+      <td>4.0</td>
+    </tr>
+    <tr>
+      <th>NWAmes</th>
+      <td>25.0</td>
+      <td>30.0</td>
+      <td>30.0</td>
+      <td>35.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>NoRidge</th>
+      <td>17.0</td>
+      <td>17.0</td>
+      <td>14.0</td>
+      <td>13.0</td>
+      <td>10.0</td>
+    </tr>
+    <tr>
+      <th>NridgHt</th>
+      <td>32.0</td>
+      <td>43.0</td>
+      <td>31.0</td>
+      <td>45.0</td>
+      <td>15.0</td>
+    </tr>
+    <tr>
+      <th>OldTown</th>
+      <td>51.0</td>
+      <td>48.0</td>
+      <td>56.0</td>
+      <td>55.0</td>
+      <td>29.0</td>
+    </tr>
+    <tr>
+      <th>SWISU</th>
+      <td>12.0</td>
+      <td>5.0</td>
+      <td>10.0</td>
+      <td>10.0</td>
+      <td>11.0</td>
+    </tr>
+    <tr>
+      <th>Sawyer</th>
+      <td>38.0</td>
+      <td>37.0</td>
+      <td>30.0</td>
+      <td>23.0</td>
+      <td>23.0</td>
+    </tr>
+    <tr>
+      <th>SawyerW</th>
+      <td>20.0</td>
+      <td>21.0</td>
+      <td>25.0</td>
+      <td>41.0</td>
+      <td>18.0</td>
+    </tr>
+    <tr>
+      <th>Somerst</th>
+      <td>29.0</td>
+      <td>51.0</td>
+      <td>41.0</td>
+      <td>40.0</td>
+      <td>21.0</td>
+    </tr>
+    <tr>
+      <th>StoneBr</th>
+      <td>15.0</td>
+      <td>12.0</td>
+      <td>10.0</td>
+      <td>8.0</td>
+      <td>6.0</td>
+    </tr>
+    <tr>
+      <th>Timber</th>
+      <td>11.0</td>
+      <td>21.0</td>
+      <td>18.0</td>
+      <td>14.0</td>
+      <td>8.0</td>
+    </tr>
+    <tr>
+      <th>Veenker</th>
+      <td>4.0</td>
+      <td>9.0</td>
+      <td>7.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we wanted to keep the numbers per bedroom, we could specify both <code class="docutils literal notranslate"><span class="pre">neighborhood</span></code> and <code class="docutils literal notranslate"><span class="pre">bedrooms</span></code> as multiple indexes:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames2</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year_sold&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>year_sold</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+    <tr>
+      <th>neighborhood</th>
+      <th>bedrooms</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th rowspan="2" valign="top">Blmngtn</th>
+      <th>1</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th rowspan="3" valign="top">Blueste</th>
+      <th>1</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th rowspan="5" valign="top">Veenker</th>
+      <th>0</th>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>3.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.0</td>
+      <td>2.0</td>
+      <td>NaN</td>
+      <td>3.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2.0</td>
+      <td>6.0</td>
+      <td>4.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>125 rows × 5 columns</p>
+</div></div></div>
+</div>
+<p>The result above is a mutlti-index or “hierarchically indexed” DataFrame, which we haven’t really talked about up to this point. However, we can easily flatten this with <code class="docutils literal notranslate"><span class="pre">.reset_index()</span></code> and removing the column’s index name.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames2_reshaped</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">ames2</span>
+    <span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;neighborhood&#39;</span><span class="p">,</span> <span class="s1">&#39;bedrooms&#39;</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;year_sold&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;homes_sold&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">ames2_reshaped</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="n">ames2_reshaped</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>neighborhood</th>
+      <th>bedrooms</th>
+      <th>2006</th>
+      <th>2007</th>
+      <th>2008</th>
+      <th>2009</th>
+      <th>2010</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Blmngtn</td>
+      <td>1</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.0</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Blmngtn</td>
+      <td>2</td>
+      <td>10.0</td>
+      <td>4.0</td>
+      <td>5.0</td>
+      <td>4.0</td>
+      <td>2.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Blueste</td>
+      <td>1</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Blueste</td>
+      <td>2</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>1.0</td>
+      <td>4.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Blueste</td>
+      <td>3</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<p>For this exercise, we’re going to work with this data set from this paper by <a class="reference external" href="https://www.cell.com/developmental-cell/fulltext/S1534-5807(11)00573-9?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS1534580711005739%3Fshowall%3Dtrue">Reeves, et al.</a> in which they measured the width of the gradient in the morphogen Dorsal in Drosophila embryos for various genotypes using different method. Don’t get hung up in what this means, our object is to simply tidy this dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/reeves_gradient_width_various_methods.csv&quot;</span><span class="p">,</span> <span class="n">comment</span><span class="o">=</span><span class="s1">&#39;#&#39;</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead tr th {
+        text-align: left;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">wt</th>
+      <th colspan="3" halign="left">dl1/+; dl-venus/+</th>
+      <th colspan="3" halign="left">dl1/+; dl-gfp/+</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>wholemounts</th>
+      <th>cross-sections</th>
+      <th>anti-Dorsal</th>
+      <th>anti-Venus</th>
+      <th>Venus (live)</th>
+      <th>anti-Dorsal</th>
+      <th>anti-GFP</th>
+      <th>GFP (live)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.1288</td>
+      <td>0.1327</td>
+      <td>0.1482</td>
+      <td>0.1632</td>
+      <td>0.1666</td>
+      <td>0.2248</td>
+      <td>0.2389</td>
+      <td>0.2412</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.1554</td>
+      <td>0.1457</td>
+      <td>0.1503</td>
+      <td>0.1671</td>
+      <td>0.1753</td>
+      <td>0.1891</td>
+      <td>0.2035</td>
+      <td>0.1942</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.1306</td>
+      <td>0.1447</td>
+      <td>0.1577</td>
+      <td>0.1704</td>
+      <td>0.1705</td>
+      <td>0.1705</td>
+      <td>0.1943</td>
+      <td>0.2186</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.1413</td>
+      <td>0.1282</td>
+      <td>0.1711</td>
+      <td>0.1779</td>
+      <td>NaN</td>
+      <td>0.1735</td>
+      <td>0.2000</td>
+      <td>0.2104</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.1557</td>
+      <td>0.1487</td>
+      <td>0.1342</td>
+      <td>0.1483</td>
+      <td>NaN</td>
+      <td>0.2135</td>
+      <td>0.2560</td>
+      <td>0.2463</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>NaN</td>
+      <td>0.1466</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>NaN</td>
+      <td>0.1671</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>NaN</td>
+      <td>0.1265</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>NaN</td>
+      <td>0.1448</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>NaN</td>
+      <td>0.1740</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>152 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>As can happen with spreadsheets, we have a multiindex, where we have three main groups:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wt</span></code> which refers to wild type</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">dl1/+;</span> <span class="pre">dl-venus/+</span></code> which we’ll refer to as simply Venus</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">	dl1/+;</span> <span class="pre">dl-gfp/+</span></code> which we’ll refer to as simply GFP</p></li>
+</ul>
+<p>For each of these main groups we have multiple sub-columns: two for wild type (<code class="docutils literal notranslate"><span class="pre">wholemounts</span></code>, <code class="docutils literal notranslate"><span class="pre">cross-sections</span></code>), three for Venus (<code class="docutils literal notranslate"><span class="pre">anti-Dorsal</span></code>, <code class="docutils literal notranslate"><span class="pre">Anti-Venus</span></code>, <code class="docutils literal notranslate"><span class="pre">Venus</span> <span class="pre">(live)</span></code>), and three for GFP (<code class="docutils literal notranslate"><span class="pre">anti-Dorsal</span></code>, <code class="docutils literal notranslate"><span class="pre">anti-GFP</span></code>, <code class="docutils literal notranslate"><span class="pre">GFP</span> <span class="pre">(live)</span></code>). The rows here are the gradient width values recorded for each of the categories. Clearly these data are not tidy.</p>
+<p>You objective is to:</p>
+<ol class="simple">
+<li><p>Reshape this data so that it looks like the following:</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">expected_result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/tidy_reeves_gradients.csv&#39;</span><span class="p">)</span>
+<span class="n">expected_result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>genotype</th>
+      <th>method</th>
+      <th>gradient width</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>wt</td>
+      <td>wholemounts</td>
+      <td>0.1288</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>wt</td>
+      <td>wholemounts</td>
+      <td>0.1554</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>wt</td>
+      <td>wholemounts</td>
+      <td>0.1306</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>wt</td>
+      <td>wholemounts</td>
+      <td>0.1413</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>wt</td>
+      <td>wholemounts</td>
+      <td>0.1557</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1211</th>
+      <td>dl1/+; dl-gfp/+</td>
+      <td>GFP (live)</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1212</th>
+      <td>dl1/+; dl-gfp/+</td>
+      <td>GFP (live)</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1213</th>
+      <td>dl1/+; dl-gfp/+</td>
+      <td>GFP (live)</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1214</th>
+      <td>dl1/+; dl-gfp/+</td>
+      <td>GFP (live)</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1215</th>
+      <td>dl1/+; dl-gfp/+</td>
+      <td>GFP (live)</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>1216 rows × 3 columns</p>
+</div></div></div>
+</div>
+<p>2. Now that you have a tidy data frame you will notice that you have many <code class="docutils literal notranslate"><span class="pre">NaN</span></code>s in the <code class="docutils literal notranslate"><span class="pre">gradient</span> <span class="pre">width</span></code> column because there were many of them in the data set. Drop all observations that contain <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values.</p>
+<p>3. Now compute summary statistics via <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> for the <code class="docutils literal notranslate"><span class="pre">gradient</span> <span class="pre">width</span></code> variable grouped by <code class="docutils literal notranslate"><span class="pre">genotype</span></code> and <code class="docutils literal notranslate"><span class="pre">method</span></code>. Which <code class="docutils literal notranslate"><span class="pre">genotype</span></code> and <code class="docutils literal notranslate"><span class="pre">method</span></code> has the narrowest <code class="docutils literal notranslate"><span class="pre">gradient</span> <span class="pre">width</span></code>?</p>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./04-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

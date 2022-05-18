@@ -30,7 +30,7 @@ parts:
 - caption: Module 4
   chapters:
   - file: 04-module/overview
-  - file: 04-module/lesson-1
+  - file: 04-module/lesson-4a
   - file: 04-module/lesson-2
   - file: 04-module/lab
 - caption: Module 5
