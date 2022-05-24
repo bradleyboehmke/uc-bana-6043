@@ -183,7 +183,7 @@ df
 # 
 # For each of these main groups we have multiple sub-columns: two for wild type (`wholemounts`, `cross-sections`), three for Venus (`anti-Dorsal`, `Anti-Venus`, `Venus (live)`), and three for GFP (`anti-Dorsal`, `anti-GFP`, `GFP (live)`). The rows here are the gradient width values recorded for each of the categories. Clearly these data are not tidy.
 # 
-# You objective is to:
+# For this exercise your objective is to:
 # 
 # 1. Reshape this data so that it looks like the following:
 

@@ -22,8 +22,8 @@
       
 
     
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -33,19 +33,19 @@
     
   <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script>let toggleHintShow = 'Click to show';</script>
-    <script>let toggleHintHide = 'Click to hide';</script>
-    <script>let toggleOpenOnPrint = 'true';</script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
@@ -98,7 +98,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 0 (Pre-class)
  </span>
@@ -115,7 +115,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 1
  </span>
@@ -152,7 +152,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 2
  </span>
@@ -184,7 +184,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 3
  </span>
@@ -216,7 +216,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 4
  </span>
@@ -238,7 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 5
  </span>
@@ -265,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 6
  </span>
@@ -292,7 +292,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
+<p class="caption">
  <span class="caption-text">
   Module 7
  </span>
@@ -668,223 +668,321 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Package                       Version   Editable project location
------------------------------ --------- ----------------------------------
-absl-py                       0.15.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Package                       Version
+----------------------------- --------------------
+aiohttp                       3.8.1
+aiosignal                     1.2.0
 alabaster                     0.7.12
-alembic                       1.4.1
-anyio                         3.3.0
+anaconda-client               1.9.0
+anaconda-navigator            2.1.4
+anaconda-project              0.10.2
+anyio                         3.5.0
 appdirs                       1.4.4
+applaunchservices             0.2.1
 appnope                       0.1.2
-argcomplete                   1.12.2
-argon2-cffi                   20.1.0
-arrow                         1.2.1
-astroid                       2.5.3
-astunparse                    1.6.3
-async-generator               1.10
-attrs                         21.2.0
+appscript                     1.1.2
+argon2-cffi                   21.3.0
+argon2-cffi-bindings          21.2.0
+arrow                         1.2.2
+astroid                       2.6.6
+astropy                       5.0.4
+asttokens                     2.0.5
+async-timeout                 4.0.1
+atomicwrites                  1.4.0
+attrs                         20.3.0
+Automat                       20.2.0
+autopep8                      1.6.0
 Babel                         2.9.1
 backcall                      0.2.0
-beautifulsoup4                4.10.0
+backports.functools-lru-cache 1.6.4
+backports.tempfile            1.0
+backports.weakref             1.0.post1
+bcrypt                        3.2.0
+beautifulsoup4                4.11.1
 binaryornot                   0.4.4
+bitarray                      2.4.1
+bkcharts                      0.2
 black                         21.12b0
 blackcellmagic                0.0.3
-bleach                        4.0.0
-blessings                     1.7
+bleach                        4.1.0
 bokeh                         2.4.2
-bpython                       0.21
-bs4                           0.0.1
-CacheControl                  0.12.6
-cachetools                    4.2.4
-cachy                         0.3.0
-certifi                       2020.12.5
-cffi                          1.14.6
+boto3                         1.21.32
+botocore                      1.24.32
+Bottleneck                    1.3.4
+brotlipy                      0.7.0
+cachetools                    4.2.2
+certifi                       2022.5.18.1
+cffi                          1.15.0
+cftime                        1.5.1.1
 chardet                       4.0.0
-clang                         5.0
-cleo                          0.8.1
-click                         7.1.2
-clikit                        0.6.2
+charset-normalizer            2.0.4
+click                         8.0.4
+click-completion              0.5.2
+click-log                     0.3.2
 cloudpickle                   2.0.0
+clyent                        1.2.2
 colorama                      0.4.4
-colorcet                      3.0.0
+colorcet                      2.0.6
 commonmark                    0.9.1
-completejourney-py            0.0.3
-component-logger              1.10.3
+component-logger              1.11.1
+conda                         4.12.0
+conda-build                   3.21.8
+conda-content-trust           0+unknown
+conda-pack                    0.6.0
+conda-package-handling        1.8.1
+conda-repo-cli                1.0.4
+conda-token                   0.3.0
+conda-verify                  3.4.2
+constantly                    15.1.0
 cookiecutter                  1.7.3
-crashtest                     0.3.1
-curtsies                      0.3.5
-cwcwidth                      0.1.4
-cycler                        0.10.0
-databricks-cli                0.16.2
-dateparser                    1.1.0
-debugpy                       1.4.1
-decorator                     5.0.7
+cryptography                  3.4.8
+cssselect                     1.1.0
+cycler                        0.11.0
+Cython                        0.29.28
+cytoolz                       0.11.0
+daal4py                       2021.5.0
+dask                          2022.2.1
+datashader                    0.13.0
+datashape                     0.5.4
+dateparser                    1.1.1
+debugpy                       1.5.1
+decorator                     5.1.1
 defusedxml                    0.7.1
-distlib                       0.3.1
-docker                        5.0.3
+diff-match-patch              20200713
+distributed                   2022.2.1
 docutils                      0.16
-effo-cookiecutter             0.2.0
-effo411                       0.1.3
-effodata                      2.3.1
-effosort                      0.0.0
-entrypoints                   0.3
+e451-py-security              1.0.57
+effo-cookiecutter             0.4.0
+effo411                       0.2.0
+effodata                      2.5.0
+entrypoints                   0.4
 et-xmlfile                    1.1.0
-filelock                      3.0.12
-flake8                        3.9.1
-flake8-docstrings             1.6.0
-Flask                         2.0.2
-flatbuffers                   1.12
-gast                          0.4.0
+executing                     0.8.3
+fastjsonschema                2.15.1
+filelock                      3.6.0
+flake8                        3.9.2
+Flask                         1.1.2
+fonttools                     4.25.0
+frozenlist                    1.2.0
+fsspec                        2022.2.0
+future                        0.18.2
+gensim                        4.1.2
 gitdb                         4.0.9
-GitPython                     3.1.24
-google-auth                   2.3.1
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>google-auth-oauthlib          0.4.6
-google-pasta                  0.2.0
-greenlet                      1.0.0
-grpcio                        1.41.1
-gunicorn                      20.1.0
-h5py                          3.1.0
-html5lib                      1.1
-idna                          2.10
+GitPython                     3.1.27
+glob2                         0.7
+gmpy2                         2.1.2
+google-api-core               1.25.1
+google-auth                   1.33.0
+google-cloud-core             1.7.1
+google-cloud-storage          1.31.0
+google-crc32c                 1.1.2
+google-resumable-media        1.3.1
+googleapis-common-protos      1.53.0
+greenlet                      1.1.1
+grpcio                        1.42.0
+h5py                          3.6.0
+HeapDict                      1.0.1
+holoviews                     1.14.8
+hvplot                        0.7.3
+hyperlink                     21.0.0
+hypothesis                    6.29.3
+idna                          3.3
+imagecodecs                   2021.8.26
+imageio                       2.9.0
 imagesize                     1.3.0
-importlib-metadata            4.8.1
-ipykernel                     6.0.3
-ipython                       7.26.0
+importlib-metadata            4.11.3
+incremental                   21.3.0
+inflection                    0.5.1
+iniconfig                     1.1.1
+intake                        0.6.5
+intervaltree                  3.1.0
+ipykernel                     6.9.1
+ipython                       8.2.0
 ipython-genutils              0.2.0
-ipywidgets                    7.7.0
+ipywidgets                    7.6.5
 iqplot                        0.2.4
-isort                         5.8.0
+isort                         5.9.3
+itemadapter                   0.3.0
+itemloaders                   1.0.4
 itsdangerous                  2.0.1
-jedi                          0.18.0
-Jinja2                        3.0.1
+jdcal                         1.4.1
+jedi                          0.18.1
+Jinja2                        2.11.3
 jinja2-time                   0.2.0
+jmespath                      0.10.0
 joblib                        1.1.0
 json5                         0.9.6
 jsonschema                    3.2.0
 jupyter                       1.0.0
+jupyter-bokeh                 3.0.4
 jupyter-book                  0.12.3
 jupyter-cache                 0.4.3
 jupyter-client                6.1.12
-jupyter-console               6.4.2
-jupyter-core                  4.7.1
-jupyter-server                1.10.2
+jupyter-console               6.4.0
+jupyter-core                  4.9.2
+jupyter-server                1.13.5
 jupyter-server-mathjax        0.2.5
 jupyter-sphinx                0.3.2
-jupyterlab                    3.1.4
+jupyterlab                    3.3.2
 jupyterlab-pygments           0.1.2
-jupyterlab-server             2.6.2
+jupyterlab-server             2.10.3
 jupyterlab-spellchecker       0.7.2
-jupyterlab-widgets            1.1.0
-kayday                        1.3.3
-keras                         2.6.0
-Keras-Preprocessing           1.1.2
-keyring                       21.8.0
+jupyterlab-widgets            1.0.0
+jupytext                      1.10.3
+kayday                        2.0.0
+keyring                       23.4.0
 kiwisolver                    1.3.2
-kpi-metrics                   1.3.2
+kpi-metrics                   1.3.4
 latexcodec                    2.0.1
 lazy-object-proxy             1.6.0
+libarchive-c                  2.9
 linkify-it-py                 1.0.3
-lockfile                      0.12.2
-Mako                          1.1.5
+llvmlite                      0.38.0
+locket                        0.2.1
+lxml                          4.8.0
 Markdown                      3.3.4
 markdown-it-py                1.1.0
 MarkupSafe                    2.0.1
-matplotlib                    3.4.3
+matplotlib                    3.5.1
 matplotlib-inline             0.1.2
 mccabe                        0.6.1
 mdit-py-plugins               0.2.8
 mistune                       0.8.4
-mlflow                        1.21.0
+mkl-fft                       1.3.1
+mkl-random                    1.2.2
+mkl-service                   2.4.0
+mock                          4.0.3
+mpmath                        1.2.1
 msgpack                       1.0.2
-my-sorting                    0.0.0     /Users/b294776/Desktop/sphinx_demo
+multidict                     5.2.0
+multipledispatch              0.6.0
+munkres                       1.1.4
 mypy-extensions               0.4.3
 myst-nb                       0.13.2
 myst-parser                   0.15.2
-nbclassic                     0.3.1
-nbclient                      0.5.3
-nbconvert                     6.1.0
+navigator-updater             0.2.1
+nbclassic                     0.3.5
+nbclient                      0.5.13
+nbconvert                     5.6.1
 nbdime                        3.1.1
-nbformat                      5.1.3
-nest-asyncio                  1.5.1
-notebook                      6.4.2
-numpy                         1.19.5
-oauthlib                      3.1.1
+nbformat                      5.3.0
+nest-asyncio                  1.5.5
+nested-lookup                 0.2.23
+netCDF4                       1.5.7
+networkx                      2.7.1
+nltk                          3.7
+nose                          1.3.7
+notebook                      6.4.8
+numba                         0.55.1
+numexpr                       2.8.1
+numpy                         1.21.5
+numpydoc                      1.2
+olefile                       0.46
 openpyxl                      3.0.9
-opt-einsum                    3.3.0
-packaging                     20.9
-pandas                        1.2.4
-pandocfilters                 1.4.3
-param                         1.12.1
-parso                         0.8.2
-pastel                        0.2.1
+packaging                     21.3
+pandas                        1.4.2
+pandocfilters                 1.5.0
+panel                         0.13.0
+param                         1.12.0
+parsel                        1.6.0
+parso                         0.8.3
+partd                         1.2.0
 pathspec                      0.9.0
+patsy                         0.5.2
+pep8                          1.7.1
 pexpect                       4.8.0
 pickleshare                   0.7.5
-Pillow                        8.4.0
-pip                           22.0.4
-pipx                          0.16.1.0
-pkginfo                       1.7.0
+Pillow                        9.0.1
+pip                           21.2.4
+pkginfo                       1.8.2
 platformdirs                  2.5.2
-pluggy                        0.13.1
-poetry                        1.1.6
-poetry-core                   1.0.3
+plotly                        5.6.0
+pluggy                        1.0.0
 poyo                          0.5.0
-prometheus-client             0.11.0
-prometheus-flask-exporter     0.18.5
-prompt-toolkit                3.0.18
-protobuf                      3.19.0
+prometheus-client             0.13.1
+prompt-toolkit                3.0.20
+Protego                       0.1.16
+protobuf                      3.19.1
+psutil                        5.8.0
 ptyprocess                    0.7.0
-py                            1.10.0
-py4j                          0.10.9.2
-pyarrow                       4.0.0
+pure-eval                     0.2.2
+py                            1.11.0
+py4j                          0.10.9.3
 pyasn1                        0.4.8
 pyasn1-modules                0.2.8
 pybtex                        0.24.0
 pybtex-docutils               1.0.1
 pycodestyle                   2.7.0
-pycparser                     2.20
-pyct                          0.4.8
+pycosat                       0.6.3
+pycparser                     2.21
+pyct                          0.4.6
+pycurl                        7.44.1
 pydata-sphinx-theme           0.7.2
-pydocstyle                    6.0.0
+PyDispatcher                  2.0.5
+pydocstyle                    6.1.1
+pyerfa                        2.0.0
 pyflakes                      2.3.1
-Pygments                      2.8.1
-pylev                         1.3.0
-pylint                        2.7.4
-pyluach                       1.3.0
-pyparsing                     2.4.7
+Pygments                      2.11.2
+PyHamcrest                    2.0.2
+PyJWT                         2.1.0
+pylint                        2.9.6
+pyls-spyder                   0.4.0
+pyluach                       1.4.2
+pyodbc                        4.0.32
+pyOpenSSL                     21.0.0
+pyparsing                     3.0.4
+pypi-simple                   0.9.0
 pyrsistent                    0.18.0
-pyspark                       3.2.0
-python-dateutil               2.8.1
-python-editor                 1.0.4
+pyserial                      3.5
+PySocks                       1.7.1
+pyspark                       3.2.1
+pytest                        7.1.1
+python-dateutil               2.8.2
+python-lsp-black              1.0.0
+python-lsp-jsonrpc            1.0.0
+python-lsp-server             1.2.4
 python-slugify                5.0.2
-pytz                          2021.1
-pyxdg                         0.27
+python-snappy                 0.6.0
+pytz                          2021.3
+pyviz-comms                   2.0.2
+PyWavelets                    1.3.0
 PyYAML                        6.0
-pyzmq                         22.2.1
+pyzmq                         22.3.0
+QDarkStyle                    3.0.2
+qstylizer                     0.1.10
+QtAwesome                     1.0.3
 qtconsole                     5.3.0
 QtPy                          2.0.1
-querystring-parser            1.2.4
-regex                         2021.11.2
-requests                      2.25.1
-requests-oauthlib             1.3.0
-requests-toolbelt             0.9.1
-requests-unixsocket           0.2.0
-rich                          10.13.0
+queuelib                      1.5.0
+regex                         2022.4.24
+requests                      2.27.1
+requests-file                 1.5.1
+rich                          12.4.3
+rope                          0.22.0
 rsa                           4.7.2
-scikit-learn                  1.0.1
-scipy                         1.7.1
+Rtree                         0.9.7
+ruamel-yaml-conda             0.15.100
+s3transfer                    0.5.0
+scikit-image                  0.19.2
+scikit-learn                  1.0.2
+scikit-learn-intelex          2021.20220215.132722
+scipy                         1.7.3
+Scrapy                        2.6.1
 seaborn                       0.11.2
 Send2Trash                    1.8.0
-setuptools                    49.2.1
+service-identity              18.1.0
+setuptools                    61.2.0
 shellingham                   1.4.0
-six                           1.15.0
-smmap                         5.0.0
+sip                           4.19.13
+six                           1.16.0
+smart-open                    5.1.0
+smmap                         3.0.5
 sniffio                       1.2.0
-snowballstemmer               2.1.0
-soupsieve                     2.3
-Sphinx                        4.5.0
+snowballstemmer               2.2.0
+sortedcollections             2.1.0
+sortedcontainers              2.4.0
+soupsieve                     2.3.1
+Sphinx                        3.5.3
 sphinx-book-theme             0.1.10
 sphinx-comments               0.0.3
 sphinx-copybutton             0.5.0
@@ -892,7 +990,7 @@ sphinx-external-toc           0.2.4
 sphinx-jupyterbook-latex      0.4.6
 sphinx-multitoc-numbering     0.1.3
 sphinx-panels                 0.6.0
-sphinx-thebe                  0.1.1
+sphinx-thebe                  0.1.2
 sphinx-togglebutton           0.3.1
 sphinxcontrib-applehelp       1.0.2
 sphinxcontrib-bibtex          2.4.2
@@ -901,48 +999,61 @@ sphinxcontrib-htmlhelp        2.0.0
 sphinxcontrib-jsmath          1.0.1
 sphinxcontrib-qthelp          1.0.3
 sphinxcontrib-serializinghtml 1.1.5
-SQLAlchemy                    1.4.26
+spyder                        5.1.5
+spyder-kernels                2.1.3
+SQLAlchemy                    1.4.32
 sqlparse                      0.4.2
+stack-data                    0.2.0
+statsmodels                   0.13.2
+sympy                         1.10.1
+tables                        3.6.1
 tabulate                      0.8.9
-tensorboard                   2.7.0
-tensorboard-data-server       0.6.1
-tensorboard-plugin-wit        1.8.0
-tensorflow                    2.6.0
-tensorflow-estimator          2.6.0
-termcolor                     1.1.0
-terminado                     0.10.1
+TBB                           0.2
+tblib                         1.7.0
+tenacity                      8.0.1
+terminado                     0.13.1
 testpath                      0.5.0
 text-unidecode                1.3
-threadpoolctl                 3.0.0
-thrift                        0.13.0
+textdistance                  4.2.1
+threadpoolctl                 2.2.0
+three-merge                   0.1.1
+tifffile                      2021.7.2
+tinycss                       0.4
+tldextract                    3.2.0
 toml                          0.10.2
-tomli                         1.2.3
-tomlkit                       0.7.0
+tomli                         1.2.2
+toolz                         0.11.2
 tornado                       6.1
-tox                           3.23.0
-traitlets                     5.0.5
-typing_extensions             4.2.0
+tqdm                          4.64.0
+traitlets                     5.1.1
+Twisted                       22.2.0
+typed-ast                     1.4.3
+typing_extensions             4.1.1
 tzlocal                       2.1
 uc-micro-py                   1.0.1
-urllib3                       1.26.4
-userpath                      1.4.2
-virtualenv                    20.4.3
+ujson                         5.1.0
+Unidecode                     1.2.0
+urllib3                       1.26.9
+w3lib                         1.21.0
+watchdog                      2.1.6
 watermark                     2.3.0
 wcwidth                       0.2.5
 webencodings                  0.5.1
-websocket-client              1.1.1
-Werkzeug                      2.0.2
-wheel                         0.37.0
-widgetsnbextension            3.6.0
+websocket-client              0.58.0
+Werkzeug                      2.0.3
+wheel                         0.37.1
+widgetsnbextension            3.5.2
 wrapt                         1.12.1
-xarray                        2022.3.0
+wurlitzer                     3.0.2
+xarray                        0.20.1
 xlrd                          2.0.1
-zipp                          3.6.0
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">WARNING: You are using pip version 22.0.4; however, version 22.1 is available.</span>
-<span class=" -Color -Color-Yellow">You should consider upgrading via the &#39;/Users/b294776/.pyenv/versions/3.9.4/bin/python3.9 -m pip install --upgrade pip&#39; command.</span>
-
+XlsxWriter                    3.0.3
+xlwings                       0.24.9
+yapf                          0.31.0
+yarl                          1.6.3
+zict                          2.0.0
+zipp                          3.7.0
+zope.interface                5.4.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
@@ -960,16 +1071,13 @@ zipp                          3.6.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-6043/book/02-module&#39;,
- &#39;/usr/local/bin/python3.7&#39;,
- &#39;/Users/b294776/.pyenv/versions/3.9.4/lib/python39.zip&#39;,
- &#39;/Users/b294776/.pyenv/versions/3.9.4/lib/python3.9&#39;,
- &#39;/Users/b294776/.pyenv/versions/3.9.4/lib/python3.9/lib-dynload&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/02-module&#39;,
+ &#39;/opt/anaconda3/lib/python39.zip&#39;,
+ &#39;/opt/anaconda3/lib/python3.9&#39;,
+ &#39;/opt/anaconda3/lib/python3.9/lib-dynload&#39;,
  &#39;&#39;,
- &#39;/Users/b294776/.pyenv/versions/3.9.4/lib/python3.9/site-packages&#39;,
- &#39;/Users/b294776/Desktop/sphinx_demo&#39;,
- &#39;/Users/b294776/.pyenv/versions/3.9.4/lib/python3.9/site-packages/IPython/extensions&#39;,
- &#39;/Users/b294776/.ipython&#39;]
+ &#39;/opt/anaconda3/lib/python3.9/site-packages&#39;,
+ &#39;/opt/anaconda3/lib/python3.9/site-packages/aeosa&#39;]
 </pre></div>
 </div>
 </div>
@@ -1156,7 +1264,7 @@ To use the tools in <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/b294776/Desktop/Workspace/Training/UC/uc-bana-6043/book/02-module&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/02-module&#39;
 </pre></div>
 </div>
 </div>
@@ -1242,8 +1350,8 @@ conda install pkg_name
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">folders</span><span class="o">/</span><span class="mi">8</span><span class="n">f</span><span class="o">/</span><span class="n">c06lv6q17tjbyjv2nkt0_s4s1sh0tg</span><span class="o">/</span><span class="n">T</span><span class="o">/</span><span class="n">ipykernel_23460</span><span class="o">/</span><span class="mf">3655381730.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># not supported</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">x_list</span> <span class="o">**</span> <span class="mi">2</span>
 

@@ -81,7 +81,23 @@
 # 
 # If you're using macOS, Anaconda Navigator will be available in your `Applications` menu. If you are using Windows, you can launch Anaconda Navigator from the Start menu.
 # 
-# We will be using JupyterLab throughout the class (more on that in the next lesson). You should see an option to launch JupyterLab from within Anaconda Navigator. When you do that, a new browser window or tab will open with JupyterLab running. Within the JupyterLab window, you will have the option to launch a notebook, a console, a terminal, or a text editor. We will use all of these during the class. For the updating and installation of necessary packages, click on `Terminal` to launch a terminal. You will get a terminal window (probably black) with a bash prompt. We refer to this text interface in the terminal as the **command line**.
+# We will be using JupyterLab throughout the class (more on that in the next lesson). You should see an option to launch JupyterLab from within Anaconda Navigator. 
+# 
+# :::{figure-md} launch-jupyter
+# <img src="../images/launch-jupyterlab.png" alt="Launch Jupyter lab" width="90%">
+# 
+# The Anaconda Navigator.
+# :::
+# 
+# When you do that, a new browser window or tab will open with JupyterLab running. Within the JupyterLab window, you will have the option to launch a notebook, a console, a terminal, text file, Python file, etc. We will use many of these during the class. 
+# 
+# :::{figure-md} jupyterlab-home
+# <img src="../images/jupyterlab-home.png" alt="Jupyter lab home screen" width="90%">
+# 
+# Jupyter Lab landing page.
+# :::
+# 
+# For the updating and installation of necessary packages, click on `Terminal` to launch a terminal. You will get a terminal window (probably black) with a bash prompt. We refer to this text interface in the terminal as the **command line**.
 
 # ## Launching JupyterLab from the command line
 # 
@@ -98,6 +114,10 @@
 # on the command line.
 # 
 # It is up to you if you want to launch JupyterLab from the Anaconda Navigator or command line.
+# 
+# ```{note}
+# On many platforms, Jupyter will automatically open up in your default web browser (unless you start it with `--no-browser`). Otherwise, you can navigate to the HTTP address printed when you started the notebook, here http://localhost:8888/.
+# ```
 
 # ## The conda package manager
 # 
