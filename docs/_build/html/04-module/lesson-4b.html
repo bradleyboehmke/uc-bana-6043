@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lesson 2 &#8212; UC BANA 6043 Statistical Computing</title>
+    <title>Lesson 4b: Relational data &#8212; UC BANA 6043 Statistical Computing</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -53,6 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lession 4a: Tidy data" href="lesson-4a.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -219,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
   Module 4
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="overview.html">
    Overview
@@ -228,6 +230,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="lesson-4a.html">
    Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 4b: Relational data
   </a>
  </li>
  <li class="toctree-l1">
@@ -395,6 +402,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/04-module/lesson-4b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -411,18 +435,86 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-a">
-   Content A
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-b">
-   Content B
+  <a class="reference internal nav-link" href="#keys">
+   Keys
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutating-joins">
+   Mutating joins
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inner-join">
+     Inner join
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outer-joins">
+     Outer joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#left-join">
+       Left join
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#right-join">
+       Right join
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#full-outer-join">
+       Full outer join
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differing-keys">
+   Differing keys
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bigger-example">
+   Bigger example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-indicator">
+   Merge indicator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -435,7 +527,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 2</h1>
+                <h1>Lesson 4b: Relational data</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -451,18 +543,86 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-a">
-   Content A
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#content-b">
-   Content B
+  <a class="reference internal nav-link" href="#keys">
+   Keys
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutating-joins">
+   Mutating joins
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#inner-join">
+     Inner join
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#outer-joins">
+     Outer joins
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#left-join">
+       Left join
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#right-join">
+       Right join
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#full-outer-join">
+       Full outer join
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differing-keys">
+   Differing keys
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bigger-example">
+   Bigger example
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#merge-indicator">
+   Merge indicator
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#exercises">
    Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
   </a>
  </li>
 </ul>
@@ -474,24 +634,1281 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-2">
-<h1>Lesson 2<a class="headerlink" href="#lesson-2" title="Permalink to this headline">¶</a></h1>
-<p>TBD</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-4b-relational-data">
+<h1>Lesson 4b: Relational data<a class="headerlink" href="#lesson-4b-relational-data" title="Permalink to this headline">¶</a></h1>
+<p>It’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called <strong>relational data</strong> because its the relations, not just the individual data sets, that are important.</p>
+<p>To work with relational data you need join operations that work with pairs of tables. There are several types of join methods to work with relational data and in this lesson we are going to explore these various methods.</p>
 <div class="section" id="learning-objectives">
 <h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<p>By the end of this lesson you’ll be able to:</p>
+<ul class="simple">
+<li><p>Use various mutating joins to combine variables from two tables.</p></li>
+<li><p>Join two tables that have differing common key variable names.</p></li>
+<li><p>Include an indicator variable while joining so you can filter the joined data for follow-on analysis.</p></li>
+</ul>
 </div>
-<div class="section" id="content-a">
-<h2>Content A<a class="headerlink" href="#content-a" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Load Pandas to provide you access to the join functions we’ll cover in this lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
 </div>
-<div class="section" id="content-b">
-<h2>Content B<a class="headerlink" href="#content-b" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+</div>
+</div>
+<p>To illustrate various joining tasks we will use two very simple DataFrames <code class="docutils literal notranslate"><span class="pre">x</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">y</span></code>. The colored column represents the “key” variable: these are used to match the rows between the tables. We’ll talk more about keys in a second. The grey column represents the “value” column that is carried along for the ride.</p>
+<div class="figure align-default" id="simple-dataframes">
+<a class="reference internal image-reference" href="../_images/original-dfs.png"><img alt="Example DataFrames" src="../_images/original-dfs.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Two simple DataFrames.</span><a class="headerlink" href="#simple-dataframes" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;val_x&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">]})</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;id&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;val_y&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y4&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, we will also build upon the simple examples by using various data sets from the <strong>completejourney_py</strong> library. This library provides access to data sets characterizing household level transactions over one year from a group of 2,469 households who are frequent shoppers at a grocery store.</p>
+<p>There are eight built-in data sets available in this library. The data sets include:</p>
+<ul class="simple">
+<li><p><strong>campaigns</strong>: campaigns received by each household</p></li>
+<li><p><strong>campaign_descriptions</strong>: campaign metadata (length of time active)</p></li>
+<li><p><strong>coupons</strong>: coupon metadata (UPC code, campaign, etc.)</p></li>
+<li><p><strong>coupon_redemptions</strong>: coupon redemptions (household, day, UPC code, campaign)</p></li>
+<li><p><strong>demographics</strong>: household demographic data (age, income, family size, etc.)</p></li>
+<li><p><strong>products</strong>: product metadata (brand, description, etc.)</p></li>
+</ul>
+<p>This is a Python equivalent of the R package <a class="reference external" href="https://github.com/bradleyboehmke/completejourney">completejourney</a>. The R package has a full guide to get you acquainted with the various data set schemas, which you can read <a class="reference external" href="https://bradleyboehmke.github.io/completejourney/articles/completejourney.html">here</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">completejourney_py</span> <span class="kn">import</span> <span class="n">get_data</span>
+
+<span class="c1"># get_data() provides a dictionary of several DataFrames</span>
+<span class="n">cj_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+<span class="n">cj_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;campaign_descriptions&#39;, &#39;coupons&#39;, &#39;promotions&#39;, &#39;campaigns&#39;, &#39;demographics&#39;, &#39;transactions&#39;, &#39;coupon_redemptions&#39;, &#39;products&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;transactions&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>household_id</th>
+      <th>store_id</th>
+      <th>basket_id</th>
+      <th>product_id</th>
+      <th>quantity</th>
+      <th>sales_value</th>
+      <th>retail_disc</th>
+      <th>coupon_disc</th>
+      <th>coupon_match_disc</th>
+      <th>week</th>
+      <th>transaction_timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570044</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 11:53:26</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570047</td>
+      <td>9878513</td>
+      <td>1</td>
+      <td>0.99</td>
+      <td>0.10</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:10:28</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1228</td>
+      <td>406</td>
+      <td>31198655051</td>
+      <td>1041453</td>
+      <td>1</td>
+      <td>1.43</td>
+      <td>0.15</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:26:30</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1020156</td>
+      <td>1</td>
+      <td>1.50</td>
+      <td>0.29</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:30:27</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1053875</td>
+      <td>2</td>
+      <td>2.78</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:30:27</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">TODO</p>
+<p>Take some time to read about the completejourney data set schema <a class="reference external" href="https://bradleyboehmke.github.io/completejourney/articles/completejourney.html#dataset-details">here</a>.</p>
+<ol class="simple">
+<li><p>What different data sets are available and what do they represent?</p></li>
+<li><p>What are the common variables between each table?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="keys">
+<h2>Keys<a class="headerlink" href="#keys" title="Permalink to this headline">¶</a></h2>
+<p>The variables used to connect two tables are called <strong>keys</strong>. A key is a variable (or set of variables) that uniquely identifies an observation. There are two primary types of keys we’ll consider in this lesson:</p>
+<ul class="simple">
+<li><p>A <strong>primary key</strong> uniquely identifies an observation in its own table</p></li>
+<li><p>A <strong>foreign key</strong> uniquely identifies an observation in another table</p></li>
+</ul>
+<p>Variables can be both a primary key and a foreign key. For example, within the transactions data <code class="docutils literal notranslate"><span class="pre">household_id</span></code> is a primary key to represent a household identifier for each transaction. <code class="docutils literal notranslate"><span class="pre">household_id</span></code> is also a foreign key in the demographics data set where it can be used to align household demographics to each transaction.</p>
+<p>A primary key and the corresponding foreign key in another table form a relation. Relations are typically one-to-many. For example, each transaction has one household, but each household has many transactions. In other data, you’ll occasionally see a 1-to-1 relationship.</p>
+<p>When data is cleaned appropriately the keys used to match two tables will be commonly named. For example, the variable that can link our <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> data sets is named <code class="docutils literal notranslate"><span class="pre">id</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;id&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can easily see this by looking at the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> data but when working with larger data sets this becomes more appropriate than just viewing the data. For example, we can easily identify the common columns in the completejourney_py transactions and demographics data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span> <span class="o">=</span> <span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;transactions&#39;</span><span class="p">]</span>
+<span class="n">demographics</span> <span class="o">=</span> <span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;demographics&#39;</span><span class="p">]</span>
+
+<span class="n">transactions</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">demographics</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;household_id&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although it is preferred, keys do not need to have the same name in both tables. For example, our household identifier could be named <code class="docutils literal notranslate"><span class="pre">household_id</span></code> in the transaction data but be <code class="docutils literal notranslate"><span class="pre">hshd_id</span></code> in the demographics table. The names would be different but they represent the same information.</p>
+</div>
+</div>
+<div class="section" id="mutating-joins">
+<h2>Mutating joins<a class="headerlink" href="#mutating-joins" title="Permalink to this headline">¶</a></h2>
+<p>Often we have separate DataFrames that can have common and differing variables for similar observations and we wish to join these DataFrames together. A mutating join allows you to combine variables from two tables. It first matches observations by their keys, then copies across variables from one table to the other.</p>
+<p>There are different types of joins depending on how you want to merge two DataFrames:</p>
+<ul class="simple">
+<li><p><strong>inner join</strong>: keeps only observations in <code class="docutils literal notranslate"><span class="pre">x</span></code> that match in <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p><strong>left join</strong>: keeps all observations in <code class="docutils literal notranslate"><span class="pre">x</span></code> and adds available information from <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p><strong>right join</strong>: keeps all observations in <code class="docutils literal notranslate"><span class="pre">y</span></code> and adds available information from <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p><strong>full join</strong>: keeps all observations in both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+</ul>
+<p>Let’s explore each of these a little more closely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>DataFrames have two different methods to join data - <code class="docutils literal notranslate"><span class="pre">df.join()</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">df.merge()</span></code>. The <code class="docutils literal notranslate"><span class="pre">.join</span></code> method is meant for joining based on the index rather than columns. In practice, <code class="docutils literal notranslate"><span class="pre">.merge</span></code> tends to be used more often because it allows us to retain variables in columns and join by one or more columns. Consequently, we will be using <code class="docutils literal notranslate"><span class="pre">.merge</span></code> throughout this lesson.</p>
+</div>
+<div class="section" id="inner-join">
+<h3>Inner join<a class="headerlink" href="#inner-join" title="Permalink to this headline">¶</a></h3>
+<p>The simplest type of join is the <strong>inner join</strong>. An inner join matches pairs of observations whenever their keys are equal. Consequently, the output of an inner join is all rows from <code class="docutils literal notranslate"><span class="pre">x</span></code> where there are matching values in <code class="docutils literal notranslate"><span class="pre">y</span></code>, and all columns from <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>An inner join is the most restrictive of the joins - it returns only rows with matches across both data frames.</p>
+</div>
+<p>The following provides a nice illustration:</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/join-inner.png"><img alt="Inner join" src="../_images/join-inner.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 9 </span><span class="caption-text">Inner join (<a class="reference external" href="https://r4ds.had.co.nz/relational-data.html">source</a>).</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>To perform an inner join with Pandas we use the <code class="docutils literal notranslate"><span class="pre">.merge</span></code> method. By default, <code class="docutils literal notranslate"><span class="pre">.merge</span></code> will perform an inner join:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice that only those rows where there are common key values (<code class="docutils literal notranslate"><span class="pre">id</span></code> = 1 &amp; 2) in both <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are retained while the rows where non-common key values exist (<code class="docutils literal notranslate"><span class="pre">id</span></code> = 3 in <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">id</span></code> = 4 in <code class="docutils literal notranslate"><span class="pre">y</span></code>) are discarded.</p>
+</div>
+<p>Note that I didn’t specify which column to join on nor the type of join. If that information is not specified, merge uses the overlapping column names as the keys. It’s a good practice to specify the type of join and the keys explicitly:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="outer-joins">
+<h3>Outer joins<a class="headerlink" href="#outer-joins" title="Permalink to this headline">¶</a></h3>
+<p>An inner join keeps observations that appear in both tables. However, we often want to retain <em>all</em> observations in at least one of the tables. Consequently, we can apply various <strong>outer joins</strong> to retain observations that appear in at least one of the tables. There are three main types of outer joins:</p>
+<ul class="simple">
+<li><p>A left join keeps all observations in <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
+<li><p>A right join keeps all observations in <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+<li><p>A full join keeps all observations in <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p></li>
+</ul>
+<p>These joins work by adding <code class="docutils literal notranslate"><span class="pre">NaN</span></code> in rows where non-matching information exists:</p>
+<div class="figure align-default" id="outer-join">
+<a class="reference internal image-reference" href="../_images/join-outer.png"><img alt="Outer joins" src="../_images/join-outer.png" style="width: 50%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 10 </span><span class="caption-text">Difference in left join, right join, and outer join procedures (<a class="reference external" href="https://r4ds.had.co.nz/relational-data.html">source</a>).</span><a class="headerlink" href="#outer-join" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="left-join">
+<h4>Left join<a class="headerlink" href="#left-join" title="Permalink to this headline">¶</a></h4>
+<p>With a <strong>left join</strong> we retain all observations from <code class="docutils literal notranslate"><span class="pre">x</span></code>, and we add columns <code class="docutils literal notranslate"><span class="pre">y</span></code>. Rows in <code class="docutils literal notranslate"><span class="pre">x</span></code> where there is no matching key value in <code class="docutils literal notranslate"><span class="pre">y</span></code> will have <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in the new columns. We can change the type of join by changing the <code class="docutils literal notranslate"><span class="pre">how</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="right-join">
+<h4>Right join<a class="headerlink" href="#right-join" title="Permalink to this headline">¶</a></h4>
+<p>A <strong>right join</strong> is just a flipped left join where we retain all observations from <code class="docutils literal notranslate"><span class="pre">y</span></code>, and we add columns <code class="docutils literal notranslate"><span class="pre">x</span></code>. Similar to a left join, rows in <code class="docutils literal notranslate"><span class="pre">y</span></code> where there is no matching key value in <code class="docutils literal notranslate"><span class="pre">x</span></code> will have <code class="docutils literal notranslate"><span class="pre">NaN</span></code> values in the new columns.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Should I use a right join, or a left join? To answer this, ask yourself <em>“which DataFrame should retain all of its rows?”</em> - and use this one as the baseline. A left join keeps all the rows in the first DataFrame written in the command, whereas a right join keeps all the rows in the second DataFrame.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="full-outer-join">
+<h4>Full outer join<a class="headerlink" href="#full-outer-join" title="Permalink to this headline">¶</a></h4>
+<p>We can also perform a <strong>full outer join</strong> where we keep all observations in <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>. This join will match observations where the key variable(s) have matching information in both tables and then fill in non-matching values as <code class="docutils literal notranslate"><span class="pre">NaN</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A full outer join is the most inclusive of the joins - it returns all rows from both DataFrames.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y4</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="differing-keys">
+<h2>Differing keys<a class="headerlink" href="#differing-keys" title="Permalink to this headline">¶</a></h2>
+<p>So far, the keys we’ve used to join two DataFrames have had the same name. This was encoded by using <code class="docutils literal notranslate"><span class="pre">on='id'</span></code>. However, having keys with the same name is not a requirement. But what happens we our common key variable is named differently in each DataFrame?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;id_a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;val_a&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">]})</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;id_b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> <span class="s1">&#39;val_b&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">,</span> <span class="s1">&#39;y4&#39;</span><span class="p">]})</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, since our common key variable has different names in each table (<code class="docutils literal notranslate"><span class="pre">id_a</span></code> in <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">id_b</span></code> in <code class="docutils literal notranslate"><span class="pre">b</span></code>), our inner join function doesn’t know how to join these two DataFrames and an error results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">MergeError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [13],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:9345,</span> in <span class="ni">DataFrame.merge</span><span class="nt">(self, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9326</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9327</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_merge_doc</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9328</span> <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">9341</span>     <span class="n">validate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9342</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">9343</span>     <span class="kn">from</span> <span class="nn">pandas.core.reshape.merge</span> <span class="kn">import</span> <span class="n">merge</span>
+<span class="ne">-&gt; </span><span class="mi">9345</span>     <span class="k">return</span> <span class="n">merge</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">9346</span>         <span class="bp">self</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9347</span>         <span class="n">right</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9348</span>         <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9349</span>         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9350</span>         <span class="n">left_on</span><span class="o">=</span><span class="n">left_on</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9351</span>         <span class="n">right_on</span><span class="o">=</span><span class="n">right_on</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9352</span>         <span class="n">left_index</span><span class="o">=</span><span class="n">left_index</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9353</span>         <span class="n">right_index</span><span class="o">=</span><span class="n">right_index</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9354</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9355</span>         <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9356</span>         <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9357</span>         <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9358</span>         <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">9359</span>     <span class="p">)</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:107,</span> in <span class="ni">merge</span><span class="nt">(left, right, how, on, left_on, right_on, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">     </span><span class="mi">90</span> <span class="nd">@Substitution</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">left : DataFrame or named Series&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">91</span> <span class="nd">@Appender</span><span class="p">(</span><span class="n">_merge_doc</span><span class="p">,</span> <span class="n">indents</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">92</span> <span class="k">def</span> <span class="nf">merge</span><span class="p">(</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">105</span>     <span class="n">validate</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">106</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataFrame</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">107</span>     <span class="n">op</span> <span class="o">=</span> <span class="n">_MergeOperation</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">108</span>         <span class="n">left</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">109</span>         <span class="n">right</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">110</span>         <span class="n">how</span><span class="o">=</span><span class="n">how</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">111</span>         <span class="n">on</span><span class="o">=</span><span class="n">on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">112</span>         <span class="n">left_on</span><span class="o">=</span><span class="n">left_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">113</span>         <span class="n">right_on</span><span class="o">=</span><span class="n">right_on</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">114</span>         <span class="n">left_index</span><span class="o">=</span><span class="n">left_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">115</span>         <span class="n">right_index</span><span class="o">=</span><span class="n">right_index</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">116</span>         <span class="n">sort</span><span class="o">=</span><span class="n">sort</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">117</span>         <span class="n">suffixes</span><span class="o">=</span><span class="n">suffixes</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span>         <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>         <span class="n">indicator</span><span class="o">=</span><span class="n">indicator</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">120</span>         <span class="n">validate</span><span class="o">=</span><span class="n">validate</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">121</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span>     <span class="k">return</span> <span class="n">op</span><span class="o">.</span><span class="n">get_result</span><span class="p">()</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:682,</span> in <span class="ni">_MergeOperation.__init__</span><span class="nt">(self, left, right, how, on, left_on, right_on, axis, left_index, right_index, sort, suffixes, copy, indicator, validate)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span>     <span class="c1"># stacklevel chosen to be correct when this is reached via pd.merge</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span>     <span class="c1"># (and not DataFrame.join)</span>
+<span class="g g-Whitespace">    </span><span class="mi">680</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="n">msg</span><span class="p">,</span> <span class="ne">FutureWarning</span><span class="p">,</span> <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">())</span>
+<span class="ne">--&gt; </span><span class="mi">682</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_specification</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">684</span> <span class="n">cross_col</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">685</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">how</span> <span class="o">==</span> <span class="s2">&quot;cross&quot;</span><span class="p">:</span>
+
+<span class="nn">File /opt/anaconda3/lib/python3.9/site-packages/pandas/core/reshape/merge.py:1349,</span> in <span class="ni">_MergeOperation._validate_specification</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1347</span> <span class="n">common_cols</span> <span class="o">=</span> <span class="n">left_cols</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">right_cols</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1348</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">common_cols</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1349</span>     <span class="k">raise</span> <span class="n">MergeError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1350</span>         <span class="s2">&quot;No common columns to perform merge on. &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1351</span>         <span class="sa">f</span><span class="s2">&quot;Merge options: left_on=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left_on</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1352</span>         <span class="sa">f</span><span class="s2">&quot;right_on=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right_on</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1353</span>         <span class="sa">f</span><span class="s2">&quot;left_index=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">left_index</span><span class="si">}</span><span class="s2">, &quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1354</span>         <span class="sa">f</span><span class="s2">&quot;right_index=</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">right_index</span><span class="si">}</span><span class="s2">&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1355</span>     <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1356</span> <span class="k">if</span> <span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1357</span>     <span class="ow">not</span> <span class="n">left_cols</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">common_cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_unique</span>
+<span class="g g-Whitespace">   </span><span class="mi">1358</span>     <span class="ow">or</span> <span class="ow">not</span> <span class="n">right_cols</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">common_cols</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">&quot;inner&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">is_unique</span>
+<span class="g g-Whitespace">   </span><span class="mi">1359</span> <span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1360</span>     <span class="k">raise</span> <span class="n">MergeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data columns not unique: </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">common_cols</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">MergeError</span>: No common columns to perform merge on. Merge options: left_on=None, right_on=None, left_index=False, right_index=False
+</pre></div>
+</div>
+</div>
+</div>
+<p>When this happens, we can explicitly tell our join function to use unique key names in each DataFrame as a common key with the <code class="docutils literal notranslate"><span class="pre">left_on</span></code> and <code class="docutils literal notranslate"><span class="pre">right_on</span></code> arguments:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;id_a&#39;</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;id_b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id_a</th>
+      <th>val_a</th>
+      <th>id_b</th>
+      <th>val_b</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>1</td>
+      <td>y1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>2</td>
+      <td>y2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="bigger-example">
+<h2>Bigger example<a class="headerlink" href="#bigger-example" title="Permalink to this headline">¶</a></h2>
+<p>So far we’ve used small simple examples to illustrate the differences between joins. Now let’s use our <strong>completejourney</strong> data to look at some larger examples.</p>
+<p>Say we wanted to add product information (via <code class="docutils literal notranslate"><span class="pre">products</span></code>) to each transaction (<code class="docutils literal notranslate"><span class="pre">transaction</span></code>); however, we want to <em>retain all transactions</em>. This would suggest a left join so we can keep all transaction observations but simply add product information where possible to each transaction.</p>
+<p>First, let’s get the common key:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">products</span> <span class="o">=</span> <span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">]</span>
+
+<span class="c1"># common variables</span>
+<span class="n">transactions</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">intersection</span><span class="p">(</span><span class="n">products</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;product_id&#39;], dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This aligns to the <a class="reference external" href="https://bradleyboehmke.github.io/completejourney/articles/completejourney.html#dataset-details">data dictionary</a> so we can trust this is the accurate common key. We can now perform a left join using <code class="docutils literal notranslate"><span class="pre">product_id</span></code> as the common key.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The join functions add variables to the right, so if you have a lot of variables already you will need to scroll over to the far right to see the newly added variables.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">transactions</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>household_id</th>
+      <th>store_id</th>
+      <th>basket_id</th>
+      <th>product_id</th>
+      <th>quantity</th>
+      <th>sales_value</th>
+      <th>retail_disc</th>
+      <th>coupon_disc</th>
+      <th>coupon_match_disc</th>
+      <th>week</th>
+      <th>transaction_timestamp</th>
+      <th>manufacturer_id</th>
+      <th>department</th>
+      <th>brand</th>
+      <th>product_category</th>
+      <th>product_type</th>
+      <th>package_size</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570044</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 11:53:26</td>
+      <td>2.0</td>
+      <td>PASTRY</td>
+      <td>National</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570047</td>
+      <td>9878513</td>
+      <td>1</td>
+      <td>0.99</td>
+      <td>0.10</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:10:28</td>
+      <td>69.0</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>FACIAL TISS/DNR NAPKIN</td>
+      <td>FACIAL TISSUE &amp; PAPER HANDKE</td>
+      <td>85 CT</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1228</td>
+      <td>406</td>
+      <td>31198655051</td>
+      <td>1041453</td>
+      <td>1</td>
+      <td>1.43</td>
+      <td>0.15</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:26:30</td>
+      <td>69.0</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>BAG SNACKS</td>
+      <td>POTATO CHIPS</td>
+      <td>11.5 OZ</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1020156</td>
+      <td>1</td>
+      <td>1.50</td>
+      <td>0.29</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:30:27</td>
+      <td>2142.0</td>
+      <td>GROCERY</td>
+      <td>National</td>
+      <td>REFRGRATD DOUGH PRODUCTS</td>
+      <td>REFRIGERATED BAGELS</td>
+      <td>17.1 OZ</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1053875</td>
+      <td>2</td>
+      <td>2.78</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>2017-01-01 12:30:27</td>
+      <td>2326.0</td>
+      <td>GROCERY</td>
+      <td>National</td>
+      <td>SEAFOOD - SHELF STABLE</td>
+      <td>TUNA</td>
+      <td>5.0 OZ</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1469302</th>
+      <td>679</td>
+      <td>447</td>
+      <td>41453103606</td>
+      <td>14025548</td>
+      <td>1</td>
+      <td>0.79</td>
+      <td>0.20</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>53</td>
+      <td>2018-01-01 03:50:03</td>
+      <td>693.0</td>
+      <td>DRUG GM</td>
+      <td>National</td>
+      <td>CANDY - PACKAGED</td>
+      <td>CHEWING GUM</td>
+      <td>.81 OZ</td>
+    </tr>
+    <tr>
+      <th>1469303</th>
+      <td>2070</td>
+      <td>311</td>
+      <td>41453083334</td>
+      <td>909894</td>
+      <td>1</td>
+      <td>1.73</td>
+      <td>0.17</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>53</td>
+      <td>2018-01-01 04:01:20</td>
+      <td>69.0</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>REFRGRATD JUICES/DRNKS</td>
+      <td>DAIRY CASE 100% PURE JUICE - O</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <th>1469304</th>
+      <td>2070</td>
+      <td>311</td>
+      <td>41453083334</td>
+      <td>933067</td>
+      <td>2</td>
+      <td>5.00</td>
+      <td>2.98</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>53</td>
+      <td>2018-01-01 04:01:20</td>
+      <td>1425.0</td>
+      <td>MEAT-PCKGD</td>
+      <td>National</td>
+      <td>BACON</td>
+      <td>FLAVORED/OTHER</td>
+      <td>16 OZ</td>
+    </tr>
+    <tr>
+      <th>1469305</th>
+      <td>2070</td>
+      <td>311</td>
+      <td>41453083334</td>
+      <td>1029743</td>
+      <td>1</td>
+      <td>2.60</td>
+      <td>0.29</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>53</td>
+      <td>2018-01-01 04:01:20</td>
+      <td>69.0</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>FLUID MILK PRODUCTS</td>
+      <td>FLUID MILK WHITE ONLY</td>
+      <td>1 GA</td>
+    </tr>
+    <tr>
+      <th>1469306</th>
+      <td>2070</td>
+      <td>311</td>
+      <td>41453083334</td>
+      <td>1061220</td>
+      <td>1</td>
+      <td>1.19</td>
+      <td>0.13</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>53</td>
+      <td>2018-01-01 04:01:20</td>
+      <td>69.0</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>REFRGRATD DOUGH PRODUCTS</td>
+      <td>REFRIGERATED BISCUITS REGULAR</td>
+      <td>16 OZ</td>
+    </tr>
+  </tbody>
+</table>
+<p>1469307 rows × 17 columns</p>
+</div></div></div>
+</div>
+<p>This has now added product information to each transaction. Consequently, if we wanted to get the total sales across the meat <code class="docutils literal notranslate"><span class="pre">department</span></code> but summarized at the <code class="docutils literal notranslate"><span class="pre">product_category</span></code> level so that we can identify which products generate the greatest sales we could follow this joining procedure with additional skills we learned in previous lessons:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">transactions</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">products</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;department == &#39;MEAT&#39;&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;product_category&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;sales_value&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>product_category</th>
+      <th>sales_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>BEEF</td>
+      <td>176614.54</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>CHICKEN</td>
+      <td>52703.51</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>PORK</td>
+      <td>50809.31</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>SMOKED MEATS</td>
+      <td>15324.22</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>TURKEY</td>
+      <td>11128.95</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>EXOTIC GAME/FOWL</td>
+      <td>860.42</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>LAMB</td>
+      <td>829.27</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>VEAL</td>
+      <td>167.13</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>MEAT SUPPLIES</td>
+      <td>57.03</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>MEAT - MISC</td>
+      <td>39.66</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>RW FRESH PROCESSED MEAT</td>
+      <td>30.84</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>COUPON</td>
+      <td>7.00</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>LUNCHMEAT</td>
+      <td>2.20</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>MISCELLANEOUS</td>
+      <td>0.95</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>BACON</td>
+      <td>0.30</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Join the <code class="docutils literal notranslate"><span class="pre">transactions</span></code> and <code class="docutils literal notranslate"><span class="pre">demographics</span></code> data so that you have household demographics for each transaction. Now compute the total sales by <code class="docutils literal notranslate"><span class="pre">age</span></code> category to identify which age group generates the most sales.</p></li>
+<li><p>Use successive joins to join <code class="docutils literal notranslate"><span class="pre">transactions</span></code> with <code class="docutils literal notranslate"><span class="pre">coupons</span></code> and then with <code class="docutils literal notranslate"><span class="pre">coupon_redemptions</span></code>. Use the proper join that will only retain those transactions that have coupon and coupon redemption data.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="merge-indicator">
+<h2>Merge indicator<a class="headerlink" href="#merge-indicator" title="Permalink to this headline">¶</a></h2>
+<p>You can use the <code class="docutils literal notranslate"><span class="pre">indicator</span></code> argument to add a special column <code class="docutils literal notranslate"><span class="pre">_merge</span></code> that indicates the source of each row; values will be <code class="docutils literal notranslate"><span class="pre">left_only</span></code>, <code class="docutils literal notranslate"><span class="pre">right_only</span></code>, or <code class="docutils literal notranslate"><span class="pre">both</span></code> based on the origin of the joined data in each row.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>val_x</th>
+      <th>val_y</th>
+      <th>_merge</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>x1</td>
+      <td>y1</td>
+      <td>both</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>x2</td>
+      <td>y2</td>
+      <td>both</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>x3</td>
+      <td>NaN</td>
+      <td>left_only</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>NaN</td>
+      <td>y4</td>
+      <td>right_only</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>This can be used for additional filtering or other informational reasons. For example, say our manager came to us and asked – <em>“of all our transactions, how many of them are by customers that we <strong>don’t</strong> have demographic information on?”</em> To answer this question we could use an indicator and then just find those transactions that are in <code class="docutils literal notranslate"><span class="pre">_merge</span> <span class="pre">=</span> <span class="pre">left_only</span></code> since those are transactions that don’t have matching demographic information.</p>
+<p>We see that of the 1,469,307 transactions…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Total number of transactions</span>
+<span class="n">transactions</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1469307, 11)
+</pre></div>
+</div>
+</div>
+</div>
+<p>640,457 (43%) of them are by customers that we don’t have demographic info on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Number of transactions with no customer demographic information</span>
+<span class="p">(</span>
+    <span class="n">transactions</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">demographics</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">indicator</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;_merge == &#39;left_only&#39;&quot;</span><span class="p">)</span>
+<span class="p">)</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(640457, 19)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Knowledge check<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">products</span></code> and <code class="docutils literal notranslate"><span class="pre">transactions</span></code> data, how many products have and have not sold? In other words, of all the products we have in our inventory, how many have been involved in a transaction? How many have not been involved in a transaction?</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">demographics</span></code> and <code class="docutils literal notranslate"><span class="pre">transactions</span></code> data, identify which <code class="docutils literal notranslate"><span class="pre">income</span></code> level buys the most <code class="docutils literal notranslate"><span class="pre">quantity</span></code> of goods.</p></li>
+</ol>
+</div>
+</div>
 </div>
 <div class="section" id="exercises">
 <h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
-<p>TBD</p>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Get demographic information for all households that have total sales (<code class="docutils literal notranslate"><span class="pre">sales_value</span></code>) of $100 or more.</p></li>
+<li><p>Of the households that have total sales of $100 or more, how many of these customers do we not have demographic information on?</p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">promotions</span></code> and <code class="docutils literal notranslate"><span class="pre">transactions</span></code> data, compute the total sales for all products that were in a display in the front of the store (<code class="docutils literal notranslate"><span class="pre">display_location</span></code> –&gt; 1).</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,completejourney_py
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab        : 3.3.2
+pandas            : 1.4.2
+completejourney_py: 0.0.3
+</pre></div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -519,7 +1936,21 @@ const thebe_selector_output = ".output, .cell_output"
               
             
                 <!-- Previous / next buttons -->
-<div class='prev-next-area'>
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-4a.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lession 4a: Tidy data</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             
         </div>
