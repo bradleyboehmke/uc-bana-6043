@@ -32,6 +32,7 @@ parts:
   - file: 04-module/overview
   - file: 04-module/lesson-4a
   - file: 04-module/lesson-4b
+  - file: 04-module/lesson-4c
   - file: 04-module/lab
 - caption: Module 5
   chapters:
