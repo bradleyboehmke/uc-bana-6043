@@ -1,0 +1,1593 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lession 5a: Plotting with Pandas &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lesson 2" href="lesson-2.html" />
+    <link rel="prev" title="Overview" href="overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/05-module/lesson-5a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F05-module/lesson-5a.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/05-module/lesson-5a.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/05-module/lesson-5a.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-plot-attribute">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .plot
+    </span>
+   </code>
+   attribute
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-a-series">
+   Plotting a Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-a-dataframe">
+   Plotting a DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#under-the-hood-matplotlib">
+   Under the hood - Matplotlib
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lession 5a: Plotting with Pandas</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-plot-attribute">
+   The
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     .plot
+    </span>
+   </code>
+   attribute
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-a-series">
+   Plotting a Series
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-a-dataframe">
+   Plotting a DataFrame
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#under-the-hood-matplotlib">
+   Under the hood - Matplotlib
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lession-5a-plotting-with-pandas">
+<h1>Lession 5a: Plotting with Pandas<a class="headerlink" href="#lession-5a-plotting-with-pandas" title="Permalink to this headline">¶</a></h1>
+<p>The Python visualization ecosystem is vast and can come across as daunting at first. In fact, <a class="reference external" href="https://pyviz.org/index.html">PyViz</a> is a website that was created for the sole purpose of helping users decide on the best open-source Python data visualization tools for their needs. I highly recommend you take some time to explore the resource.</p>
+<p>However, since we have spent the last several modules getting comfortable using Pandas for our statistical computing needs, it is only fitting to continue using Pandas and explore the high-level plotting capabilities it provides before exploring other libraries.  Consequently, this lesson is mainly focused on making you capable of creating basic plots directly with your Pandas Series and DataFrame objects.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul class="simple">
+<li><p>Create univariate plots based on Series</p></li>
+<li><p>Create bivariate plots based on DataFrames</p></li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Load Pandas to provide you access to the join functions we’ll cover in this lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>This lesson will also use the Complete Journey data; but before we start we’ll join the transactions data with the products and household demographics data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">completejourney_py</span> <span class="kn">import</span> <span class="n">get_data</span>
+
+<span class="n">cj_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;transactions&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;demographics&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;household_id&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>household_id</th>
+      <th>store_id</th>
+      <th>basket_id</th>
+      <th>product_id</th>
+      <th>quantity</th>
+      <th>sales_value</th>
+      <th>retail_disc</th>
+      <th>coupon_disc</th>
+      <th>coupon_match_disc</th>
+      <th>week</th>
+      <th>...</th>
+      <th>product_category</th>
+      <th>product_type</th>
+      <th>package_size</th>
+      <th>age</th>
+      <th>income</th>
+      <th>home_ownership</th>
+      <th>marital_status</th>
+      <th>household_size</th>
+      <th>household_comp</th>
+      <th>kids_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570044</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31541475196</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31672350129</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31883555076</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31944515097</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="the-plot-attribute">
+<h2>The <code class="docutils literal notranslate"><span class="pre">.plot</span></code> attribute<a class="headerlink" href="#the-plot-attribute" title="Permalink to this headline">¶</a></h2>
+<p>Both Pandas Series and DataFrames have a <code class="docutils literal notranslate"><span class="pre">.plot</span></code> attribute that allow us to plot our data. This <code class="docutils literal notranslate"><span class="pre">.plot</span></code> attribute is a little unique as you can call it as a method and specify the plot of interest using an argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;scatter&#39;</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or you can use it to access sub-methods:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In this lesson and throughoug most of this class you will notice that I prefer to use <code class="docutils literal notranslate"><span class="pre">.plot</span></code> to access sub-methods. However, this is simply a preference as you can accomplish the same output with either approach.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.plot</span></code> is pretty versatile as it (and all the sub-methods) provide a lot of parameters to control and refine our plots. Currently, the available plots that we can make with <code class="docutils literal notranslate"><span class="pre">.plot</span></code> include:</p>
+<ul class="simple">
+<li><p><strong>line</strong> : line plot (default)</p></li>
+<li><p><strong>bar</strong> : vertical bar plot</p></li>
+<li><p><strong>barh</strong> : horizontal bar plot</p></li>
+<li><p><strong>hist</strong> : histogram</p></li>
+<li><p><strong>box</strong> : boxplot</p></li>
+<li><p><strong>kde</strong> : Kernel Density Estimation plot</p></li>
+<li><p><strong>density</strong> : same as ‘kde’</p></li>
+<li><p><strong>area</strong> : area plot</p></li>
+<li><p><strong>pie</strong> : pie plot</p></li>
+<li><p><strong>scatter</strong> : scatter plot (DataFrame only)</p></li>
+<li><p><strong>hexbin</strong> : hexbin plot (DataFrame only)</p></li>
+</ul>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Check out the <code class="docutils literal notranslate"><span class="pre">.plot</span></code> documentation for <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.plot.html">Series</a> and <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html">DataFrames</a>.</p>
+<ol class="simple">
+<li><p>What parameter would you use to control the figure size?</p></li>
+<li><p>What parameter would you use to add a title?</p></li>
+<li><p>What parameter(s) would you use to log scale an x and/or y axis?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-a-series">
+<h2>Plotting a Series<a class="headerlink" href="#plotting-a-series" title="Permalink to this headline">¶</a></h2>
+<p>Often, our analysis starts by understanding individual variables within our data and analyzing univariate distributions helps with this process. Consequently, its very common to simply select a single Series and visualize the distribution of values in that series.</p>
+<p>Let’s start by creating a histogram of the transaction <code class="docutils literal notranslate"><span class="pre">sales_value</span></code>s in our Complete Journey data. We can do this with <code class="docutils literal notranslate"><span class="pre">hist()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:ylabel=&#39;Frequency&#39;&gt;
+</pre></div>
+</div>
+<img alt="../_images/lesson-5a_8_1.png" src="../_images/lesson-5a_8_1.png" />
+</div>
+</div>
+<p>You probably notice a couple of things above:</p>
+<ol class="simple">
+<li><p>What’s with the <code class="docutils literal notranslate"><span class="pre">&lt;AxesSubplot:ylabel='Frequency'&gt;</span></code> output above our plot?</p></li>
+<li><p>We have many zeroes in our data plus this feature is heavily skewed. Consequently, our histogram is not very informative at this point.</p></li>
+</ol>
+<p>When we make a plot, the output will include the name of the object, which is what we see happening with <code class="docutils literal notranslate"><span class="pre">&lt;AxesSubplot:ylabel='Frequency'&gt;</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We can remove this output by adding a <code class="docutils literal notranslate"><span class="pre">;</span></code> after the plotting function call.</p>
+</div>
+<p>As for #2, we can make some adjustments such as remove any zero dollar transactions, log transform our axis, and increase the number of bins. This helps to pull out additional insights in our <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> distribution. For example, we see we have a lot of very low dollar transactions and the frequency decreases as the transaction dollar amount increases. However, we also see an increase in transactions right at the $200 mark but that decreases quickly. There are also a few outlier transaction values that are around the $600 and $800 value marks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of Sales Values&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_10_0.png" src="../_images/lesson-5a_10_0.png" />
+</div>
+</div>
+<p>Box plots and kernel density estimation (KDE) plots are an alternative way to view univariate distribtions. For example, let’s compute the total <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> across all stores. The resulting <code class="docutils literal notranslate"><span class="pre">sales_by_store</span></code> object is a Series. A boxplot provides a lot of information (read about them <a class="reference external" href="https://www.simplypsychology.org/boxplots.html#:~:text=In%20descriptive%20statistics%2C%20a%20box,(or%20percentiles)%20and%20averages.">here</a>). We can see that the median (red line) is around <span class="math notranslate nohighlight">\(10^2 = 100\)</span> and the interquartile range is between somewhere around 50-15000. We also see we have some outliers on the upper end.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_by_store</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;store_id&#39;</span><span class="p">)[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># boxplot</span>
+<span class="n">sales_by_store</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of total sales across all stores&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_12_0.png" src="../_images/lesson-5a_12_0.png" />
+</div>
+</div>
+<p>We can quickly compare our boxplot with our numeric distribution and we see our they are similar (median: 157, interquartile range: 27-16000).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_by_store</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>count      280.000000
+mean      9374.588536
+std      15141.356992
+min          1.000000
+25%         27.265000
+50%        156.740000
+75%      16167.215000
+max      99608.720000
+Name: sales_value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>The KDE plot (which is also produced with <code class="docutils literal notranslate"><span class="pre">.plot.density()</span></code>) provides a smoothed histogram.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales_by_store</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">kde</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Distribution of total sales across all stores&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_16_0.png" src="../_images/lesson-5a_16_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.plot</span></code> sub-methods work exceptionally well with time series data. To illustrate, let’s create a Series that contains the <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> of each transaction with the <code class="docutils literal notranslate"><span class="pre">transaction_timestamp</span></code> as the index.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">)[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span>
+<span class="n">sales</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transaction_timestamp
+2017-01-01 11:53:26    0.50
+2017-01-23 12:50:57    0.25
+2017-01-29 12:25:17    0.25
+2017-02-13 10:56:45    0.50
+2017-02-19 12:11:58    0.50
+Name: sales_value, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>A handy method we have not talked about is <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.resample.html"><code class="docutils literal notranslate"><span class="pre">resample()</span></code></a> which allows us to easily convert time series data. For example, if we wanted to sum all <code class="docutils literal notranslate"><span class="pre">sales_value</span></code>s by the hour we can use <code class="docutils literal notranslate"><span class="pre">.resample('H')</span></code> followed by <code class="docutils literal notranslate"><span class="pre">.sum()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sales</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transaction_timestamp
+2017-01-01 11:00:00      0.50
+2017-01-01 12:00:00     13.69
+2017-01-01 13:00:00     20.43
+2017-01-01 14:00:00     36.58
+2017-01-01 15:00:00    553.79
+                        ...  
+2018-01-01 00:00:00    337.78
+2018-01-01 01:00:00    221.50
+2018-01-01 02:00:00    142.84
+2018-01-01 03:00:00     63.56
+2018-01-01 04:00:00     10.52
+Freq: H, Name: sales_value, Length: 8754, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we followed this sequence of code with <code class="docutils literal notranslate"><span class="pre">plot.line()</span></code> we get a line plot of the total sales values on the y-axis and the date-time on the x-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">sales</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_22_0.png" src="../_images/lesson-5a_22_0.png" />
+</div>
+</div>
+<p>The above plot is a bit busy since we’re plotting values for every hour over the course of a year. Let’s reduce the frequency and, instead, sum the <code class="docutils literal notranslate"><span class="pre">sales_value</span></code>s by day (<code class="docutils literal notranslate"><span class="pre">.resample('D')</span></code>). Now we see a bit more of a descriptive pattern. It looks like there is routinely higher sales transactions on particular days (probably certain days of the week such as weekends).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">sales</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_24_0.png" src="../_images/lesson-5a_24_0.png" />
+</div>
+</div>
+<p>Let’s validate our assumption above regarding the weekly shopping pattern. The below code chunk performs the same as above where we compute total daily sales across all days of the year but then we follow that up by extracting the name of the weekday from the date-timestamp and then grouping  by the day of week and computing the median and interquartile range (IQR) for all daily sales for the year.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have not yet seen code that looks like <code class="docutils literal notranslate"><span class="pre">lambda</span> <span class="pre">idx:</span> <span class="pre">idx.day_name()</span></code> do not worry. These are called lambda (anonymous) functions and we’ll discuss them more in module 6.</p>
+</div>
+<p>We definitely see that Saturday and Sunday are the weekdays with the heaviest sales value transactions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">day_order</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;Monday&#39;</span><span class="p">,</span> <span class="s1">&#39;Tuesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Wednesday&#39;</span><span class="p">,</span> <span class="s1">&#39;Thursday&#39;</span><span class="p">,</span> <span class="s1">&#39;Friday&#39;</span><span class="p">,</span> <span class="s1">&#39;Saturday&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunday&#39;</span><span class="p">]</span>
+
+<span class="n">total_sales_by_weekday</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">sales</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>                        <span class="c1"># resample by day</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>                                <span class="c1"># compute total daily sales</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="k">lambda</span> <span class="n">idx</span><span class="p">:</span> <span class="n">idx</span><span class="o">.</span><span class="n">day_name</span><span class="p">())</span>   <span class="c1"># extract week day name from date-timestamp</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">)</span>     <span class="c1"># group by day of week</span>
+    <span class="o">.</span><span class="n">quantile</span><span class="p">([</span><span class="mf">.25</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">.75</span><span class="p">])</span>             <span class="c1"># compute median and IQR of sales values</span>
+    <span class="o">.</span><span class="n">unstack</span><span class="p">()</span>                            <span class="c1"># flatten output (results in a DataFrame)</span>
+    <span class="o">.</span><span class="n">reindex</span><span class="p">(</span><span class="n">day_order</span><span class="p">)</span>                   <span class="c1"># force index to follow weekday order         </span>
+<span class="p">)</span>
+
+<span class="n">total_sales_by_weekday</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median and IQR of total sales by weekday&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_26_0.png" src="../_images/lesson-5a_26_0.png" />
+</div>
+</div>
+<p>Another common plot for Series is the bar plot. Let’s look at the median values from the analysis above. If we peak at the result we see we have a Series that contains the median total sales values for each weekday.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median_sales_by_weekday</span> <span class="o">=</span> <span class="n">total_sales_by_weekday</span><span class="p">[</span><span class="mf">0.50</span><span class="p">]</span>
+<span class="n">median_sales_by_weekday</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transaction_timestamp
+Monday       6764.620
+Tuesday      6581.320
+Wednesday    5987.355
+Thursday     6244.785
+Friday       6698.905
+Saturday     8461.210
+Sunday       9276.320
+Name: 0.5, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<p>Rather than plot this as a line chart as we did above, we can use <code class="docutils literal notranslate"><span class="pre">.plot.bar()</span></code> to create a bar plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">median_sales_by_weekday</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median total sales by weekday&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_30_0.png" src="../_images/lesson-5a_30_0.png" />
+</div>
+</div>
+<p>A common pattern you’ll use is to follow a <code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code> method call with a bar plot. For example, say we want to assess the number of transactions in our data by department. We could easily get this with the following:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;department&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Total transactions by department&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_32_0.png" src="../_images/lesson-5a_32_0.png" />
+</div>
+</div>
+<p>Unfortunately, we see a lot of very small values that overcrowds the plot. We can make some small adjustments to our code to leave all department values for those departments in the top 10 as is but for all departments not in the top 10 we can condense them down to an ‘Other’ category.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will discuss the <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.where.html"><code class="docutils literal notranslate"><span class="pre">.where()</span></code> method</a> in module 6. For now just realize its a way to apply an if-else condition to a Series.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">top10</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;department&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">isin_top10</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;department&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">top10</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;department&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">isin_top10</span><span class="p">,</span> <span class="s1">&#39;Other&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Total transaction sales by department&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_34_0.png" src="../_images/lesson-5a_34_0.png" />
+</div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Knowledge check</p>
+<ol class="simple">
+<li><p>Create a histogram for the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> column. Remove any zero quantities and/or adjust the axis to make the plot more informative.</p></li>
+<li><p>Compute the sum of <code class="docutils literal notranslate"><span class="pre">quantity</span></code> for each <code class="docutils literal notranslate"><span class="pre">store_id</span></code>. Now create density plot and box plot. Compare these plots to the summary statistics provided by <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> to compute the sum of <code class="docutils literal notranslate"><span class="pre">quantity</span></code> for each day. Plot the results to assess if there is similar pattern as we saw with <code class="docutils literal notranslate"><span class="pre">sales_value</span></code>.</p></li>
+<li><p>Use a bar plot to plot the total transaction quantities by <code class="docutils literal notranslate"><span class="pre">department</span></code>. Are the results similar to what we saw with total <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> by department?</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="plotting-a-dataframe">
+<h2>Plotting a DataFrame<a class="headerlink" href="#plotting-a-dataframe" title="Permalink to this headline">¶</a></h2>
+<p>Once we understand the basics of <code class="docutils literal notranslate"><span class="pre">.plot</span></code> with a Series we can extend this to a DataFrame easily. The primary difference is that the <code class="docutils literal notranslate"><span class="pre">.plot</span></code> sub-methods for a DataFrame allow us to plot multiple variables at once (i.e. <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>) and there are a few plotting methods that work for DataFrames that are not available for Series (i.e. <code class="docutils literal notranslate"><span class="pre">.scatterplot</span></code>, <code class="docutils literal notranslate"><span class="pre">.hexbin</span></code>)</p>
+<p>For example, say we want to plot <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> vs <code class="docutils literal notranslate"><span class="pre">quantity</span></code> across all transactions. The main difference we see below is that we specify which variables in our DataFrame to plot with <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Sales versus quantity&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_37_0.png" src="../_images/lesson-5a_37_0.png" />
+</div>
+</div>
+<p>It’s important to point out that although we used a few plots that are usually considered univariate in the Series section (i.e. <code class="docutils literal notranslate"><span class="pre">.plot.hist</span></code>, <code class="docutils literal notranslate"><span class="pre">.plot.bar</span></code>), we can still use these same methods with DataFrames. For example, say we wanted to compute the sum of <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> at the department level but we want the output to be a DataFrame (which is very common).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dept_sales</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;sales_value&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">dept_sales</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>department</th>
+      <th>sales_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GROCERY</td>
+      <td>1310385.28</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>DRUG GM</td>
+      <td>337458.00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>FUEL</td>
+      <td>210337.18</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>PRODUCE</td>
+      <td>193993.90</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MEAT</td>
+      <td>169014.96</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>MEAT-PCKGD</td>
+      <td>120369.80</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>DELI</td>
+      <td>86380.11</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>MISCELLANEOUS</td>
+      <td>46790.04</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>PASTRY</td>
+      <td>38328.18</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>NUTRITION</td>
+      <td>35779.51</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can still plot the results by assigning the columns of interest to the <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> parameters in <code class="docutils literal notranslate"><span class="pre">.plot.barh</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It’s common to use <code class="docutils literal notranslate"><span class="pre">.sort_values</span></code> just before bar plots to adjust the order of the bars.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">dept_sales</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;sales_value&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_41_0.png" src="../_images/lesson-5a_41_0.png" />
+</div>
+</div>
+<p>A great advantage of the <code class="docutils literal notranslate"><span class="pre">.plot</span></code> methods is that they allow us to easily plot more than one column of interest. For example, say we compute the total
+for the given departments.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dept_totals</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;department != &#39;FUEL&#39; &amp; department != &#39;MISCELLANEOUS&#39;&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;sales_value&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">nlargest</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">dept_totals</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>department</th>
+      <th>sales_value</th>
+      <th>quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>GROCERY</td>
+      <td>1310385.28</td>
+      <td>693486</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>DRUG GM</td>
+      <td>337458.00</td>
+      <td>111003</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>PRODUCE</td>
+      <td>193993.90</td>
+      <td>111279</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>MEAT</td>
+      <td>169014.96</td>
+      <td>36421</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>MEAT-PCKGD</td>
+      <td>120369.80</td>
+      <td>43233</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>DELI</td>
+      <td>86380.11</td>
+      <td>22048</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>PASTRY</td>
+      <td>38328.18</td>
+      <td>16601</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>NUTRITION</td>
+      <td>35779.51</td>
+      <td>15188</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>SEAFOOD-PCKGD</td>
+      <td>18996.37</td>
+      <td>4207</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>FLORAL</td>
+      <td>12494.58</td>
+      <td>1798</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can actually plot both the <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> and <code class="docutils literal notranslate"><span class="pre">quantity</span></code> columns in the same bar plot by passing a list to <code class="docutils literal notranslate"><span class="pre">y</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">dept_totals</span>
+    <span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;sales_value&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">&#39;department&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_45_0.png" src="../_images/lesson-5a_45_0.png" />
+</div>
+</div>
+<p>This feature is especially handy when plotting multiple line charts. For example, say we have daily totals computed for each of the discount variables:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_daily_discounts</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">&quot;department == &#39;GROCERY&#39;&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="p">[</span><span class="s1">&#39;retail_disc&#39;</span><span class="p">,</span> <span class="s1">&#39;coupon_disc&#39;</span><span class="p">,</span> <span class="s1">&#39;coupon_match_disc&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="n">total_daily_discounts</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>retail_disc</th>
+      <th>coupon_disc</th>
+      <th>coupon_match_disc</th>
+    </tr>
+    <tr>
+      <th>transaction_timestamp</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2017-01-01</th>
+      <td>495.69</td>
+      <td>4.45</td>
+      <td>1.45</td>
+    </tr>
+    <tr>
+      <th>2017-01-02</th>
+      <td>613.58</td>
+      <td>4.15</td>
+      <td>2.15</td>
+    </tr>
+    <tr>
+      <th>2017-01-03</th>
+      <td>601.23</td>
+      <td>8.95</td>
+      <td>3.75</td>
+    </tr>
+    <tr>
+      <th>2017-01-04</th>
+      <td>712.03</td>
+      <td>3.85</td>
+      <td>1.85</td>
+    </tr>
+    <tr>
+      <th>2017-01-05</th>
+      <td>724.14</td>
+      <td>14.60</td>
+      <td>3.09</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>If we apply <code class="docutils literal notranslate"><span class="pre">.plot.line()</span></code> to this DataFrame then by default it will plot each of the numeric variables on the same plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_daily_discounts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">line</span><span class="p">(</span><span class="n">logy</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_49_0.png" src="../_images/lesson-5a_49_0.png" />
+</div>
+</div>
+<p>In fact, this same logic applies to many of the univariate plots such as histograms, denisty plots, box plots, etc.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">total_daily_discounts</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">kde</span><span class="p">(</span><span class="n">logx</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_51_0.png" src="../_images/lesson-5a_51_0.png" />
+</div>
+</div>
+<div class="attention admonition">
+<p class="admonition-title">Knowledge check</p>
+<ol class="simple">
+<li><p>Compute the average <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> and <code class="docutils literal notranslate"><span class="pre">quantity</span></code> by <code class="docutils literal notranslate"><span class="pre">household_id</span></code>. Create a density plot that plots both these columns.</p></li>
+<li><p>Use a bar plot to assess whether married versus unmarried customers produce more transactions. Now do the same to assess which age groups produce the most transactions.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.resample()</span></code> to compute the sum of <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> for each month. Plot the results to assess which months have the largest <code class="docutils literal notranslate"><span class="pre">quantity</span></code> and <code class="docutils literal notranslate"><span class="pre">sales_value</span></code>s.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="under-the-hood-matplotlib">
+<h2>Under the hood - Matplotlib<a class="headerlink" href="#under-the-hood-matplotlib" title="Permalink to this headline">¶</a></h2>
+<p>Underneath the hood Pandas is using <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> to create the plots. Matplotlib is the most tried-and-true, mature plotting library in Python; however, its a bit more difficult to digest Matplotlib which is why I first introduce plotting with Pandas.</p>
+<p>In the next lesson we will dig into Matplotlib because, with it being the most popular plotting library in the Python ecosystem, it is important for you to have a baseline understanding of its capabilities.  But one thing I want to point out here is, since Pandas builds plots based on Matplotlib, we can actually use Matplotlib in conjunction with Pandas to advance our plots.</p>
+<p>For example, Matplotlib provides many <a class="reference external" href="https://www.dunderdata.com/blog/view-all-available-matplotlib-styles">style options</a> that can be used to beautify our plots. If you are familiar with <a class="reference external" href="https://fivethirtyeight.com/">fivethirtyeight.com</a> you’ll know that most of their visualizations have a consistent theme. We can use Matplotlib to change the style of our plots to look like fivethirtyeight plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;fivethirtyeight&#39;</span><span class="p">)</span>
+
+<span class="n">median_sales_by_weekday</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median total sales by weekday&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_54_0.png" src="../_images/lesson-5a_54_0.png" />
+</div>
+</div>
+<p>We may also want to refine our tick marks so that they are formatted in the units of interest. For example, below we use Matplotlib’s ticker module to format our y-axis to be in dollar and comma formatted units:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.ticker</span> <span class="k">as</span> <span class="nn">mtick</span>
+
+<span class="n">tick_format</span> <span class="o">=</span> <span class="n">mtick</span><span class="o">.</span><span class="n">StrMethodFormatter</span><span class="p">(</span><span class="s1">&#39;$</span><span class="si">{x:,.0f}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="p">(</span>
+    <span class="n">median_sales_by_weekday</span>
+    <span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Median total sales by weekday&#39;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">tick_format</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5a_56_0.png" src="../_images/lesson-5a_56_0.png" />
+</div>
+</div>
+<p>We’ll explore more Matplotlib capabilities in the next lesson but for now, happy Pandas plotting!</p>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Identify all different products that contain “pizza” in their <code class="docutils literal notranslate"><span class="pre">product_type</span></code> description.</p></li>
+<li><p>Use a bar plot to assess whether married versus unmarried customers purchase more pizza products.</p></li>
+<li><p>Create a scatter plot to assess the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> versus <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> of pizza products sold.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.resample</span></code> to compute the total <code class="docutils literal notranslate"><span class="pre">quantity</span></code> of pizza <code class="docutils literal notranslate"><span class="pre">product_type</span></code>s for each day of the year. Plot the results to assess if there is a pattern.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,completejourney_py,matplotlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab        : 3.3.2
+pandas            : 1.4.2
+completejourney_py: 0.0.3
+matplotlib        : 3.5.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./05-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Overview</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lesson-2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lesson 2</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

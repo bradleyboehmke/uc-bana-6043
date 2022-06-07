@@ -37,7 +37,7 @@ parts:
 - caption: Module 5
   chapters:
   - file: 05-module/overview
-  - file: 05-module/lesson-1
+  - file: 05-module/lesson-5a
   - file: 05-module/lesson-2
   - file: 05-module/lab
 - caption: Module 6
