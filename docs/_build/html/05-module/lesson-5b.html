@@ -1,0 +1,1825 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 5b: Plotting with Matplotlib &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lession 5a: Plotting with Pandas" href="lesson-5a.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-5a.html">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 5b: Plotting with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/05-module/lesson-5b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F05-module/lesson-5b.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/05-module/lesson-5b.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/05-module/lesson-5b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-a-figure">
+   Anatomy of a Figure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-pyplot-module">
+   Importing the pyplot module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figures-and-axes">
+   Figures and axes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">
+     Distinguishing the Figure from the Axes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">
+     Setting the size of the Figure upon creation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">
+     Calling Axes methods -
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       set_
+      </span>
+     </code>
+     methods
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">
+       Getting and setting the title of the Axes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">
+       Getting and setting the x and y limits
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">
+       Getting and setting the location of the x and y ticks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">
+       Getting and setting the x and y tick labels
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-text-styles">
+     Setting text styles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-data">
+   Plotting Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plots">
+     Line
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot
+      </span>
+     </code>
+     s
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-plots">
+     Other plots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-more-dimensions">
+     Adding more dimensions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-plots">
+     Multiple plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 5b: Plotting with Matplotlib</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anatomy-of-a-figure">
+   Anatomy of a Figure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#importing-the-pyplot-module">
+   Importing the pyplot module
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#figures-and-axes">
+   Figures and axes
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">
+     Distinguishing the Figure from the Axes
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">
+     Setting the size of the Figure upon creation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">
+     Calling Axes methods -
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       get_
+      </span>
+     </code>
+     and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       set_
+      </span>
+     </code>
+     methods
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">
+       Getting and setting the title of the Axes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">
+       Getting and setting the x and y limits
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">
+       Getting and setting the location of the x and y ticks
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">
+       Getting and setting the x and y tick labels
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#setting-text-styles">
+     Setting text styles
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plotting-data">
+   Plotting Data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#line-plots">
+     Line
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot
+      </span>
+     </code>
+     s
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#other-plots">
+     Other plots
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#adding-more-dimensions">
+     Adding more dimensions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-plots">
+     Multiple plots
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-5b-plotting-with-matplotlib">
+<h1>Lesson 5b: Plotting with Matplotlib<a class="headerlink" href="#lesson-5b-plotting-with-matplotlib" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://matplotlib.org/3.1.1/index.html">Matplotlib</a> is probably the most widely used data visualization library in Python and is often used in publications. It was originally built to mimic the functionality of plotting with <a class="reference external" href="https://en.wikipedia.org/wiki/MATLAB">Matlab</a>. In fact, with Matplotlib being a <a class="reference external" href="https://pyviz.org/tools.html#core">“core” Python visualization library</a>, many higher-level visualization libraries (i.e. Pandas, seaborn, altair) are built on top of the Matplotlib foundation.</p>
+<p>Consequently, once you have strong fundamental understanding of Matplotlib you can transfer that knowledge to many other visualization libraries. This lesson seeks to provide that fundamental understanding</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul class="simple">
+<li><p>Manipulate Matplotlib’s Figure and Axes.</p></li>
+<li><p>Create a variety of plots such as line, scatter, box plots and more.</p></li>
+<li><p>Combine multiple plots into one overall figure.</p></li>
+</ul>
+</div>
+<div class="section" id="anatomy-of-a-figure">
+<h2>Anatomy of a Figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">¶</a></h2>
+<p>There is a hierarchy you must understand when plotting with Matplotlib. The highest and outermost part of a plot is the <strong>Figure</strong>. The Figure contains all the other plotting elements. Typically, you do not interact with it much. Inside the Figure is the <strong>Axes</strong>. This is the actual plotting surface that you normally would refer to as a ‘plot’.</p>
+<p>A Figure may contain any number of these <strong>Axes</strong>. The <strong>Axes</strong> is a container for all of the other physical pixels that get drawn onto your screen. This includes the x and y axis, lines, text, points, legends, images, etc…</p>
+<div class="figure align-default" id="figures-axes">
+<a class="reference internal image-reference" href="../_images/figax.png"><img alt="Figures-axes" src="../_images/figax.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Anatomy of Matplotlib figures.</span><a class="headerlink" href="#figures-axes" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Within Matplotlib the term <strong>Axes</strong> is not actually plural and does not mean more than one axis. It literally stands for a single ‘plot’. It’s unfortunate that this fundamental element has a name that is so confusing.</p>
+</div>
+</div>
+<div class="section" id="importing-the-pyplot-module">
+<h2>Importing the pyplot module<a class="headerlink" href="#importing-the-pyplot-module" title="Permalink to this headline">¶</a></h2>
+<p>Importing matplotlib into your workspace is done a little differently than NumPy or Pandas. You rarely will import matplotlib itself directly like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
+</pre></div>
+</div>
+<p>The above is perfectly valid code, but the matplotlib developers decided not to put all the main functionality in the top level module.</p>
+<p>When you <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>, you get access to nearly all of the available functions and classes of the Pandas library. This isn’t true with Matplotlib. Instead, much of the functionality for quickly plotting is found in the pyplot module. If you navigate to the matplotlib source directory, found in your site-packages directory, you will see a <code class="docutils literal notranslate"><span class="pre">pyplot.py</span></code> file. This is the module that you are importing into your workspace.</p>
+<div class="figure align-default" id="pyplot-dir">
+<a class="reference internal image-reference" href="../_images/pyplot_dir.png"><img alt="pyplot submodule" src="../_images/pyplot_dir.png" style="width: 70%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">pyplot submodule within matplotlib library.</span><a class="headerlink" href="#pyplot-dir" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There is some functionality in other matplotlib submodules; however, vast majority of what you will use starting out is isolated to the pyplot submodule.</p>
+</div>
+<p>Let’s import the pyplot module now and alias it as <code class="docutils literal notranslate"><span class="pre">plt</span></code>, which is done by convention:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="figures-and-axes">
+<h2>Figures and axes<a class="headerlink" href="#figures-and-axes" title="Permalink to this headline">¶</a></h2>
+<p>pyplot does provide lots of useful functions, one of which creates a <strong>Figure</strong> and any number of <strong>Axes</strong> that you desire. You can do this without pyplot, but it involves more syntax. It’s also quite standard to begin the object-oriented approach by laying out your Figure and Axes first with pyplot and then proceed by calling methods from these objects.</p>
+<p>The pyplot <strong><code class="docutils literal notranslate"><span class="pre">subplots()</span></code></strong> function creates a single Figure and any number of Axes. If you call it with the default parameters it will create a single Axes within a Figure.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">subplots</span></code> function returns a two-item tuple containing the Figure and the Axes. Recall from our earlier lesson where we learned about tuples that we can unpack each of these objects as their own variable.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_6_0.png" src="../_images/lesson-5b_6_0.png" />
+</div>
+</div>
+<p>Let’s verify that we indeed have a Figure and Axes.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib.figure.Figure
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib.axes._subplots.AxesSubplot
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="distinguishing-the-figure-from-the-axes">
+<h3>Distinguishing the Figure from the Axes<a class="headerlink" href="#distinguishing-the-figure-from-the-axes" title="Permalink to this headline">¶</a></h3>
+<p>It’s not obvious, from looking at the plot which part is the Figure and which is the Axes. We will call our first method, <strong><code class="docutils literal notranslate"><span class="pre">set_facecolor</span></code></strong> in an object-oriented fashion from both the Figure and Axes objects. We pass it a name of a color (more on colors later).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># set figure and axes colors</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;sandybrown&#39;</span><span class="p">)</span>
+
+<span class="c1"># show result</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_11_0.png" src="../_images/lesson-5b_11_0.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice, that the two calls above to the <code class="docutils literal notranslate"><span class="pre">set_facecolor</span></code> method were made without an assignment statement. Both of these operations happened <strong>in-place</strong>. The calling Figure and Axes objects were updated without a new one getting created.</p>
+</div>
+</div>
+<div class="section" id="setting-the-size-of-the-figure-upon-creation">
+<h3>Setting the size of the Figure upon creation<a class="headerlink" href="#setting-the-size-of-the-figure-upon-creation" title="Permalink to this headline">¶</a></h3>
+<p>The default Figure is fairly small. We can change this when creating it with the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> parameter. Pass a two-item tuple to configure the height and width of the figure as we did in the previous lesson with Pandas plotting. By default, these dimensions are 6 by 4. They represent <strong>inches</strong> and are literally the inches that your figure would be if you printed out on paper.</p>
+<p>Below, we create a new Figure that is 8 inches in width by 4 inches in height. We also color the faces of the both the Figure and Axes again.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_facecolor</span><span class="p">(</span><span class="s1">&#39;sandybrown&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_13_0.png" src="../_images/lesson-5b_13_0.png" />
+</div>
+</div>
+<p>Everything on our plot is a separate object. Each of these objects may be explicitly referenced by a variable. Once we have a reference to a particular object, we can then modify it by calling methods on it.</p>
+<p>Thus far we have two references, <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code>. There are many other objects on our Axes that we can reference such as the x and y axis, tick marks, tick labels, and others. We do not yet have references to these objects.</p>
+</div>
+<div class="section" id="calling-axes-methods-get-and-set-methods">
+<h3>Calling Axes methods - <code class="docutils literal notranslate"><span class="pre">get_</span></code> and <code class="docutils literal notranslate"><span class="pre">set_</span></code> methods<a class="headerlink" href="#calling-axes-methods-get-and-set-methods" title="Permalink to this headline">¶</a></h3>
+<p>Before we start referencing these other objects, let’s change some of the properties of our Axes by calling some methods on it. Many methods begin with either <code class="docutils literal notranslate"><span class="pre">get_</span></code> or <code class="docutils literal notranslate"><span class="pre">set_</span></code> followed by the part of the Axes that will get retrieved or modified. The following list shows several of the most common properties that can be set on our Axes. We will see examples of each one below.</p>
+<ul class="simple">
+<li><p>title</p></li>
+<li><p>xlabel/ylabel</p></li>
+<li><p>xlim/ylim</p></li>
+<li><p>xticks/yticks</p></li>
+<li><p>xticklabels/yticklabels</p></li>
+</ul>
+<div class="section" id="getting-and-setting-the-title-of-the-axes">
+<h4>Getting and setting the title of the Axes<a class="headerlink" href="#getting-and-setting-the-title-of-the-axes" title="Permalink to this headline">¶</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">get_title</span></code> method will return the title of the Axes as a string. There is no title at this moment so it returns an empty string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_title</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">set_title</span></code> method will place a centered title on our Axes when passing it a string. Notice that a matplotlib Text object has been returned. More on this later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;My First Matplotlib Graph&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;My First Matplotlib Graph&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Again, we must place our Figure variable name as the last line in our cell to show it in our notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_19_0.png" src="../_images/lesson-5b_19_0.png" />
+</div>
+</div>
+<p>Now, if we run the <code class="docutils literal notranslate"><span class="pre">get_title</span></code> method again, we will get the string that was used as the title.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_title</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;My First Matplotlib Graph&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="getting-and-setting-the-x-and-y-limits">
+<h4>Getting and setting the x and y limits<a class="headerlink" href="#getting-and-setting-the-x-and-y-limits" title="Permalink to this headline">¶</a></h4>
+<p>By default, the limits of both the x and y axis are 0 to 1. We can change this with the <code class="docutils literal notranslate"><span class="pre">set_xlim</span></code> and <code class="docutils literal notranslate"><span class="pre">set_ylim</span></code> methods. Pass these methods a new left and right boundary to change the limits. These methods actually return a tuple of the limits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_xlim</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_ylim</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_25_0.png" src="../_images/lesson-5b_25_0.png" />
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice, that the size of the figure remains the same. Only the limits of the x and y axis have changed.</p>
+</div>
+</div>
+<div class="section" id="getting-and-setting-the-location-of-the-x-and-y-ticks">
+<h4>Getting and setting the location of the x and y ticks<a class="headerlink" href="#getting-and-setting-the-location-of-the-x-and-y-ticks" title="Permalink to this headline">¶</a></h4>
+<p>In the graph above, it has chosen to place ticks every 1 unit for the x and every 10 units for the y. Matplotlib chooses reasonable default values. Let’s see the location of these ticks with the <code class="docutils literal notranslate"><span class="pre">get_xticks</span></code> and <code class="docutils literal notranslate"><span class="pre">get_yticks</span></code> methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticks</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0., 1., 2., 3., 4., 5.])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_yticks</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-10.,   0.,  10.,  20.,  30.,  40.,  50.])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can specify the exact location of the x and y ticks with the <code class="docutils literal notranslate"><span class="pre">set_xticks</span></code> and <code class="docutils literal notranslate"><span class="pre">set_ticks</span></code> methods. We pass them a list of numbers indicating where we want the ticks.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we set the ticks outside of the current bounds of the axis, this forces matplotlib to change the limits. For example, below we set the lower bound ytick (-99) beyond the lower bound of the y-axis limit (-10).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mf">1.8</span><span class="p">,</span> <span class="mf">3.99</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">99</span><span class="p">,</span> <span class="o">-</span><span class="mi">9</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">44</span><span class="p">])</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_30_0.png" src="../_images/lesson-5b_30_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="getting-and-setting-the-x-and-y-tick-labels">
+<h4>Getting and setting the x and y tick labels<a class="headerlink" href="#getting-and-setting-the-x-and-y-tick-labels" title="Permalink to this headline">¶</a></h4>
+<p>The current tick labels for the x-axis and y-axis are the same as the tick locations. Let’s first view the current tick labels. The output displays a list of <code class="docutils literal notranslate"><span class="pre">Text</span></code> objects that contain <code class="docutils literal notranslate"><span class="pre">Text(xaxis_location,</span> <span class="pre">yaxis_location,</span> <span class="pre">tick_label)</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">get_xticklabels</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[Text(1.8, 0, &#39;1.80&#39;), Text(3.99, 0, &#39;3.99&#39;), Text(4.4, 0, &#39;4.40&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can pass the <code class="docutils literal notranslate"><span class="pre">set_xticklabels</span></code> and <code class="docutils literal notranslate"><span class="pre">set_yticklabels</span></code> methods a list of strings to use as the new labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;snake&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">([</span><span class="s1">&#39;Boehmke&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">,</span> <span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">])</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_34_0.png" src="../_images/lesson-5b_34_0.png" />
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The tick locations are a completely separate concept than the tick labels. The tick locations are always numeric and determine where on the plot the tick mark will appear. The tick labels on the other hand are the strings that are used on the graph.</p>
+<p>The tick labels are defaulted to be a string of the tick location, but you can set them to be any string you want, as we did above. But use this wisely otherwise you may lead viewers of your plots astray!</p>
+</div>
+</div>
+</div>
+<div class="section" id="setting-text-styles">
+<h3>Setting text styles<a class="headerlink" href="#setting-text-styles" title="Permalink to this headline">¶</a></h3>
+<p>All the text we placed on our plot was plain. We can add styling to it by changing the text properties. See the documentation for a list of all the <a class="reference external" href="https://matplotlib.org/tutorials/text/text_props.html">text properties</a>.</p>
+<p>Common text properties:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">size</span></code> - Number in “points” where 1 point is defaulted to 1/72nd of an inch</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code> - One of the <a class="reference external" href="https://matplotlib.org/gallery/color/named_colors.html">named colors</a>. See the <a class="reference external" href="https://matplotlib.org/tutorials/colors/colors.html">colors API</a> for more.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backgroundcolor</span></code> - Same as above</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fontname</span></code> - Name of font as a string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rotation</span></code> - Degree of rotation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s1">&#39;Tests&#39;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;firebrick&#39;</span><span class="p">,</span>
+    <span class="n">backgroundcolor</span><span class="o">=</span><span class="s1">&#39;steelblue&#39;</span><span class="p">,</span>
+    <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Courier New&#39;</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="mi">70</span>
+    <span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_37_0.png" src="../_images/lesson-5b_37_0.png" />
+</div>
+</div>
+<p>Any other text may be stylized with those same parameters. Below we do so with the x labels.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span>
+    <span class="s1">&#39;New and Imporved X-Axis Stylized Label&#39;</span><span class="p">,</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;indigo&#39;</span><span class="p">,</span> 
+    <span class="n">fontname</span><span class="o">=</span><span class="s1">&#39;Times New Roman&#39;</span><span class="p">,</span> 
+    <span class="n">rotation</span><span class="o">=</span><span class="mi">15</span>
+    <span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_39_0.png" src="../_images/lesson-5b_39_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-exercises admonition">
+<p class="admonition-title">Exercises:</p>
+<p>Create a Figure with a single Axes. Modify the Axes by using all of the methods in this notebook.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">title</span></code>: set as your name and change the font size, color, and name.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xlabel/ylabel</span></code>: set as your two favorite colors.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xlim/ylim</span></code>: set x-axis to be 10-100 and y-axis to be -25-25</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xticks/yticks</span></code>: set the xticks to be in increments of 10 and yticks to be in increments of 5.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="plotting-data">
+<h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
+<p>In previous section, we created Figure and Axes objects, and proceeded to change their properties without plotting any actual data. In this section, we will learn how to create some of the same plots that we created in the Plotting with Pandas lesson.</p>
+<p>The <a class="reference external" href="https://matplotlib.org/api/axes_api.html">matplotlib documentation</a> has a nice layout of the Axes API. There are around 300 different calls you make with an Axes object. The API page categorizes and groups each method by its functionality. The first third (approximately) of the categories in the API are used to create plots.</p>
+<p>The simplest and most common plots are found in the Basics category and include <code class="docutils literal notranslate"><span class="pre">plot</span></code>, <code class="docutils literal notranslate"><span class="pre">scatter</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code>, <code class="docutils literal notranslate"><span class="pre">pie</span></code>, and others.</p>
+<p>Let’s go ahead and import Pandas along with our Complete Journey data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">completejourney_py</span> <span class="kn">import</span> <span class="n">get_data</span>
+
+<span class="n">cj_data</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;transactions&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;products&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;demographics&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;household_id&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>household_id</th>
+      <th>store_id</th>
+      <th>basket_id</th>
+      <th>product_id</th>
+      <th>quantity</th>
+      <th>sales_value</th>
+      <th>retail_disc</th>
+      <th>coupon_disc</th>
+      <th>coupon_match_disc</th>
+      <th>week</th>
+      <th>...</th>
+      <th>product_category</th>
+      <th>product_type</th>
+      <th>package_size</th>
+      <th>age</th>
+      <th>income</th>
+      <th>home_ownership</th>
+      <th>marital_status</th>
+      <th>household_size</th>
+      <th>household_comp</th>
+      <th>kids_count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31198570044</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31541475196</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31672350129</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.25</td>
+      <td>0.25</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>5</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31883555076</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>900</td>
+      <td>330</td>
+      <td>31944515097</td>
+      <td>1095275</td>
+      <td>1</td>
+      <td>0.50</td>
+      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>8</td>
+      <td>...</td>
+      <td>ROLLS</td>
+      <td>ROLLS: BAGELS</td>
+      <td>4 OZ</td>
+      <td>35-44</td>
+      <td>35-49K</td>
+      <td>Homeowner</td>
+      <td>Married</td>
+      <td>2</td>
+      <td>2 Adults No Kids</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 24 columns</p>
+</div></div></div>
+</div>
+<div class="section" id="line-plots">
+<h3>Line <code class="docutils literal notranslate"><span class="pre">plot</span></code>s<a class="headerlink" href="#line-plots" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">plot</span></code> method’s primary purpose is to create line plots. It does have the ability to create scatter plots as well, but that task is best reserved for <code class="docutils literal notranslate"><span class="pre">scatter</span></code>. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> method is very flexible and can take a variety of different inputs (i.e. lists, numpy arrays, Pandas Series) but our examples will focus on using Matplotlib with a DataFrame.</p>
+<p>Let’s compute the total daily sales and create a line plot:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">daily_sales</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">)[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;D&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">to_frame</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="p">)</span>
+<span class="n">daily_sales</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>transaction_timestamp</th>
+      <th>sales_value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2017-01-01</td>
+      <td>4604.39</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2017-01-02</td>
+      <td>6488.94</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2017-01-03</td>
+      <td>6856.84</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2017-01-04</td>
+      <td>7087.92</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2017-01-05</td>
+      <td>6894.67</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">daily_sales</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_46_0.png" src="../_images/lesson-5b_46_0.png" />
+</div>
+</div>
+<p>We can change several properties of this plot. For example, we can change the line style and color of our line directly in the <code class="docutils literal notranslate"><span class="pre">ax.plot</span></code> call along with adding plot a</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can find all possible parameters to modify the line plot <a class="reference external" href="https://matplotlib.org/api/_as_gen/matplotlib.lines.Line2D.html#matplotlib.lines.Line2D">here</a>. You can also find all the different color options and ways to specify them <a class="reference external" href="https://matplotlib.org/tutorials/colors/colors.html#sphx-glr-tutorials-colors-colors-py">here</a>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># create/modify line plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> 
+    <span class="n">data</span><span class="o">=</span><span class="n">daily_sales</span><span class="p">,</span> 
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+
+<span class="c1"># add additional context</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total daily sales across all stores&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total sales ($)&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_48_0.png" src="../_images/lesson-5b_48_0.png" />
+</div>
+</div>
+<p>We can even add additional features such as gridlines and text/arrows to call out certain parts of the plot.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since our x-axis is a date object we need to specify a date location within <code class="docutils literal notranslate"><span class="pre">ax.annotate</span></code>. The <strong>datetime</strong> module comes as part of the Standard Library and is the defacto approach to creating and manipulating dates and times outside of Pandas.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span> <span class="k">as</span> <span class="n">dt</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="c1"># create/modify line plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> 
+    <span class="n">data</span><span class="o">=</span><span class="n">daily_sales</span><span class="p">,</span> 
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+
+<span class="c1"># add additional context</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total daily sales across all stores&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total sales ($)&#39;</span><span class="p">);</span>
+
+<span class="c1"># add gridlines, arrow, and text</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;Christmas Eve&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">([</span><span class="n">dt</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">15900</span><span class="p">]),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">([</span><span class="n">dt</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">15500</span><span class="p">]),</span> 
+    <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">10</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_50_0.png" src="../_images/lesson-5b_50_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="other-plots">
+<h3>Other plots<a class="headerlink" href="#other-plots" title="Permalink to this headline">¶</a></h3>
+<p>We can create many of the other forms of plots that we saw in the previous lesson. The following are just a few examples that recreate the histogram, boxplot, and scatter plots that we made in the Plotting with Pandas lesson.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totals_by_store</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;store_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;sales_value&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+
+<span class="c1"># histogram</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_52_0.png" src="../_images/lesson-5b_52_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># boxplot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># adjust axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([]);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_53_0.png" src="../_images/lesson-5b_53_0.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># scatter plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">5</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_54_0.png" src="../_images/lesson-5b_54_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="adding-more-dimensions">
+<h3>Adding more dimensions<a class="headerlink" href="#adding-more-dimensions" title="Permalink to this headline">¶</a></h3>
+<p>In some cases we can even add additional dimensions to our data. For example, say we have the following data set that has total quantity and sales_value plus a third variable that indicates the number of transactions for each store.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store_count</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;store_id&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">size</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="s1">&#39;n&#39;</span><span class="p">})</span>
+<span class="p">)</span>
+
+<span class="n">totals_by_store</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;store_id&#39;</span><span class="p">,</span> <span class="n">as_index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s1">&#39;sales_value&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">:</span> <span class="s1">&#39;sum&#39;</span><span class="p">})</span>
+    <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">store_count</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">totals_by_store</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>store_id</th>
+      <th>sales_value</th>
+      <th>quantity</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2</td>
+      <td>13.99</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>27</td>
+      <td>443.97</td>
+      <td>186</td>
+      <td>150</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>37</td>
+      <td>7.27</td>
+      <td>3</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>42</td>
+      <td>22.78</td>
+      <td>7</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>45</td>
+      <td>13.01</td>
+      <td>9</td>
+      <td>8</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>We can actually have the color (<code class="docutils literal notranslate"><span class="pre">c</span></code>) and size (<code class="docutils literal notranslate"><span class="pre">s</span></code>) of our points based on data. For example, here we create a Series that is based on the number of store observations and another Series to indicate if the store count was greater than the 95 percentile.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We could literally use <code class="docutils literal notranslate"><span class="pre">s='n'</span></code> to reference our count column within the DataFrame; however, since there is such a wide dispersion of count values the size of the points explode. Here, we adjust the dispersion to be smaller with a fractional exponentiation.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size_adj</span> <span class="o">=</span> <span class="n">totals_by_store</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">**</span><span class="mf">0.4</span>
+<span class="n">n_outliers</span> <span class="o">=</span> <span class="n">totals_by_store</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">totals_by_store</span><span class="p">[</span><span class="s1">&#39;n&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="mf">0.95</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">n_outliers</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">size_adj</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_58_0.png" src="../_images/lesson-5b_58_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="multiple-plots">
+<h3>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this headline">¶</a></h3>
+<p>We can create multiple plots (“Axes”) within our figure. For example, the following will create 4 plots (2 rows x 2 colums).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax_array</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_60_0.png" src="../_images/lesson-5b_60_0.png" />
+</div>
+</div>
+<p>Whenever you create multiple Axes on a figure with <strong><code class="docutils literal notranslate"><span class="pre">subplots</span></code></strong>, you will be returned a NumPy array of Axes objects. Let’s verify that the type and shape of this array.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">ax_array</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>numpy.ndarray
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax_array</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<p>If we simply output the array, we will see 4 different Axes objects. Let’s extract each of these Axes into their own variable. We need to index for both the row and column to get the respective plot (remember that we need to use zero-based indexing!)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax_array</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;],
+       [&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;]], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ax1</span> <span class="o">=</span> <span class="n">ax_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># row 0, col 0</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax_array</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># row 0, col 1</span>
+<span class="n">ax3</span> <span class="o">=</span> <span class="n">ax_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># row 1, col 0</span>
+<span class="n">ax4</span> <span class="o">=</span> <span class="n">ax_array</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># row 1, col 1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can now customize our individual plots:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot 1</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="s1">&#39;transaction_timestamp&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> 
+    <span class="n">data</span><span class="o">=</span><span class="n">daily_sales</span><span class="p">,</span> 
+    <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> 
+    <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span>
+    <span class="p">)</span>
+
+<span class="c1"># add additional context</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total daily sales across all stores&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Total sales ($)&#39;</span><span class="p">);</span>
+
+<span class="c1"># add gridlines, arrow, and text</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+    <span class="s1">&#39;Christmas Eve&#39;</span><span class="p">,</span> 
+    <span class="n">xy</span><span class="o">=</span><span class="p">([</span><span class="n">dt</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="mi">15900</span><span class="p">]),</span> 
+    <span class="n">xytext</span><span class="o">=</span><span class="p">([</span><span class="n">dt</span><span class="p">(</span><span class="mi">2017</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">15500</span><span class="p">]),</span> 
+    <span class="n">arrowprops</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;width&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">},</span>
+    <span class="n">size</span><span class="o">=</span><span class="mi">10</span>
+    <span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot 2</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">n_outliers</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="n">size_adj</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Total store-level sales vs quantity.&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># plot 3</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of total store-level sales.&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># plot 4</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">boxplot</span><span class="p">(</span><span class="s1">&#39;quantity&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">totals_by_store</span><span class="p">,</span> <span class="n">vert</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_yticklabels</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+<span class="n">ax4</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Histogram of total store-level quantity.&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">12</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Total store-level sales and quantities (2017)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">fig</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/lesson-5b_70_0.png" src="../_images/lesson-5b_70_0.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>Identify all different products that contain “pizza” in their <code class="docutils literal notranslate"><span class="pre">product_type</span></code> description.</p></li>
+<li><p>Using Matplotlib:</p>
+<ul class="simple">
+<li><p>Use a bar plot to assess whether married versus unmarried customers purchase more pizza products. Add proper titles (overall title and axis titles) to your plot.</p></li>
+<li><p>Create a scatter plot to assess the <code class="docutils literal notranslate"><span class="pre">quantity</span></code> versus <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> of pizza products sold. Adjust the axis tick marks and labels and add proper titles to your plot.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">.resample</span></code> to compute the total <code class="docutils literal notranslate"><span class="pre">quantity</span></code> of pizza <code class="docutils literal notranslate"><span class="pre">product_type</span></code>s for each day of the year. Plot the results to assess if there is a pattern.</p></li>
+<li><p>Create a 4th matplotlib plot of your choice.</p></li>
+<li><p>Now create a single figure with 4 Axes (sub-plots) and combine each of the four plots you created above into this one figure. Make sure the sub-plots have proper titles and give the figure an overall title.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,completejourney_py,matplotlib
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab        : 3.3.2
+pandas            : 1.4.2
+completejourney_py: 0.0.3
+matplotlib        : 3.5.1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./05-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-5a.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lession 5a: Plotting with Pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
