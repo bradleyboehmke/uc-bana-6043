@@ -1,14 +1,14 @@
 # Overview
 
-In the last module we discussed general guidelines for first interacting with a new data set along with performing various data transformation tasks. In module 3 we want to build on those activities by learning how to clean and tidy our data. Moreover, it’s rare that a data analysis involves only a single table of data. Typically you have many tables of data, and you must combine them to answer the questions that you’re interested in. Collectively, multiple tables of data are called *relational* data because it is the relations, not just the individual datasets, that are important. In this module we’ll explore how to use different join operations when working with relational data.
+In the last module we discussed general guidelines for importing data and how to perform basic tasks with Series and DataFrames. In module 3 we want to build on those activities by learning how to perform common data wrangling tasks. This includes select subsets of data, manipulating columns, and computing summary statistics.
 
 ## Learning objectives
 
 By the end of this module you should be able to:
 
-- Explain the basic concepts of “tidy” data.
-- Perform data tidying tasks with Python such as reshaping, splitting, and combining data along with handling missing values.
-- Describe and apply different join operations for relational datasets.
+- Create subsets of our data by selecting columns and filtering rows of interest.
+- Manipulate, create, drop, even identify missing value patterns across our DataFrame’s columns.
+- Compute various aggregations with Pandas Series and DataFrames.
 
 ## Tasks
 
