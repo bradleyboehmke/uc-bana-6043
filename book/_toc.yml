@@ -44,8 +44,8 @@ parts:
 - caption: Module 6
   chapters:
   - file: 06-module/overview
-  - file: 06-module/lesson-1
-  - file: 06-module/lesson-2
+  - file: 06-module/lesson-6a
+  - file: 06-module/lesson-6b
   - file: 06-module/lab
 - caption: Module 7
   chapters:

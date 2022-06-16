@@ -295,6 +295,7 @@ expected_annual_revenue.get(choice, 'Bad choice')(sqft=937, visits=465, trend=0.
 #         print(f'data/Month-{month}.csv')
 #     else:
 #         print('Invalid month')
+# 
 # ```
 
 # ## Applying in Pandas
@@ -401,5 +402,5 @@ df.groupby('purchase_flag').size()
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
-get_ipython().run_line_magic('watermark', '-v -p pandas,jupyterlab')
+get_ipython().run_line_magic('watermark', '-v -p pandas,jupyterlab,completejourney_py')
 
