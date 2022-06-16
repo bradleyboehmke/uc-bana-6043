@@ -448,5 +448,5 @@ for index, col in enumerate(df):
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')
-get_ipython().run_line_magic('watermark', '-v -p pandas,jupyterlab,completejourney_py')
+get_ipython().run_line_magic('watermark', '-v -p pandas,jupyterlab')
 

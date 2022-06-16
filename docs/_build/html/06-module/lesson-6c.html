@@ -1,0 +1,1933 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 6C: Writing functions &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lesson 6b: Iteration statement" href="lesson-6b.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5a.html">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5b.html">
+   Lesson 5b: Plotting with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5c.html">
+   Lesson 5c: Plotting with Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-6a.html">
+   Lession 6a: Conditional statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-6b.html">
+   Lesson 6b: Iteration statement
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 6C: Writing functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-1.html">
+   Lession 1
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-2.html">
+   Lesson 2
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/06-module/lesson-6c.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F06-module/lesson-6c.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/06-module/lesson-6c.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/06-module/lesson-6c.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-to-write-functions">
+   When to write functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-vs-methods">
+   Functions vs methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-functions">
+   Defining functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters-vs-arguments">
+   Parameters vs arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyword-arguments">
+     Keyword arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-arguments">
+     Default arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#args-and-kwargs">
+     *args and **kwargs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-hints">
+     Type hints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstrings">
+   Docstrings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#errors-and-exceptions">
+   Errors and exceptions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validating-arguments">
+     Validating arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assert-statements">
+     Assert statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-and-except">
+     Try and except
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scoping">
+   Scoping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#searching-for-variables">
+     Searching for variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changing-variables">
+     Changing variables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anonymous-functions">
+   Anonymous functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 6C: Writing functions</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prerequisites">
+   Prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#when-to-write-functions">
+   When to write functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-vs-methods">
+   Functions vs methods
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#defining-functions">
+   Defining functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#parameters-vs-arguments">
+   Parameters vs arguments
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyword-arguments">
+     Keyword arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#default-arguments">
+     Default arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#args-and-kwargs">
+     *args and **kwargs
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#type-hints">
+     Type hints
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id2">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#docstrings">
+   Docstrings
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#errors-and-exceptions">
+   Errors and exceptions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#validating-arguments">
+     Validating arguments
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assert-statements">
+     Assert statements
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#try-and-except">
+     Try and except
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scoping">
+   Scoping
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#searching-for-variables">
+     Searching for variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#changing-variables">
+     Changing variables
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#anonymous-functions">
+   Anonymous functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id5">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-6c-writing-functions">
+<h1>Lesson 6C: Writing functions<a class="headerlink" href="#lesson-6c-writing-functions" title="Permalink to this headline">¶</a></h1>
+<p>Functions are an essential part of any scripting language and as a data scientist, you’ll constantly need to write your own functions to solve problems that your data poses to you. Writing functions allows you to reduce your code, minimize errors, and make it more explicit in the actions being taken.  This lesson will get you started writing your own functions to improve your data analyses.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul class="simple">
+<li><p>Explain when to write functions</p></li>
+<li><p>Discuss the difference between functions and methods</p></li>
+<li><p>Define your own functions that includes:</p>
+<ul>
+<li><p>Default arguments</p></li>
+<li><p>Type hints</p></li>
+<li><p>Exception handling</p></li>
+<li><p>Docstrings</p></li>
+</ul>
+</li>
+<li><p>Discuss how Python scopes for variables to use in functions</p></li>
+<li><p>Apply <code class="docutils literal notranslate"><span class="pre">lambda</span></code> (anonymous) functions</p></li>
+</ul>
+</div>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">completejourney_py</span> <span class="kn">import</span> <span class="n">get_data</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">get_data</span><span class="p">()[</span><span class="s1">&#39;transactions&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="when-to-write-functions">
+<h2>When to write functions<a class="headerlink" href="#when-to-write-functions" title="Permalink to this headline">¶</a></h2>
+<p>You should consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e. you now have three copies of the same code). For example, take a look at this code. What does it do?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># array containing 4 sets of 10 random numbers</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+          
+<span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You might be able to puzzle out that this rescales each array to have a range from 0 to 1. But did you spot the mistake? I made an error when copying-and-pasting the code for the third array: I forgot to change an <code class="docutils literal notranslate"><span class="pre">x[1]</span></code> to an <code class="docutils literal notranslate"><span class="pre">x[2]</span></code>. Writing a function reduces the chance of this error and makes it more explicit regarding our intentions since we can name our action (<code class="docutils literal notranslate"><span class="pre">rescale</span></code>) that we want to perform:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random_sample</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">rescale</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">vector</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+        <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">vector</span> <span class="o">-</span> <span class="n">vector</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">vector</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">vector</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+    
+    <span class="k">return</span><span class="p">(</span><span class="n">array</span><span class="p">)</span>
+
+<span class="n">rescale</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.42178172, 0.18536766, 1.        , 0.57104255,
+        0.75863903, 0.35941914, 0.15624386, 0.41378102, 0.80601733],
+       [0.50476599, 0.        , 0.37888565, 0.97332822, 0.41921994,
+        0.46072248, 0.3764154 , 0.36241783, 1.        , 0.29672137],
+       [0.52941733, 0.75425131, 1.        , 0.66597299, 0.67685675,
+        0.28321636, 0.64140429, 0.        , 0.26027916, 0.26525037],
+       [0.11620378, 0.27278414, 0.92009806, 1.        , 0.03924303,
+        0.46050712, 0.25461328, 0.04746774, 0.88968425, 0.        ]])
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="functions-vs-methods">
+<h2>Functions vs methods<a class="headerlink" href="#functions-vs-methods" title="Permalink to this headline">¶</a></h2>
+<p>Functions and methods are very similar, and beginners to object oriented programming languages such as Python often refer to them synonymously. Although they are very similar, it is always good to distinguish between the two as it will help you explain code situations more explicitly.</p>
+<p>A method refers to a function which is part of a class. You access it with an instance or object of the class. A function doesn’t have this restriction: it just refers to a standalone function. This means that all methods are functions, but not all functions are methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># stand alone function</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
+       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># method </span>
+<span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
+       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+</pre></div>
+</div>
+</div>
+</div>
+<p>As illustrated above, there can be functions and methods that behave in a similar manner. However, often, methods have special parameters that allow them to behave uniquely to the object they are attached to. For example, the <code class="docutils literal notranslate"><span class="pre">sum()</span></code> method for the Numpy array allows you to get the overall sum, sum of each column, and sum of each row. This would take more effort to compute with the stand alone function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># overall sum</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.522019185208976
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum of each column</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
+       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum of each row</span>
+<span class="n">x</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.67229232, 4.77247686, 5.07664858, 4.00060142])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Nonetheless, being able to create stand alone functions is a critical task. And, if you delve into building your own object classes down the road, defining methods is a piece of cake if you know how to define stand alone functions.</p>
+</div>
+<div class="section" id="defining-functions">
+<h2>Defining functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">¶</a></h2>
+<p>There are four main steps to defining a function:</p>
+<ol class="simple">
+<li><p>Use the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> to declare the function and follow this up with the function name.</p></li>
+<li><p>Add parameters to the function: they should be within the parentheses of the function. End your line with a colon.</p></li>
+<li><p>Add statements that the functions should execute.</p></li>
+<li><p>End your function with a return statement if the function should output something. Without the return statement, your function will return an object <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yell</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">new_text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_text</span>
+  
+<span class="n">yell</span><span class="p">(</span><span class="s1">&#39;hello world!&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HELLO WORLD!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Of course, your functions will get more complex as you go along: you can add <code class="docutils literal notranslate"><span class="pre">for</span></code> loops, flow control, and more to it to make it more finegrained. Let’s build a function that finds the total sales for a store, for a given day. The parameters required for the function are the <code class="docutils literal notranslate"><span class="pre">data</span></code> frame being analyzed, the <code class="docutils literal notranslate"><span class="pre">store_id</span></code>, and the specific <code class="docutils literal notranslate"><span class="pre">week</span></code> for which we need the sales.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">store</span><span class="p">,</span> <span class="n">week</span><span class="p">):</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">309</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Tasks:</p>
+<ol class="simple">
+<li><p>Define a function titled <code class="docutils literal notranslate"><span class="pre">ratio</span></code> that takes arguments <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and returns their ratio, <span class="math notranslate nohighlight">\(\frac{x}{y}\)</span>.</p></li>
+<li><p>Now add a third variable <code class="docutils literal notranslate"><span class="pre">digits</span></code> that allows you to round the output to a specified decimal.</p></li>
+<li><p>Now set the default to 2.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="parameters-vs-arguments">
+<h2>Parameters vs arguments<a class="headerlink" href="#parameters-vs-arguments" title="Permalink to this headline">¶</a></h2>
+<p>People often refer to function parameters and arguments synonymously but, technically, they represent two different things. Parameters are the names used when defining a function or a method, and into which arguments will be mapped. In other words, arguments are the things which are supplied to any function or method call, while the function or method code refers to the arguments by their parameter names.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Being specific about the term <em>‘parameters’</em> versus <em>‘arguments’</em> can be helpful when discussing specific details regarding a function or inputs, especially during debugging.</p>
+</div>
+<p>Python accepts a variety of parameter-argument calls. The following discusses some of the more common implementations you’ll see.</p>
+<div class="section" id="keyword-arguments">
+<h3>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Keyword arguments are simply named arguments in the function call. Consider our <code class="docutils literal notranslate"><span class="pre">store_sales()</span></code> function, we can specify parameter arguments in two different ways. The first is positional, in which we supply our arguments in the same position as the parameter. However, this is less explicit and if we happen to switch our <code class="docutils literal notranslate"><span class="pre">store</span></code> and <code class="docutils literal notranslate"><span class="pre">week</span></code> argument placement then we may get different results then anticipated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># implicitly computing store sales for store 46 during week 43</span>
+<span class="n">store_sales</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">46</span><span class="p">,</span> <span class="mi">43</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.39
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># implicitly computing store sales for store 43 (does not exist) during week 46</span>
+<span class="n">store_sales</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">46</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>Using keyword, rather than positional, arguments makes your function call more explicit and allows you to specify them in different orders.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Per the <a class="reference external" href="https://www.python.org/dev/peps/pep-0020/">Zen of Python</a>, <em>‘explicit is better than implicit’</em>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># explicitly computing store sales for store 46 during week 43</span>
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">43</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">46</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.39
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="default-arguments">
+<h3>Default arguments<a class="headerlink" href="#default-arguments" title="Permalink to this headline">¶</a></h3>
+<p>Default arguments are those that take a default value if no argument value is passed during the function call. You can assign this default value by with the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code>, just like in the below example. For example, if your analysis routinely analyzes transactions for all quantities but sometimes you only focus on sales for when quantity purchased meets some threshold, you could add a new parameter with a default value.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Default arguments should be placed after parameters with no defaults assigned in the function call.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">store</span><span class="p">,</span> <span class="n">week</span><span class="p">,</span> <span class="n">qty_greater_than</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">qty_greater_than</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+
+<span class="c1"># you do not need to specify an input for qty_greater_than</span>
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">309</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># but you can if you want to change it from the default</span>
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">309</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">,</span> <span class="n">qty_greater_than</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.73
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="args-and-kwargs">
+<h3>*args and **kwargs<a class="headerlink" href="#args-and-kwargs" title="Permalink to this headline">¶</a></h3>
+<p>*args and **kwargs allow you to pass a variable number of arguments to a function. This can be usefule when you do not know before hand how many arguments will be passed to your function by the user or if you want to allow users to pass arguments through to an embedded function.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Just an FYI that it is not necessary to write *args or **kwargs. Only the * (asterisk) is necessary. You could have also written *var and **vars. Writing *args and **kwargs is just a convention established in the Python community.</p>
+</div>
+<p>*args is used to send a non-keyworded variable length argument list to the function. When the function is called, Python collects the *args values as a tuple, which can be used in a similar manner as any other tuple functionality (i.e. indexing, <code class="docutils literal notranslate"><span class="pre">for</span></code> looped) For example, we can let the user supply as many string inputs to the very useful <code class="docutils literal notranslate"><span class="pre">yell()</span></code> function by using *args.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">yell</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="n">new_text</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">args</span><span class="p">)</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">new_text</span>
+  
+<span class="n">yell</span><span class="p">(</span><span class="s1">&#39;hello world!&#39;</span><span class="p">,</span> <span class="s1">&#39;I&#39;</span><span class="p">,</span> <span class="s1">&#39;love&#39;</span><span class="p">,</span> <span class="s1">&#39;Python!!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;HELLO WORLD! I LOVE PYTHON!!&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The special syntax **kwargs in function definitions in python is used to pass a keyworded, variable-length argument list. The reason is because the double star allows us to pass through keyword arguments (and any number of them). Python collects the **kwargs into a new dictionary, which can be used for any normal dictionary functionality.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># **kwargs just creates a dictionary</span>
+<span class="k">def</span> <span class="nf">students</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+    
+<span class="n">students</span><span class="p">(</span><span class="n">student1</span><span class="o">=</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="n">student2</span><span class="o">=</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="n">student3</span><span class="o">=</span><span class="s1">&#39;Sally&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;student1&#39;: &#39;John&#39;, &#39;student2&#39;: &#39;Robert&#39;, &#39;student3&#39;: &#39;Sally&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can use this dictionary however necessary</span>
+<span class="k">def</span> <span class="nf">print_student_names</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    
+<span class="n">print_student_names</span><span class="p">(</span><span class="n">student1</span><span class="o">=</span><span class="s1">&#39;John&#39;</span><span class="p">,</span> <span class="n">student2</span><span class="o">=</span><span class="s1">&#39;Robert&#39;</span><span class="p">,</span> <span class="n">student3</span><span class="o">=</span><span class="s1">&#39;Sally&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>student1 = John
+student2 = Robert
+student3 = Sally
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="type-hints">
+<h3>Type hints<a class="headerlink" href="#type-hints" title="Permalink to this headline">¶</a></h3>
+<p>Python 3.5 added a new library called typing that adds <a class="reference external" href="https://docs.python.org/3/library/typing.html"><em><strong>type hinting</strong></em></a> to Python. Type hinting is part of a larger functionality called Type Checking (see <a class="reference external" href="https://realpython.com/python-type-checking/">this tutorial</a> for a comprehensive Type Checking guide). Type hinting provides a way to help users better understand what type of arguments a function takes and the expected output.</p>
+<p>For example, let’s look at a simple function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> years old&#39;</span>
+ 
+<span class="n">some_function</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Tom is 27 years old&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above function we simply expect the user to insert the proper type of arguments and to realize the output will be a string. Now, this isn’t that challenging because its a small and simple function but as our functions get more complex it is not always easy to decipher what type of arguments should be passed and what the output will be.</p>
+<p>We can hint to the user this information with type hints by re-writing the function as below. Here, we are hinting that the <code class="docutils literal notranslate"><span class="pre">name</span></code> argument should be a string, <code class="docutils literal notranslate"><span class="pre">age</span></code> should be an integer, and the output will be a string (<code class="docutils literal notranslate"><span class="pre">-&gt;</span> <span class="pre">str</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">some_function</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">age</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s1"> years old&#39;</span>
+ 
+<span class="n">some_function</span><span class="p">(</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="mi">27</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Tom is 27 years old&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, when you look at the function documentation, you can quickly see the type hints (we’ll see additional ways to improve function documentation in the Docstrings section).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">some_function</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Help on function some_function in module __main__:
+
+some_function(name: str, age: int) -&gt; str
+</pre></div>
+</div>
+</div>
+</div>
+<p>Even better, most IDEs support type hints so that they can give you feedback as you are typing:</p>
+<div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/type_hints.png"><img alt="Type hints" src="../_images/type_hints.png" style="width: 65%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Type hints often show up when you hover over the function in most IDEs.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<p>When declaring types, you can use any of the built-in Python data types. This includes, but is not limited to:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">set</span></code>, <code class="docutils literal notranslate"><span class="pre">dict</span></code>, <code class="docutils literal notranslate"><span class="pre">array</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frozenset</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Optional</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Iterable</span></code>, <code class="docutils literal notranslate"><span class="pre">Iterator</span></code></p></li>
+<li><p>and many more!</p></li>
+</ul>
+<p>You can also declare non-built-in data types such as Pandas and Numpy object types. For example, we can re-write our <code class="docutils literal notranslate"><span class="pre">store_sales()</span></code> function with type hints where we hint that <code class="docutils literal notranslate"><span class="pre">data</span></code> should be a <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">pd.DataFrame</span></code> assumes that you imported the Pandas module with the <code class="docutils literal notranslate"><span class="pre">pd</span></code> alias.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+  
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">309</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Knowledge check<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Tasks:</p>
+<ol class="simple">
+<li><p>Recreate the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> function that takes arguments <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and returns their ratio, <span class="math notranslate nohighlight">\(\frac{x}{y}\)</span>.</p></li>
+<li><p>Add a third variable <code class="docutils literal notranslate"><span class="pre">digits</span></code> that allows you to round the output to a specified decimal and set the default to 2.</p></li>
+<li><p>Had type hints that specify <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to be <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">digits</span></code> to be <code class="docutils literal notranslate"><span class="pre">int</span></code> and the output returned to be <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+<p>Type hints are great for guiding users; however, they only provide small hints. Python docstrings are a much more robust way to document a Python function (docstrings can also be used to document modules, classes, and methods). Docstrings are used to provide users with descriptive information about the function, required inputs, expected outputs, example usage and more. Also, it is a common practice to generate online (html) documentation automatically from docstrings using tools such as Sphinx.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>See the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/index.html">Pandas API reference</a> for the various Pandas functions/methods/class for example Sphinx documentation that is built from docstrings.</p>
+</div>
+<p>Docstrings typically consist of a multi-line character string description that follows the header line of a function definition. The following provides an example for a simple addition function. Note how the docstring provides a summary of what the function does, information regarding expected parameter inputs, what the returned output will be, a “see also” section that lets users know about related functions/methods (this can be skipped if not applicable), and some examples of implementing the function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute total store sales.</span>
+<span class="sd">    </span>
+<span class="sd">    This function computes the total sales for a given</span>
+<span class="sd">    store and week based on a user supplied DataFrame that</span>
+<span class="sd">    contains sales in a column named `sales_value`.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    data : DataFrame</span>
+<span class="sd">        Pandas DataFrame</span>
+<span class="sd">    store : int</span>
+<span class="sd">        Integer value representing store number</span>
+<span class="sd">    week : int</span>
+<span class="sd">        Integer value representing week of year</span>
+<span class="sd">    </span>
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    float</span>
+<span class="sd">        A float object representing total store sales</span>
+<span class="sd">    </span>
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    store_visits : Computes total store visits</span>
+<span class="sd">    </span>
+<span class="sd">    Examples</span>
+<span class="sd">    --------</span>
+<span class="sd">    &gt;&gt;&gt; store_sales(data=df, store=309, week=48)</span>
+<span class="sd">    395.6</span>
+<span class="sd">    &gt;&gt;&gt; store_sales(data=df, store=46, week=43)</span>
+<span class="sd">    60.39</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>There are some typical Pythonic conventions used when writing docstrings. Rather than reiterate them here, we highly suggest using the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing_docstring.html">Pandas</a> and <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpy</a> docstring guide standards when writing your docstrings.</p>
+</div>
+<div class="section" id="id3">
+<h3>Knowledge check<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Task:</p>
+<p>Go back to the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> function you created in the last knowledge check and add docstrings. Be sure to include a general description of what the function does, documentation on the parameters and return output, along with including examples.</p>
+</div>
+</div>
+</div>
+<div class="section" id="errors-and-exceptions">
+<h2>Errors and exceptions<a class="headerlink" href="#errors-and-exceptions" title="Permalink to this headline">¶</a></h2>
+<p>For functions that will be used over and over again, and especially for those used by someone other than the creator of the function, it is good to include procedures to check for errors that may derail function execution. This may include ensuring the user supplies proper argument types, the computation can perform with the values supplied, or even that execution can be performed in a reasonable amount of time.</p>
+<p>This falls under the umbrella of exception handling and is actually far broader than what we can cover here. In this section, we’ll demonstrate some of the basics.</p>
+<div class="section" id="validating-arguments">
+<h3>Validating arguments<a class="headerlink" href="#validating-arguments" title="Permalink to this headline">¶</a></h3>
+<p>A common problem is when the user supplies invalid argument types or values. Although we have seen how to use type hints and docstrings to inform users, we can also include useful exception calls for when users supply improper argument types and values. For example, the following will check if the arguments of the correct type by using <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> and, if they are not, we <code class="docutils literal notranslate"><span class="pre">raise</span></code> an <code class="docutils literal notranslate"><span class="pre">Exception</span></code> and include an informative error.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+     <span class="c1"># argument validation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`store` should be an integer&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+  
+    <span class="c1"># computation</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+  
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="s1">&#39;309&#39;</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">total_sales</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="s1">&#39;309&#39;</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+
+<span class="nn">Input In [24],</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>      <span class="c1"># argument validation</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`store` should be an integer&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1"># computation</span>
+
+<span class="ne">Exception</span>: `store` should be an integer
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">Exception()</span></code> is used to create a generic exception object/output. Python has <a class="reference external" href="https://docs.python.org/3/library/exceptions.html">many built-in exception types</a> that can be used to indicate a specific error has occured. For example, we could replace <code class="docutils literal notranslate"><span class="pre">Exception()</span></code> with <code class="docutils literal notranslate"><span class="pre">TypeError()</span></code> in the previous example to make it more specific that the error is due to an invalid argument type.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="c1"># argument validation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`store` should be an integer&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+  
+    <span class="c1"># computation</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+  
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="s1">&#39;309&#39;</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [56],</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">total_sales</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="s1">&#39;309&#39;</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+
+<span class="nn">Input In [56],</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="c1"># argument validation</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`store` should be an integer&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1"># computation</span>
+
+<span class="ne">TypeError</span>: `store` should be an integer
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can expand this as much as necessary. For example, say we want to ensure users only use a store value that exists in our data. Currently, if the user supplies a store value that does not exist (i.e. 35), they simply get a return value of 0.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can add an <code class="docutils literal notranslate"><span class="pre">if</span></code> statement to check if the store number exists and supply an error message to the user if it does not:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="c1"># argument validation</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">store</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`store` should be an integer&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">store</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">store_id</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span> 
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`store` </span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s1"> does not exist in the supplied DataFrame&#39;</span><span class="p">)</span>
+  
+  
+    <span class="c1"># computation</span>
+    <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+    <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">total_sales</span>
+
+<span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [67],</span> in <span class="ni">&lt;cell line: 15&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="k">return</span> <span class="n">total_sales</span>
+<span class="ne">---&gt; </span><span class="mi">15</span> <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+
+<span class="nn">Input In [67],</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">if</span> <span class="n">store</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">store_id</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span> 
+<span class="ne">----&gt; </span><span class="mi">7</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`store` </span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s1"> does not exist in the supplied DataFrame&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># computation</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: `store` 35 does not exist in the supplied DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="assert-statements">
+<h3>Assert statements<a class="headerlink" href="#assert-statements" title="Permalink to this headline">¶</a></h3>
+<p>Python’s <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement is a debugging aid that tests a condition. If the condition is true, it does nothing and your program just continues to execute. But if the assert condition evaluates to false, it raises an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> exception with an optional error message. This seems very similar to the example in the last section where we checked if the supplied store ID exists. However, the proper use of assertions is to inform users about unrecoverable errors in a program. They’re not intended to signal expected error conditions, like “store ID not found”, where a user can take corrective action or just try again.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Another way to look at it is to say that assertions are internal self-checks for your program. They work by declaring some conditions as impossible in your code. If one of these conditions doesn’t hold that means there’s a bug in the program.</p>
+</div>
+<p>For example, say you have a program that automatically applies a discount to product and you eventually write the following <code class="docutils literal notranslate"><span class="pre">apply_discount</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_discount</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">discount</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">price</span> <span class="o">&lt;=</span> <span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">price</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the assert statement in there? It will guarantee that, no matter what, discounted prices cannot be lower than $0 and they cannot be higher than the original price of the product.</p>
+<p>Let’s make sure this actually works as intended. You can see that the second example throws an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 25% off 3.50 should equal 2.62</span>
+<span class="n">milk</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Chocolate Milk&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">:</span> <span class="mf">3.50</span><span class="p">}</span>
+<span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.62
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 200% discount is not allowed</span>
+<span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [61],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># 200% discount is not allowed</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">)</span>
+
+<span class="nn">/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb Cell 57&#39;</span> in <span class="ni">apply_discount</span><span class="nt">(product, discount)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000063?line=0&#39;</span><span class="o">&gt;</span><span class="mi">1</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">def</span> <span class="nf">apply_discount</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000063?line=1&#39;</span><span class="o">&gt;</span><span class="mi">2</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="n">price</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">discount</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000063?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">price</span> <span class="o">&lt;=</span> <span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000063?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">return</span> <span class="n">price</span>
+
+<span class="ne">AssertionError</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the above example, we simply got an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> but no message to help us understand what caused the error. The assert statement follows the syntax of <code class="docutils literal notranslate"><span class="pre">assert</span> <span class="pre">condition,</span> <span class="pre">message</span></code> so we can add an informative message at the end of our <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">apply_discount</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+    <span class="n">price</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">discount</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">price</span> <span class="o">&lt;=</span> <span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="s1">&#39;Invalid discount applied&#39;</span>
+    <span class="k">return</span> <span class="n">price</span>
+    
+<span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AssertionError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="nn">Input In [62],</span> in <span class="ni">&lt;cell line: 6&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">price</span> <span class="o">&lt;=</span> <span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="s1">&#39;Invalid discount applied&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">price</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="mf">2.00</span><span class="p">)</span>
+
+<span class="nn">Input In [62],</span> in <span class="ni">apply_discount</span><span class="nt">(product, discount)</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">apply_discount</span><span class="p">(</span><span class="n">product</span><span class="p">,</span> <span class="n">discount</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span>     <span class="n">price</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">-</span> <span class="n">discount</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">3</span>     <span class="k">assert</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">price</span> <span class="o">&lt;=</span> <span class="n">product</span><span class="p">[</span><span class="s1">&#39;price&#39;</span><span class="p">],</span> <span class="s1">&#39;Invalid discount applied&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">return</span> <span class="n">price</span>
+
+<span class="ne">AssertionError</span>: Invalid discount applied
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="try-and-except">
+<h3>Try and except<a class="headerlink" href="#try-and-except" title="Permalink to this headline">¶</a></h3>
+<p>In the prior sections, we looked at ways to identify errors that may occur. The result of our exception handling is to signal an error occurred and stop the program. However, there are often times when we do not want to stop the program. For example, if the program has a database connection that should be closed after execution then we need our program to continue running even if an error occurs to ensure the connection is closed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> procedure allows us to try execute code. If it works, great! If not, rather than just throw an exception error, we define what the program should continue to do. For example, the following tries the <code class="docutils literal notranslate"><span class="pre">apply_discount()</span></code> function with a pre-defined discount value. If it throws and exception then we adjust the discount value (if discount is greater than 100% of product price we adjust it to the largest acceptable value, if its less than 0 we just set it to 0%).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># this discount is created somewhere else in the program</span>
+<span class="n">discount</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># if discount causes an error adjust it</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="n">discount</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">discount</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span> <span class="n">discount</span> <span class="o">=</span> <span class="mf">0.99</span>
+    <span class="k">if</span> <span class="n">discount</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">discount</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">apply_discount</span><span class="p">(</span><span class="n">milk</span><span class="p">,</span> <span class="n">discount</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> procedure allows us to include as many <code class="docutils literal notranslate"><span class="pre">except</span></code> statements as necessary for different types of errors (think of them like <code class="docutils literal notranslate"><span class="pre">elif</span></code>s). For example, the following illustrates how we could have different types of code execution for a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>, a <code class="docutils literal notranslate"><span class="pre">ValueError</span></code>, and then the final <code class="docutils literal notranslate"><span class="pre">else</span></code> statement captures all other errors.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This procedure will run in order, consequently you want to have the most specific exception handlers first followed by more general exception handlers later on.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do something specific for a `TypeError`&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do something specific for a `ValueError`&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;do something specific for all other errors&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>do something specific for a `ValueError`
+</pre></div>
+</div>
+</div>
+</div>
+<p>Lastly, we may have a certain piece of code that we always want to ensure gets ran in a program. For example, we may need to ensure a database connection or file is closed before an error is thrown. The following illustrates how we can add a <code class="docutils literal notranslate"><span class="pre">finally</span></code> at the end of our <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> procedure. This <code class="docutils literal notranslate"><span class="pre">finally</span></code> will <em><strong>always</strong></em> be ran. If the code in the <code class="docutils literal notranslate"><span class="pre">try</span></code> clause runs without error, the <code class="docutils literal notranslate"><span class="pre">finally</span></code> code chunk will run <em>after</em> the <code class="docutils literal notranslate"><span class="pre">try</span></code> block. If an error occurse, the <code class="docutils literal notranslate"><span class="pre">finally</span></code> code chunk will run <em>before</em> the relevant <code class="docutils literal notranslate"><span class="pre">except</span></code> code chunk.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+    <span class="k">raise</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+    <span class="k">raise</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Code to close database connection&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Code to close database connection
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="nn">Input In [70],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">2</span>     <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="mi">35</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="k">raise</span>
+
+<span class="nn">/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb Cell 64&#39;</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000070?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">week</span><span class="p">,</span> <span class="nb">int</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s1">&#39;`week` should be an integer&#39;</span><span class="p">)</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000070?line=5&#39;</span><span class="o">&gt;</span><span class="mi">6</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="k">if</span> <span class="n">store</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">store_id</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span> 
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000070?line=6&#39;</span><span class="o">&gt;</span><span class="mi">7</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;`store` </span><span class="si">{</span><span class="n">store</span><span class="si">}</span><span class="s1"> does not exist in the supplied DataFrame&#39;</span><span class="p">)</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000070?line=9&#39;</span><span class="o">&gt;</span><span class="mi">10</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="c1"># computation</span>
+     <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/06-module/lesson-6c.ipynb#ch0000070?line=10&#39;</span><span class="o">&gt;</span><span class="mi">11</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">filt</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;store_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">store</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;week&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">week</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: `store` 35 does not exist in the supplied DataFrame
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Knowledge check<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Tasks:</p>
+<p>Going back to the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> function:</p>
+<ol class="simple">
+<li><p>Add a procdure to validate that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> inputs are numeric and <code class="docutils literal notranslate"><span class="pre">digits</span></code> is an integer.</p></li>
+<li><p>Add a try and except procedure where if a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> is thrown for <code class="docutils literal notranslate"><span class="pre">digits</span></code> because it is a float then the <code class="docutils literal notranslate"><span class="pre">digits</span></code> value is rounded to the nearest integer and applied.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="scoping">
+<h2>Scoping<a class="headerlink" href="#scoping" title="Permalink to this headline">¶</a></h2>
+<p>Scoping refers to the set of rules a programming language uses to lookup the value to variables and/or symbols. The following illustrates the basic concept behind the lexical scoping rules that Python follows. In short, Python follows a nested environment structure and uses what is commonly referred to as the <em><strong>LEGB</strong></em> search rule:</p>
+<ol class="simple">
+<li><p>Search <strong>l</strong>ocal scope first,</p></li>
+<li><p>then the local scopes of <strong>e</strong>nclosing functions,</p></li>
+<li><p>then the <strong>g</strong>lobal scope,</p></li>
+<li><p>and finally the <strong>b</strong>uilt-in scope</p></li>
+</ol>
+<div class="section" id="searching-for-variables">
+<h3>Searching for variables<a class="headerlink" href="#searching-for-variables" title="Permalink to this headline">¶</a></h3>
+<p>What exactly does this mean?  A function has its own environment and when you assign an argument in the <code class="docutils literal notranslate"><span class="pre">def</span></code> header of the function, the function creates a separate environment that keeps that variable separate from any variable in the global environment. This is why you can have an <code class="docutils literal notranslate"><span class="pre">x</span></code> variable in the global environment that won’t be confused with an <code class="docutils literal notranslate"><span class="pre">x</span></code> variable in your function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mi">84</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+  
+<span class="n">func</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="mi">50</span><span class="p">)</span>  
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>51
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, the function environment is only active when called and all function variables are removed from memory after being called. Consequently, you can continue using <code class="docutils literal notranslate"><span class="pre">x</span></code> that is contained in the global environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, if a variable does not exist within the function, Python will look one level up to see if the variable exists. In this case, since <code class="docutils literal notranslate"><span class="pre">y</span></code> is not supplied in the function header, Python will look in the next environment up (global environment in this case) for that variable:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Boehmke&#39;</span>
+
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">y</span>
+  
+<span class="n">func</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Brad&#39;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Brad Boehmke&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The same will happen if we have nested functions. Python will search in enclosing functions in a hierarchical fashion until it finds the necessary variables. In this convoluted procedure…</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span></code> is a global variable,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">sep</span></code> are local variables to the <code class="docutils literal notranslate"><span class="pre">my_name</span></code> function,</p></li>
+<li><p>and <code class="docutils literal notranslate"><span class="pre">my_paste</span></code> has no local variables,</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">my_name</span></code> function gets <code class="docutils literal notranslate"><span class="pre">y</span></code> from the global environment,</p></li>
+<li><p>and the <code class="docutils literal notranslate"><span class="pre">my_paste</span></code> function gets all its inputs from the <code class="docutils literal notranslate"><span class="pre">my_name</span></code> environment.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We do not recommend that you write functions like this. This is primarily only for explaining how Python searches for information, which can be helpful for debugging.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;Boehmke&#39;</span>
+
+<span class="k">def</span> <span class="nf">my_name</span><span class="p">(</span><span class="n">sep</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="s1">&#39;Brad&#39;</span>
+    <span class="k">def</span> <span class="nf">my_paste</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">sep</span> <span class="o">+</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">my_paste</span><span class="p">()</span>
+  
+<span class="n">my_name</span><span class="p">(</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Brad Boehmke&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="changing-variables">
+<h3>Changing variables<a class="headerlink" href="#changing-variables" title="Permalink to this headline">¶</a></h3>
+<p>It is possible to change variable values that are outside of the active environment. This is rarely necessary, and is usually not good practice, but it is good to know about. For example, the following changes the global variable <code class="docutils literal notranslate"><span class="pre">y</span></code> by including the keyword-variable statement <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">y</span></code> prior to making the assignment of the new value for <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The same can be done with changing values in nested functions; however, you would use the keyword <code class="docutils literal notranslate"><span class="pre">nonlocal</span></code> to change the value of an enclosing function’s local variable.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="mi">8451</span>
+
+<span class="k">def</span> <span class="nf">convert</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">firstpart</span><span class="p">,</span> <span class="n">secondpart</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">//</span><span class="mi">2</span><span class="p">:]</span>
+    <span class="k">global</span> <span class="n">y</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">firstpart</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span> <span class="n">secondpart</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="n">convert</span><span class="p">(</span><span class="mi">8451</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;84.51&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;84.51&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="anonymous-functions">
+<h2>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h2>
+<p>So far we have been discussing defined functions; however, Python allows you to generate <em>anonymous</em> functions on the fly. These are often referred to as <strong>lambdas</strong>.  Lambdas allow for an alternative approach when creating short and simple functions that are only used once or twice.</p>
+<p>For example, the following two functions are equivalent:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># defined function</span>
+<span class="k">def</span> <span class="nf">func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>
+  
+<span class="c1"># lambda function  </span>
+<span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">:</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="o">+</span> <span class="n">z</span>  
+</pre></div>
+</div>
+<p>Note how the <code class="docutils literal notranslate"><span class="pre">lambda</span></code>’s body is a single expression and not a block statement. This is a requirement, which typically restricts lambdas to very short, concise function calls. The best use case for lambda functions are for when you want a simple function to be anonymously embedded within a larger expressions. For example, say we wanted to loop over each item in a list and apply a simple square function, we could accomplish this by supplying a lambda function to the <code class="docutils literal notranslate"><span class="pre">map</span></code> function. <code class="docutils literal notranslate"><span class="pre">map</span></code> just iterates over each item in an object and applies a given function (you could accomplish the exact same with a list comprehension).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">48</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">,</span> <span class="n">nums</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2304, 36, 81, 441, 1]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Another good example is the following one you already lesson 6a where we apply a lambda function to assign ‘high value’ for each transaction where <code class="docutils literal notranslate"><span class="pre">sales_value</span></code> is greater than 10 and ‘low value’ for all other transactions.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="s1">&#39;high value&#39;</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">10</span> <span class="k">else</span> <span class="s1">&#39;low value&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0          low value
+1          low value
+2          low value
+3          low value
+4          low value
+             ...    
+1469302    low value
+1469303    low value
+1469304    low value
+1469305    low value
+1469306    low value
+Name: sales_value, Length: 1469307, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here is another example where we group by <code class="docutils literal notranslate"><span class="pre">basket_id</span></code> and then apply a lambda function to compute the average cost per item in each basket.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span>
+    <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;basket_id&#39;</span><span class="p">,</span> <span class="s1">&#39;sales_value&#39;</span><span class="p">,</span> <span class="s1">&#39;quantity&#39;</span><span class="p">]]</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;basket_id&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">x</span><span class="p">[</span><span class="s1">&#39;quantity&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>basket_id
+31198437603    1.951207
+31198445400    1.250000
+31198445429    2.045000
+31198445465    1.680000
+31198452527    4.048333
+                 ...   
+41480008448    1.533810
+41480013048    1.206667
+41480018446    1.773210
+41481252623    1.285556
+41481282915    8.495000
+Length: 155848, dtype: float64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>Knowledge check<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Task:</p>
+<p>Let’s focus on the transaction timestamp for each transaction (<code class="docutils literal notranslate"><span class="pre">df['transaction_timestamp']</span></code>). Use the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method along with a lambda function to assign each transaction to ‘weekday’ or ‘weekend’. To do this check out the <code class="docutils literal notranslate"><span class="pre">.day_name()</span></code> method (i.e. <code class="docutils literal notranslate"><span class="pre">df['transaction_timestamp'][0].day_name()</span></code>)</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Tasks:</p>
+<ol>
+<li><p>Load in the companies.csv data (in the data folder).</p></li>
+<li><p>Write a function <code class="docutils literal notranslate"><span class="pre">is_incorporated</span></code> that checks whether an input string, <code class="docutils literal notranslate"><span class="pre">name</span></code>, contains the substring “inc” or “Inc”. Its definition should look like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_incorporated</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+    <span class="o">...</span>
+</pre></div>
+</div>
+</li>
+<li><p>Add type hints and a docstring.</p></li>
+<li><p>Test this function to be sure it works. Try passing in some strings that contain the substring and some that don’t. Test it on data from the companies DataFrame.</p></li>
+<li><p>Write a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop to iterate through the elements in the Name column of the companies data, applying <code class="docutils literal notranslate"><span class="pre">is_incorporated</span></code> to each element and printing the result.</p></li>
+<li><p>Now rewrite the code for #4 using the <code class="docutils literal notranslate"><span class="pre">Series.apply</span></code> method – apply the function to the Series and print the resulting Series.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p pandas,jupyterlab,completejourney_py
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./06-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-6b.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 6b: Iteration statement</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>
