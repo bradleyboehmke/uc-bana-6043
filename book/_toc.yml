@@ -46,6 +46,7 @@ parts:
   - file: 06-module/overview
   - file: 06-module/lesson-6a
   - file: 06-module/lesson-6b
+  - file: 06-module/lesson-6c
   - file: 06-module/lab
 - caption: Module 7
   chapters:
