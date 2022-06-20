@@ -20,27 +20,27 @@ Upon successfully completing this course, you will:
 
 | Module        | Description                                                         |
 |:-------------:|:--------------------------------------------------------------------|
-| **1**         | **Introduction**                                                    |
-|               | Intro to statistical computing, Python, and this course             |
+| **1**         | **Starting with the Basics**                                        |
+|               | Introduction to JupyterLab and the notebook environment             |
 |               | Python fundamentals                                                 |
-| **2**         | **Python Data Science Ecosystem & Data Transformation**             |
+| **2**         | **Python Data Science Ecosystem & DataFrames**                      |
 |               | Modules, packages, and a preview of Python's data science ecosystem |
-|               | Importing and transforming data                                     |
-| **3**         | **Data Cleaning & Joining**                                         |
-|               | Data tidying and cleaning                                           |
-|               | Joining relational data                                             |
-| **4**         | **Data Visualization & Exploration**                                |
-|               | Data visualization                                                  |
-|               | Exploratory data analysis                                           |
-| **5**         | **Creating Efficient Code in Python**                               |
+|               | Importing data and working with DataFrames                          |
+| **3**         | **Data Wrangling Part 1**                                           |
+|               | Subsetting and manipulating data                                    |
+|               | Computing summary statistics at different levels                    |
+| **4**         | **Data Wrangling Part 2**                                           |
+|               | Tidying and joining data                                            |
+|               | Handling text data                                                  |
+| **5**         | **Data Visualization**                                              |
+|               | Higher and lower level plotting APIs                                |
+|               | Interactive visualizations                                          |
+| **6**         | **Creating Efficient Code in Python**                               |
 |               | Control statements & iteration                                      |
 |               | Writing functions                                                   |
-| **6**         | **Introduction to Applied Modeling**                                |
-|               | Correlation and covariate pattern discovery                         |
-|               | Introduction to machine learning                                    |
-| **7**         | **Software Engineering Considerations**                             |
-|               | Modular code and unit testing                                       |
-|               | Environment management and version control                          |
+| **7**         | **Intro to Machine Learning with Scikit-Learn**                     |
+|               | Basics of the Scikit-learn API                                      |
+|               | Feature engineering and model evaluation/selection                  |
 
 ## Getting Started
 
