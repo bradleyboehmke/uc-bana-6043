@@ -326,13 +326,23 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-1.html">
-   Lession 1
+  <a class="reference internal" href="../07-module/lesson-7a.html">
+   Lesson 7a: Data Exploration
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-2.html">
-   Lesson 2
+  <a class="reference internal" href="../07-module/lesson-7b.html">
+   Lesson 7b: First model with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-7c.html">
+   Lesson 7c: Feature Engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../07-module/lesson-7d.html">
+   Lesson 7d: Model Evaluation &amp; Selection
   </a>
  </li>
  <li class="toctree-l1">
@@ -826,14 +836,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.        , 0.42178172, 0.18536766, 1.        , 0.57104255,
-        0.75863903, 0.35941914, 0.15624386, 0.41378102, 0.80601733],
-       [0.50476599, 0.        , 0.37888565, 0.97332822, 0.41921994,
-        0.46072248, 0.3764154 , 0.36241783, 1.        , 0.29672137],
-       [0.52941733, 0.75425131, 1.        , 0.66597299, 0.67685675,
-        0.28321636, 0.64140429, 0.        , 0.26027916, 0.26525037],
-       [0.11620378, 0.27278414, 0.92009806, 1.        , 0.03924303,
-        0.46050712, 0.25461328, 0.04746774, 0.88968425, 0.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.1155067 , 1.        , 0.89497987, 0.7397492 , 0.82876466,
+        0.        , 0.96541882, 0.1823696 , 0.53632359, 0.64943462],
+       [0.38802078, 0.19701888, 1.        , 0.21276796, 0.40802002,
+        0.91242504, 0.2499248 , 0.        , 0.72237252, 0.17790902],
+       [0.95274109, 0.99437391, 0.16841496, 0.08027486, 0.17856881,
+        0.95310378, 1.        , 0.        , 0.93383106, 0.28991237],
+       [0.23876672, 0.7618183 , 0.81369072, 0.        , 0.64403404,
+        0.66384251, 0.38658602, 1.        , 0.802266  , 0.08084635]])
 </pre></div>
 </div>
 </div>
@@ -851,8 +861,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
-       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.69503529, 2.9532111 , 2.87708556, 1.03279203, 2.05938754,
+       2.52937133, 2.60192964, 1.1823696 , 2.99479316, 1.19810237])
 </pre></div>
 </div>
 </div>
@@ -865,8 +875,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
-       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.69503529, 2.9532111 , 2.87708556, 1.03279203, 2.05938754,
+       2.52937133, 2.60192964, 1.1823696 , 2.99479316, 1.19810237])
 </pre></div>
 </div>
 </div>
@@ -880,7 +890,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.522019185208976
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21.124077609940542
 </pre></div>
 </div>
 </div>
@@ -893,8 +903,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.15038711, 1.44881718, 2.48435138, 3.63930121, 1.70636228,
-       1.963085  , 1.63185211, 0.56612942, 2.56374444, 1.36798907])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.69503529, 2.9532111 , 2.87708556, 1.03279203, 2.05938754,
+       2.52937133, 2.60192964, 1.1823696 , 2.99479316, 1.19810237])
 </pre></div>
 </div>
 </div>
@@ -907,7 +917,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.67229232, 4.77247686, 5.07664858, 4.00060142])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.91254706, 4.26845903, 5.55122085, 5.39185067])
 </pre></div>
 </div>
 </div>

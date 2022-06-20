@@ -1,0 +1,1486 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 7d: Model Evaluation &amp; Selection &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lab" href="lab.html" />
+    <link rel="prev" title="Lesson 7c: Feature Engineering" href="lesson-7c.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5a.html">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5b.html">
+   Lesson 5b: Plotting with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5c.html">
+   Lesson 5c: Plotting with Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6a.html">
+   Lession 6a: Conditional statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6b.html">
+   Lesson 6b: Iteration statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6c.html">
+   Lesson 6C: Writing functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7a.html">
+   Lesson 7a: Data Exploration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7b.html">
+   Lesson 7b: First model with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7c.html">
+   Lesson 7c: Feature Engineering
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 7d: Model Evaluation &amp; Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-module/lesson-7d.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F07-module/lesson-7d.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/07-module/lesson-7d.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/07-module/lesson-7d.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-refresher">
+   Quick refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-prep">
+     Data prep
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-engineering">
+     Feature engineering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling">
+     Modeling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling-cross-validation">
+   Resampling &amp; cross-validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-fold-cross-validation">
+   K-fold cross-validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-metrics">
+   Evaluation metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimator-scoring-method">
+     Estimator scoring method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#individual-scoring-functions">
+     Individual scoring functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scoring-parameters">
+     Scoring parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperparameter-tuning">
+   Hyperparameter tuning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bias">
+     Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance">
+     Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#full-cartesian-grid-search">
+     Full cartesian grid search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-search">
+     Random search
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 7d: Model Evaluation & Selection</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quick-refresher">
+   Quick refresher
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-prep">
+     Data prep
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#feature-engineering">
+     Feature engineering
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#modeling">
+     Modeling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#resampling-cross-validation">
+   Resampling &amp; cross-validation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#k-fold-cross-validation">
+   K-fold cross-validation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation-metrics">
+   Evaluation metrics
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#estimator-scoring-method">
+     Estimator scoring method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#individual-scoring-functions">
+     Individual scoring functions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#scoring-parameters">
+     Scoring parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#hyperparameter-tuning">
+   Hyperparameter tuning
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bias">
+     Bias
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variance">
+     Variance
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#full-cartesian-grid-search">
+     Full cartesian grid search
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#random-search">
+     Random search
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-7d-model-evaluation-selection">
+<h1>Lesson 7d: Model Evaluation &amp; Selection<a class="headerlink" href="#lesson-7d-model-evaluation-selection" title="Permalink to this headline">¶</a></h1>
+<p>The last few lessons gave you a good introduction to applying Scikit-learn models. This lesson is going to go deeper into the idea of assessing model performance. We’ll discuss how to incoporate cross-validation procedures to give you a more robust assessment of model performance. We’ll also look at how to incorporate different evaluation metrics for scoring your models. And finally, we will discuss the concept of hyperparameter tuning, the bias-variance tradeoff, and how to implement a tuning strategy to find a model the maximizes generalizability.</p>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ol class="simple">
+<li><p>Perform cross-validation procedures for more robust model performance assessment.</p></li>
+<li><p>Apply different evaluation metrics for scoring your model.</p></li>
+<li><p>Execute hyperparameter tuning to find optimal model parameter settings.</p></li>
+</ol>
+</div>
+<div class="section" id="quick-refresher">
+<h2>Quick refresher<a class="headerlink" href="#quick-refresher" title="Permalink to this headline">¶</a></h2>
+<p>But first, let’s review a few things that we learned in the previous modules.</p>
+<div class="section" id="data-prep">
+<h3>Data prep<a class="headerlink" href="#data-prep" title="Permalink to this headline">¶</a></h3>
+<p>In lesson 7b we discussed how we typically separate our features and target into distinct data objects and that we create a train-test split so we can measure model performance on data that our model was not trained on.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># packages used</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># import data</span>
+<span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/adult-census.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># separate feature &amp; target data</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
+
+<span class="c1"># drop the duplicated column `&quot;education-num&quot;` as stated in the data exploration notebook</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;education-num&#39;</span><span class="p">)</span>
+
+<span class="c1"># split into train &amp; test sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="feature-engineering">
+<h3>Feature engineering<a class="headerlink" href="#feature-engineering" title="Permalink to this headline">¶</a></h3>
+<p>In lesson 7c we looked at how we can apply common feature engineering tasks to numeric and categorical features and how we can combine these tasks with <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># packages used</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+<span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+
+<span class="c1"># create selector object based on data type</span>
+<span class="n">numerical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_exclude</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">categorical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># get columns of interest</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="n">numerical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">categorical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># preprocessors to handle numeric and categorical features</span>
+<span class="n">numerical_preprocessor</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">categorical_preprocessor</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># transformer to associate each of these preprocessors with their respective columns</span>
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;one-hot-encoder&#39;</span><span class="p">,</span> <span class="n">categorical_preprocessor</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;standard_scaler&#39;</span><span class="p">,</span> <span class="n">numerical_preprocessor</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="modeling">
+<h3>Modeling<a class="headerlink" href="#modeling" title="Permalink to this headline">¶</a></h3>
+<p>And we also discussed how we can combine feature engineering steps with modeling steps using a pipeline object.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># packages used</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="c1"># Pipeline object to chain together modeling processes</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">model</span>
+
+<span class="c1"># fit our model</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># score on test set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8503808041929408
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="resampling-cross-validation">
+<h2>Resampling &amp; cross-validation<a class="headerlink" href="#resampling-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>In lesson 7b we split our data into training and testing sets and we assessed the performance of our model on the test set. Unfortunately, there are a few pitfalls to this approach:</p>
+<ol class="simple">
+<li><p>If our dataset is small, a single test set may not provide realistic expectations of our model’s performance on unseen data.</p></li>
+<li><p>A single test set does not provide us any insight on variability of our model’s performance.</p></li>
+<li><p>Using our test set to drive our model building process can bias our results via <em>data leakage</em>.</p></li>
+</ol>
+<p>Resampling methods provide an alternative approach by allowing us to repeatedly fit a model of interest to parts of the training data and test its performance on other parts of the training data.</p>
+<div class="figure align-default" id="resampling">
+<a class="reference internal image-reference" href="../_images/resampling.svg"><img alt="Resampling" src="../_images/resampling.svg" width="90%" /></a>
+<p class="caption"><span class="caption-number">Fig. 21 </span><span class="caption-text">Illustration of resampling.</span><a class="headerlink" href="#resampling" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This allows us to train and validate our model entirely on the training data and not touch the test data until we have selected a final “optimal” model.</p>
+</div>
+<p>The two most commonly used resampling methods include <em><strong>k-fold cross-validation</strong></em> and <em><strong>bootstrap sampling</strong></em>. This lesson focuses on using k-fold cross-validation.</p>
+</div>
+<div class="section" id="k-fold-cross-validation">
+<h2>K-fold cross-validation<a class="headerlink" href="#k-fold-cross-validation" title="Permalink to this headline">¶</a></h2>
+<p>Cross-validation consists of repeating the procedure such that the training and testing sets are different each time. Generalization performance metrics are collected for each repetition and then aggregated. As a result we can get an estimate of the variability of the model’s generalization performance.</p>
+<p><em>k</em>-fold cross-validation (aka <em>k</em>-fold CV) is a resampling method that randomly divides the training data into <em>k</em> groups (aka folds) of approximately equal size.</p>
+<div class="figure align-default" id="kfold">
+<a class="reference internal image-reference" href="../_images/cross_validation_diagram.png"><img alt="kfold" src="../_images/cross_validation_diagram.png" style="width: 90%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 22 </span><span class="caption-text">Illustration of k-fold sampling across a data sets index.</span><a class="headerlink" href="#kfold" title="Permalink to this image">¶</a></p>
+</div>
+<p>The model is fit on <span class="math notranslate nohighlight">\(k-1\)</span> folds and then the remaining fold is used to compute model performance.  This procedure is repeated <em>k</em> times; each time, a different fold is treated as the validation set.</p>
+<p>This process results in <em>k</em> estimates of the generalization error (say <span class="math notranslate nohighlight">\(\epsilon_1, \epsilon_2, \dots, \epsilon_k\)</span>). Thus, the <em>k</em>-fold CV estimate is computed by averaging the <em>k</em> test errors, providing us with an approximation of the error we might expect on unseen data.</p>
+<div class="figure align-default" id="kfold-2">
+<a class="reference internal image-reference" href="../_images/cv.png"><img alt="kfold cv" src="../_images/cv.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 23 </span><span class="caption-text">Illustration of a 5-fold cross validation procedure.</span><a class="headerlink" href="#kfold-2" title="Permalink to this image">¶</a></p>
+</div>
+<p>In scikit-learn, the function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html"><code class="docutils literal notranslate"><span class="pre">cross_validate</span></code></a> allows us to perform cross-validation and you need to pass it the model, the data, and the target. Since there exists several cross-validation strategies, cross_validate takes a parameter <code class="docutils literal notranslate"><span class="pre">cv</span></code> which defines the splitting strategy.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In practice, one typically uses k=5 or k=10. There is no formal rule as to the size of k; however, as k gets larger, the difference between the estimated performance and the true performance to be seen on the test set will decrease.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_validate</span>
+
+<span class="n">cv_result</span> <span class="o">=</span> <span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">cv_result</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 2.6 s, sys: 36.1 ms, total: 2.64 s
+Wall time: 2.64 s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.51333404, 0.51244903, 0.49145603, 0.51261401, 0.46549702]),
+ &#39;score_time&#39;: array([0.02205896, 0.02217507, 0.02339315, 0.021245  , 0.02095604]),
+ &#39;test_score&#39;: array([0.85191757, 0.84548185, 0.85790336, 0.85094185, 0.85558286])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output of cross_validate is a Python dictionary, which by default contains three entries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fit_time</span></code>: the time to train the model on the training data for each fold,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">score_time</span></code>: the time to predict with the model on the testing data for each fold, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">test_score</span></code>: the default score on the testing data for each fold.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scores</span> <span class="o">=</span> <span class="n">cv_result</span><span class="p">[</span><span class="s2">&quot;test_score&quot;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The mean cross-validation accuracy is: &quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> +/- </span><span class="si">{</span><span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The mean cross-validation accuracy is: 0.852 +/- 0.004
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-question admonition">
+<p class="admonition-title">Question:</p>
+<p>Using <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier()</span></code>, run a 5 fold cross validation procedure and compare the accuracy and standard deviation to the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> model we just ran. Which model has a better CV score?</p>
+</div>
+</div>
+</div>
+<div class="section" id="evaluation-metrics">
+<h2>Evaluation metrics<a class="headerlink" href="#evaluation-metrics" title="Permalink to this headline">¶</a></h2>
+<p>Evaluation metrics allow us to measure the predictive accuracy of our model – the difference between the predicted value (<span class="math notranslate nohighlight">\(\hat{y}_i\)</span>) and the actual value (<span class="math notranslate nohighlight">\(y_i\)</span>).</p>
+<p>We often refer to evaluation metrics as <em><strong>loss functions</strong></em>: <span class="math notranslate nohighlight">\(f(y_{i} - \hat{y}_i)\)</span></p>
+<p>Scikit-Learn provides multiple ways to compute evaluation metrics and refers to this concept as <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html"><em><strong>scoring</strong></em></a>.</p>
+<ol class="simple">
+<li><p>Estimator scoring method</p></li>
+<li><p>Individual scoring functions</p></li>
+<li><p>Scoring parameters</p></li>
+</ol>
+<div class="section" id="estimator-scoring-method">
+<h3>Estimator scoring method<a class="headerlink" href="#estimator-scoring-method" title="Permalink to this headline">¶</a></h3>
+<p>Every estimator (regression/classification model) has a default scoring method. Most classifiers return the mean accuracy of the model on the supplied <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(y\)</span>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># toy data</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_breast_cancer</span>
+<span class="n">X_cancer</span><span class="p">,</span> <span class="n">y_cancer</span> <span class="o">=</span> <span class="n">load_breast_cancer</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># fit model</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;liblinear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_cancer</span><span class="p">,</span> <span class="n">y_cancer</span><span class="p">)</span>
+
+<span class="c1"># score </span>
+<span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_cancer</span><span class="p">,</span> <span class="n">y_cancer</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9595782073813708
+</pre></div>
+</div>
+</div>
+</div>
+<p>While most regressors return the <span class="math notranslate nohighlight">\(R^2\)</span> metric:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># toy data</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets</span> <span class="kn">import</span> <span class="n">load_diabetes</span>
+<span class="n">X_diabetes</span><span class="p">,</span> <span class="n">y_diabetes</span> <span class="o">=</span> <span class="n">load_diabetes</span><span class="p">(</span><span class="n">return_X_y</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># fit model</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="n">reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_diabetes</span><span class="p">,</span> <span class="n">y_diabetes</span><span class="p">)</span>
+
+<span class="c1"># score</span>
+<span class="n">reg</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_diabetes</span><span class="p">,</span> <span class="n">y_diabetes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.5177494254132934
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="individual-scoring-functions">
+<h3>Individual scoring functions<a class="headerlink" href="#individual-scoring-functions" title="Permalink to this headline">¶</a></h3>
+<p>However, these default evaluation metrics are often not the metrics most suitable to the business problem.</p>
+<p>There are many loss functions to choose from; each with unique characteristics that can be beneficial for certain problems.</p>
+<ul class="simple">
+<li><p>Regression problems</p>
+<ul>
+<li><p>Mean squared error (MSE)</p></li>
+<li><p>Root mean squared error (RMSE)</p></li>
+<li><p>Mean absolute error (MAE)</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+<li><p>Classification problems</p>
+<ul>
+<li><p>Area under the curve (AUC)</p></li>
+<li><p>Cross-entropy (aka Log loss)</p></li>
+<li><p>Precision</p></li>
+<li><p>etc.</p></li>
+</ul>
+</li>
+</ul>
+<p>Scikit-Learn provides many <a class="reference external" href="https://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">scoring functions</a> to choose from.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The functions take actual y values and predicted y values – <span class="math notranslate nohighlight">\(f(y_{i} - \hat{y}_i)\)</span></p>
+<p><strong>Example regression metrics</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_diabetes</span><span class="p">)</span>
+
+<span class="c1"># Mean squared error</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_diabetes</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2859.6903987680657
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean absolute percentage error</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_percentage_error</span><span class="p">(</span><span class="n">y_diabetes</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.38786197940297423
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example classification metrics</strong>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_cancer</span><span class="p">)</span>
+
+<span class="c1"># Area under the curve</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_cancer</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9543760900586651
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># F1 score</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">f1_score</span><span class="p">(</span><span class="n">y_cancer</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.968011126564673
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiple metrics at once!</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_cancer</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           0       0.96      0.93      0.95       212
+           1       0.96      0.97      0.97       357
+
+    accuracy                           0.96       569
+   macro avg       0.96      0.95      0.96       569
+weighted avg       0.96      0.96      0.96       569
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="scoring-parameters">
+<h3>Scoring parameters<a class="headerlink" href="#scoring-parameters" title="Permalink to this headline">¶</a></h3>
+<p>And since we prefer to use cross-validation procedures, scikit-learn has incorporated a <code class="docutils literal notranslate"><span class="pre">scoring</span></code> parameter.</p>
+<p>Most evaluation metrics have a predefined text string that can be supplied as a <code class="docutils literal notranslate"><span class="pre">scoring</span></code> argument.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># say we wanted to use AUC as our loss function while using 5-fold validation</span>
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.5100739 , 0.50765419, 0.4927361 , 0.50219274, 0.46980095]),
+ &#39;score_time&#39;: array([0.0240109 , 0.02322793, 0.02408695, 0.02379131, 0.02356219]),
+ &#39;test_score&#39;: array([0.90485472, 0.90326931, 0.91316978, 0.90553186, 0.90816178])}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The unified scoring API in scikit-learn always <u>maximizes</u> the score, so metrics which need to be minimized are negated in order for the unified scoring API to work correctly. Consequently, some metrics such as <code class="docutils literal notranslate"><span class="pre">mean_squared_error()</span></code> will use a predefined text string starting with <b>neg_</b> (i.e. ‘neg_mean_squared_error’).</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># applying mean squared error in a regression k-fold cross validation procedure</span>
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">reg</span><span class="p">,</span> <span class="n">X_diabetes</span><span class="p">,</span> <span class="n">y_diabetes</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_root_mean_squared_error&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.00094295, 0.00075698, 0.00054502, 0.00057006, 0.00046015]),
+ &#39;score_time&#39;: array([0.00029492, 0.00024295, 0.00031805, 0.000211  , 0.00021029]),
+ &#39;test_score&#39;: array([-52.72496667, -55.03492848, -56.90079956, -54.851539  ,
+        -53.94633383])}
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can even supply <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#using-multiple-metric-evaluation">more than one metric</a> or even <a class="reference external" href="https://scikit-learn.org/stable/modules/model_evaluation.html#defining-your-scoring-strategy-from-metric-functions">define your own custom metric</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># example of supplying more than one metric</span>
+<span class="n">metrics</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">,</span> <span class="s1">&#39;roc_auc&#39;</span><span class="p">]</span>
+
+<span class="n">cross_validate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="n">metrics</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;fit_time&#39;: array([0.52868891, 0.51996326, 0.51541305, 0.51238298, 0.46686888]),
+ &#39;score_time&#39;: array([0.04529619, 0.04404998, 0.04549694, 0.04342484, 0.04324722]),
+ &#39;test_accuracy&#39;: array([0.85191757, 0.84548185, 0.85790336, 0.85094185, 0.85558286]),
+ &#39;test_roc_auc&#39;: array([0.90485472, 0.90326931, 0.91316978, 0.90553186, 0.90816178])}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier()</span></code> from the previous <b>Knowledge check</b> exercise, perform a 5 fold cross validation and compute the accuracy <u><b>and</b></u> ROC AUC.</p>
+</div>
+</div>
+</div>
+<div class="section" id="hyperparameter-tuning">
+<h2>Hyperparameter tuning<a class="headerlink" href="#hyperparameter-tuning" title="Permalink to this headline">¶</a></h2>
+<p>Given two different models (blue line) to the same data (gray dots), which model do you prefer?</p>
+<div class="figure align-default" id="bias-variance-comparison">
+<a class="reference internal image-reference" href="../_images/bias-variance-comparison.png"><img alt="bias-vs-variance" src="../_images/bias-variance-comparison.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 24 </span><span class="caption-text">Between model A and B, which do you think is better?</span><a class="headerlink" href="#bias-variance-comparison" title="Permalink to this image">¶</a></p>
+</div>
+<p>The image above illustrates the fact that prediction errors can be decomposed into two main subcomponents we care about:</p>
+<ul class="simple">
+<li><p>error due to “bias”</p></li>
+<li><p>error due to “variance”</p></li>
+</ul>
+<div class="section" id="bias">
+<h3>Bias<a class="headerlink" href="#bias" title="Permalink to this headline">¶</a></h3>
+<p>Error due to <em><strong>bias</strong></em> is the difference between the expected (or average) prediction of our model and the correct value which we are trying to predict.</p>
+<p>It measures how far off in general a model’s predictions are from the correct value, which provides a sense of how well a model can conform to the underlying structure of the data.</p>
+<p>High bias models (i.e. generalized linear models) are rarely affected by the noise introduced by new unseen data</p>
+<div class="figure align-default" id="bias-models">
+<a class="reference internal image-reference" href="../_images/modeling-process-bias-model-2.png"><img alt="bias" src="../_images/modeling-process-bias-model-2.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 25 </span><span class="caption-text">A biased polynomial model fit to a single data set does not capture the underlying non-linear, non-monotonic data structure (left). Models fit to 25 bootstrapped replicates of the data are underterred by the noise and generates similar, yet still biased, predictions (right).</span><a class="headerlink" href="#bias-models" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="variance">
+<h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h3>
+<p>Error due to <em><strong>variance</strong></em> is the variability of a model prediction for a given data point.</p>
+<p>Many models (e.g., k-nearest neighbor, decision trees, gradient boosting machines) are very adaptable and offer extreme flexibility in the patterns that they can fit to. However, these models offer their own problems as they run the risk of overfitting to the training data.</p>
+<p>Although you may achieve very good performance on your training data, the model will not automatically generalize well to unseen data.</p>
+<div class="figure align-default" id="variance-models">
+<a class="reference internal image-reference" href="../_images/modeling-process-variance-model-2.png"><img alt="variance" src="../_images/modeling-process-variance-model-2.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 26 </span><span class="caption-text">A high variance k-nearest neighbor model fit to a single data set captures the underlying non-linear, non-monotonic data structure well but also overfits to individual data points (left). Models fit to 25 bootstrapped replicates of the data are deterred by the noise and generate highly variable predictions (right).</span><a class="headerlink" href="#variance-models" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Many high performing models (i.e. random forests, gradient boosting machines, deep learning) are very flexible in the patterns they can conform to due to the many hyperparameters they have. However, this also means they are prone to overfitting (aka can have high variance error).</p>
+</div>
+<p><em><strong>Hyperparameters</strong></em> (aka tuning parameters) are the “knobs to twiddle” to control the complexity of machine learning algorithms and, therefore, the <em><strong>bias-variance trade-off</strong></em>.</p>
+<p>Some models have very few hyperparameters. For example in a K-nearest neighbor (KNN) model <em><strong>K</strong></em> (the number of neighbors) is the primary hyperparameter.</p>
+<div class="figure align-default" id="knn-tuned">
+<a class="reference internal image-reference" href="../_images/modeling-process-knn-options-1.png"><img alt="knn-tuned" src="../_images/modeling-process-knn-options-1.png" style="width: 95%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 27 </span><span class="caption-text">k-nearest neighbor model with differing values for k.</span><a class="headerlink" href="#knn-tuned" title="Permalink to this image">¶</a></p>
+</div>
+<p>While other models such as gradient boosted machines (GBMs) and deep learning models can have many.</p>
+<p><em><strong>Hyperparameter tuning</strong></em> is the process of screening hyperparameter values (or combinations of hyperparameter values) to find a model that balances bias &amp; variance so that the model generalizes well to unseen data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span>
+
+<span class="c1"># set hyperparameter in KNN model </span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># create preprocessor &amp; modeling pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+
+<span class="c1"># 5-fold cross validation using AUC error metric</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;KNN model with 10 neighbors: AUC = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">results</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>But what if we wanted to assess and compare <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> = 5, 10, 15, 20, … ?</p>
+</div>
+<div class="section" id="full-cartesian-grid-search">
+<h3>Full cartesian grid search<a class="headerlink" href="#full-cartesian-grid-search" title="Permalink to this headline">¶</a></h3>
+<p>For this we could use a <em><strong>full cartesian grid search</strong></em> using Scikit-Learn’s <code class="docutils literal notranslate"><span class="pre">GridSearchCV()</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+
+<span class="c1"># basic model object</span>
+<span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+
+<span class="c1"># Create grid of hyperparameter values</span>
+<span class="n">hyper_grid</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;knn__n_neighbors&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]}</span>
+
+<span class="c1"># create preprocessor &amp; modeling pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;prep&#39;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;knn&#39;</span><span class="p">,</span> <span class="n">knn</span><span class="p">)])</span>
+
+<span class="c1"># Tune a knn model using grid search</span>
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span> <span class="n">hyper_grid</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># Best model&#39;s cross validated AUC</span>
+<span class="nb">abs</span><span class="p">(</span><span class="n">results</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CPU times: user 577 ms, sys: 466 ms, total: 1.04 s
+Wall time: 2min 53s
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8936630646924394
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>We use <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code> rather than <code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code> in the above because it allows us to name the different steps in the pipeline. This allows us to assign hyperparameters to distinct steps within the pipeline.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;knn__n_neighbors&#39;: 20}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="random-search">
+<h3>Random search<a class="headerlink" href="#random-search" title="Permalink to this headline">¶</a></h3>
+<p>However, a cartesian grid-search approach has limitations.</p>
+<ul class="simple">
+<li><p>It does not scale well when the number of parameters to tune is increasing.</p></li>
+<li><p>It also forces regularity rather than aligning values assessed to distributions.</p></li>
+</ul>
+<div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/random_search.png"><img alt="random-search" src="../_images/random_search.png" style="width: 60%;" /></a>
+<p class="caption"><span class="caption-number">Fig. 28 </span><span class="caption-text">Random search compared to standard grid search.</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Random search based on hyperparameter distributions has proven to perform as well, if not better than, standard grid search. Learn more <a href="http://jmlr.csail.mit.edu/papers/volume13/bergstra12a/bergstra12a.pdf">here</a>.</p>
+</div>
+<p>For example, say we want to train a random forest classifier. Random forests are very flexible algorithms and can have <em>several</em> hyperparameters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+
+<span class="c1"># basic model object</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># create preprocessor &amp; modeling pipeline</span>
+<span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;prep&#39;</span><span class="p">,</span> <span class="n">preprocessor</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span> <span class="n">rf</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For this particular random forest algorithm we’ll assess the following hyperparameters. Don’t worry if you are not familiar with what these do.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>: number of trees in the forest,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_features</span></code>: number of features to consider when looking for the best split,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>: maximum depth of each tree built,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>: minimum number of samples required in a leaf node,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_samples</span></code>: number of samples to draw from our training data to train each tree.</p></li>
+</ul>
+<p>A standard grid search would be very computationally intense.</p>
+<p>Instead, we’ll use a random latin hypercube search using <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.RandomizedSearchCV.html"><code class="docutils literal notranslate"><span class="pre">RandomizedSearchCV</span></code></a>.</p>
+<p>To build our grid, we need to specify distributions for our hyperparameters.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">scipy.stats.loguniform</span></code> can be used to generate floating numbers. To generate random values for integer-valued parameters (e.g. <code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>) we can adapt is as follows:</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">loguniform</span>
+
+
+<span class="k">class</span> <span class="nc">loguniform_int</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Integer valued version of the log-uniform distribution&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_distribution</span> <span class="o">=</span> <span class="n">loguniform</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">rvs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Random variable sample&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_distribution</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># specify hyperparameter distributions to randomly sample from</span>
+<span class="n">param_distributions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;rf__n_estimators&#39;</span><span class="p">:</span> <span class="n">loguniform_int</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span>
+    <span class="s1">&#39;rf__max_features&#39;</span><span class="p">:</span> <span class="n">loguniform</span><span class="p">(</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">),</span>
+    <span class="s1">&#39;rf__max_depth&#39;</span><span class="p">:</span> <span class="n">loguniform_int</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+    <span class="s1">&#39;rf__min_samples_leaf&#39;</span><span class="p">:</span> <span class="n">loguniform_int</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+    <span class="s1">&#39;rf__max_samples&#39;</span><span class="p">:</span> <span class="n">loguniform</span><span class="p">(</span><span class="mf">.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, we can define the randomized search using the different distributions.</p>
+<p>Executing 10 iterations of 5-fold cross-validation for random parametrizations of this model on this dataset can take from 10 seconds to several minutes, depending on the speed of the host computer and the number of available processors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">RandomizedSearchCV</span>
+
+<span class="c1"># perform 10 random iterations</span>
+<span class="n">random_search</span> <span class="o">=</span> <span class="n">RandomizedSearchCV</span><span class="p">(</span>
+    <span class="n">pipeline</span><span class="p">,</span> 
+    <span class="n">param_distributions</span><span class="o">=</span><span class="n">param_distributions</span><span class="p">,</span> 
+    <span class="n">n_iter</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+    <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> 
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;roc_auc&#39;</span><span class="p">,</span>
+    <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">random_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Fitting 5 folds for each of 10 candidates, totalling 50 fits
+CPU times: user 19.2 s, sys: 351 ms, total: 19.5 s
+Wall time: 3min 53s
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.9167993399776069
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">best_params_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;rf__max_depth&#39;: 19,
+ &#39;rf__max_features&#39;: 0.4440733300753526,
+ &#39;rf__max_samples&#39;: 0.9487528482967953,
+ &#39;rf__min_samples_leaf&#39;: 4,
+ &#39;rf__n_estimators&#39;: 66}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Import the dataset blood_transfusion.csv:</p>
+<ol>
+<li><p>The column “Class” contains the target variable. Investigate this variable. Is this a regression or classification problem?</p></li>
+<li><p>Why is it relevant to add a preprocessing step to scale the data using a <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> when working with a <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>?</p></li>
+<li><p>Create a scikit-learn pipeline (using <code class="docutils literal notranslate"><span class="pre">sklearn.pipeline.make_pipeline</span></code>) where a <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> will be used to scale the data followed by a <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code>. Use the default hyperparameters. Inspect the parameters of the created pipeline. What is the value of K, the number of neighbors considered when predicting with the k-nearest neighbors?</p></li>
+<li><p>Perform a 5-fold cross validation with the pipeline you created in #3. What is your average CV score?</p></li>
+<li><p>Now perform hyperparameter tuning to understand the effect of the parameter <code class="docutils literal notranslate"><span class="pre">n_neighbors</span></code> on the model score. Use the following values for the parameter range. Again, perform a 5-fold cross validation. Which hyperparameter value performed the best and what was the CV score?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">param_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">]</span>
+
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,sklearn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab: 3.3.2
+pandas    : 1.4.2
+sklearn   : 1.0.2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-7c.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 7c: Feature Engineering</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lab.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lab</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

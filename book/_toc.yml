@@ -51,6 +51,8 @@ parts:
 - caption: Module 7
   chapters:
   - file: 07-module/overview
-  - file: 07-module/lesson-1
-  - file: 07-module/lesson-2
+  - file: 07-module/lesson-7a
+  - file: 07-module/lesson-7b
+  - file: 07-module/lesson-7c
+  - file: 07-module/lesson-7d
   - file: 07-module/lab

@@ -1,0 +1,2015 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 7c: Feature Engineering &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lesson 7d: Model Evaluation &amp; Selection" href="lesson-7d.html" />
+    <link rel="prev" title="Lesson 7b: First model with scikit-learn" href="lesson-7b.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5a.html">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5b.html">
+   Lesson 5b: Plotting with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5c.html">
+   Lesson 5c: Plotting with Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6a.html">
+   Lession 6a: Conditional statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6b.html">
+   Lesson 6b: Iteration statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6c.html">
+   Lesson 6C: Writing functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7a.html">
+   Lesson 7a: Data Exploration
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7b.html">
+   Lesson 7b: First model with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 7c: Feature Engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7d.html">
+   Lesson 7d: Model Evaluation &amp; Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-module/lesson-7c.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F07-module/lesson-7c.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/07-module/lesson-7c.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/07-module/lesson-7c.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-prerequisites">
+   Basic prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-based-on-data-types">
+   Selection based on data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-numerical-data">
+   Preprocessing numerical data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-pipelines">
+   Model pipelines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-categorical-data">
+   Preprocessing categorical data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoding-ordinal-categories">
+     Encoding ordinal categories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ecoding-nominal-categories">
+     Ecoding nominal categories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-an-encoding-strategy">
+     Choosing an encoding strategy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-numerical-and-categorical-variables-together">
+   Using numerical and categorical variables together
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wrapping-up">
+   Wrapping up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 7c: Feature Engineering</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#basic-prerequisites">
+   Basic prerequisites
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#selection-based-on-data-types">
+   Selection based on data types
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-numerical-data">
+   Preprocessing numerical data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-pipelines">
+   Model pipelines
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preprocessing-categorical-data">
+   Preprocessing categorical data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#encoding-ordinal-categories">
+     Encoding ordinal categories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ecoding-nominal-categories">
+     Ecoding nominal categories
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#choosing-an-encoding-strategy">
+     Choosing an encoding strategy
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-numerical-and-categorical-variables-together">
+   Using numerical and categorical variables together
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#wrapping-up">
+   Wrapping up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-7c-feature-engineering">
+<h1>Lesson 7c: Feature Engineering<a class="headerlink" href="#lesson-7c-feature-engineering" title="Permalink to this headline">¶</a></h1>
+<p>Data preprocessing and engineering techniques generally refer to the addition, deletion, or transformation of data. The time spent on identifying data engineering needs can be significant and requires you to spend substantial time understanding your data…or as Leo Breiman said <em>“live with your data before you plunge into modeling”</em> (<a class="reference external" href="https://projecteuclid.org/journals/statistical-science/volume-16/issue-3/Statistical-Modeling--The-Two-Cultures-with-comments-and-a/10.1214/ss/1009213726.full">Breiman 2001</a>).</p>
+<p>In this lesson, we start introducing a few fundamental feature engineering tasks that can:</p>
+<ul class="simple">
+<li><p>improve the performance of your numerical features,</p></li>
+<li><p>allow you to include non-numeric features in your modeling,</p></li>
+<li><p>create a scikit-learn pipeline to chain preprocessing and model training steps.</p></li>
+</ul>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you’ll be able to:</p>
+<ul class="simple">
+<li><p>Standardize numeric features</p></li>
+<li><p>Pre-process nominal and ordinal features</p></li>
+<li><p>Create a scikit-learn pipeline to chain together feature engineering and model training steps</p></li>
+<li><p>Combine numeric and non-numeric feature engineering steps</p></li>
+</ul>
+</div>
+<div class="section" id="basic-prerequisites">
+<h2>Basic prerequisites<a class="headerlink" href="#basic-prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>Let’s go ahead and import a couple required libraries and import our data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We will import additional libraries and functions as we proceed but we do so at the time of using the libraries and functions as that will help you to connect specific steps to particular modules/functions imported.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># to display nice model diagram</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
+<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;diagram&#39;</span><span class="p">)</span>
+
+<span class="c1"># import data</span>
+<span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/adult-census.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># separate feature &amp; target data</span>
+<span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;class&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="selection-based-on-data-types">
+<h2>Selection based on data types<a class="headerlink" href="#selection-based-on-data-types" title="Permalink to this headline">¶</a></h2>
+<p>Typically, data types fall into two categories:</p>
+<ul class="simple">
+<li><p><strong>Numeric</strong>: a quantity represented by a real or integer number.</p></li>
+<li><p><strong>Categorical</strong>: a discrete value, typically represented by string labels (but not only) taken from a finite list of possible choices.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>age                int64
+workclass         object
+education         object
+education-num      int64
+marital-status    object
+occupation        object
+relationship      object
+race              object
+sex               object
+capital-gain       int64
+capital-loss       int64
+hours-per-week     int64
+native-country    object
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not take dtype output at face value! It is possible to have categorical data represented by numbers (i.e. <code class="docutils literal notranslate"><span class="pre">education_num</span></code>. And <code class="docutils literal notranslate"><span class="pre">object</span></code> dtypes can represent data that would be better represented as continuous numbers (i.e. dates).</p>
+<p>Bottom line, always understand how your data is representing your features!</p>
+</div>
+<p>We can separate categorical and numerical variables using their data types to identify them.</p>
+<p>There are a few ways we can do this. Here, we make use of <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.make_column_selector.html"><code class="docutils literal notranslate"><span class="pre">make_column_selector</span></code></a> helper to select the corresponding columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">make_column_selector</span> <span class="k">as</span> <span class="n">selector</span>
+
+<span class="c1"># create selector object based on data type</span>
+<span class="n">numerical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_exclude</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">categorical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># get columns of interest</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="n">numerical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">categorical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># results in a list containing relevant column names</span>
+<span class="n">numerical_columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;age&#39;, &#39;education-num&#39;, &#39;capital-gain&#39;, &#39;capital-loss&#39;, &#39;hours-per-week&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing-numerical-data">
+<h2>Preprocessing numerical data<a class="headerlink" href="#preprocessing-numerical-data" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-learn works “out of the box” with numeric features. However, some algorithms make some assumptions regarding the distribution of our features.</p>
+<p>We see that our numeric features span across different ranges:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numerical_features</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">numerical_columns</span><span class="p">]</span>
+<span class="n">numerical_features</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>education-num</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>48842.000000</td>
+      <td>48842.000000</td>
+      <td>48842.000000</td>
+      <td>48842.000000</td>
+      <td>48842.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>38.643585</td>
+      <td>10.078089</td>
+      <td>1079.067626</td>
+      <td>87.502314</td>
+      <td>40.422382</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>13.710510</td>
+      <td>2.570973</td>
+      <td>7452.019058</td>
+      <td>403.004552</td>
+      <td>12.391444</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>17.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>28.000000</td>
+      <td>9.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>40.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>37.000000</td>
+      <td>10.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>40.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>48.000000</td>
+      <td>12.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>45.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>90.000000</td>
+      <td>16.000000</td>
+      <td>99999.000000</td>
+      <td>4356.000000</td>
+      <td>99.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>Normalizing our features so that they have mean = 0 and standard deviation = 1, helps to ensure our features align to algorithm assumptions.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Here are a couple reasons for scaling features:</p>
+<ul class="simple">
+<li><p>Models that rely on the distance between a pair of samples, for instance
+k-nearest neighbors, should be trained on normalized features to make each
+feature contribute approximately equally to the distance computations.</p></li>
+<li><p>Many models such as logistic regression use a numerical solver (based on
+gradient descent) to find their optimal parameters. This solver converges
+faster when the features are scaled.</p></li>
+</ul>
+</div>
+<p>Whether or not a machine learning model requires normalization of the features depends on the model family. Linear models such as logistic regression generally benefit from scaling the features while other models such as tree-based models (i.e. decision trees, random forests) do not need such preprocessing (but will not suffer from it).</p>
+<p>We can apply such normalization using a scikit-learn transformer called <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html"><code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code></a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">numerical_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 {color: black;background-color: white;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 pre{padding: 0;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-toggleable {background-color: white;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-estimator:hover {background-color: #d4ebff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-item {z-index: 1;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-parallel-item:only-child::after {width: 0;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62 div.sk-text-repr-fallback {display: none;}</style><div id="sk-b71a9bd8-e58a-4a39-b9f9-e20d341a5c62" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>StandardScaler()</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="d86c26fa-acde-4522-bc0a-03d25823f52b" type="checkbox" checked><label for="d86c26fa-acde-4522-bc0a-03d25823f52b" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">fit</span></code> method for transformers is similar to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method for
+predictors. The main difference is that the former has a single argument (the
+feature matrix), whereas the latter has two arguments (the feature matrix and the
+target).</p>
+<div class="figure align-default" id="transformer-fit-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-transformer.fit.svg"><img alt="transfomer.fit method" src="../_images/api_diagram-transformer.fit.svg" width="70%" /></a>
+<p class="caption"><span class="caption-number">Fig. 17 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">transformer.fit</span></code> method representation.</span><a class="headerlink" href="#transformer-fit-method" title="Permalink to this image">¶</a></p>
+</div>
+<p>In this case, the algorithm needs to compute the mean and standard deviation
+for each feature and store them into some NumPy arrays. Here, these
+statistics are the model states.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fact that the model states of this scaler are arrays of means and
+standard deviations is specific to the <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>. Other
+scikit-learn transformers will compute different statistics and store them
+as model states, in the same fashion.</p>
+</div>
+<p>We can inspect the computed means and standard deviations.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span><span class="o">.</span><span class="n">mean_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([  38.64358544,   10.07808853, 1079.06762622,   87.50231358,
+         40.42238238])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">scaler</span><span class="o">.</span><span class="n">scale_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.37103696e+01, 2.57094644e+00, 7.45194277e+03, 4.03000427e+02,
+       1.23913172e+01])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Scikit-learn convention: if an attribute is learned from the data, its name
+ends with an underscore (i.e. <code class="docutils literal notranslate"><span class="pre">_</span></code>), as in <code class="docutils literal notranslate"><span class="pre">mean_</span></code> and <code class="docutils literal notranslate"><span class="pre">scale_</span></code> for the
+<code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>.</p>
+</div>
+<p>Once we have called the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method, we can perform the data transformation by
+calling the method <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numerical_features_scaled</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">numerical_features</span><span class="p">)</span>
+<span class="n">numerical_features_scaled</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.99512893, -1.19725891, -0.14480353, -0.2171271 , -0.03408696],
+       [-0.04694151, -0.41933527, -0.14480353, -0.2171271 ,  0.77292975],
+       [-0.77631645,  0.74755018, -0.14480353, -0.2171271 , -0.03408696],
+       ...,
+       [ 1.41180837, -0.41933527, -0.14480353, -0.2171271 , -0.03408696],
+       [-1.21394141, -0.41933527, -0.14480353, -0.2171271 , -1.64812038],
+       [ 0.97418341, -0.41933527,  1.87131501, -0.2171271 , -0.03408696]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s illustrate the internal mechanism of the <code class="docutils literal notranslate"><span class="pre">transform</span></code> method and put it
+to perspective with what we already saw with predictors.</p>
+<div class="figure align-default" id="transformer-transform-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-transformer.transform.svg"><img alt="transfomer.transform method" src="../_images/api_diagram-transformer.transform.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 18 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">transformer.transform</span></code> method representation.</span><a class="headerlink" href="#transformer-transform-method" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">transform</span></code> method for transformers is similar to the <code class="docutils literal notranslate"><span class="pre">predict</span></code> method
+for predictors. It uses a predefined function, called a <strong>transformation
+function</strong>, and uses the model states and the input data. However, instead of
+outputting predictions, the job of the <code class="docutils literal notranslate"><span class="pre">transform</span></code> method is to output a
+transformed version of the input data.</p>
+<p>Finally, the method <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> is a shorthand method to call
+successively <code class="docutils literal notranslate"><span class="pre">fit</span></code> and then <code class="docutils literal notranslate"><span class="pre">transform</span></code>.</p>
+<div class="figure align-default" id="transformer-fit-transform-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-transformer.fit_transform.svg"><img alt="transfomer.fit_transform method" src="../_images/api_diagram-transformer.fit_transform.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 19 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">transformer.fit_transform</span></code> method representation.</span><a class="headerlink" href="#transformer-fit-transform-method" title="Permalink to this image">¶</a></p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fitting and transforming in one step</span>
+<span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">numerical_features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[-0.99512893, -1.19725891, -0.14480353, -0.2171271 , -0.03408696],
+       [-0.04694151, -0.41933527, -0.14480353, -0.2171271 ,  0.77292975],
+       [-0.77631645,  0.74755018, -0.14480353, -0.2171271 , -0.03408696],
+       ...,
+       [ 1.41180837, -0.41933527, -0.14480353, -0.2171271 , -0.03408696],
+       [-1.21394141, -0.41933527, -0.14480353, -0.2171271 , -1.64812038],
+       [ 0.97418341, -0.41933527,  1.87131501, -0.2171271 , -0.03408696]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice that the mean of all the columns is close to 0 and the standard deviation in all cases is close to 1:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">numerical_features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+    <span class="n">numerical_features_scaled</span><span class="p">,</span>
+    <span class="n">columns</span><span class="o">=</span><span class="n">numerical_columns</span>
+<span class="p">)</span>
+
+<span class="n">numerical_features</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>education-num</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>4.884200e+04</td>
+      <td>4.884200e+04</td>
+      <td>4.884200e+04</td>
+      <td>4.884200e+04</td>
+      <td>4.884200e+04</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>1.584958e-16</td>
+      <td>1.594573e-17</td>
+      <td>2.294458e-16</td>
+      <td>7.617582e-17</td>
+      <td>9.071110e-17</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>1.000010e+00</td>
+      <td>1.000010e+00</td>
+      <td>1.000010e+00</td>
+      <td>1.000010e+00</td>
+      <td>1.000010e+00</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>-1.578629e+00</td>
+      <td>-3.531030e+00</td>
+      <td>-1.448035e-01</td>
+      <td>-2.171271e-01</td>
+      <td>-3.181452e+00</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>-7.763164e-01</td>
+      <td>-4.193353e-01</td>
+      <td>-1.448035e-01</td>
+      <td>-2.171271e-01</td>
+      <td>-3.408696e-02</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>-1.198790e-01</td>
+      <td>-3.037346e-02</td>
+      <td>-1.448035e-01</td>
+      <td>-2.171271e-01</td>
+      <td>-3.408696e-02</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>6.824334e-01</td>
+      <td>7.475502e-01</td>
+      <td>-1.448035e-01</td>
+      <td>-2.171271e-01</td>
+      <td>3.694214e-01</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>3.745808e+00</td>
+      <td>2.303397e+00</td>
+      <td>1.327438e+01</td>
+      <td>1.059179e+01</td>
+      <td>4.727312e+00</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</div>
+<div class="section" id="model-pipelines">
+<h2>Model pipelines<a class="headerlink" href="#model-pipelines" title="Permalink to this headline">¶</a></h2>
+<p>We can easily combine sequential operations with a scikit-learn
+<a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html"><code class="docutils literal notranslate"><span class="pre">Pipeline</span></code></a>, which chains together operations and is used as any other
+classifier or regressor. The helper function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html#sklearn.pipeline.make_pipeline"><code class="docutils literal notranslate"><span class="pre">make_pipeline</span></code></a> will create a
+<code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>: it takes as arguments the successive transformations to perform,
+followed by the classifier or regressor model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">make_pipeline</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">StandardScaler</span><span class="p">(),</span> <span class="n">LogisticRegression</span><span class="p">())</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 {color: black;background-color: white;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 pre{padding: 0;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-toggleable {background-color: white;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-estimator:hover {background-color: #d4ebff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-item {z-index: 1;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-parallel-item:only-child::after {width: 0;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3 div.sk-text-repr-fallback {display: none;}</style><div id="sk-a9ff7b2a-a82a-414a-af6b-68b104ad71e3" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression())])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="8eb0df15-eb96-4b5f-9638-34fdf7f2d8d6" type="checkbox" ><label for="8eb0df15-eb96-4b5f-9638-34fdf7f2d8d6" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;standardscaler&#x27;, StandardScaler()),
+                (&#x27;logisticregression&#x27;, LogisticRegression())])</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="2e41a29c-d06f-472e-9900-f89be99eddbe" type="checkbox" ><label for="2e41a29c-d06f-472e-9900-f89be99eddbe" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a7415fba-cdb2-425f-bc30-fb57168e6630" type="checkbox" ><label for="a7415fba-cdb2-425f-bc30-fb57168e6630" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression()</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<p>Let’s divide our data into train and test sets and then apply and score our logistic regression model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># split our data into train &amp; test</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">numerical_features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="c1"># fit our pipeline model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># score our model on the test data</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8135287855212513
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="preprocessing-categorical-data">
+<h2>Preprocessing categorical data<a class="headerlink" href="#preprocessing-categorical-data" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately, Scikit-learn does not accept categorical features in their raw form. Consequently, we need to transform them into numerical representations.</p>
+<p>The following presents typical ways of dealing with categorical variables by encoding them, namely <strong>ordinal encoding</strong> and <strong>one-hot encoding</strong>.</p>
+<div class="section" id="encoding-ordinal-categories">
+<h3>Encoding ordinal categories<a class="headerlink" href="#encoding-ordinal-categories" title="Permalink to this headline">¶</a></h3>
+<p>The most intuitive strategy is to encode each category with a different
+number. The <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html"><code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code></a> will transform the data in such manner.
+We will start by encoding a single column to understand how the encoding
+works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OrdinalEncoder</span>
+
+<span class="c1"># let&#39;s illustrate with the &#39;education&#39; feature</span>
+<span class="n">education_column</span> <span class="o">=</span> <span class="n">features</span><span class="p">[[</span><span class="s2">&quot;education&quot;</span><span class="p">]]</span>
+
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">()</span>
+<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">education_column</span><span class="p">)</span>
+<span class="n">education_encoded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 1.],
+       [11.],
+       [ 7.],
+       ...,
+       [11.],
+       [11.],
+       [11.]])
+</pre></div>
+</div>
+</div>
+</div>
+<p>We see that each category in <code class="docutils literal notranslate"><span class="pre">&quot;education&quot;</span></code> has been replaced by a numeric
+value. We could check the mapping between the categories and the numerical
+values by checking the fitted attribute <code class="docutils literal notranslate"><span class="pre">categories_</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoder</span><span class="o">.</span><span class="n">categories_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([&#39; 10th&#39;, &#39; 11th&#39;, &#39; 12th&#39;, &#39; 1st-4th&#39;, &#39; 5th-6th&#39;, &#39; 7th-8th&#39;,
+        &#39; 9th&#39;, &#39; Assoc-acdm&#39;, &#39; Assoc-voc&#39;, &#39; Bachelors&#39;, &#39; Doctorate&#39;,
+        &#39; HS-grad&#39;, &#39; Masters&#39;, &#39; Preschool&#39;, &#39; Prof-school&#39;,
+        &#39; Some-college&#39;], dtype=object)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">OrindalEncoder</span></code> transforms the category value into the corresponding index value of <code class="docutils literal notranslate"><span class="pre">encoder.categories_</span></code></p>
+</div>
+<p>However, be careful when applying this encoding strategy:
+using this integer representation leads downstream predictive models
+to assume that the values are ordered (0 &lt; 1 &lt; 2 &lt; 3… for instance).</p>
+<p>By default, <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> uses a lexicographical strategy to map string
+category labels to integers. This strategy is arbitrary and often
+meaningless. For instance, suppose the dataset has a categorical variable
+named <code class="docutils literal notranslate"><span class="pre">&quot;size&quot;</span></code> with categories such as “S”, “M”, “L”, “XL”. We would like the
+integer representation to respect the meaning of the sizes by mapping them to
+increasing integers such as <code class="docutils literal notranslate"><span class="pre">0,</span> <span class="pre">1,</span> <span class="pre">2,</span> <span class="pre">3</span></code>.
+However, the lexicographical strategy used by default would map the labels
+“S”, “M”, “L”, “XL” to 2, 1, 0, 3, by following the alphabetical order.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> class accepts a <code class="docutils literal notranslate"><span class="pre">categories</span></code> argument to
+pass categories in the expected ordering explicitly (<code class="docutils literal notranslate"><span class="pre">categories[i]</span></code> holds the categories expected in the ith column).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ed_levels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39; Preschool&#39;</span><span class="p">,</span> <span class="s1">&#39; 1st-4th&#39;</span><span class="p">,</span> <span class="s1">&#39; 5th-6th&#39;</span><span class="p">,</span> <span class="s1">&#39; 7th-8th&#39;</span><span class="p">,</span> <span class="s1">&#39; 9th&#39;</span><span class="p">,</span> <span class="s1">&#39; 10th&#39;</span><span class="p">,</span> <span class="s1">&#39; 11th&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39; 12th&#39;</span><span class="p">,</span> <span class="s1">&#39; HS-grad&#39;</span><span class="p">,</span> <span class="s1">&#39; Prof-school&#39;</span><span class="p">,</span> <span class="s1">&#39; Some-college&#39;</span><span class="p">,</span> <span class="s1">&#39; Assoc-acdm&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39; Assoc-voc&#39;</span><span class="p">,</span> <span class="s1">&#39; Bachelors&#39;</span><span class="p">,</span> <span class="s1">&#39; Masters&#39;</span><span class="p">,</span> <span class="s1">&#39; Doctorate&#39;</span><span class="p">]</span>
+
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OrdinalEncoder</span><span class="p">(</span><span class="n">categories</span><span class="o">=</span><span class="p">[</span><span class="n">ed_levels</span><span class="p">])</span>
+<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">education_column</span><span class="p">)</span>
+<span class="n">education_encoded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 6.],
+       [ 8.],
+       [11.],
+       ...,
+       [ 8.],
+       [ 8.],
+       [ 8.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">encoder</span><span class="o">.</span><span class="n">categories_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([&#39; Preschool&#39;, &#39; 1st-4th&#39;, &#39; 5th-6th&#39;, &#39; 7th-8th&#39;, &#39; 9th&#39;, &#39; 10th&#39;,
+        &#39; 11th&#39;, &#39; 12th&#39;, &#39; HS-grad&#39;, &#39; Prof-school&#39;, &#39; Some-college&#39;,
+        &#39; Assoc-acdm&#39;, &#39; Assoc-voc&#39;, &#39; Bachelors&#39;, &#39; Masters&#39;,
+        &#39; Doctorate&#39;], dtype=object)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>If a categorical variable does not carry any meaningful order information
+then this encoding might be misleading to downstream statistical models and
+you might consider using one-hot encoding instead (discussed next).</p>
+</div>
+<div class="section" id="ecoding-nominal-categories">
+<h3>Ecoding nominal categories<a class="headerlink" href="#ecoding-nominal-categories" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html"><code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code></a> is an alternative encoder that converts the categorical levels into new columns.</p>
+<p>We will start by encoding a single feature (e.g. <code class="docutils literal notranslate"><span class="pre">&quot;education&quot;</span></code>) to illustrate
+how the encoding works.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">OneHotEncoder</span>
+
+<span class="n">encoder</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">sparse</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">education_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">education_column</span><span class="p">)</span>
+<span class="n">education_encoded</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0., 1., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       ...,
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.],
+       [0., 0., 0., ..., 0., 0., 0.]])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">sparse=False</span></code> is used in the <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> for didactic purposes, namely
+easier visualization of the data.</p>
+<p>Sparse matrices are efficient data structures when most of your matrix
+elements are zero. They won’t be covered in detail in this workshop. If you
+want more details about them, you can look at <a class="reference external" href="https://scipy-lectures.org/advanced/scipy_sparse/introduction.html#why-sparse-matrices">this</a>.</p>
+</div>
+<p>Viewing this as a data frame provides a more intuitive illustration:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_names</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">input_features</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;education&quot;</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">education_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">feature_names</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>education_ 10th</th>
+      <th>education_ 11th</th>
+      <th>education_ 12th</th>
+      <th>education_ 1st-4th</th>
+      <th>education_ 5th-6th</th>
+      <th>education_ 7th-8th</th>
+      <th>education_ 9th</th>
+      <th>education_ Assoc-acdm</th>
+      <th>education_ Assoc-voc</th>
+      <th>education_ Bachelors</th>
+      <th>education_ Doctorate</th>
+      <th>education_ HS-grad</th>
+      <th>education_ Masters</th>
+      <th>education_ Preschool</th>
+      <th>education_ Prof-school</th>
+      <th>education_ Some-college</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>48837</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>48838</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>48839</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>48840</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>48841</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>48842 rows × 16 columns</p>
+</div></div></div>
+</div>
+<p>As we can see, each category (unique value) became a column; the encoding
+returned, for each sample, a 1 to specify which category it belongs to.</p>
+<p>Let’s apply this encoding to all the categorical features:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get all categorical features</span>
+<span class="n">categorical_features</span> <span class="o">=</span> <span class="n">features</span><span class="p">[</span><span class="n">categorical_columns</span><span class="p">]</span>
+
+<span class="c1"># one-hot encode all features</span>
+<span class="n">categorical_features_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">categorical_features</span><span class="p">)</span>
+
+<span class="c1"># view as a data frame</span>
+<span class="n">columns_encoded</span> <span class="o">=</span> <span class="n">encoder</span><span class="o">.</span><span class="n">get_feature_names_out</span><span class="p">(</span><span class="n">categorical_features</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">categorical_features_encoded</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">columns_encoded</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>workclass_ ?</th>
+      <th>workclass_ Federal-gov</th>
+      <th>workclass_ Local-gov</th>
+      <th>workclass_ Never-worked</th>
+      <th>workclass_ Private</th>
+      <th>workclass_ Self-emp-inc</th>
+      <th>workclass_ Self-emp-not-inc</th>
+      <th>workclass_ State-gov</th>
+      <th>workclass_ Without-pay</th>
+      <th>education_ 10th</th>
+      <th>...</th>
+      <th>native-country_ Portugal</th>
+      <th>native-country_ Puerto-Rico</th>
+      <th>native-country_ Scotland</th>
+      <th>native-country_ South</th>
+      <th>native-country_ Taiwan</th>
+      <th>native-country_ Thailand</th>
+      <th>native-country_ Trinadad&amp;Tobago</th>
+      <th>native-country_ United-States</th>
+      <th>native-country_ Vietnam</th>
+      <th>native-country_ Yugoslavia</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>...</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>1.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 102 columns</p>
+</div></div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>One-hot encoding can significantly increase the number of features in our data. In this case we went from 8 features to 102! If you have a data set with many categorical variables and those categorical variables in turn have many unique levels, the number of features can explode. In these cases you may want to explore ordinal encoding or some other alternative.</p>
+</div>
+</div>
+<div class="section" id="choosing-an-encoding-strategy">
+<h3>Choosing an encoding strategy<a class="headerlink" href="#choosing-an-encoding-strategy" title="Permalink to this headline">¶</a></h3>
+<p>Choosing an encoding strategy will depend on the underlying models and the
+type of categories (i.e. ordinal vs. nominal).</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>In general <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> is the encoding strategy used when the
+downstream models are <strong>linear models</strong> while <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> is often a
+good strategy with <strong>tree-based models</strong>.</p>
+</div>
+<p>Using an <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> will output ordinal categories. This means
+that there is an order in the resulting categories (e.g. <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">1</span> <span class="pre">&lt;</span> <span class="pre">2</span></code>). The
+impact of violating this ordering assumption is really dependent on the
+downstream models. Linear models will be impacted by misordered categories
+while tree-based models will not.</p>
+<p>You can still use an <code class="docutils literal notranslate"><span class="pre">OrdinalEncoder</span></code> with linear models but you need to be
+sure that:</p>
+<ul class="simple">
+<li><p>the original categories (before encoding) have an ordering;</p></li>
+<li><p>the encoded categories follow the same ordering than the original
+categories.</p></li>
+</ul>
+<p>One-hot encoding categorical variables with high cardinality can cause
+computational inefficiency in tree-based models. Because of this, it is not recommended
+to use <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> in such cases even if the original categories do not
+have a given order.</p>
+</div>
+</div>
+<div class="section" id="using-numerical-and-categorical-variables-together">
+<h2>Using numerical and categorical variables together<a class="headerlink" href="#using-numerical-and-categorical-variables-together" title="Permalink to this headline">¶</a></h2>
+<p>Now let’s look at how to combine some of these tasks so we can preprocess both numeric and categorical data.</p>
+<p>First, let’s get our train &amp; test data established:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># drop the duplicated column `&quot;education-num&quot;` as stated in the data exploration notebook</span>
+<span class="n">features</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="s1">&#39;education-num&#39;</span><span class="p">)</span>
+
+<span class="c1"># create selector object based on data type</span>
+<span class="n">numerical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_exclude</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+<span class="n">categorical_columns_selector</span> <span class="o">=</span> <span class="n">selector</span><span class="p">(</span><span class="n">dtype_include</span><span class="o">=</span><span class="nb">object</span><span class="p">)</span>
+
+<span class="c1"># get columns of interest</span>
+<span class="n">numerical_columns</span> <span class="o">=</span> <span class="n">numerical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+<span class="n">categorical_columns</span> <span class="o">=</span> <span class="n">categorical_columns_selector</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1"># split into train &amp; test sets</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Scikit-learn provides a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code></a> class which will send specific
+columns to a specific transformer, making it easy to fit a single predictive
+model on a dataset that combines both kinds of variables together.</p>
+<p>We first define the columns depending on their data type:</p>
+<ul class="simple">
+<li><p><strong>one-hot encoding</strong> will be applied to categorical columns.</p></li>
+<li><p><strong>numerical scaling</strong> numerical features which will be standardized.</p></li>
+</ul>
+<p>We then create our <code class="docutils literal notranslate"><span class="pre">ColumnTransfomer</span></code> by specifying three values:</p>
+<ol class="simple">
+<li><p>the preprocessor name,</p></li>
+<li><p>the transformer, and</p></li>
+<li><p>the columns.</p></li>
+</ol>
+<p>First, let’s create the preprocessors for the numerical and categorical
+parts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">categorical_preprocessor</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+<span class="n">numerical_preprocessor</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip alert alert-warning">
+    <p class="first admonition-title" style="font-weight: bold;"><b>Tip</b></p>
+    <p class="last">We can use the <tt class="docutils literal">handle_unknown</tt> parameter to ignore rare categories that may show up in test data but were not present in the training data.</p>
+</ul>
+</div><p>Now, we create the transformer and associate each of these preprocessors
+with their respective columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.compose</span> <span class="kn">import</span> <span class="n">ColumnTransformer</span>
+
+<span class="n">preprocessor</span> <span class="o">=</span> <span class="n">ColumnTransformer</span><span class="p">([</span>
+    <span class="p">(</span><span class="s1">&#39;one-hot-encoder&#39;</span><span class="p">,</span> <span class="n">categorical_preprocessor</span><span class="p">,</span> <span class="n">categorical_columns</span><span class="p">),</span>
+    <span class="p">(</span><span class="s1">&#39;standard_scaler&#39;</span><span class="p">,</span> <span class="n">numerical_preprocessor</span><span class="p">,</span> <span class="n">numerical_columns</span><span class="p">)</span>
+<span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can take a minute to represent graphically the structure of a
+<code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>:</p>
+<div class="figure align-default" id="columntransformer">
+<a class="reference internal image-reference" href="../_images/api_diagram-columntransformer.svg"><img alt="ColumnTransformer" src="../_images/api_diagram-columntransformer.svg" width="100%" /></a>
+<p class="caption"><span class="caption-number">Fig. 20 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> representation.</span><a class="headerlink" href="#columntransformer" title="Permalink to this image">¶</a></p>
+</div>
+<p>A <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> does the following:</p>
+<ul class="simple">
+<li><p>It <strong>splits the columns</strong> of the original dataset based on the column names
+or indices provided. We will obtain as many subsets as the number of
+transformers passed into the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code>.</p></li>
+<li><p>It <strong>transforms each subset</strong>. A specific transformer is applied to
+each subset: it will internally call <code class="docutils literal notranslate"><span class="pre">fit_transform</span></code> or <code class="docutils literal notranslate"><span class="pre">transform</span></code>. The
+output of this step is a set of transformed datasets.</p></li>
+<li><p>It then <strong>concatenates the transformed datasets</strong> into a single dataset.</p></li>
+</ul>
+<p>The important thing is that <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> is like any other
+scikit-learn transformer. In particular it can be combined with a classifier
+in a <code class="docutils literal notranslate"><span class="pre">Pipeline</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">make_pipeline</span><span class="p">(</span><span class="n">preprocessor</span><span class="p">,</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">max_iter</span><span class="o">=</span><span class="mi">500</span><span class="p">))</span>
+<span class="n">model</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 {color: black;background-color: white;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 pre{padding: 0;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-toggleable {background-color: white;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-estimator:hover {background-color: #d4ebff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-item {z-index: 1;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-parallel-item:only-child::after {width: 0;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116 div.sk-text-repr-fallback {display: none;}</style><div id="sk-a98bb3d8-baf9-4843-9cc9-af7a1fc90116" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>Pipeline(steps=[(&#x27;columntransformer&#x27;,
+                 ColumnTransformer(transformers=[(&#x27;one-hot-encoder&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;),
+                                                  [&#x27;workclass&#x27;, &#x27;education&#x27;,
+                                                   &#x27;marital-status&#x27;,
+                                                   &#x27;occupation&#x27;, &#x27;relationship&#x27;,
+                                                   &#x27;race&#x27;, &#x27;sex&#x27;,
+                                                   &#x27;native-country&#x27;]),
+                                                 (&#x27;standard_scaler&#x27;,
+                                                  StandardScaler(),
+                                                  [&#x27;age&#x27;, &#x27;capital-gain&#x27;,
+                                                   &#x27;capital-loss&#x27;,
+                                                   &#x27;hours-per-week&#x27;])])),
+                (&#x27;logisticregression&#x27;, LogisticRegression(max_iter=500))])</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="c775856a-822f-41f9-8063-f07bd3a7984e" type="checkbox" ><label for="c775856a-822f-41f9-8063-f07bd3a7984e" class="sk-toggleable__label sk-toggleable__label-arrow">Pipeline</label><div class="sk-toggleable__content"><pre>Pipeline(steps=[(&#x27;columntransformer&#x27;,
+                 ColumnTransformer(transformers=[(&#x27;one-hot-encoder&#x27;,
+                                                  OneHotEncoder(handle_unknown=&#x27;ignore&#x27;),
+                                                  [&#x27;workclass&#x27;, &#x27;education&#x27;,
+                                                   &#x27;marital-status&#x27;,
+                                                   &#x27;occupation&#x27;, &#x27;relationship&#x27;,
+                                                   &#x27;race&#x27;, &#x27;sex&#x27;,
+                                                   &#x27;native-country&#x27;]),
+                                                 (&#x27;standard_scaler&#x27;,
+                                                  StandardScaler(),
+                                                  [&#x27;age&#x27;, &#x27;capital-gain&#x27;,
+                                                   &#x27;capital-loss&#x27;,
+                                                   &#x27;hours-per-week&#x27;])])),
+                (&#x27;logisticregression&#x27;, LogisticRegression(max_iter=500))])</pre></div></div></div><div class="sk-serial"><div class="sk-item sk-dashed-wrapped"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="adc5bd6f-3f6d-43b0-8ed0-47e88f223526" type="checkbox" ><label for="adc5bd6f-3f6d-43b0-8ed0-47e88f223526" class="sk-toggleable__label sk-toggleable__label-arrow">columntransformer: ColumnTransformer</label><div class="sk-toggleable__content"><pre>ColumnTransformer(transformers=[(&#x27;one-hot-encoder&#x27;,
+                                 OneHotEncoder(handle_unknown=&#x27;ignore&#x27;),
+                                 [&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;,
+                                  &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;,
+                                  &#x27;native-country&#x27;]),
+                                (&#x27;standard_scaler&#x27;, StandardScaler(),
+                                 [&#x27;age&#x27;, &#x27;capital-gain&#x27;, &#x27;capital-loss&#x27;,
+                                  &#x27;hours-per-week&#x27;])])</pre></div></div></div><div class="sk-parallel"><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="324952a5-6686-4d56-935e-0575c0bd0df8" type="checkbox" ><label for="324952a5-6686-4d56-935e-0575c0bd0df8" class="sk-toggleable__label sk-toggleable__label-arrow">one-hot-encoder</label><div class="sk-toggleable__content"><pre>[&#x27;workclass&#x27;, &#x27;education&#x27;, &#x27;marital-status&#x27;, &#x27;occupation&#x27;, &#x27;relationship&#x27;, &#x27;race&#x27;, &#x27;sex&#x27;, &#x27;native-country&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="8117d820-2992-4eab-9c3a-9bcc12932149" type="checkbox" ><label for="8117d820-2992-4eab-9c3a-9bcc12932149" class="sk-toggleable__label sk-toggleable__label-arrow">OneHotEncoder</label><div class="sk-toggleable__content"><pre>OneHotEncoder(handle_unknown=&#x27;ignore&#x27;)</pre></div></div></div></div></div></div><div class="sk-parallel-item"><div class="sk-item"><div class="sk-label-container"><div class="sk-label sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="8948a8cd-1f19-4110-b536-30aaa3535e29" type="checkbox" ><label for="8948a8cd-1f19-4110-b536-30aaa3535e29" class="sk-toggleable__label sk-toggleable__label-arrow">standard_scaler</label><div class="sk-toggleable__content"><pre>[&#x27;age&#x27;, &#x27;capital-gain&#x27;, &#x27;capital-loss&#x27;, &#x27;hours-per-week&#x27;]</pre></div></div></div><div class="sk-serial"><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="a061f797-cf1d-4b77-ad05-94276c1f13cd" type="checkbox" ><label for="a061f797-cf1d-4b77-ad05-94276c1f13cd" class="sk-toggleable__label sk-toggleable__label-arrow">StandardScaler</label><div class="sk-toggleable__content"><pre>StandardScaler()</pre></div></div></div></div></div></div></div></div><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="35e059ed-09df-4775-88d4-1baa32709c3b" type="checkbox" ><label for="35e059ed-09df-4775-88d4-1baa32709c3b" class="sk-toggleable__label sk-toggleable__label-arrow">LogisticRegression</label><div class="sk-toggleable__content"><pre>LogisticRegression(max_iter=500)</pre></div></div></div></div></div></div></div></div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Including non-scaled data can cause some algorithms to iterate
+longer in order to converge. Since our categorical features are not scaled it’s often recommended to increase the number of allowed iterations for linear models.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fit our model</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># score on test set</span>
+<span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8503808041929408
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="wrapping-up">
+<h2>Wrapping up<a class="headerlink" href="#wrapping-up" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately, we only have time to scratch the surface of feature engineering in this lesson. However, this module should provide you with a strong foundation of how to apply the more common feature preprocessing tasks.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Scikit-learn provides many feature engineering options. Learn more here: <a class="reference external" href="https://scikit-learn.org/stable/modules/preprocessing.html">https://scikit-learn.org/stable/modules/preprocessing.html</a></p>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Using the <strong>ames_clean.csv</strong> data:</p>
+<ul class="simple">
+<li><p>Numeric features:</p>
+<ul>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">GrLivArea</span></code> and <code class="docutils literal notranslate"><span class="pre">YearBuilt</span></code> for features and <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code> for the target</p></li>
+<li><p>Create a train-test split and use <code class="docutils literal notranslate"><span class="pre">random_state=123</span></code></p></li>
+<li><p>Create a model pipeline that applies <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code> to the features and then applies a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html#sklearn-linear-model-linearregression"><code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code></a> model.</p></li>
+<li><p>What is the score for this model based on the test data?</p></li>
+</ul>
+</li>
+<li><p>Adding a categorical feature:</p>
+<ul>
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">GrLivArea</span></code>, <code class="docutils literal notranslate"><span class="pre">YearBuilt</span></code>, and <code class="docutils literal notranslate"><span class="pre">Neighborhood</span></code> for features and <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code> for the target</p></li>
+<li><p>Create a train-test split and use <code class="docutils literal notranslate"><span class="pre">random_state=123</span></code></p></li>
+<li><p>Create a <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> object that applies <code class="docutils literal notranslate"><span class="pre">StandardScaler()</span></code> to the numeric features and <code class="docutils literal notranslate"><span class="pre">OneHotEncoder</span></code> to the categorical feature.</p></li>
+<li><p>Create a model pipeline that combines the <code class="docutils literal notranslate"><span class="pre">ColumnTransformer</span></code> object with a <code class="docutils literal notranslate"><span class="pre">LinearRegression</span></code> model.</p></li>
+<li><p>What is the score for this model based on the test data?</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,sklearn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab: 3.3.2
+pandas    : 1.4.2
+sklearn   : 1.0.2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-7b.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 7b: First model with scikit-learn</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lesson-7d.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lesson 7d: Model Evaluation &amp; Selection</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

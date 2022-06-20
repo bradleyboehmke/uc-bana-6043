@@ -1,0 +1,1131 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 7b: First model with scikit-learn &#8212; UC BANA 6043 Statistical Computing</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >let toggleHintShow = 'Click to show';</script>
+    <script >let toggleHintHide = 'Click to hide';</script>
+    <script >let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Lesson 7c: Feature Engineering" href="lesson-7c.html" />
+    <link rel="prev" title="Lesson 7a: Data Exploration" href="lesson-7a.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Statistical Computing
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 0 (Pre-class)
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0a.html">
+   Lession 0a: Class overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../00-module/lesson-0b.html">
+   Lesson 0b: Configuring your computer
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 1
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1a.html">
+   Lesson 1a: Introduction to JupyterLab
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1b.html">
+   Lesson 1b: Variables, operators &amp; types
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1c.html">
+   Lesson 1c: More operators &amp; conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lesson-1d.html">
+   Lesson 1d: Data structures
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../01-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 2
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2a.html">
+   Lesson 2a: Packages, libraries &amp; modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2b.html">
+   Lesson 2b: Importing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lesson-2c.html">
+   Lesson 2c: Deeper dive on DataFrames
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../02-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 3
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3a.html">
+   Lesson 3a: Subsetting data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3b.html">
+   Lesson 3b: Manipulating data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lesson-3c.html">
+   Lesson 3c: Summarizing data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../03-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 4
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4a.html">
+   Lession 4a: Tidy data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4b.html">
+   Lesson 4b: Relational data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lesson-4c.html">
+   Lesson 4c: Handling text data
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../04-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 5
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5a.html">
+   Lession 5a: Plotting with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5b.html">
+   Lesson 5b: Plotting with Matplotlib
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lesson-5c.html">
+   Lesson 5c: Plotting with Bokeh
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../05-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 6
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6a.html">
+   Lession 6a: Conditional statements
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6b.html">
+   Lesson 6b: Iteration statement
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lesson-6c.html">
+   Lesson 6C: Writing functions
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../06-module/lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Module 7
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7a.html">
+   Lesson 7a: Data Exploration
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Lesson 7b: First model with scikit-learn
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7c.html">
+   Lesson 7c: Feature Engineering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lesson-7d.html">
+   Lesson 7d: Model Evaluation &amp; Selection
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lab.html">
+   Lab
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/07-module/lesson-7b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F07-module/lesson-7b.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/07-module/lesson-7b.ipynb"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/07-module/lesson-7b.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#separating-features-from-target">
+   Separating features from target
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fit-a-model">
+   Fit a model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-predictions">
+   Make predictions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-test-data-split">
+   Train-test data split
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Lesson 7b: First model with scikit-learn</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#learning-objectives">
+   Learning objectives
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data">
+   Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#separating-features-from-target">
+   Separating features from target
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#knowledge-check">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fit-a-model">
+   Fit a model
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-predictions">
+   Make predictions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-test-data-split">
+   Train-test data split
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Knowledge check
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-environment">
+   Computing environment
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-7b-first-model-with-scikit-learn">
+<h1>Lesson 7b: First model with scikit-learn<a class="headerlink" href="#lesson-7b-first-model-with-scikit-learn" title="Permalink to this headline">¶</a></h1>
+<p>In this module, we present how to build predictive models on tabular datasets, with only numerical features.</p>
+<p>In particular we will highlight:</p>
+<ul class="simple">
+<li><p>the scikit-learn API: <code class="docutils literal notranslate"><span class="pre">.fit(X,</span> <span class="pre">y)</span></code>/<code class="docutils literal notranslate"><span class="pre">.predict(X)</span></code>/<code class="docutils literal notranslate"><span class="pre">.score(X,</span> <span class="pre">y)</span></code>;</p></li>
+<li><p>how to evaluate the generalization performance of a model with a train-test
+split.</p></li>
+</ul>
+<div class="section" id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<p>By the end of this lesson you will be able to:</p>
+<ul class="simple">
+<li><p>Explain and implement the <code class="docutils literal notranslate"><span class="pre">.fit()</span></code>, <code class="docutils literal notranslate"><span class="pre">.predict()</span></code>, and <code class="docutils literal notranslate"><span class="pre">.score()</span></code> methods provided by the scikit-learn API.</p></li>
+<li><p>Evaluate the generalization performance of a model with a train-test
+split.</p></li>
+</ul>
+</div>
+<div class="section" id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>We will use the same dataset “adult_census” described in the previous
+lesson. For more details about the dataset see <a class="reference external" href="http://www.openml.org/d/1590">http://www.openml.org/d/1590</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">adult_census</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/adult-census.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="separating-features-from-target">
+<h2>Separating features from target<a class="headerlink" href="#separating-features-from-target" title="Permalink to this headline">¶</a></h2>
+<p>Scikit-learn prefers our features (<span class="math notranslate nohighlight">\(X\)</span>) apart from our target (<span class="math notranslate nohighlight">\(y\)</span>). Consequently, it’s quite common to create separate data objects to hold our feature and target data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Numerical data is the most natural type of data used in machine learning and can (often)  be directly fed into predictive models. Consequently, for this lesson we will use a subset of the original data with only the numerical columns.</p>
+</div>
+<p>Here, we create a <code class="docutils literal notranslate"><span class="pre">target</span></code> data object that contains our target variable (<code class="docutils literal notranslate"><span class="pre">class</span></code>) data and a <code class="docutils literal notranslate"><span class="pre">features</span></code> data object that contains all our numeric feature data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># create column names of interest</span>
+<span class="n">target_col</span> <span class="o">=</span> <span class="s2">&quot;class&quot;</span>
+<span class="n">feature_col</span> <span class="o">=</span> <span class="n">adult_census</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">target_col</span><span class="p">)</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">number</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="n">target_col</span><span class="p">]</span>
+<span class="n">target</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0         &lt;=50K
+1         &lt;=50K
+2          &gt;50K
+3          &gt;50K
+4         &lt;=50K
+          ...  
+48837     &lt;=50K
+48838      &gt;50K
+48839     &lt;=50K
+48840     &lt;=50K
+48841      &gt;50K
+Name: class, Length: 48842, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">features</span> <span class="o">=</span> <span class="n">adult_census</span><span class="p">[</span><span class="n">feature_col</span><span class="p">]</span>
+<span class="n">features</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>education-num</th>
+      <th>capital-gain</th>
+      <th>capital-loss</th>
+      <th>hours-per-week</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>25</td>
+      <td>7</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>38</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>50</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>28</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>44</td>
+      <td>10</td>
+      <td>7688</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>18</td>
+      <td>10</td>
+      <td>0</td>
+      <td>0</td>
+      <td>30</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>48837</th>
+      <td>27</td>
+      <td>12</td>
+      <td>0</td>
+      <td>0</td>
+      <td>38</td>
+    </tr>
+    <tr>
+      <th>48838</th>
+      <td>40</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>48839</th>
+      <td>58</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+    <tr>
+      <th>48840</th>
+      <td>22</td>
+      <td>9</td>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <th>48841</th>
+      <td>52</td>
+      <td>9</td>
+      <td>15024</td>
+      <td>0</td>
+      <td>40</td>
+    </tr>
+  </tbody>
+</table>
+<p>48842 rows × 5 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;The dataset contains </span><span class="si">{</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2"> samples and &quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">features</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2"> features&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The dataset contains 48842 samples and 5 features
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>What type of object is the target data set?</p></li>
+<li><p>What type of object is the feature data set?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="fit-a-model">
+<h2>Fit a model<a class="headerlink" href="#fit-a-model" title="Permalink to this headline">¶</a></h2>
+<p>We will build a classification model using the “K-nearest neighbors”
+strategy. To predict the target of a new sample, a k-nearest neighbors takes
+into account its <code class="docutils literal notranslate"><span class="pre">k</span></code> closest samples in the training set and predicts the
+majority target of these samples.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We use a K-nearest neighbors here. However, be aware that it is seldom useful
+in practice. We use it because it is an intuitive algorithm. In future lessons, we will introduce alternative algorithms.</p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.fit</span></code> method is called to train the model from the input (features) and target data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># to display nice model diagram</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">set_config</span>
+<span class="n">set_config</span><span class="p">(</span><span class="n">display</span><span class="o">=</span><span class="s1">&#39;diagram&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+
+<span class="c1"># 1. define the algorithm</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+
+<span class="c1"># 2. fit the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><style>#sk-1eb240e8-13d7-4871-9600-3542eab6be3f {color: black;background-color: white;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f pre{padding: 0;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-toggleable {background-color: white;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-estimator:hover {background-color: #d4ebff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-item {z-index: 1;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 2em;bottom: 0;left: 50%;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel-item {display: flex;flex-direction: column;position: relative;background-color: white;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-parallel-item:only-child::after {width: 0;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;position: relative;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-label label {font-family: monospace;font-weight: bold;background-color: white;display: inline-block;line-height: 1.2em;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-label-container {position: relative;z-index: 2;text-align: center;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-1eb240e8-13d7-4871-9600-3542eab6be3f div.sk-text-repr-fallback {display: none;}</style><div id="sk-1eb240e8-13d7-4871-9600-3542eab6be3f" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>KNeighborsClassifier()</pre><b>Please rerun this cell to show the HTML repr or trust the notebook.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="c4bbff8d-bb25-4a01-97b2-08a77495183c" type="checkbox" checked><label for="c4bbff8d-bb25-4a01-97b2-08a77495183c" class="sk-toggleable__label sk-toggleable__label-arrow">KNeighborsClassifier</label><div class="sk-toggleable__content"><pre>KNeighborsClassifier()</pre></div></div></div></div></div></div></div>
+</div>
+<p>Learning can be represented as follows:</p>
+<div class="figure align-default" id="fit-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-predictor.fit.svg"><img alt="fit method" src="../_images/api_diagram-predictor.fit.svg" width="70%" /></a>
+<p class="caption"><span class="caption-number">Fig. 14 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">.fit</span></code> method representation.</span><a class="headerlink" href="#fit-method" title="Permalink to this image">¶</a></p>
+</div>
+<p>The method <code class="docutils literal notranslate"><span class="pre">fit</span></code> is based on two important elements: (i) <strong>learning algorithm</strong>
+and (ii) <strong>model state</strong>. The model state can be used later to either predict (for classifiers and regressors) or transform data (for transformers).</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here and later, we use the name <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> to be explicit. In
+scikit-learn documentation, <code class="docutils literal notranslate"><span class="pre">data</span></code> is commonly named <code class="docutils literal notranslate"><span class="pre">X</span></code> and <code class="docutils literal notranslate"><span class="pre">target</span></code> is
+commonly called<code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+</div>
+</div>
+<div class="section" id="make-predictions">
+<h2>Make predictions<a class="headerlink" href="#make-predictions" title="Permalink to this headline">¶</a></h2>
+<p>Let’s use our model to make some predictions using the same dataset. To predict, a model uses a <strong>prediction function</strong> that will use the input data together with the model states.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can illustrate the prediction mechanism as follows:</p>
+<div class="figure align-default" id="predict-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-predictor.predict.svg"><img alt="predict method" src="../_images/api_diagram-predictor.predict.svg" width="80%" /></a>
+<p class="caption"><span class="caption-number">Fig. 15 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">.predict</span></code> method representation.</span><a class="headerlink" href="#predict-method" title="Permalink to this image">¶</a></p>
+</div>
+<p>To predict, a model uses a prediction method that will use the input data together with the model states. As for the learning algorithm and the model states, the prediction function is specific for each type of model.</p>
+<p>Let’s now have a look at the computed predictions. For the sake of simplicity, we will look at the five first predicted targets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target_predicted</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39; &lt;=50K&#39;, &#39; &lt;=50K&#39;, &#39; &lt;=50K&#39;, &#39; &gt;50K&#39;, &#39; &lt;=50K&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>…and we can even check if the predictions agree with the real targets:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># accuracy of first 5 predictions</span>
+<span class="n">target</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span> <span class="o">==</span> <span class="n">target_predicted</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0     True
+1     True
+2    False
+3     True
+4     True
+Name: class, dtype: bool
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here, we see that our model makes a mistake when predicting the third observation.</p>
+</div>
+<p>To get a better assessment, we can compute the average accuracy rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">target</span> <span class="o">==</span> <span class="n">target_predicted</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.8479791982310306
+</pre></div>
+</div>
+</div>
+</div>
+<p>This result means that the model makes a correct prediction for approximately 85 samples out of 100. Note that we used the same data to train and evaluate our model. Can this evaluation be trusted or is it too good to be true?</p>
+</div>
+<div class="section" id="train-test-data-split">
+<h2>Train-test data split<a class="headerlink" href="#train-test-data-split" title="Permalink to this headline">¶</a></h2>
+<p>When building a machine learning model, it is important to evaluate the
+trained model on data that was not used to fit it, as <strong>generalization</strong> is
+our primary concern – meaning we want a rule that generalizes to new data.</p>
+<p>Correct evaluation is easily done by leaving out a subset of the data when
+training the model and using it afterwards for model evaluation.</p>
+<p>The data used to fit a model is called <b><em>training data</em></b> while the data used to
+assess a model is called <b><em>testing data</em></b>.</p>
+<p>Scikit-learn provides the helper function <code class="docutils literal notranslate"><span class="pre">sklearn.model_selection.train_test_split</span></code> which is used to automatically split the dataset into two subsets.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+    <span class="n">features</span><span class="p">,</span> 
+    <span class="n">target</span><span class="p">,</span> 
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">123</span><span class="p">,</span> 
+    <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span>
+    <span class="n">stratify</span><span class="o">=</span><span class="n">target</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In scikit-learn setting the <code class="docutils literal notranslate"><span class="pre">random_state</span></code> parameter allows to get
+deterministic results when we use a random number generator. In the
+<code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> case the randomness comes from shuffling the data, which
+decides how the dataset is split into a train and a test set).</p>
+<p>And as your target becomes more imbalanced it is important to use the <code class="docutils literal notranslate"><span class="pre">stratify</span></code> parameter.</p>
+</div>
+<div class="section" id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<ol class="simple">
+<li><p>How many observations are in your train and test data sets?</p></li>
+<li><p>What is the proportion of response values in your <code class="docutils literal notranslate"><span class="pre">y_train</span></code> and <code class="docutils literal notranslate"><span class="pre">y_test</span></code>?</p></li>
+</ol>
+</div>
+<p>Instead of computing the prediction and manually computing the average
+success rate, we can use the method <code class="docutils literal notranslate"><span class="pre">score</span></code>. When dealing with classifiers
+this method returns their performance metric.</p>
+<p>We can illustrate the score mechanism as follows:</p>
+<div class="figure align-default" id="score-method">
+<a class="reference internal image-reference" href="../_images/api_diagram-predictor.score.svg"><img alt="score method" src="../_images/api_diagram-predictor.score.svg" width="90%" /></a>
+<p class="caption"><span class="caption-number">Fig. 16 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">.score</span></code> method representation.</span><a class="headerlink" href="#score-method" title="Permalink to this image">¶</a></p>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">.score</span></code> method is very similar to the <code class="docutils literal notranslate"><span class="pre">.predict</span></code> method; however, it adds one additional step to compare the predictions made to the actual values and then return an accuracy score. Note how below, we use the test data in the <code class="docutils literal notranslate"><span class="pre">.score</span></code> method so that we are scoring our accuracy based on test data (data not used to train our model).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. define the algorithm</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">()</span>
+
+<span class="c1"># 2. fit the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+
+<span class="c1"># 3. score our model on test data</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The test accuracy using </span><span class="si">{</span><span class="n">model</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="si">}</span><span class="s1"> is </span><span class="si">{</span><span class="nb">round</span><span class="p">(</span><span class="n">accuracy</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span> <span class="o">*</span> <span class="mi">100</span><span class="si">}</span><span class="s1">%&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The test accuracy using KNeighborsClassifier is 82.59%
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If we compare with the accuracy obtained by wrongly evaluating the model
+on the training set, we find that this evaluation was indeed optimistic
+compared to the score obtained on a held-out test set.</p>
+<p>This illustrates the importance of always testing the generalization performance of
+predictive models on a different set than the one used to train these models.</p>
+</div>
+</div>
+</div>
+<div class="section" id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="attention admonition">
+<p class="admonition-title">Questions:</p>
+<p>Scikit-learn provides a logistic regression algorithm, which is another type of algorithm for making binary classification predictions. This algorithm is available at <code class="docutils literal notranslate"><span class="pre">sklearn.linear_model.LogisticRegression</span></code></p>
+<p>Fill in the blanks below to import the <code class="docutils literal notranslate"><span class="pre">LogisticRegression</span></code> module, define the algorithm, fit the model, and score on the test data.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>```python
+# 1. import the LogisticRegression module
+from sklearn.linear_model import __________
+
+# 2. define the algorithm
+model = __________
+
+# 3. fit the model
+model.fit(______, ______)
+
+# 4. score our model on test data
+model.score(______, ______)
+</pre></div>
+</div>
+<p>How does this models performance compare to the <code class="docutils literal notranslate"><span class="pre">KNeighborsClassifier</span></code> results?</p>
+</div>
+</div>
+<div class="section" id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
+<span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,numpy,sklearn
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
+Python version       : 3.9.12
+IPython version      : 8.2.0
+
+jupyterlab: 3.3.2
+pandas    : 1.4.2
+numpy     : 1.21.5
+sklearn   : 1.0.2
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./07-module"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="lesson-7a.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Lesson 7a: Data Exploration</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lesson-7c.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lesson 7c: Feature Engineering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Bradley C. Boehmke<br/>
+    
+        &copy; Copyright 2021.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

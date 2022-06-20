@@ -121,3 +121,4 @@
 # * Ethan Swan, [Python for Data Science](https://ethanswan.com/courses/pages/python-for-ds-course)
 # * Justin Bois, [Caltech Intro to Programming for the Biological Sciences Bootcamp](https://github.com/justinbois/bootcamp)
 # * Tomas Beuzen, [Python Programming for Data Science](https://www.tomasbeuzen.com/python-programming-for-data-science/README.html)
+# * Inria, [About Machine learning in Python with scikit-learn MOOC](https://github.com/INRIA/scikit-learn-mooc)
