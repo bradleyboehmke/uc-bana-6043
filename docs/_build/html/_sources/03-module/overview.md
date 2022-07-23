@@ -10,10 +10,6 @@ By the end of this module you should be able to:
 - Manipulate, create, drop, even identify missing value patterns across our DataFrame’s columns.
 - Compute various aggregations with Pandas Series and DataFrames.
 
-## Tasks
+## Estimated time requirement
 
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3 hours.

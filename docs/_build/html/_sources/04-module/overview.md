@@ -11,10 +11,6 @@ By the end of this module you should be able to:
 - Describe and apply different join operations for relational datasets.
 - Perform basic character string manipulations and apply regular expressions to identify string patterns.
 
-## Tasks
+## Estimated time requirement
 
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3 hours.

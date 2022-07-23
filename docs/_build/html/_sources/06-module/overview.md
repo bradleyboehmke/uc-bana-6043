@@ -14,10 +14,6 @@ By the end of this module you should be able to:
 - Simplify repetitive code with Python's looping statements.
 - Understand when and how to write a function.
 
-## Tasks
+## Estimated time requirement
 
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3 hours.

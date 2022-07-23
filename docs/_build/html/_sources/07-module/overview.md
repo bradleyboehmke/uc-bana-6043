@@ -10,10 +10,6 @@ By the end of this module you should be able to:
 - Explain the modeling process and apply it within your Python workflow.
 - Apply and explain the results of a few foundational machine learning algorithms using Scikit-learn.
 
-## Tasks
+## Estimated time requirement
 
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3-4 hours.

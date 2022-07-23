@@ -20,9 +20,9 @@
 # 
 # ## Terminology
 # 
-# People often use the terms _"package"_, _"library"_, and _"module"_ synonymously. Although there are some semantical differences between R and Python, here is how you can think of the two terms:
+# People often use the terms _"package"_, _"library"_, and _"module"_ synonymously. If you are familiar with the R programming language you've probably heard some of these terms before. Although there are some semantical differences between R and Python, here is how you can think of the two terms:
 # 
-# A **package** generally refers to source code that is bundled up in a way that a package manager can host. [PyPI](https://pypi.org/) and [Anaconda](https://anaconda.org/anaconda/repo) are the two primary public package managers for Python. When you `pip install pkg` you are installing the `pkg` package from Artifactory to your computer or the server you’re working on.
+# A **package** generally refers to source code that is bundled up in a way that a package manager can host. [PyPI](https://pypi.org/) and [Anaconda](https://anaconda.org/anaconda/repo) are the two primary public package managers for Python. When you `pip install pkg` or `conda install pkg` you are installing the `pkg` package from PyPI or Anaconda, respectively, to your computer or the server you’re working on.
 # 
 # A **library**: generally refers to a centralized location on an operating system where installed package source code resides and can be imported into a current session. When you use `pip list` or `conda list` you will see a list of installed packages, which we often refer to as _libraries_. 
 # 
@@ -225,7 +225,7 @@ os.getcwd()
 # There are currently (May 1, 2022) about 370,000 packages available through the Python Package Index, PyPI. Usually, you can ask Google about what you are trying to do, and there is often a third party module to help you do it. The most useful (for scientific computing) and thoroughly tested packages and modules are available using `conda`. Others can be installed using `pip`.
 # ```
 
-# LWe will extensively use the Numpy, SciPy, Pandas, and Bokeh packages, among others, in this class, and I’m sure you will also use them beyond. Let's look at some examples of these third party packages to give you a flavor of what they do. Don't worry, we'll go into each of these more thoroughly in later lessons!
+# We will extensively use the Numpy, SciPy, Pandas, and Bokeh packages, among others, in this class, and I’m sure you will also use them beyond. Let's look at some examples of these third party packages to give you a flavor of what they do. Don't worry, we'll go into some of these more thoroughly in later lessons!
 
 # ### NumPy
 # 

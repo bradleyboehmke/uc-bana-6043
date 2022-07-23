@@ -28,8 +28,6 @@
 # 
 # The bulk of the classroom material will be provided via this book, the recorded lectures, and class notes. In some cases there are additional recommended readings, all of which are readily available online.
 
-# 
-
 # ## Class structure
 # 
 # __Modules__: For this class each module is covered over the course of week. In the "Overview" section for each module you will find overall learning objectives, a short description of the learning content covered in that module, along with all tasks that are required of you for that module (i.e. quizzes, lab). Each module will have two or more primary lessons and associated quizzes along with a lab.
@@ -40,7 +38,10 @@
 # 
 # __Labs__: There will be a lab associated with _each module_. For these labs students will be guided through a case study step-by-step. The aim is to provide a detailed view on how to manage a variety of complex real-world data; how to convert real problems into data wrangling and analysis problems; and to apply Python to address these problems and extract insights from the data. Submission of these labs will be done through the course website on Canvas. Please check Canvas for due dates for these labs.
 # 
-# __Project__: TBD
+# __Project__: The final project is designed for you to put to work the tools and knowledge that you gain throughout this course. This provides you with multiple benefits. 
+#    - It will provide you with more experience using data science tools on real life data sets.
+#    - It helps you become a self-directed learner. As a data scientist, a large part of your job is to self-direct your learning and interests to find unique and creative ways to find insights in data.
+#    - It starts to build your data science portfolio. Establishing a data science portfolio is a great way to show potential employers your ability to work with data.
 
 # ## Schedule
 # 
