@@ -11,10 +11,6 @@ By the end of this module you should be able to:
 - Apply both higher and lower level Python visualization libraries to your data.
 
 
-## Tasks
+## Estimated time requirement
 
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3 hours.

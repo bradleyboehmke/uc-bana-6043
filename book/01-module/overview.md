@@ -12,11 +12,6 @@ By the end of this module you should be able to:
 - Perform fundamental tasks in Python such as assignment, evaluation, and using Python as a calculator.
 - Understand and work with Python's built-in data types and structures.
 
-## Tasks
+## Estimated time requirement
 
-
-TBD
-
-## Course readings
-
-TBD
+The estimated time to go through the module lessons is about 3-4 hours.
