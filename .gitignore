@@ -126,3 +126,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# ignore all videos
+*.mp4
+*.cmproj
+
+# ignore instructor content
+instructor-material/
