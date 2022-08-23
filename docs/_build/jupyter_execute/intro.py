@@ -109,6 +109,10 @@
 # :class: attention
 # Knowledge check exercises to gauge your learning progress.
 # ```
+# 
+# ```{admonition} Video 🎥:
+# A short video on the topic is available to watch.
+# ```
 
 # ## Feedback
 # 
