@@ -226,6 +226,10 @@ ord('b')
 # 4. Programmatically assess if a 4k monitor has between 8,000,000 - 9,000,000 pixels.
 # ```
 
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_00ix89ko&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_96wpk0y7" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Relational Operators"></iframe>
+# ```
+
 # ## Identity operators
 # 
 # Identity operators check to see if two variables occupy the same space in memory; i.e., they are the same object (we'll learn more about objects as we proceed through the class). This is different from the equality relational operator, `==`, which checks to see if two variables have the same **value**. The two identity operators are in the table below.
@@ -331,7 +335,7 @@ a == b, a is b
 # The caching and interning might be a problem, but you generally do not need to worry about it for **immutable** variables. Being immutable means that once the variables are created, their values cannot be changed. If we do change the value the variable gets a new place in memory. All variables we've encountered so far, `int`s, `float`s, and `str`s, are immutable. We will encounter mutable data types in future modules, in which case it really *does* matter practically to you as a programmer whether or not two variables are in the same location in memory.
 # 
 # ```{note}
-# If you feel a bit overwhelmed don't worry. As we progress throught this course you will get a good feel for when to use a comparison operator (i.e. `==`) versus an identify operator (i.e. `is`).
+# If you feel a bit overwhelmed don't worry. As we progress throughout this course you will get a good feel for when to use a comparison operator (i.e. `==`) versus an identify operator (i.e. `is`).
 # ```
 
 # ### Knowledge check
@@ -345,6 +349,10 @@ a == b, a is b
 # 5. You decide to buy a 4k DCI monitor that has pixesl = 4096 x 2160. Update `your_monitor` accordingly.
 # 6. Do our monitor variables still have the same value? 
 # 7. Are our monitor variables the same object?
+# ```
+
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_z0m141ml&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_diawvmp6" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Identity Operators"></iframe>
 # ```
 
 # ## Logical operators
@@ -453,6 +461,10 @@ not (False or True)
 # Test if...
 # 1. Both our monitors have more than 8,000,000 pixels.
 # 2. At least one of our monitors has more than 8,500,000 pixels.
+# ```
+
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_dh8fdnvj&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_gm7r4hqb" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Logical Operators"></iframe>
 # ```
 
 # ## Operators we left out
@@ -647,6 +659,10 @@ x
 #     print('x less than 50 but still positive')
 # __:
 #     print('x is negative')
+# ```
+
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_nisu8a6z&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_okgncx16" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Conditional Statements"></iframe>
 # ```
 
 # ## Exercises
