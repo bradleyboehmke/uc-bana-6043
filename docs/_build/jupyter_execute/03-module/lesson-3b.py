@@ -87,6 +87,10 @@ ames.columns = ames.columns.str.lower().str.replace(" ", "_")
 ames.head()
 
 
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_5aaotn14&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_39dn7b1x" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Renaming Columns"></iframe>
+# ```
+
 # ## Calculations using columns
 
 # It's common to want to modify a column of a DataFrame, or sometimes even to create a new column. For example, let's look at the `saleprice` column in our data.
@@ -177,6 +181,10 @@ ames.head()
 # 3. Now remove this column from your DataFrame
 # ```
 
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_iqqb9wtg&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ijxv54su" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Adding and Removing Columns"></iframe>
+# ```
+
 # ## Overwriting columns
 # 
 
@@ -237,17 +245,15 @@ ames.head()
 # Create a new column `price_per_total_sqft` that is `saleprice` divided by the sum of `gr_liv_area`, `total_bsmt_sf`, `wood_deck_sf`, `open_porch_sf`.
 # ```
 
-# In[21]:
-
-
-ames.filter(regex='sf')
-
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_z7jvae57&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8178wjna" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Calculations with Multiple Columns"></iframe>
+# ```
 
 # ## Non-numeric column operations
 
 # For simplicity, we started with mathematical operations. However, pandas supports string operations as well. We can use `+` to concatenate strings, with both vectors and scalars.
 
-# In[22]:
+# In[21]:
 
 
 'Home in ' + ames['neighborhood'] + ' neighborhood sold under ' + ames['sale_condition'] + ' condition'
@@ -260,14 +266,14 @@ ames.filter(regex='sf')
 # We won't cover them in detail, so refer to the [documentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html) if you're interested. But realize that we can do _many_ different manipulations with string columns and its worth taking time to familiarize yourself with Pandas string capabilities.
 # ```
 
-# In[23]:
+# In[22]:
 
 
 # number of characters in string
 ames['neighborhood'].str.len()
 
 
-# In[24]:
+# In[23]:
 
 
 ames['garage_type'].str.lower().str.replace('tchd', 'tached')
@@ -282,7 +288,7 @@ ames['garage_type'].str.lower().str.replace('tchd', 'tached')
 # 
 # Let's look at an example of this. In our Ames data the month sold is represented numerically:
 
-# In[25]:
+# In[24]:
 
 
 ames['mo_sold'].head()
@@ -297,7 +303,7 @@ ames['mo_sold'].head()
 # 
 # We can express this *mapping* of old values to new values using a Python dictionary.
 
-# In[26]:
+# In[25]:
 
 
 # Only specify the values we want to replace; don't include the ones that should stay the same.
@@ -320,7 +326,7 @@ value_mapping = {
 # Pandas provides a handy method on Series, `.replace`, that accepts this value mapping and updates the Series accordingly.
 # We can use it to recode our values.
 
-# In[27]:
+# In[26]:
 
 
 ames['mo_sold'].replace(value_mapping).head()
@@ -333,7 +339,7 @@ ames['mo_sold'].replace(value_mapping).head()
 # 
 # Missing values are typically denoted with NaN. We can use `df.isnull()` to find missing values in a dataframe. It returns a boolean for each element in the dataframe:
 
-# In[28]:
+# In[27]:
 
 
 ames.isnull()
@@ -341,7 +347,7 @@ ames.isnull()
 
 # We can use this to easily compute the total number of missing values in each column:
 
-# In[29]:
+# In[28]:
 
 
 ames.isnull().sum()
@@ -349,7 +355,7 @@ ames.isnull().sum()
 
 # Recall we also get this information with `.info()`. Actually, we get the inverse as `.info()` tells us how many non-null values exist in each column.
 
-# In[30]:
+# In[29]:
 
 
 ames.info()
@@ -357,7 +363,7 @@ ames.info()
 
 # We can use `any()` to identify which columns have missing values. We can use this information for various reasons such as subsetting for just those columns that have missing values.
 
-# In[31]:
+# In[30]:
 
 
 missing = ames.isnull().any() # identify if missing values exist in each column
@@ -366,7 +372,7 @@ ames[missing[missing].index]  # subset for just those columns that have missing 
 
 # When you have missing values, we usually either drop them or impute them.You can drop missing values with `.dropna()`:
 
-# In[32]:
+# In[31]:
 
 
 ames.dropna()
@@ -381,14 +387,14 @@ ames.dropna()
 
 # Sometimes visualizations help identify patterns in missing values. One thing I often do is print a heatmap of my dataframe to get a feel for where my missing values are. We'll get into data visualization in future lessons but for now here is an example using the **searborn** library. We can see that several variables have a lot of missing values (`alley`, `fireplace_qu`, `pool_qc`, `fence`, `misc_feature`).
 
-# In[33]:
+# In[32]:
 
 
 import seaborn as sns
 sns.set(rc={'figure.figsize':(12, 8)})
 
 
-# In[34]:
+# In[33]:
 
 
 ames_missing = ames[missing[missing].index]
@@ -397,7 +403,7 @@ sns.heatmap(ames_missing.isnull(), cmap='viridis', cbar=False);
 
 # Since we can't drop all missing values in this data set (since it leaves us with no rows), we need to impute ("fill") them in. There are several approaches we can use to do this; one of which uses the `.fillna()` method. This method has various options for filling, you can use a fixed value, the mean of the column, the previous non-nan value, etc:
 
-# In[35]:
+# In[34]:
 
 
 import numpy as np
@@ -411,25 +417,25 @@ df = pd.DataFrame([[np.nan, 2, np.nan, 0],
 df
 
 
-# In[36]:
+# In[35]:
 
 
 df.fillna(0)  # fill with 0
 
 
-# In[37]:
+# In[36]:
 
 
 df.fillna(df.mean())  # fill with the mean
 
 
-# In[38]:
+# In[37]:
 
 
 df.fillna(method='bfill')  # backward (upwards) fill from non-nan values
 
 
-# In[39]:
+# In[38]:
 
 
 df.fillna(method='ffill')  # forward (downward) fill from non-nan values
@@ -449,7 +455,7 @@ df.fillna(method='ffill')  # forward (downward) fill from non-nan values
 # Don't worry, you'll learn more about writing your own functions in future lessons!
 # ```
 
-# In[40]:
+# In[39]:
 
 
 def is_luxery_home(x):
@@ -463,7 +469,7 @@ ames['saleprice'].apply(is_luxery_home)
 
 # This may have been better as a lambda function, which is just a shorter approach to writing functions. This may be a bit confusing but we'll talk more about lambda functions in the writing functions lesson. For now, just think of it as being able to write a function for single use application on the fly.
 
-# In[41]:
+# In[40]:
 
 
 ames['saleprice'].apply(lambda x: 'Luxery' if x > 500000 else 'Non-luxery')
@@ -471,7 +477,7 @@ ames['saleprice'].apply(lambda x: 'Luxery' if x > 500000 else 'Non-luxery')
 
 # You can even use functions that require additional arguments. Just specify the arguments in `.apply()`:
 
-# In[42]:
+# In[41]:
 
 
 def is_luxery_home(x, price):
@@ -485,7 +491,7 @@ ames['saleprice'].apply(is_luxery_home, price=200000)
 
 # Sometimes we may have a function that we want to apply to every element across multiple columns. For example, say we wanted to convert several of the square footage variables to be represented as square meters. For this we can use the [`.applymap()`](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.applymap.html) method.
 
-# In[43]:
+# In[42]:
 
 
 def convert_to_sq_meters(x):
@@ -509,7 +515,7 @@ ames[['gr_liv_area', 'garage_area', 'lot_area']].applymap(convert_to_sq_meters)
 
 # ## Computing environment
 
-# In[44]:
+# In[43]:
 
 
 get_ipython().run_line_magic('load_ext', 'watermark')

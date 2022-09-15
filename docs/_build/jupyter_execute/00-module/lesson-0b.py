@@ -151,11 +151,11 @@
 #     
 # Now, we can proceed with the rest of our installations.
 # 
-#     conda install colorcet holoviews hvplot param panel datashader pyserial hypothesis netcdf4 seaborn
+#     conda install matplotlib numpy pandas scipy seaborn scikit-learn sqlalchemy
 #         
 # There are a few other packages from pip we will need for the class, so we can go ahead and install those now.
 # 
-#     pip install iqplot watermark blackcellmagic jupyterlab-spellchecker
+#     pip install blackcellmagic completejourney_py iqplot jupyterlab-spellchecker watermark
 # 
 # You should close your JupyterLab session and terminate Anaconda Navigator after you have completed the build. Relaunch Anaconda Navigator and launch a fresh JupyterLab instance. 
 # 

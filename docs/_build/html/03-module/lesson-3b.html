@@ -1409,6 +1409,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>5 rows × 82 columns</p>
 </div></div></div>
 </div>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video 🎥:</p>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_5aaotn14&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_39dn7b1x" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Renaming Columns"></iframe>
+</div>
 </div>
 <div class="section" id="calculations-using-columns">
 <h2>Calculations using columns<a class="headerlink" href="#calculations-using-columns" title="Permalink to this headline">¶</a></h2>
@@ -1898,6 +1902,10 @@ Name: saleprice, dtype: int64
 <li><p>You will get fractional output with step #1. See if you can figure out how to round this output to the nearest integer.</p></li>
 <li><p>Now remove this column from your DataFrame</p></li>
 </ol>
+</div>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video 🎥:</p>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_iqqb9wtg&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ijxv54su" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Adding and Removing Columns"></iframe>
 </div>
 </div>
 </div>
@@ -2640,179 +2648,9 @@ dtype: float64
 <p class="admonition-title">Question:</p>
 <p>Create a new column <code class="docutils literal notranslate"><span class="pre">price_per_total_sqft</span></code> that is <code class="docutils literal notranslate"><span class="pre">saleprice</span></code> divided by the sum of <code class="docutils literal notranslate"><span class="pre">gr_liv_area</span></code>, <code class="docutils literal notranslate"><span class="pre">total_bsmt_sf</span></code>, <code class="docutils literal notranslate"><span class="pre">wood_deck_sf</span></code>, <code class="docutils literal notranslate"><span class="pre">open_porch_sf</span></code>.</p>
 </div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ames</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">regex</span><span class="o">=</span><span class="s1">&#39;sf&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>bsmtfin_sf_1</th>
-      <th>bsmtfin_sf_2</th>
-      <th>bsmt_unf_sf</th>
-      <th>total_bsmt_sf</th>
-      <th>1st_flr_sf</th>
-      <th>2nd_flr_sf</th>
-      <th>low_qual_fin_sf</th>
-      <th>wood_deck_sf</th>
-      <th>open_porch_sf</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>639.0</td>
-      <td>0.0</td>
-      <td>441.0</td>
-      <td>1080.0</td>
-      <td>1656</td>
-      <td>0</td>
-      <td>0</td>
-      <td>210</td>
-      <td>62</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>468.0</td>
-      <td>144.0</td>
-      <td>270.0</td>
-      <td>882.0</td>
-      <td>896</td>
-      <td>0</td>
-      <td>0</td>
-      <td>140</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>923.0</td>
-      <td>0.0</td>
-      <td>406.0</td>
-      <td>1329.0</td>
-      <td>1329</td>
-      <td>0</td>
-      <td>0</td>
-      <td>393</td>
-      <td>36</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1065.0</td>
-      <td>0.0</td>
-      <td>1045.0</td>
-      <td>2110.0</td>
-      <td>2110</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>791.0</td>
-      <td>0.0</td>
-      <td>137.0</td>
-      <td>928.0</td>
-      <td>928</td>
-      <td>701</td>
-      <td>0</td>
-      <td>212</td>
-      <td>34</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2925</th>
-      <td>819.0</td>
-      <td>0.0</td>
-      <td>184.0</td>
-      <td>1003.0</td>
-      <td>1003</td>
-      <td>0</td>
-      <td>0</td>
-      <td>120</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2926</th>
-      <td>301.0</td>
-      <td>324.0</td>
-      <td>239.0</td>
-      <td>864.0</td>
-      <td>902</td>
-      <td>0</td>
-      <td>0</td>
-      <td>164</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2927</th>
-      <td>337.0</td>
-      <td>0.0</td>
-      <td>575.0</td>
-      <td>912.0</td>
-      <td>970</td>
-      <td>0</td>
-      <td>0</td>
-      <td>80</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>2928</th>
-      <td>1071.0</td>
-      <td>123.0</td>
-      <td>195.0</td>
-      <td>1389.0</td>
-      <td>1389</td>
-      <td>0</td>
-      <td>0</td>
-      <td>240</td>
-      <td>38</td>
-    </tr>
-    <tr>
-      <th>2929</th>
-      <td>758.0</td>
-      <td>0.0</td>
-      <td>238.0</td>
-      <td>996.0</td>
-      <td>996</td>
-      <td>1004</td>
-      <td>0</td>
-      <td>190</td>
-      <td>48</td>
-    </tr>
-  </tbody>
-</table>
-<p>2930 rows × 9 columns</p>
-</div></div></div>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video 🎥:</p>
+<iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_z7jvae57&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8178wjna" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Calculations with Multiple Columns"></iframe>
 </div>
 </div>
 </div>
@@ -3814,7 +3652,7 @@ memory usage: 1.9+ MB
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-3b_70_0.png" src="../_images/lesson-3b_70_0.png" />
+<img alt="../_images/lesson-3b_72_0.png" src="../_images/lesson-3b_72_0.png" />
 </div>
 </div>
 <p>Since we can’t drop all missing values in this data set (since it leaves us with no rows), we need to impute (“fill”) them in. There are several approaches we can use to do this; one of which uses the <code class="docutils literal notranslate"><span class="pre">.fillna()</span></code> method. This method has various options for filling, you can use a fixed value, the mean of the column, the previous non-nan value, etc:</p>
