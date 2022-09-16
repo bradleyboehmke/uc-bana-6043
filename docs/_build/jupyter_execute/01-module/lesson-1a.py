@@ -287,6 +287,14 @@ a
 # 4. Create a new code cell. Write x = 5 and run it.
 # ```
 
+# ## Additional video
+# 
+# ```{admonition} Video 🎥:
+# Here's a webinar that provides a nice discussion of Jupyter Lab and Notebooks. It is not necessary to watch this but may help to kickstart your abilities with Jupyter!
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/5pf0_bpNbkw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+
 # ## Computing environment
 
 # At the end of every lesson, and indeed at the end (or beginning) of any notebook you make, we should include information about the computing environment including the version numbers of all packages we use. The [watermark package](https://github.com/rasbt/watermark) is quite useful for this. The watermark package is an **[IPython magic extension](https://ipython.readthedocs.io/en/stable/config/extensions/index.html)**. These extensions allow convenient functionality within IPython or Jupyter notebooks. In general, to use magic functions, you precede them with a `%` sign or a `%%` in a cell. We use the built-in `%load_ext` magic function to load watermark, and then we use `%watermark` to invoke it.

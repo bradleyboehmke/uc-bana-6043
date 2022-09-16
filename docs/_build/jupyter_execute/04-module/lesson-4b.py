@@ -14,6 +14,12 @@
 # * Use various mutating joins to combine variables from two tables.
 # * Join two tables that have differing common key variable names.
 # * Include an indicator variable while joining so you can filter the joined data for follow-on analysis.
+# 
+# ```{admonition} Video 🎥:
+# Here's a great video discussing ways to join DataFrames. Watch this video for an initial introduction and then get more hands on by working through the lesson that follows.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/iYWKfUOtGaw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
 
 # ## Prerequisites
 # 

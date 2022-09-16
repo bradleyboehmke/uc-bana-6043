@@ -18,6 +18,10 @@
 # Source: [R4DS](https://r4ds.had.co.nz/tidy-data.html#fig:tidy-structure)
 # 
 # Once a DataFrame is tidy, it becomes much easier to compute summary statistics, join with other datasets, visualize, apply machine learning models, etc. In this lesson we will focus on ways to reshape DataFrames so that they meet the tidy guidelines.
+# 
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_r9tzyza3&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_pb38rz7g" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Intro to Tidy Data"></iframe>
+# ```
 
 # ## Learning objectives
 # 
@@ -89,11 +93,36 @@ ames_wide.melt(
     )
 
 
+# ### Knowledge check
+# 
+# ```{admonition} Questions:
+# :class: attention
+# Given the following DataFrame, reshape the DataFrame from the current "wide" format to a "longer" format made up of the following variables:
+# 
+# - `Name`: will contain the same values in the current `Name` column, 
+# - `Year`: will contain the year values which are currently column names, and 
+# - `Courses`: will contain the values that are currently listed under each year variable.
+# ```
+
+# In[4]:
+
+
+df = pd.DataFrame({"Name": ["Tom", "Mike", "Tiffany", "Varada", "Joel"],
+                   "2018": [1, 3, 4, 5, 3],
+                   "2019": [2, 4, 3, 2, 1],
+                   "2020": [5, 2, 4, 4, 3]})
+df
+
+
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_f4kts0ja&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_mqidfttf" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Knowledge check for reshaping wide to long"></iframe>
+# ```
+
 # ## Pivoting long data
 # 
 # Sometimes, you want to make long data wide, which we can do with `.pivot()`. When using `.pivot()` we need to specify the index to pivot on, and the columns that will be used to make the new columns of the wider dataframe. Let's convert our `ames_melt` DataFrame back to the wide format:
 
-# In[4]:
+# In[5]:
 
 
 ames_pivot = ames_melt.pivot(index='neighborhood', columns='year', values='homes_sold')
@@ -102,13 +131,39 @@ ames_pivot
 
 # You’ll notice that Pandas set our specified index as the index of the new DataFrame and preserved the label of the columns. We can easily remove these names and reset the index to make our DataFrame look like it originally did:
 
-# In[5]:
+# In[6]:
 
 
 ames_pivot = ames_pivot.reset_index()
 ames_pivot.columns.name = None
 ames_pivot
 
+
+# ### Knowledge check
+# 
+# ```{admonition} Questions:
+# :class: attention
+# Given the following DataFrame, reshape the DataFrame from the current "long" format to a "wider" format made up of the following variables:
+# 
+# - `Name`: will contain the same values in the current `Name` column, 
+# - `Year`: will contain the year values which are currently column names, and 
+# - `Courses`: will contain the values that are currently listed under each year variable.
+# ```
+
+# In[7]:
+
+
+df = pd.DataFrame({
+    "Name": ["Tom", "Mike", "Tiffany", "Tom", "Mike", "Tiffany"],
+    "Variable": ["Year", "Year", "Year", "Courses", "Courses", "Courses"],
+    "Value": [2018, 2018, 2018, 1, 3, 4]
+})
+df
+
+
+# ```{admonition} Video 🎥:
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_0l28f3wr&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_8pq7z13k" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Knowledge check for reshaping long to wide"></iframe>
+# ```
 
 # ## Pivoting with special needs
 # 
@@ -119,7 +174,7 @@ ames_pivot
 # 
 # For example, let's look at pivoting the below data:
 
-# In[6]:
+# In[8]:
 
 
 ames2 = pd.read_csv('../data/ames_wide2.csv')
@@ -128,7 +183,7 @@ ames2
 
 # In this example, say you wanted to pivot `ames_wide2` so that the `year_sold` is represented as columns and `homes_sold` values are the elements. If we try to do this similar to the last section's example we get an error stating `ValueError: Index contains duplicate entries, cannot reshape`.
 
-# In[7]:
+# In[9]:
 
 
 ames2.pivot(index='neighborhood', columns='year_sold', values='homes_sold')
@@ -163,6 +218,14 @@ ames2_reshaped = (
 ames2_reshaped.columns.name = None
 ames2_reshaped.head()
 
+
+# ## Additional video
+# 
+# ```{admonition} Video 🎥:
+# Here's a webinar that provides a thorough discussion around tidy data principles along with illustrating examples of reshaping data with Pandas. It is longer (50 minutes) but is worth a watch if you are still trying to get your arms around the above lesson conceps.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/HX7gCUw6FK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
 
 # ## Exercises
 # 
