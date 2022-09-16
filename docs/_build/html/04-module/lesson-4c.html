@@ -855,6 +855,10 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="section" id="string-basics">
 <h2>String basics<a class="headerlink" href="#string-basics" title="Permalink to this headline">¶</a></h2>
 <p>Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string. The following will demonstrate some of these basic string methods on a Pandas DataFrame but realize that Pandas provides many more string methods. Refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">docs</a> to learn more about the many string methods.</p>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video 🎥:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bofaC0IckHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>The string methods provided by Pandas are accessed by appending the object with <code class="docutils literal notranslate"><span class="pre">.str</span></code> followed by another dot and then the specific string method. Think of the term ‘accessor’ as giving the object access to specialized string methods.</p>
@@ -2646,7 +2650,7 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_40601/1279328171.py:2: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_17769/1279328171.py:2: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
   products[&#39;package_size&#39;]
 </pre></div>
 </div>
@@ -3191,7 +3195,7 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_40601/3233621946.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_17769/3233621946.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
   prod_id_8s = products[&#39;product_id&#39;].astype(str).str.contains(&#39;(8)\\1&#39;, na=False)
 </pre></div>
 </div>
@@ -3286,7 +3290,7 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_40601/1949681077.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_17769/1949681077.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
   prod_id_8s = products[&#39;product_id&#39;].astype(str).str.contains(&#39;(8)\\1{2}&#39;, na=False)
 </pre></div>
 </div>
@@ -3402,7 +3406,7 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_40601/3801605409.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_17769/3801605409.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
   size_filter = products[&#39;package_size&#39;].str.contains(&#39;^\d{2,}(\.)?.*lb&#39;, case=False, na=False)
 </pre></div>
 </div>

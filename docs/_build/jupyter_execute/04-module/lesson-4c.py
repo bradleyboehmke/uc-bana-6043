@@ -42,6 +42,10 @@ products
 # 
 # Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string. The following will demonstrate some of these basic string methods on a Pandas DataFrame but realize that Pandas provides many more string methods. Refer to the [docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html) to learn more about the many string methods.
 # 
+# ```{admonition} Video 🎥:
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/bofaC0IckHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+# 
 # ```{tip}
 # The string methods provided by Pandas are accessed by appending the object with `.str` followed by another dot and then the specific string method. Think of the term ‘accessor’ as giving the object access to specialized string methods.
 # ```
