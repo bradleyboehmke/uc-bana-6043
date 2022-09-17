@@ -441,9 +441,3 @@ tick_format = mtick.StrMethodFormatter('${x:,.0f}')
 get_ipython().run_line_magic('load_ext', 'watermark')
 get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas,completejourney_py,matplotlib')
 
-
-# In[ ]:
-
-
-
-

@@ -9,6 +9,8 @@
 
 # ```{note}
 # Work through this lesson to create your first Matplotlib plots and gain an overview of how Matplotlib works. Then at the end of this lesson is a longer video tutorial that provides a comprehensive introduction to Matplotlib.
+# 
+# You can also check out this [series of Matplotlib tutorials](https://www.youtube.com/playlist?list=PL-osiE80TeTvipOqomVEeZ1HRrcEvtZB_) provided by Corey Schafer. They are excellent!
 # ```
 
 # ## Learning objectives

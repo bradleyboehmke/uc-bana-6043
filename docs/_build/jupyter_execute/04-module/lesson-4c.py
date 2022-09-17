@@ -593,9 +593,3 @@ size_filter = products['package_size'].str.contains('^\d{2,}(\.)?.*lb', case=Fal
 get_ipython().run_line_magic('load_ext', 'watermark')
 get_ipython().run_line_magic('watermark', '-v -p jupyterlab,pandas,completejourney_py')
 
-
-# In[ ]:
-
-
-
-

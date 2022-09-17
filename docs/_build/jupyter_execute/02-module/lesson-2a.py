@@ -500,9 +500,3 @@ plt.plot(x_interp, y_interp);
 get_ipython().run_line_magic('load_ext', 'watermark')
 get_ipython().run_line_magic('watermark', '-v -p jupyterlab,numpy,pandas,matplotlib,scipy')
 
-
-# In[ ]:
-
-
-
-
