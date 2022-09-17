@@ -10,6 +10,10 @@
 # Although Bokeh is considered a lower level visualization API, generating plots with Bokeh is still fairly straightforward and intuitive. Bokeh makes it easy to create plots but also allows you a lot of flexibility to make your plots very complex, refined, and interactive.
 # 
 # In this lesson I'll teach the basics of Bokeh but provide you with resources where you can dig into more advanced Bokeh capabilities.
+# 
+# ```{note}
+# Work through this lesson to create your first Bokeh plot and then at the end of this lesson is a longer video tutorial that will expose you to many other types of Bokeh plots that you can create.
+# ```
 
 # ## Prerequisites
 # 
@@ -275,6 +279,14 @@ bokeh.io.save(
 
 # ```{note}
 # You can ignore the warning. The resulting HTML page has all of the interactivity of the plot and you can, for example, email it to your collaborators for them to explore.
+# ```
+
+# ## Video Tutorial
+# 
+# ```{admonition} Video 🎥:
+# The following video provides an overview of Bokeh and will also expose you to other types of plots you can create (i.e. line charts, histograms, area plots).
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/PrBCa59o-d0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 # ```
 
 # ## Exercises

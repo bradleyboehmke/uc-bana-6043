@@ -7,6 +7,10 @@
 # 
 # Consequently, once you have strong fundamental understanding of Matplotlib you can transfer that knowledge to many other visualization libraries. This lesson seeks to provide that fundamental understanding
 
+# ```{note}
+# Work through this lesson to create your first Matplotlib plots and gain an overview of how Matplotlib works. Then at the end of this lesson is a longer video tutorial that provides a comprehensive introduction to Matplotlib.
+# ```
+
 # ## Learning objectives
 # 
 # By the end of this lesson you will be able to:
@@ -599,6 +603,14 @@ ax4.set_title('Histogram of total store-level quantity.', size=12);
 fig.suptitle('Total store-level sales and quantities (2017)', fontsize=20)
 fig
 
+
+# ## Video Tutorial
+# 
+# ```{admonition} Video 🎥:
+# The following video is from the SciPy 2018 conference. It is an extended (3 hours) introduction to Matplotlib and has been a very popular training offered at [SciPy conferences](https://conference.scipy.org/) over the years.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/6gdNUDs6QPc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
 
 # ## Exercises
 # 
