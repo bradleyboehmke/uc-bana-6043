@@ -749,6 +749,11 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Discuss how Python scopes for variables to use in functions</p></li>
 <li><p>Apply <code class="docutils literal notranslate"><span class="pre">lambda</span></code> (anonymous) functions</p></li>
 </ul>
+<div class="admonition-video admonition">
+<p class="admonition-title">Video 🎥:</p>
+<p>First, check out this video for a simple introduction to writing functions. Then move on to the lesson that follows which will reiterate and build upon these basic concepts.</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/9Os0o3wzS_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 </div>
 <div class="section" id="prerequisites">
 <h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
@@ -796,18 +801,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[5.94263356e-01, 5.99724987e-01, 8.76606614e-01, 1.43713849e-01,
-        3.83284370e-01, 1.00000000e+00, 7.29077389e-01, 4.91387354e-01,
-        0.00000000e+00, 9.35085315e-01],
-       [3.47338025e-01, 0.00000000e+00, 9.60273701e-01, 6.52101973e-01,
-        2.87315597e-01, 6.07831103e-01, 1.00000000e+00, 6.74479073e-01,
-        9.51963961e-01, 7.23124505e-01],
-       [1.00000000e+00, 1.72700439e-04, 4.29023343e-01, 0.00000000e+00,
-        7.30130928e-01, 7.45665299e-01, 1.85208198e-01, 5.22173441e-03,
-        6.67801721e-01, 2.53397067e-01],
-       [4.87352712e-01, 9.15627646e-01, 2.19725323e-01, 5.32597983e-01,
-        2.34743670e-01, 0.00000000e+00, 3.38524204e-01, 7.44523688e-02,
-        7.28696366e-01, 1.00000000e+00]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.38917282, 0.97101427, 0.        , 0.05126361, 0.33568138,
+        0.62298604, 0.32603992, 0.51290982, 0.93630901, 1.        ],
+       [0.02821534, 0.31426853, 0.28358511, 0.44482601, 1.        ,
+        0.        , 0.07469469, 0.1935637 , 0.38592242, 0.39757527],
+       [0.58266445, 0.55414971, 0.23959983, 0.86754508, 0.79994174,
+        0.03870031, 0.50691006, 1.        , 0.00845704, 0.        ],
+       [0.41007503, 0.46064982, 0.47673547, 0.89227408, 0.87604445,
+        0.07022987, 0.33379301, 0.        , 0.74461546, 1.        ]])
 </pre></div>
 </div>
 </div>
@@ -825,8 +826,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.42895409, 1.51552533, 2.48562898, 1.32841381, 1.63547457,
-       2.3534964 , 2.25280979, 1.24554053, 2.34846205, 2.91160689])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41012764, 2.30008233, 0.99992041, 2.25590877, 3.01166758,
+       0.73191621, 1.24143768, 1.70647352, 2.07530392, 2.39757527])
 </pre></div>
 </div>
 </div>
@@ -839,8 +840,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.42895409, 1.51552533, 2.48562898, 1.32841381, 1.63547457,
-       2.3534964 , 2.25280979, 1.24554053, 2.34846205, 2.91160689])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41012764, 2.30008233, 0.99992041, 2.25590877, 3.01166758,
+       0.73191621, 1.24143768, 1.70647352, 2.07530392, 2.39757527])
 </pre></div>
 </div>
 </div>
@@ -854,7 +855,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.505912437858434
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18.130413341399557
 </pre></div>
 </div>
 </div>
@@ -867,8 +868,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.42895409, 1.51552533, 2.48562898, 1.32841381, 1.63547457,
-       2.3534964 , 2.25280979, 1.24554053, 2.34846205, 2.91160689])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.41012764, 2.30008233, 0.99992041, 2.25590877, 3.01166758,
+       0.73191621, 1.24143768, 1.70647352, 2.07530392, 2.39757527])
 </pre></div>
 </div>
 </div>
@@ -881,7 +882,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.75314323, 6.20442794, 4.01662099, 4.53172027])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.14537686, 3.12265107, 4.59796822, 5.26441719])
 </pre></div>
 </div>
 </div>

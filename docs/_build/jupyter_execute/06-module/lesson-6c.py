@@ -19,6 +19,12 @@
 # * Discuss how Python scopes for variables to use in functions
 # * Apply `lambda` (anonymous) functions
 
+# ```{admonition} Video 🎥:
+# First, check out this video for a simple introduction to writing functions. Then move on to the lesson that follows which will reiterate and build upon these basic concepts.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/9Os0o3wzS_I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+
 # ## Prerequisites
 
 # In[1]:

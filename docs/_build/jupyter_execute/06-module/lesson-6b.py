@@ -14,6 +14,12 @@
 # * Explain what a list comprehension is and implement variations of them.
 # * Discuss the concept of iterables.
 
+# ```{admonition} Video 🎥:
+# First, check out this video for a simple introduction to `for` and `while` loops. Then move on to the lesson that follows which will reiterate and build upon these basic concepts.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/6iF8Xb7Z3wQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+
 # ## Prerequisites
 
 # In[1]:
@@ -237,6 +243,12 @@ squared_values_dict = {number: number*number for number in range(10)}
 squared_values_dict
 
 
+# ```{admonition} Video 🎥:
+# Check out this video that provides more discussion and examples of using comprehensions.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/3dt4OGnU5sM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+
 # ### Knowledge check
 # 
 # ```{admonition} Tasks:
@@ -422,6 +434,12 @@ for index, col in enumerate(df):
 
 # ```{note}
 # There are additional iterable objects that can be used in looping structures (i.e. zip, map); however, the ones discussed here are the most common you will come across and likely use.
+# ```
+# 
+# ```{admonition} Video 🎥:
+# Learn more about iterables and a similar, yet different concept -- _'iterators'_ with this video.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/jTYiNjvnHZY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 # ```
 
 # ## Exercises

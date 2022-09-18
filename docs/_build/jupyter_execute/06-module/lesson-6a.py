@@ -5,6 +5,12 @@
 # 
 # Conditional statements are a key part of any programming language.  Their purpose is to evaluate if some condition holds and then execute a particular task depending on the result.  The most common conditional statements are `if`, `elif`, and `else` statements. In this lesson we'll cover each of these along with a few additional applications of conditional statements.
 
+# ```{admonition} Video 🎥:
+# Get introduced to conditional statements with this intro video and then read the lesson that follows to learn more and to get some hands-on practice.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/DZwmZ8Usvnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
+
 # ## Learning objectives
 # 
 # By the end of this lesson you will be able to:
@@ -348,6 +354,12 @@ df.head()
 
 df.groupby('purchase_flag').size()
 
+
+# ```{admonition} Video 🎥:
+# Here is a more thorough introduction to the `apply` method; plus, you'll also be introduced to the `map` and `applymap` methods.
+# 
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/P_q0tkYqvSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# ```
 
 # ### Knowledge check
 # 
