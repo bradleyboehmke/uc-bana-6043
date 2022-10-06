@@ -132,4 +132,6 @@ dmypy.json
 *.cmproj
 
 # ignore lab solution content
-*.solutions.ipynb
+*solutions.ipynb
+*solutions.pdf
+*solutions.html
