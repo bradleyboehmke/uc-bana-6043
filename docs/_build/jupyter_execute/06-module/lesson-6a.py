@@ -8,7 +8,7 @@
 # ```{admonition} Video 🎥:
 # Get introduced to conditional statements with this intro video and then read the lesson that follows to learn more and to get some hands-on practice.
 # 
-# <iframe width="560" height="315" src="https://www.youtube.com/embed/DZwmZ8Usvnk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_adhkstgw&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4xky5q5i" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 | Python Tutorial for Beginners 6: Conditionals and Booleans - If, Else, and Elif Statements"></iframe>
 # ```
 
 # ## Learning objectives
@@ -370,7 +370,7 @@ df.groupby('purchase_flag').size()
 # ```{admonition} Video 🎥:
 # Here is a more thorough introduction to the `apply` method; plus, you'll also be introduced to the `map` and `applymap` methods.
 # 
-# <iframe width="560" height="315" src="https://www.youtube.com/embed/P_q0tkYqvSk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_en445syw&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_9veqin0h" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 | How do I apply a function to a pandas Series or DataFrame?"></iframe>
 # ```
 
 # ### Knowledge check

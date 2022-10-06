@@ -43,7 +43,7 @@ products
 # Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string. The following will demonstrate some of these basic string methods on a Pandas DataFrame but realize that Pandas provides many more string methods. Refer to the [docs](https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html) to learn more about the many string methods.
 # 
 # ```{admonition} Video 🎥:
-# <iframe width="560" height="315" src="https://www.youtube.com/embed/bofaC0IckHo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_n5969nsw&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_birkvk0f" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: How do I use string methods in pandas?"></iframe>
 # ```
 # 
 # ```{tip}

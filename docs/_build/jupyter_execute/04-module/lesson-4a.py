@@ -224,7 +224,7 @@ ames2_reshaped.head()
 # ```{admonition} Video 🎥:
 # Here's a webinar that provides a thorough discussion around tidy data principles along with illustrating examples of reshaping data with Pandas. It is longer (50 minutes) but is worth a watch if you are still trying to get your arms around the above lesson conceps.
 # 
-# <iframe width="560" height="315" src="https://www.youtube.com/embed/HX7gCUw6FK0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_ors8hblh&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_zvr62kj3" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 : Webinar -  Data Reshaping with Pandas in Python"></iframe>
 # ```
 
 # ## Exercises

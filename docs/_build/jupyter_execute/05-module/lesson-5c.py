@@ -286,7 +286,7 @@ bokeh.io.save(
 # ```{admonition} Video 🎥:
 # The following video provides an overview of Bokeh and will also expose you to other types of plots you can create (i.e. line charts, histograms, area plots).
 # 
-# <iframe width="560" height="315" src="https://www.youtube.com/embed/PrBCa59o-d0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_ke04lf4v&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_f4zknbu7" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 | Python Bokeh Tutorial | Python Data Visualization With Bokeh | Python Bokeh Dashboard | SimpliCode"></iframe>
 # ```
 
 # ## Exercises
