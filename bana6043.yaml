@@ -1,0 +1,24 @@
+# install with `conda env create -bana6043.yaml`
+
+name: bana6043
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python>=3.8
+  - jupyterlab
+  - bokeh
+  - jupyter_bokeh
+  - matplotlib
+  - numpy
+  - pandas
+  - scipy
+  - seaborn
+  - scikit-learn
+  - sqlalchemy
+  - pip:
+    - blackcellmagic
+    - completejourney_py
+    - iqplot
+    - jupyterlab-spellchecker
+    - watermark
