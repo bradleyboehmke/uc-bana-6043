@@ -46,7 +46,7 @@ df = get_data()['transactions']
 
 # array containing 4 sets of 10 random numbers
 x = np.random.random_sample((4, 10))
-          
+
 x[0] = (x[0] - x[0].min()) / (x[0].max() - x[0].min())
 x[1] = (x[1] - x[1].min()) / (x[1].max() - x[1].min())
 x[2] = (x[2] - x[2].min()) / (x[1].max() - x[2].min())
@@ -63,7 +63,7 @@ x = np.random.random_sample((4, 10))
 def rescale(array):
     for index, vector in enumerate(array):
         array[index] = (vector - vector.min()) / (vector.max() - vector.min())
-    
+
     return(array)
 
 rescale(x)
@@ -85,7 +85,7 @@ sum(x)
 # In[5]:
 
 
-# method 
+# method
 x.sum(axis = 0)
 
 
@@ -129,8 +129,8 @@ x.sum(axis = 1)
 def yell(text):
     new_text = text.upper()
     return new_text
-  
-yell('hello world!') 
+
+yell('hello world!')
 
 
 # Of course, your functions will get more complex as you go along: you can add `for` loops, flow control, and more to it to make it more finegrained. Let's build a function that finds the total sales for a store, for a given day. The parameters required for the function are the `data` frame being analyzed, the `store_id`, and the specific `week` for which we need the sales.
@@ -155,7 +155,7 @@ store_sales(data=df, store=309, week=48)
 # ```
 
 # ```{admonition} Video 🎥:
-# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_ffvtyvlm&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_5pffk3pv" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Define Function Knowledge Check"></iframe>
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/vcBz0bie3sc?si=7AYXfUT-5uIbdYuG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 # ```
 
 # ## Parameters vs arguments
@@ -176,14 +176,14 @@ store_sales(data=df, store=309, week=48)
 
 
 # implicitly computing store sales for store 46 during week 43
-store_sales(df, 46, 43) 
+store_sales(df, 46, 43)
 
 
 # In[12]:
 
 
 # implicitly computing store sales for store 43 (does not exist) during week 46
-store_sales(df, 43, 46) 
+store_sales(df, 43, 46)
 
 
 # Using keyword, rather than positional, arguments makes your function call more explicit and allows you to specify them in different orders.
@@ -196,7 +196,7 @@ store_sales(df, 43, 46)
 
 
 # explicitly computing store sales for store 46 during week 43
-store_sales(data=df, week=43, store=46) 
+store_sales(data=df, week=43, store=46)
 
 
 # ### Default arguments
@@ -242,7 +242,7 @@ store_sales(data=df, store=309, week=48, qty_greater_than=2)
 def yell(*args):
     new_text = ' '.join(args).upper()
     return new_text
-  
+
 yell('hello world!', 'I', 'love', 'Python!!')
 
 
@@ -254,7 +254,7 @@ yell('hello world!', 'I', 'love', 'Python!!')
 # **kwargs just creates a dictionary
 def students(**kwargs):
     print(kwargs)
-    
+
 students(student1='John', student2='Robert', student3='Sally')
 
 
@@ -265,8 +265,8 @@ students(student1='John', student2='Robert', student3='Sally')
 def print_student_names(**kwargs):
     for key, value in kwargs.items():
         print(f'{key} = {value}')
-    
-print_student_names(student1='John', student2='Robert', student3='Sally') 
+
+print_student_names(student1='John', student2='Robert', student3='Sally')
 
 
 # ### Type hints
@@ -280,7 +280,7 @@ print_student_names(student1='John', student2='Robert', student3='Sally')
 
 def some_function(name, age):
     return f'{name} is {age} years old'
- 
+
 some_function('Tom', 27)
 
 
@@ -293,7 +293,7 @@ some_function('Tom', 27)
 
 def some_function(name: str, age: int) -> str:
     return f'{name} is {age} years old'
- 
+
 some_function('Tom', 27)
 
 
@@ -336,7 +336,7 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
     filt = (data['store_id'] == store) & (data['week'] == week)
     total_sales = data['sales_value'][filt].sum()
     return total_sales
-  
+
 store_sales(data=df, store=309, week=48)
 
 
@@ -351,7 +351,7 @@ store_sales(data=df, store=309, week=48)
 # ```
 
 # ```{admonition} Video 🎥:
-# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_8swcugvy&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_di40jasm" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Function Arguments Knowledge Check"></iframe>
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/7wujc-vDFks?si=TQp8EEMTVSTf8yMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 # ```
 
 # ## Docstrings
@@ -370,11 +370,11 @@ store_sales(data=df, store=309, week=48)
 def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
     """
     Compute total store sales.
-    
+
     This function computes the total sales for a given
     store and week based on a user supplied DataFrame that
     contains sales in a column named `sales_value`.
-    
+
     Parameters
     ----------
     data : DataFrame
@@ -383,16 +383,16 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
         Integer value representing store number
     week : int
         Integer value representing week of year
-    
+
     Returns
     -------
     float
         A float object representing total store sales
-    
+
     See Also
     --------
     store_visits : Computes total store visits
-    
+
     Examples
     --------
     >>> store_sales(data=df, store=309, week=48)
@@ -417,7 +417,7 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
 # ```
 
 # ```{admonition} Video 🎥:
-# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_4daw9140&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_4zh1iv0c" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: Function Docstring Knowledge Check"></iframe>
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/bhp0TNILZTY?si=w8E9o-Z0D-wr4xlC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 # ```
 
 # ## Errors and exceptions
@@ -439,13 +439,13 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
     if not isinstance(data, pd.DataFrame): raise Exception('`data` should be a Pandas DataFrame')
     if not isinstance(store, int): raise Exception('`store` should be an integer')
     if not isinstance(week, int): raise Exception('`week` should be an integer')
-  
+
     # computation
     filt = (data['store_id'] == store) & (data['week'] == week)
     total_sales = data['sales_value'][filt].sum()
     return total_sales
-  
-store_sales(data=df, store='309', week=48) 
+
+store_sales(data=df, store='309', week=48)
 
 
 # Note that `Exception()` is used to create a generic exception object/output. Python has [many built-in exception types](https://docs.python.org/3/library/exceptions.html) that can be used to indicate a specific error has occured. For example, we could replace `Exception()` with `TypeError()` in the previous example to make it more specific that the error is due to an invalid argument type.
@@ -458,13 +458,13 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
     if not isinstance(data, pd.DataFrame): raise TypeError('`data` should be a Pandas DataFrame')
     if not isinstance(store, int): raise TypeError('`store` should be an integer')
     if not isinstance(week, int): raise TypeError('`week` should be an integer')
-  
+
     # computation
     filt = (data['store_id'] == store) & (data['week'] == week)
     total_sales = data['sales_value'][filt].sum()
     return total_sales
-  
-store_sales(data=df, store='309', week=48) 
+
+store_sales(data=df, store='309', week=48)
 
 
 # We can expand this as much as necessary. For example, say we want to ensure users only use a store value that exists in our data. Currently, if the user supplies a store value that does not exist (i.e. 35), they simply get a return value of 0. 
@@ -485,10 +485,10 @@ def store_sales(data: pd.DataFrame, store: int, week: int) -> float:
     if not isinstance(data, pd.DataFrame): raise TypeError('`data` should be a Pandas DataFrame')
     if not isinstance(store, int): raise TypeError('`store` should be an integer')
     if not isinstance(week, int): raise TypeError('`week` should be an integer')
-    if store not in data.store_id.unique(): 
+    if store not in data.store_id.unique():
         raise ValueError(f'`store` {store} does not exist in the supplied DataFrame')
-  
-  
+
+
     # computation
     filt = (data['store_id'] == store) & (data['week'] == week)
     total_sales = data['sales_value'][filt].sum()
@@ -544,8 +544,8 @@ def apply_discount(product, discount):
     price = round(product['price'] * (1.0 - discount), 2)
     assert 0 <= price <= product['price'], 'Invalid discount applied'
     return price
-    
-apply_discount(milk, 2.00) 
+
+apply_discount(milk, 2.00)
 
 
 # ### Try and except
@@ -613,7 +613,7 @@ finally:
 # ```
 
 # ```{admonition} Video 🎥:
-# <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_611y9x07&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[leadWithHTML5]=true&amp;flashvars[sideBarContainer.plugin]=true&amp;flashvars[sideBarContainer.position]=left&amp;flashvars[sideBarContainer.clickToClose]=true&amp;flashvars[chapters.plugin]=true&amp;flashvars[chapters.layout]=vertical&amp;flashvars[chapters.thumbnailRotator]=false&amp;flashvars[streamSelector.plugin]=true&amp;flashvars[EmbedPlayer.SpinnerTarget]=videoHolder&amp;flashvars[dualScreen.plugin]=true&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_ovogfxcj" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043: try-except Knowledge Check"></iframe>
+# <iframe width="560" height="315" src="https://www.youtube.com/embed/5bCiJatTtzg?si=L40B2SUHstkSoJh9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 # ```
 
 # ## Scoping
@@ -636,8 +636,8 @@ x = 84
 
 def func(x):
   return x + 1
-  
-func(x = 50)  
+
+func(x = 50)
 
 
 # However, the function environment is only active when called and all function variables are removed from memory after being called. Consequently, you can continue using `x` that is contained in the global environment.
@@ -657,8 +657,8 @@ y = 'Boehmke'
 
 def func(x):
   return x + ' ' + y
-  
-func(x = 'Brad') 
+
+func(x = 'Brad')
 
 
 # The same will happen if we have nested functions. Python will search in enclosing functions in a hierarchical fashion until it finds the necessary variables. In this convoluted procedure...
@@ -683,7 +683,7 @@ def my_name(sep):
     def my_paste():
         return x + sep + y
     return my_paste()
-  
+
 my_name(sep=' ')
 
 
@@ -707,7 +707,7 @@ def convert(x):
     y = firstpart + '.' + secondpart
     return y
 
-convert(8451) 
+convert(8451)
 
 
 # In[82]:
