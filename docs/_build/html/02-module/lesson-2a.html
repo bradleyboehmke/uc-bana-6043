@@ -1,639 +1,493 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Lesson 2a: Packages, libraries &amp; modules &#8212; UC BANA 6043 Statistical Computing</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '02-module/lesson-2a';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lesson 2b: Importing data" href="lesson-2b.html" />
     <link rel="prev" title="Overview" href="overview.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Statistical Computing
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Module 0 (Pre-class)
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="UC BANA 6043 Statistical Computing - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="UC BANA 6043 Statistical Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 0 (Pre-class)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00-module/lesson-0b.html">
-   Lesson 0: Configuring your computer
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../00-module/lesson-0b.html">Lesson 0: Configuring your computer</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1a.html">
-   Lesson 1a: Introduction to JupyterLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators &amp; types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators &amp; conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1d.html">
-   Lesson 1d: Data structures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1a.html">Lesson 1a: Introduction to JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1b.html">Lesson 1b: Variables, operators &amp; types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1c.html">Lesson 1c: More operators &amp; conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1d.html">Lesson 1d: Data structures</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 2</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lesson 2a: Packages, libraries &amp; modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-2b.html">
-   Lesson 2b: Importing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-2c.html">
-   Lesson 2c: Deeper dive on DataFrames
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 2a: Packages, libraries &amp; modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-2b.html">Lesson 2b: Importing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-2c.html">Lesson 2c: Deeper dive on DataFrames</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3a.html">
-   Lesson 3a: Subsetting data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3b.html">
-   Lesson 3b: Manipulating data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3c.html">
-   Lesson 3c: Summarizing data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3a.html">Lesson 3a: Subsetting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3b.html">Lesson 3b: Manipulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3c.html">Lesson 3c: Summarizing data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4a.html">
-   Lession 4a: Tidy data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4b.html">
-   Lesson 4b: Relational data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4c.html">
-   Lesson 4c: Handling text data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4a.html">Lession 4a: Tidy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4b.html">Lesson 4b: Relational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4c.html">Lesson 4c: Handling text data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5a.html">
-   Lession 5a: Plotting with Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5b.html">
-   Lesson 5b: Plotting with Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5c.html">
-   Lesson 5c: Plotting with Bokeh
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5a.html">Lession 5a: Plotting with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5b.html">Lesson 5b: Plotting with Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5c.html">Lesson 5c: Plotting with Bokeh</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6a.html">
-   Lession 6a: Conditional statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6b.html">
-   Lesson 6b: Iteration statement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6c.html">
-   Lesson 6C: Writing functions
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6a.html">Lession 6a: Conditional statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6b.html">Lesson 6b: Iteration statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6c.html">Lesson 6C: Writing functions</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7a.html">
-   Lesson 7a: Data Exploration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7b.html">
-   Lesson 7b: First model with scikit-learn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7c.html">
-   Lesson 7c: Feature Engineering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7d.html">
-   Lesson 7d: Model Evaluation &amp; Selection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7a.html">Lesson 7a: Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7b.html">Lesson 7b: First model with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7c.html">Lesson 7c: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7d.html">Lesson 7d: Model Evaluation &amp; Selection</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/02-module/lesson-2a.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F02-module/lesson-2a.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/02-module/lesson-2a.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/02-module/lesson-2a.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F02-module/lesson-2a.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/02-module/lesson-2a.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/02-module/lesson-2a.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson 2a: Packages, libraries & modules</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#terminology">
-   Terminology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing">
-   Importing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-module-import">
-     Explicit module import
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-module-import-by-alias">
-     Explicit module import by alias
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-import-of-module-contents">
-     Explicit import of module contents
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#implicit-import-of-module-contents">
-     Implicit import of module contents
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-library">
-   Standard library
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#third-party-modules">
-   Third-party modules
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy">
-     NumPy
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pandas">
-     Pandas
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib">
-     Matplotlib
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scipy">
-     SciPy
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-data-science-packages">
-     Other Data Science Packages
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing">Importing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-module-import">Explicit module import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-module-import-by-alias">Explicit module import by alias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-import-of-module-contents">Explicit import of module contents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-import-of-module-contents">Implicit import of module contents</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-library">Standard library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-modules">Third-party modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">Matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">SciPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-data-science-packages">Other Data Science Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 2a: Packages, libraries & modules</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#terminology">
-   Terminology
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing">
-   Importing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-module-import">
-     Explicit module import
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-module-import-by-alias">
-     Explicit module import by alias
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#explicit-import-of-module-contents">
-     Explicit import of module contents
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#implicit-import-of-module-contents">
-     Implicit import of module contents
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#standard-library">
-   Standard library
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#third-party-modules">
-   Third-party modules
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#numpy">
-     NumPy
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pandas">
-     Pandas
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matplotlib">
-     Matplotlib
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#scipy">
-     SciPy
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-data-science-packages">
-     Other Data Science Packages
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-2a-packages-libraries-modules">
-<h1>Lesson 2a: Packages, libraries &amp; modules<a class="headerlink" href="#lesson-2a-packages-libraries-modules" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-2a-packages-libraries-modules">
+<h1>Lesson 2a: Packages, libraries &amp; modules<a class="headerlink" href="#lesson-2a-packages-libraries-modules" title="Link to this heading">#</a></h1>
 <blockquote>
 <div><p>The Python source distribution has long maintained the philosophy of “batteries included” – having a rich and versatile standard library which is immediately available, without making the user download separate packages. This gives the Python language a head start in many projects.</p>
 <p>- PEP 206</p>
 </div></blockquote>
 <p>One feature of Python that makes it useful for a wide range of tasks is the fact that it comes “batteries included” – that is, the Python standard library contains useful tools for a wide range of tasks. On top of this, there is a broad ecosystem of third-party tools and packages that offer more specialized functionality.</p>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lesson you’ll be able to:</p>
 <ul class="simple">
 <li><p>Explain the difference between the standard library and third-party libraries.</p></li>
@@ -641,9 +495,9 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Understand at a high-level what some commonly used third-party libraries provide.</p></li>
 <li><p>Have a more complete picture of Python’s data science packaging ecosystem.</p></li>
 </ul>
-</div>
-<div class="section" id="terminology">
-<h2>Terminology<a class="headerlink" href="#terminology" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="terminology">
+<h2>Terminology<a class="headerlink" href="#terminology" title="Link to this heading">#</a></h2>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/V9nns19WwPE?si=GjmLK01ePqyjcVKt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -662,443 +516,208 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Package                        Version              Location
------------------------------- -------------------- ----------------------------------------------------------------
-aiohttp                        3.8.1
-aiosignal                      1.2.0
-alabaster                      0.7.12
-alembic                        1.8.1
-anaconda-client                1.9.0
-anaconda-navigator             2.1.4
-anaconda-project               0.10.2
-anyio                          3.5.0
-appdirs                        1.4.4
-applaunchservices              0.2.1
-appnope                        0.1.2
-appscript                      1.1.2
-argon2-cffi                    21.3.0
-argon2-cffi-bindings           21.2.0
-arrow                          1.2.2
-astroid                        2.6.6
-astropy                        5.0.4
-asttokens                      2.0.5
-async-timeout                  4.0.1
-atomicwrites                   1.4.0
-attrs                          20.3.0
-Automat                        20.2.0
-autopep8                       1.6.0
-azure-core                     1.26.0
-azure-identity                 1.11.0
-azure-storage-blob             12.14.0
-azure-storage-file-datalake    12.9.0
-Babel                          2.9.1
-backcall                       0.2.0
-backports.functools-lru-cache  1.6.4
-backports.tempfile             1.0
-backports.weakref              1.0.post1
-bcrypt                         3.2.0
-beautifulsoup4                 4.11.1
-binaryornot                    0.4.4
-bitarray                       2.4.1
-bkcharts                       0.2
-black                          21.12b0
-blackcellmagic                 0.0.3
-bleach                         4.1.0
-bokeh                          2.4.2
-boto3                          1.21.32
-botocore                       1.24.32
-Bottleneck                     1.3.4
-brotlipy                       0.7.0
-cachetools                     4.2.2
-certifi                        2022.5.18.1
-cffi                           1.15.0
-cfgv                           3.3.1
-cftime                         1.5.1.1
-chardet                        4.0.0
-charset-normalizer             2.0.4
-click                          8.0.4
-click-completion               0.5.2
-click-log                      0.3.2
-cloudpickle                    2.0.0
-clyent                         1.2.2
-colorama                       0.4.4
-colorcet                       2.0.6
-commonmark                     0.9.1
-completejourney-py             0.0.3
-component-logger               1.11.1
-conda                          4.12.0
-conda-build                    3.21.8
-conda-content-trust            0+unknown
-conda-pack                     0.6.0
-conda-package-handling         1.8.1
-conda-repo-cli                 1.0.4
-conda-token                    0.3.0
-conda-verify                   3.4.2
-constantly                     15.1.0
-cookiecutter                   1.7.3
-cplex                          22.1.0.0
-cryptography                   38.0.4
-cssselect                      1.1.0
-cycler                         0.11.0
-Cython                         0.29.28
-cytoolz                        0.11.0
-daal4py                        2021.5.0
-dacite                         1.6.0
-dadjokes                       1.3.2
-dask                           2022.2.1
-datashader                     0.13.0
-datashape                      0.5.4
-dateparser                     1.1.1
-debugpy                        1.5.1
-decorator                      5.1.1
-defusedxml                     0.7.1
-diff-match-patch               20200713
-distlib                        0.3.6
-distributed                    2022.2.1
-docutils                       0.16
-dynamic-positioner             1.5.0a1              /Users/b294776/Desktop/workspace/packages/dynamic-positioner/src
-e451-py-security               1.0.57
-effo-cookiecutter              0.4.0
-effo411                        0.2.0
-effodata                       2.5.0
-effodata-clickstream-libs      1.1.3
-entrypoints                    0.4
-et-xmlfile                     1.1.0
-executing                      0.8.3
-fastjsonschema                 2.15.1
-filelock                       3.6.0
-flake8                         3.9.2
-flake8-bugbear                 22.9.23
-Flask                          1.1.2
-flowcate                       1.0.2
-fonttools                      4.25.0
-frozenlist                     1.2.0
-fsopt                          0.0.59
-fsspec                         2022.2.0
-future                         0.18.2
-gensim                         4.1.2
-gitdb                          4.0.9
-GitPython                      3.1.27
-glob2                          0.7
-gmpy2                          2.1.2
-google-api-core                2.10.2
-google-auth                    1.33.0
-google-cloud-appengine-logging 1.1.6
-google-cloud-audit-log         0.2.4
-google-cloud-core              2.3.2
-google-cloud-logging           3.2.5
-google-cloud-storage           2.5.0
-google-crc32c                  1.1.2
-google-resumable-media         2.4.0
-googleapis-common-protos       1.56.4
-greenlet                       1.1.1
-grpc-google-iam-v1             0.12.4
-grpcio                         1.47.2
-grpcio-health-checking         1.47.2
-grpcio-reflection              1.47.2
-grpcio-status                  1.49.1
-h5py                           3.6.0
-HeapDict                       1.0.1
-holoviews                      1.14.8
-hvplot                         0.7.3
-hyperlink                      21.0.0
-hypothesis                     6.29.3
-identify                       2.5.6
-idna                           3.3
-imagecodecs                    2021.8.26
-imageio                        2.9.0
-imagesize                      1.3.0
-importlib-metadata             4.11.3
-incremental                    21.3.0
-inflection                     0.5.1
-iniconfig                      1.1.1
-install                        1.3.5
-intake                         0.6.5
-intervaltree                   3.1.0
-ipykernel                      6.9.1
-ipython                        8.4.0
-ipython-genutils               0.2.0
-ipywidgets                     7.6.5
-iqplot                         0.2.4
-isodate                        0.6.1
-isort                          5.9.3
-itemadapter                    0.3.0
-itemloaders                    1.0.4
-itsdangerous                   2.0.1
-jdcal                          1.4.1
-jedi                           0.18.1
-Jinja2                         2.11.3
-jinja2-time                    0.2.0
-jmespath                       0.10.0
-joblib                         1.1.0
-json5                          0.9.6
-jsonschema                     3.2.0
-jupyter                        1.0.0
-jupyter-bokeh                  3.0.4
-jupyter-book                   0.12.3
-jupyter-cache                  0.4.3
-jupyter-client                 6.1.12
-jupyter-console                6.4.0
-jupyter-core                   4.9.2
-jupyter-server                 1.13.5
-jupyter-server-mathjax         0.2.5
-jupyter-sphinx                 0.3.2
-jupyterlab                     3.3.2
-jupyterlab-pygments            0.1.2
-jupyterlab-server              2.10.3
-jupyterlab-spellchecker        0.7.2
-jupyterlab-widgets             1.0.0
-jupytext                       1.10.3
-kayday                         2.0.0
-keyring                        23.4.0
-kiwisolver                     1.3.2
-kpi-metrics                    1.3.4
-latexcodec                     2.0.1
-lazy-object-proxy              1.6.0
-libarchive-c                   2.9
-linkify-it-py                  1.0.3
-llvmlite                       0.39.1
-locket                         0.2.1
-lxml                           4.8.0
-Mako                           1.2.4
-Markdown                       3.3.4
-markdown-it-py                 1.1.0
-MarkupSafe                     2.0.1
-matplotlib                     3.5.3
-matplotlib-inline              0.1.2
-mccabe                         0.6.1
-mdit-py-plugins                0.2.8
-mistune                        0.8.4
-mkl-fft                        1.3.1
-mkl-random                     1.2.2
-mkl-service                    2.4.0
-mock                           4.0.3
-mpire                          2.6.0
-mpmath                         1.2.1
-msal                           1.20.0
-msal-extensions                1.0.0
-msgpack                        1.0.2
-msrest                         0.7.1
-multidict                      5.2.0
-multipledispatch               0.6.0
-munkres                        1.1.4
-mypy                           0.982
-mypy-extensions                0.4.3
-myst-nb                        0.13.2
-myst-parser                    0.15.2
-navigator-updater              0.2.1
-nbclassic                      0.3.5
-nbclient                       0.5.13
-nbconvert                      5.6.1
-nbdime                         3.1.1
-nbformat                       5.3.0
-nbsphinx                       0.8.9
-nest-asyncio                   1.5.5
-nested-lookup                  0.2.23
-netCDF4                        1.5.7
-networkx                       2.7.1
-nltk                           3.7
-nodeenv                        1.7.0
-nose                           1.3.7
-notebook                       6.4.8
-numba                          0.56.4
-numexpr                        2.8.1
-numpy                          1.22.4
-numpydoc                       1.2
-oauthlib                       3.2.2
-olefile                        0.46
-openpyxl                       3.0.9
-packaging                      21.3
-pandas                         1.4.2
-pandocfilters                  1.5.0
-panel                          0.13.0
-param                          1.12.0
-parsel                         1.6.0
-parso                          0.8.3
-partd                          1.2.0
-pathspec                       0.9.0
-patsy                          0.5.2
-pep8                           1.7.1
-pexpect                        4.8.0
-pickleshare                    0.7.5
-Pillow                         9.0.1
-pip                            21.2.4
-piqdata                        2.1.20
-pkginfo                        1.8.2
-platformdirs                   2.5.2
-plotly                         5.6.0
-pluggy                         1.0.0
-pockets                        0.9.1
-poirot                         2.6.3
-portalocker                    2.5.1
-poyo                           0.5.0
-pre-commit                     2.20.0
-prometheus-client              0.13.1
-prompt-toolkit                 3.0.20
-Protego                        0.1.16
-proto-plus                     1.22.1
-protobuf                       4.21.7
-psutil                         5.8.0
-psycopg2-binary                2.9.5
-ptyprocess                     0.7.0
-pure-eval                      0.2.2
-py                             1.11.0
-py4j                           0.10.9.3
-pyarrow                        8.0.0
-pyasn1                         0.4.8
-pyasn1-modules                 0.2.8
-pybtex                         0.24.0
-pybtex-docutils                1.0.1
-pycodestyle                    2.7.0
-pycosat                        0.6.3
-pycparser                      2.21
-pyct                           0.4.6
-pycurl                         7.44.1
-pydantic                       1.10.2
-pydata-sphinx-theme            0.7.2
-PyDispatcher                   2.0.5
-pydocstyle                     6.1.1
-pyerfa                         2.0.0
-pyflakes                       2.3.1
-Pygments                       2.11.2
-PyHamcrest                     2.0.2
-PyJWT                          2.4.0
-pylint                         2.9.6
-pyls-spyder                    0.4.0
-pyluach                        1.4.2
-pyodbc                         4.0.32
-pyOpenSSL                      21.0.0
-pyparsing                      3.0.4
-pypi-simple                    0.9.0
-pyrsistent                     0.18.0
-pyserial                       3.5
-PySocks                        1.7.1
-pyspark                        3.2.1
-pytest                         7.1.1
-python-dateutil                2.8.2
-python-lsp-black               1.0.0
-python-lsp-jsonrpc             1.0.0
-python-lsp-server              1.2.4
-python-slugify                 5.0.2
-python-snappy                  0.6.0
-pytz                           2021.3
-pyviz-comms                    2.0.2
-PyWavelets                     1.3.0
-PyYAML                         6.0
-pyzmq                          22.3.0
-QDarkStyle                     3.0.2
-qstylizer                      0.1.10
-QtAwesome                      1.0.3
-qtconsole                      5.3.0
-QtPy                           2.0.1
-queuelib                       1.5.0
-regex                          2022.3.2
-requests                       2.28.1
-requests-file                  1.5.1
-requests-oauthlib              1.3.1
-rich                           12.4.3
-rope                           0.22.0
-rsa                            4.7.2
-Rtree                          0.9.7
-ruamel-yaml-conda              0.15.100
-s3transfer                     0.5.0
-scikit-image                   0.19.2
-scikit-learn                   1.0.2
-scikit-learn-intelex           2021.20220215.132722
-scipy                          1.9.3
-Scrapy                         2.6.1
-seaborn                        0.11.2
-Send2Trash                     1.8.0
-service-identity               18.1.0
-setuptools                     65.2.0
-shellingham                    1.4.0
-simpy                          4.0.1
-sip                            4.19.13
-six                            1.16.0
-smart-open                     5.1.0
-smmap                          3.0.5
-sniffio                        1.2.0
-snowballstemmer                2.2.0
-sortedcollections              2.1.0
-sortedcontainers               2.4.0
-soupsieve                      2.3.1
-Sphinx                         3.5.3
-sphinx-book-theme              0.1.10
-sphinx-comments                0.0.3
-sphinx-copybutton              0.5.0
-sphinx-external-toc            0.2.4
-sphinx-jupyterbook-latex       0.4.6
-sphinx-multitoc-numbering      0.1.3
-sphinx-panels                  0.6.0
-sphinx-rtd-theme               1.0.0
-sphinx-thebe                   0.1.2
-sphinx-togglebutton            0.3.1
-sphinxcontrib-applehelp        1.0.2
-sphinxcontrib-bibtex           2.4.2
-sphinxcontrib-devhelp          1.0.2
-sphinxcontrib-htmlhelp         2.0.0
-sphinxcontrib-jsmath           1.0.1
-sphinxcontrib-napoleon         0.7
-sphinxcontrib-qthelp           1.0.3
-sphinxcontrib-serializinghtml  1.1.5
-spyder                         5.1.5
-spyder-kernels                 2.1.3
-SQLAlchemy                     1.4.32
-sqlalchemy2-stubs              0.0.2a29
-sqlmodel                       0.0.8
-sqlparse                       0.4.2
-stack-data                     0.2.0
-statsmodels                    0.13.2
-sympy                          1.10.1
-tables                         3.6.1
-tabulate                       0.8.9
-TBB                            0.2
-tblib                          1.7.0
-tenacity                       8.0.1
-terminado                      0.13.1
-testpath                       0.5.0
-text-unidecode                 1.3
-textdistance                   4.2.1
-threadpoolctl                  2.2.0
-three-merge                    0.1.1
-tifffile                       2021.7.2
-tinycss                        0.4
-tldextract                     3.2.0
-toml                           0.10.2
-tomli                          1.2.2
-toolz                          0.11.2
-tornado                        6.1
-tqdm                           4.64.0
-traitlets                      5.1.1
-Twisted                        22.2.0
-typed-ast                      1.4.3
-typing_extensions              4.1.1
-tzlocal                        2.1
-uc-micro-py                    1.0.1
-ujson                          5.1.0
-Unidecode                      1.2.0
-urllib3                        1.26.9
-virtualenv                     20.16.5
-w3lib                          1.21.0
-watchdog                       2.1.6
-watermark                      2.3.0
-wcwidth                        0.2.5
-webencodings                   0.5.1
-websocket-client               0.58.0
-Werkzeug                       2.0.3
-wheel                          0.37.1
-widgetsnbextension             3.5.2
-wrapt                          1.12.1
-wurlitzer                      3.0.2
-xarray                         0.20.1
-xlrd                           2.0.1
-XlsxWriter                     3.0.3
-xlwings                        0.24.9
-yapf                           0.31.0
-yarl                           1.6.3
-zict                           2.0.0
-zipp                           3.7.0
-zope.interface                 5.4.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Package                       Version
+----------------------------- --------------
+accessible-pygments           0.0.5
+alabaster                     0.7.16
+anyio                         4.4.0
+appnope                       0.1.4
+argon2-cffi                   23.1.0
+argon2-cffi-bindings          21.2.0
+arrow                         1.3.0
+asttokens                     2.4.1
+async-lru                     2.0.4
+attrs                         23.2.0
+Babel                         2.14.0
+beautifulsoup4                4.12.3
+black                         21.12b0
+blackcellmagic                0.0.3
+bleach                        6.1.0
+bokeh                         3.4.2
+Brotli                        1.1.0
+cached-property               1.5.2
+certifi                       2024.7.4
+cffi                          1.16.0
+charset-normalizer            3.3.2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>click                         8.1.7
+colorama                      0.4.6
+colorcet                      3.1.0
+comm                          0.2.2
+completejourney-py            0.0.3
+contourpy                     1.2.1
+cycler                        0.12.1
+dataclasses                   0.8
+debugpy                       1.8.2
+decorator                     5.1.1
+defusedxml                    0.7.1
+docutils                      0.20.1
+entrypoints                   0.4
+et-xmlfile                    1.1.0
+exceptiongroup                1.2.0
+executing                     2.0.1
+fastjsonschema                2.20.0
+fonttools                     4.53.1
+fqdn                          1.5.1
+ghp-import                    2.1.0
+greenlet                      3.0.3
+h11                           0.14.0
+h2                            4.1.0
+hpack                         4.0.0
+httpcore                      1.0.5
+httpx                         0.27.0
+hyperframe                    6.0.1
+idna                          3.7
+imagesize                     1.4.1
+importlib_metadata            8.0.0
+importlib_resources           6.4.0
+ipykernel                     6.29.5
+ipython                       8.26.0
+ipywidgets                    8.1.3
+iqplot                        0.3.6
+isoduration                   20.11.0
+jedi                          0.19.1
+Jinja2                        3.1.4
+joblib                        1.4.2
+json5                         0.9.25
+jsonpointer                   3.0.0
+jsonschema                    4.23.0
+jsonschema-specifications     2023.12.1
+jupyter                       1.0.0
+jupyter_bokeh                 4.0.5
+jupyter-book                  1.0.2
+jupyter-cache                 1.0.0
+jupyter_client                8.6.2
+jupyter-console               6.6.3
+jupyter_core                  5.7.2
+jupyter-events                0.10.0
+jupyter-lsp                   2.2.5
+jupyter_server                2.14.1
+jupyter_server_terminals      0.5.3
+jupyterlab                    4.2.3
+jupyterlab_pygments           0.3.0
+jupyterlab_server             2.27.2
+jupyterlab-spellchecker       0.8.4
+jupyterlab_widgets            3.0.11
+kiwisolver                    1.4.5
+latexcodec                    2.0.1
+linkify-it-py                 2.0.3
+markdown-it-py                3.0.0
+MarkupSafe                    2.1.5
+matplotlib                    3.8.4
+matplotlib-inline             0.1.7
+mdit-py-plugins               0.4.1
+mdurl                         0.1.2
+mistune                       3.0.2
+munkres                       1.1.4
+mypy-extensions               1.0.0
+myst-nb                       1.1.1
+myst-parser                   2.0.0
+nbclient                      0.10.0
+nbconvert                     7.16.4
+nbformat                      5.10.4
+nest_asyncio                  1.6.0
+notebook                      7.2.1
+notebook_shim                 0.2.4
+numpy                         2.0.0
+openpyxl                      3.1.2
+overrides                     7.7.0
+packaging                     24.1
+pandas                        2.2.2
+pandocfilters                 1.5.0
+parso                         0.8.4
+pathspec                      0.12.1
+patsy                         0.5.6
+pexpect                       4.9.0
+pickleshare                   0.7.5
+pillow                        10.4.0
+pip                           24.0
+pkgutil_resolve_name          1.3.10
+platformdirs                  4.2.2
+plotly                        5.22.0
+prometheus_client             0.20.0
+prompt_toolkit                3.0.47
+psutil                        6.0.0
+ptyprocess                    0.7.0
+pure-eval                     0.2.2
+pyarrow                       16.1.0
+pybtex                        0.24.0
+pybtex-docutils               1.0.3
+pycparser                     2.22
+pydata-sphinx-theme           0.15.4
+Pygments                      2.18.0
+pyobjc-core                   10.3.1
+pyobjc-framework-Cocoa        10.3.1
+pyparsing                     3.1.2
+PySocks                       1.7.1
+python-dateutil               2.9.0
+python-json-logger            2.0.7
+pytz                          2024.1
+PyYAML                        6.0.1
+pyzmq                         26.0.3
+qtconsole                     5.5.2
+QtPy                          2.4.1
+referencing                   0.35.1
+requests                      2.32.3
+rfc3339-validator             0.1.4
+rfc3986-validator             0.1.1
+rpds-py                       0.19.0
+scikit-learn                  1.5.1
+scipy                         1.14.0
+seaborn                       0.13.2
+Send2Trash                    1.8.3
+setuptools                    70.1.1
+six                           1.16.0
+sniffio                       1.3.1
+snowballstemmer               2.2.0
+soupsieve                     2.5
+Sphinx                        7.3.7
+sphinx-book-theme             1.1.3
+sphinx-comments               0.0.3
+sphinx-copybutton             0.5.2
+sphinx_design                 0.6.0
+sphinx_external_toc           1.0.1
+sphinx-jupyterbook-latex      1.0.0
+sphinx-multitoc-numbering     0.1.3
+sphinx-thebe                  0.3.1
+sphinx-togglebutton           0.3.2
+sphinxcontrib-applehelp       1.0.8
+sphinxcontrib-bibtex          2.6.2
+sphinxcontrib-devhelp         1.0.6
+sphinxcontrib-htmlhelp        2.0.5
+sphinxcontrib-jsmath          1.0.1
+sphinxcontrib-qthelp          1.0.7
+sphinxcontrib-serializinghtml 1.1.10
+SQLAlchemy                    2.0.31
+stack-data                    0.6.2
+statsmodels                   0.14.2
+tabulate                      0.9.0
+tenacity                      8.2.2
+terminado                     0.18.1
+threadpoolctl                 3.5.0
+tinycss2                      1.3.0
+tomli                         1.2.3
+tornado                       6.4.1
+traitlets                     5.14.3
+types-python-dateutil         2.9.0.20240316
+typing_extensions             4.12.2
+typing-utils                  0.1.0
+tzdata                        2024.1
+uc-micro-py                   1.0.3
+uri-template                  1.3.0
+urllib3                       2.2.2
+watermark                     2.4.3
+wcwidth                       0.2.13
+webcolors                     24.6.0
+webencodings                  0.5.1
+websocket-client              1.8.0
+wheel                         0.43.0
+widgetsnbextension            4.0.11
+xarray                        2024.6.0
+xyzservices                   2024.6.0
+zipp                          3.19.2
+zstandard                     0.22.0
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Note: you may need to restart the kernel to use updated packages.
@@ -1116,14 +735,11 @@ zope.interface                 5.4.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/Users/b294776/Desktop/workspace/training/UC/uc-bana-6043/book/02-module&#39;,
- &#39;/opt/anaconda3/lib/python39.zip&#39;,
- &#39;/opt/anaconda3/lib/python3.9&#39;,
- &#39;/opt/anaconda3/lib/python3.9/lib-dynload&#39;,
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;/opt/anaconda3/envs/bana6043/lib/python312.zip&#39;,
+ &#39;/opt/anaconda3/envs/bana6043/lib/python3.12&#39;,
+ &#39;/opt/anaconda3/envs/bana6043/lib/python3.12/lib-dynload&#39;,
  &#39;&#39;,
- &#39;/opt/anaconda3/lib/python3.9/site-packages&#39;,
- &#39;/opt/anaconda3/lib/python3.9/site-packages/aeosa&#39;,
- &#39;/Users/b294776/Desktop/workspace/packages/dynamic-positioner/src&#39;]
+ &#39;/opt/anaconda3/envs/bana6043/lib/python3.12/site-packages&#39;]
 </pre></div>
 </div>
 </div>
@@ -1149,16 +765,16 @@ zope.interface                 5.4.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="importing">
-<h2>Importing<a class="headerlink" href="#importing" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="importing">
+<h2>Importing<a class="headerlink" href="#importing" title="Link to this heading">#</a></h2>
 <p>In the code above you saw the <code class="docutils literal notranslate"><span class="pre">import</span></code> statement. The <code class="docutils literal notranslate"><span class="pre">import</span></code> statement allows us to import code from another module. There are a few ways to use the statement, which we will mention briefly here, from most recommended to least recommended.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TC7xw7s1LlQ?si=g5qTuSproeXnFheq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-<div class="section" id="explicit-module-import">
-<h3>Explicit module import<a class="headerlink" href="#explicit-module-import" title="Permalink to this headline">¶</a></h3>
+<section id="explicit-module-import">
+<h3>Explicit module import<a class="headerlink" href="#explicit-module-import" title="Link to this heading">#</a></h3>
 <p>Explicit import of a module preserves the module’s content in a namespace. The namespace is then used to refer to its contents with a dot (“.”) between them.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1180,9 +796,9 @@ zope.interface                 5.4.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explicit-module-import-by-alias">
-<h3>Explicit module import by alias<a class="headerlink" href="#explicit-module-import-by-alias" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="explicit-module-import-by-alias">
+<h3>Explicit module import by alias<a class="headerlink" href="#explicit-module-import-by-alias" title="Link to this heading">#</a></h3>
 <p>For longer module names, it’s not convenient to use the full module name each time you access some element. For this reason, we’ll commonly use the <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">...</span> <span class="pre">as</span> <span class="pre">...</span></code> pattern to create a shorter <em>alias</em> for the namespace. For example, the NumPy (Numerical Python) package, a popular third-party package useful for data science, is by convention imported under the alias <code class="docutils literal notranslate"><span class="pre">np</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1194,14 +810,14 @@ zope.interface                 5.4.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-1.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(-1.0)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="explicit-import-of-module-contents">
-<h3>Explicit import of module contents<a class="headerlink" href="#explicit-import-of-module-contents" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="explicit-import-of-module-contents">
+<h3>Explicit import of module contents<a class="headerlink" href="#explicit-import-of-module-contents" title="Link to this heading">#</a></h3>
 <p>Sometimes rather than importing the module namespace, you would just like to import a few particular items from the module. This can be done with the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">...</span></code> pattern. For example, we can import just the <code class="docutils literal notranslate"><span class="pre">cos</span></code> function and the <code class="docutils literal notranslate"><span class="pre">pi</span></code> constant from the math module:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1218,9 +834,9 @@ zope.interface                 5.4.0
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="implicit-import-of-module-contents">
-<h3>Implicit import of module contents<a class="headerlink" href="#implicit-import-of-module-contents" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="implicit-import-of-module-contents">
+<h3>Implicit import of module contents<a class="headerlink" href="#implicit-import-of-module-contents" title="Link to this heading">#</a></h3>
 <p>Finally, it is sometimes useful to import the entirety of the module contents into the local namespace. This can be done with the <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">...</span> <span class="pre">import</span> <span class="pre">*</span></code> pattern:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1264,7 +880,7 @@ zope.interface                 5.4.0
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.int64(10)
 </pre></div>
 </div>
 </div>
@@ -1274,10 +890,10 @@ zope.interface                 5.4.0
 <p class="admonition-title">Tip</p>
 <p>Implicit module importing is generally frowned upon and in this class I expect you to use one of the three explicit importing approaches</p>
 </div>
-</div>
-</div>
-<div class="section" id="standard-library">
-<h2>Standard library<a class="headerlink" href="#standard-library" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="standard-library">
+<h2>Standard library<a class="headerlink" href="#standard-library" title="Link to this heading">#</a></h2>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VcGC2MCxtuQ?si=DvI7cffFtohNJq3Z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1323,31 +939,31 @@ To use the tools in <code class="docutils literal notranslate"><span class="pre"
 </div>
 </div>
 </div>
-<div class="section" id="knowledge-check">
-<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<section id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Questions:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Go to the standard library documentation and read about the <code class="docutils literal notranslate"><span class="pre">random</span></code> library.</p></li>
 <li><p>Identify the function that will allow you to generate random integers.</p></li>
 <li><p>Import this function from the <code class="docutils literal notranslate"><span class="pre">random</span></code> package.</p></li>
 <li><p>Generate a random integer between the values 0-10.</p></li>
 </ol>
 </div>
-</div>
-</div>
-<div class="section" id="third-party-modules">
-<h2>Third-party modules<a class="headerlink" href="#third-party-modules" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="third-party-modules">
+<h2>Third-party modules<a class="headerlink" href="#third-party-modules" title="Link to this heading">#</a></h2>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/92g6VoMOXgU?si=SK8whKIEVuXWXzzH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 <p>One of the things that makes Python useful, especially within the world of data science, is its ecosystem of third-party modules. These can be imported just as the built-in modules, but first the modules must be installed on your system. As previously mentioned, <a class="reference external" href="https://pypi.org/">Python Package Index</a> (PyPI for short) and <a class="reference external" href="https://anaconda.org/anaconda/repo">Anaconda</a> are the two primary public package managers for Python.  To install packages from these locations we just use the following:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># install from PyPI</span>
-pip install pkg_name
+pip<span class="w"> </span>install<span class="w"> </span>pkg_name
 
 <span class="c1"># install from Anaconda</span>
-conda install pkg_name
+conda<span class="w"> </span>install<span class="w"> </span>pkg_name
 </pre></div>
 </div>
 <div class="admonition note">
@@ -1355,8 +971,8 @@ conda install pkg_name
 <p>There are currently (May 1, 2022) about 370,000 packages available through the Python Package Index, PyPI. Usually, you can ask Google about what you are trying to do, and there is often a third party module to help you do it. The most useful (for scientific computing) and thoroughly tested packages and modules are available using <code class="docutils literal notranslate"><span class="pre">conda</span></code>. Others can be installed using <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 </div>
 <p>We will extensively use the Numpy, SciPy, Pandas, and Bokeh packages, among others, in this class, and I’m sure you will also use them beyond. Let’s look at some examples of these third party packages to give you a flavor of what they do. Don’t worry, we’ll go into some of these more thoroughly in later lessons!</p>
-<div class="section" id="numpy">
-<h3>NumPy<a class="headerlink" href="#numpy" title="Permalink to this headline">¶</a></h3>
+<section id="numpy">
+<h3>NumPy<a class="headerlink" href="#numpy" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://numpy.org/">NumPy</a> provides an efficient way to store and manipulate multi-dimensional dense arrays in Python. The important features of NumPy are:</p>
 <ul class="simple">
 <li><p>It provides an ndarray structure, which allows efficient storage and manipulation of vectors, matrices, and higher-dimensional datasets.</p></li>
@@ -1408,7 +1024,7 @@ conda install pkg_name
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [14],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">14</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">x_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># not supported</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">x_list</span> <span class="o">**</span> <span class="mi">2</span>
@@ -1510,9 +1126,9 @@ conda install pkg_name
 <p class="admonition-title">Note</p>
 <p>Such linear algebraic manipulation underpins much of modern data analysis, particularly when it comes to the fields of machine learning and data mining.</p>
 </div>
-</div>
-<div class="section" id="pandas">
-<h3>Pandas<a class="headerlink" href="#pandas" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="pandas">
+<h3>Pandas<a class="headerlink" href="#pandas" title="Link to this heading">#</a></h3>
 <p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> is a much newer package than Numpy, and is in fact built on top of it. What Pandas provides is a labeled interface to multi-dimensional data, in the form of a DataFrame object that will feel very familiar to users of R and related languages. DataFrames in Pandas look something like the following.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1638,9 +1254,9 @@ Name: label, dtype: object
 <p class="admonition-title">Note</p>
 <p>In future lessons we will go much deeper into Pandas and you’ll also see a large dependency on using Pandas as we start exploring other parts of the statistical computing ecosystem (i.e. visualization, machine learning).</p>
 </div>
-</div>
-<div class="section" id="matplotlib">
-<h3>Matplotlib<a class="headerlink" href="#matplotlib" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="matplotlib">
+<h3>Matplotlib<a class="headerlink" href="#matplotlib" title="Link to this heading">#</a></h3>
 <p>Matplotlib is currently the most popular scientific visualization packages in Python. Even proponents admit that its interface is sometimes overly verbose, but it is a powerful library for creating a large range of plots.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1665,7 +1281,7 @@ Name: label, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-2a_66_0.png" src="../_images/lesson-2a_66_0.png" />
+<img alt="../_images/dc57857affa6fb90f50d6eb8ee4e40412b88d10f5fe85b58fdc0e5bc007f31c0.png" src="../_images/dc57857affa6fb90f50d6eb8ee4e40412b88d10f5fe85b58fdc0e5bc007f31c0.png" />
 </div>
 </div>
 <p>This is the simplest example of a Matplotlib plot; for ideas on the wide range of plot types available, see <a class="reference external" href="https://matplotlib.org/gallery.html">Matplotlib’s online gallery</a>.</p>
@@ -1673,9 +1289,9 @@ Name: label, dtype: object
 <p class="admonition-title">Note</p>
 <p>Although you’ll be exposed to some Matplotlib throughout this course, we will tend to focus on other third-party visualization packages that are simpler to use.</p>
 </div>
-</div>
-<div class="section" id="scipy">
-<h3>SciPy<a class="headerlink" href="#scipy" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="scipy">
+<h3>SciPy<a class="headerlink" href="#scipy" title="Link to this heading">#</a></h3>
 <p><strong><a class="reference external" href="https://scipy.org/">SciPy</a></strong> is a collection of scientific functionality that is built on Numpy. The package began as a set of Python wrappers to well-known Fortran libraries for numerical computing, and has grown from there. The package is arranged as a set of submodules, each implementing some class of numerical algorithms. Here is an incomplete sample of some of the more important ones for data science:</p>
 <ul class="simple">
 <li><p>scipy.fftpack: Fast Fourier transforms</p></li>
@@ -1710,38 +1326,44 @@ Name: label, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-2a_69_0.png" src="../_images/lesson-2a_69_0.png" />
+<img alt="../_images/a44737fa022939f09c8c7386d3dc019f2f3e19d3f7d256cb256f874d9a34369f.png" src="../_images/a44737fa022939f09c8c7386d3dc019f2f3e19d3f7d256cb256f874d9a34369f.png" />
 </div>
 </div>
 <p>What we see is a smooth interpolation between the points.</p>
-</div>
-<div class="section" id="other-data-science-packages">
-<h3>Other Data Science Packages<a class="headerlink" href="#other-data-science-packages" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-data-science-packages">
+<h3>Other Data Science Packages<a class="headerlink" href="#other-data-science-packages" title="Link to this heading">#</a></h3>
 <p>Built on top of these tools are a host of other data science packages, including general tools like <a class="reference external" href="http://scikit-learn.org/">Scikit-Learn</a> for machine learning, <a class="reference external" href="http://scikit-image.org/">Scikit-Image</a> for image analysis, <a class="reference external" href="https://seaborn.pydata.org/">Seaborn</a> for statistical visualization, and <a class="reference external" href="http://statsmodels.sourceforge.net/">Statsmodels</a> for statistical modeling; as well as more domain-specific packages like <a class="reference external" href="http://astropy.org/">AstroPy</a> for astronomy and astrophysics, <a class="reference external" href="http://nipy.org/">NiPy</a> for neuro-imaging, and many, many more.</p>
 <p>No matter what type of scientific, numerical, or statistical problem you are facing, it’s likely there is a Python package out there that can help you solve it.</p>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Spend some time familiarizing yourself with the <a class="reference external" href="https://pandas.pydata.org/">Pandas documentation</a>.</p></li>
 <li><p>Watch the Pandas in 10 minutes video on the <a class="reference external" href="https://pandas.pydata.org/getting_started.html">Getting Started</a> page.</p></li>
 <li><p>Read <a class="reference external" href="https://community.ibm.com/community/user/datascience/blogs/paco-nathan/2019/03/12/a-landscape-diagram-for-python-data">A landscape diagram for Python data</a></p></li>
 <li><p>Read <a class="reference external" href="https://builtin.com/data-science/python-libraries-data-science">20 Python Libraries Every Data Scientist Needs to Know</a></p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="computing-environment">
-<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
 <span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,numpy,pandas,matplotlib,scipy
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
 Python version       : 3.9.4
@@ -1756,8 +1378,8 @@ scipy     : 1.7.1
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1771,7 +1393,7 @@ scipy     : 1.7.1
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./02-module"
         },
         predefinedOutput: true
@@ -1779,44 +1401,125 @@ scipy     : 1.7.1
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overview</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="lesson-2b.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="lesson-2b.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lesson 2b: Importing data</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Bradley C. Boehmke<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing">Importing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-module-import">Explicit module import</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-module-import-by-alias">Explicit module import by alias</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#explicit-import-of-module-contents">Explicit import of module contents</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implicit-import-of-module-contents">Implicit import of module contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-library">Standard library</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#third-party-modules">Third-party modules</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy">NumPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas">Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib">Matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy">SciPy</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-data-science-packages">Other Data Science Packages</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bradley C. Boehmke
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

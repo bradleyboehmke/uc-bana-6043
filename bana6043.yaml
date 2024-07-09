@@ -11,6 +11,7 @@ dependencies:
   - jupyter_bokeh
   - matplotlib
   - numpy
+  - openpyxl
   - pandas
   - scipy
   - seaborn

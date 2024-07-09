@@ -1,540 +1,472 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Lesson 7a: Data Exploration &#8212; UC BANA 6043 Statistical Computing</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '07-module/lesson-7a';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lesson 7b: First model with scikit-learn" href="lesson-7b.html" />
     <link rel="prev" title="Overview" href="overview.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Statistical Computing
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Module 0 (Pre-class)
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="UC BANA 6043 Statistical Computing - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="UC BANA 6043 Statistical Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 0 (Pre-class)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00-module/lesson-0b.html">
-   Lesson 0: Configuring your computer
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../00-module/lesson-0b.html">Lesson 0: Configuring your computer</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1a.html">
-   Lesson 1a: Introduction to JupyterLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators &amp; types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators &amp; conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1d.html">
-   Lesson 1d: Data structures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1a.html">Lesson 1a: Introduction to JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1b.html">Lesson 1b: Variables, operators &amp; types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1c.html">Lesson 1c: More operators &amp; conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1d.html">Lesson 1d: Data structures</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2a.html">
-   Lesson 2a: Packages, libraries &amp; modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2b.html">
-   Lesson 2b: Importing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2c.html">
-   Lesson 2c: Deeper dive on DataFrames
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2a.html">Lesson 2a: Packages, libraries &amp; modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2b.html">Lesson 2b: Importing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2c.html">Lesson 2c: Deeper dive on DataFrames</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3a.html">
-   Lesson 3a: Subsetting data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3b.html">
-   Lesson 3b: Manipulating data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3c.html">
-   Lesson 3c: Summarizing data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3a.html">Lesson 3a: Subsetting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3b.html">Lesson 3b: Manipulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3c.html">Lesson 3c: Summarizing data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4a.html">
-   Lession 4a: Tidy data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4b.html">
-   Lesson 4b: Relational data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4c.html">
-   Lesson 4c: Handling text data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4a.html">Lession 4a: Tidy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4b.html">Lesson 4b: Relational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4c.html">Lesson 4c: Handling text data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5a.html">
-   Lession 5a: Plotting with Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5b.html">
-   Lesson 5b: Plotting with Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5c.html">
-   Lesson 5c: Plotting with Bokeh
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5a.html">Lession 5a: Plotting with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5b.html">Lesson 5b: Plotting with Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5c.html">Lesson 5c: Plotting with Bokeh</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6a.html">
-   Lession 6a: Conditional statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6b.html">
-   Lesson 6b: Iteration statement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6c.html">
-   Lesson 6C: Writing functions
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6a.html">Lession 6a: Conditional statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6b.html">Lesson 6b: Iteration statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6c.html">Lesson 6C: Writing functions</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 7</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lesson 7a: Data Exploration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-7b.html">
-   Lesson 7b: First model with scikit-learn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-7c.html">
-   Lesson 7c: Feature Engineering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-7d.html">
-   Lesson 7d: Model Evaluation &amp; Selection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 7a: Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-7b.html">Lesson 7b: First model with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-7c.html">Lesson 7c: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-7d.html">Lesson 7d: Model Evaluation &amp; Selection</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/07-module/lesson-7a.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F07-module/lesson-7a.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/07-module/lesson-7a.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/07-module/lesson-7a.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F07-module/lesson-7a.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/07-module/lesson-7a.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/07-module/lesson-7a.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson 7a: Data Exploration</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-the-adult-census-dataset">
-   Loading the adult census dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#response-variable">
-   Response variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features">
-   Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-inspection-of-the-data">
-   Visual inspection of the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-decision-rules-by-hand">
-   Creating decision rules by hand
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unbiased-decision-rules">
-   Unbiased decision rules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-adult-census-dataset">Loading the adult census dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-variable">Response variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-inspection-of-the-data">Visual inspection of the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-decision-rules-by-hand">Creating decision rules by hand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-decision-rules">Unbiased decision rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 7a: Data Exploration</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-the-adult-census-dataset">
-   Loading the adult census dataset
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#response-variable">
-   Response variable
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#features">
-   Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visual-inspection-of-the-data">
-   Visual inspection of the data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#creating-decision-rules-by-hand">
-   Creating decision rules by hand
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unbiased-decision-rules">
-   Unbiased decision rules
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-7a-data-exploration">
-<h1>Lesson 7a: Data Exploration<a class="headerlink" href="#lesson-7a-data-exploration" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-7a-data-exploration">
+<h1>Lesson 7a: Data Exploration<a class="headerlink" href="#lesson-7a-data-exploration" title="Link to this heading">#</a></h1>
 <p>In this lesson, we will look at the necessary steps required before any machine learning takes place, which involves:</p>
 <ul class="simple">
 <li><p>loading the data;</p></li>
@@ -545,16 +477,16 @@ preprocessing in most machine learning workflows;</p></li>
 the dataset.</p></li>
 </ul>
 <p>Although this stage can take significant time, this notebook will just provide a small sampling of considerations we should make prior to modeling.</p>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lesson you’ll be able to:</p>
 <ul class="simple">
 <li><p>Differentiate between numerical and categorical variables within your dataset.</p></li>
 <li><p>Perform visual inspection of your variables and their distributions.</p></li>
 </ul>
-</div>
-<div class="section" id="loading-the-adult-census-dataset">
-<h2>Loading the adult census dataset<a class="headerlink" href="#loading-the-adult-census-dataset" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="loading-the-adult-census-dataset">
+<h2>Loading the adult census dataset<a class="headerlink" href="#loading-the-adult-census-dataset" title="Link to this heading">#</a></h2>
 <p>We will use data from the 1994 US census that we downloaded from
 <a class="reference external" href="http://openml.org/">OpenML</a>.</p>
 <p>You can look at the OpenML webpage to learn more about this dataset:
@@ -576,9 +508,9 @@ use pandas to read it.</p>
 based on heterogeneous data such as age, employment, education, family
 information, etc.</p>
 </div>
-</div>
-<div class="section" id="response-variable">
-<h2>Response variable<a class="headerlink" href="#response-variable" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="response-variable">
+<h2>Response variable<a class="headerlink" href="#response-variable" title="Link to this heading">#</a></h2>
 <p>The column named <code class="docutils literal notranslate"><span class="pre">class</span></code> is our target variable (i.e., the variable which we want to predict).</p>
 <p>The two possible classes are &lt;=50K (low-revenue) and &gt;50K (high-revenue).</p>
 <p>Consequently, this is called a <em>binary classification</em> problem.</p>
@@ -590,9 +522,10 @@ information, etc.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> &lt;=50K    37155
- &gt;50K     11687
-Name: class, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class
+&lt;=50K    37155
+&gt;50K     11687
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -603,9 +536,9 @@ Name: class, dtype: int64
 more classes compared to others. Class imbalance happens often in practice
 and may need special techniques when building a predictive model.</p>
 </div>
-</div>
-<div class="section" id="features">
-<h2>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="features">
+<h2>Features<a class="headerlink" href="#features" title="Link to this heading">#</a></h2>
 <p>The other columns represent pieces of information (aka “features”) that may be useful in predicting the response variable.</p>
 <p>In the field of machine learning and descriptive
 statistics, commonly used equivalent terms are “variable”, “attribute”, or
@@ -763,9 +696,9 @@ Categorical features: workclass, education, marital-status, occupation, relation
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="visual-inspection-of-the-data">
-<h2>Visual inspection of the data<a class="headerlink" href="#visual-inspection-of-the-data" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="visual-inspection-of-the-data">
+<h2>Visual inspection of the data<a class="headerlink" href="#visual-inspection-of-the-data" title="Link to this heading">#</a></h2>
 <p>Before building a predictive model, it is a good idea to look at the data:</p>
 <ul class="simple">
 <li><p>maybe the task you are trying to achieve can be solved without machine
@@ -786,7 +719,7 @@ capped values);</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-7a_12_0.png" src="../_images/lesson-7a_12_0.png" />
+<img alt="../_images/adac16522be8ae1d11c04346c8454d02e1d3cb74691f995e3f155d48663233a9.png" src="../_images/adac16522be8ae1d11c04346c8454d02e1d3cb74691f995e3f155d48663233a9.png" />
 </div>
 </div>
 <p>We can already make a few comments about some of the variables:</p>
@@ -808,9 +741,10 @@ working hours at the time of the data collection;</p></li>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> Male      32650
- Female    16192
-Name: sex, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sex
+Male      32650
+Female    16192
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -824,23 +758,24 @@ Name: sex, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> HS-grad         15784
- Some-college    10878
- Bachelors        8025
- Masters          2657
- Assoc-voc        2061
- 11th             1812
- Assoc-acdm       1601
- 10th             1389
- 7th-8th           955
- Prof-school       834
- 9th               756
- 12th              657
- Doctorate         594
- 5th-6th           509
- 1st-4th           247
- Preschool          83
-Name: education, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>education
+HS-grad         15784
+Some-college    10878
+Bachelors        8025
+Masters          2657
+Assoc-voc        2061
+11th             1812
+Assoc-acdm       1601
+10th             1389
+7th-8th           955
+Prof-school       834
+9th               756
+12th              657
+Doctorate         594
+5th-6th           509
+1st-4th           247
+Preschool          83
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1242,118 +1177,118 @@ without losing information.</p>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><style type="text/css">
-#T_963d9_row0_col0, #T_963d9_row1_col1, #T_963d9_row2_col2, #T_963d9_row3_col3, #T_963d9_row4_col4 {
+#T_2eb94_row0_col0, #T_2eb94_row1_col1, #T_2eb94_row2_col2, #T_2eb94_row3_col3, #T_2eb94_row4_col4 {
   background-color: #b40426;
   color: #f1f1f1;
 }
-#T_963d9_row0_col1, #T_963d9_row1_col0, #T_963d9_row2_col3, #T_963d9_row3_col2, #T_963d9_row3_col4 {
+#T_2eb94_row0_col1, #T_2eb94_row1_col0, #T_2eb94_row2_col3, #T_2eb94_row3_col2, #T_2eb94_row3_col4 {
   background-color: #3b4cc0;
   color: #f1f1f1;
 }
-#T_963d9_row0_col2 {
+#T_2eb94_row0_col2 {
   background-color: #5a78e4;
   color: #f1f1f1;
 }
-#T_963d9_row0_col3, #T_963d9_row4_col3 {
+#T_2eb94_row0_col3, #T_2eb94_row4_col3 {
   background-color: #5470de;
   color: #f1f1f1;
 }
-#T_963d9_row0_col4 {
+#T_2eb94_row0_col4 {
   background-color: #3f53c6;
   color: #f1f1f1;
 }
-#T_963d9_row1_col2 {
+#T_2eb94_row1_col2 {
   background-color: #6a8bef;
   color: #f1f1f1;
 }
-#T_963d9_row1_col3 {
+#T_2eb94_row1_col3 {
   background-color: #5b7ae5;
   color: #f1f1f1;
 }
-#T_963d9_row1_col4, #T_963d9_row2_col1 {
+#T_2eb94_row1_col4, #T_2eb94_row2_col1 {
   background-color: #5875e1;
   color: #f1f1f1;
 }
-#T_963d9_row2_col0 {
+#T_2eb94_row2_col0 {
   background-color: #4961d2;
   color: #f1f1f1;
 }
-#T_963d9_row2_col4 {
+#T_2eb94_row2_col4 {
   background-color: #4358cb;
   color: #f1f1f1;
 }
-#T_963d9_row3_col0 {
+#T_2eb94_row3_col0 {
   background-color: #4257c9;
   color: #f1f1f1;
 }
-#T_963d9_row3_col1 {
+#T_2eb94_row3_col1 {
   background-color: #4a63d3;
   color: #f1f1f1;
 }
-#T_963d9_row4_col0 {
+#T_2eb94_row4_col0 {
   background-color: #465ecf;
   color: #f1f1f1;
 }
-#T_963d9_row4_col1 {
+#T_2eb94_row4_col1 {
   background-color: #5e7de7;
   color: #f1f1f1;
 }
-#T_963d9_row4_col2 {
+#T_2eb94_row4_col2 {
   background-color: #5d7ce6;
   color: #f1f1f1;
 }
 </style>
-<table id="T_963d9">
+<table id="T_2eb94">
   <thead>
     <tr>
       <th class="blank level0" >&nbsp;</th>
-      <th id="T_963d9_level0_col0" class="col_heading level0 col0" >age</th>
-      <th id="T_963d9_level0_col1" class="col_heading level0 col1" >education-num</th>
-      <th id="T_963d9_level0_col2" class="col_heading level0 col2" >capital-gain</th>
-      <th id="T_963d9_level0_col3" class="col_heading level0 col3" >capital-loss</th>
-      <th id="T_963d9_level0_col4" class="col_heading level0 col4" >hours-per-week</th>
+      <th id="T_2eb94_level0_col0" class="col_heading level0 col0" >age</th>
+      <th id="T_2eb94_level0_col1" class="col_heading level0 col1" >education-num</th>
+      <th id="T_2eb94_level0_col2" class="col_heading level0 col2" >capital-gain</th>
+      <th id="T_2eb94_level0_col3" class="col_heading level0 col3" >capital-loss</th>
+      <th id="T_2eb94_level0_col4" class="col_heading level0 col4" >hours-per-week</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th id="T_963d9_level0_row0" class="row_heading level0 row0" >age</th>
-      <td id="T_963d9_row0_col0" class="data row0 col0" >1.000000</td>
-      <td id="T_963d9_row0_col1" class="data row0 col1" >0.030940</td>
-      <td id="T_963d9_row0_col2" class="data row0 col2" >0.077229</td>
-      <td id="T_963d9_row0_col3" class="data row0 col3" >0.056944</td>
-      <td id="T_963d9_row0_col4" class="data row0 col4" >0.071558</td>
+      <th id="T_2eb94_level0_row0" class="row_heading level0 row0" >age</th>
+      <td id="T_2eb94_row0_col0" class="data row0 col0" >1.000000</td>
+      <td id="T_2eb94_row0_col1" class="data row0 col1" >0.030940</td>
+      <td id="T_2eb94_row0_col2" class="data row0 col2" >0.077229</td>
+      <td id="T_2eb94_row0_col3" class="data row0 col3" >0.056944</td>
+      <td id="T_2eb94_row0_col4" class="data row0 col4" >0.071558</td>
     </tr>
     <tr>
-      <th id="T_963d9_level0_row1" class="row_heading level0 row1" >education-num</th>
-      <td id="T_963d9_row1_col0" class="data row1 col0" >0.030940</td>
-      <td id="T_963d9_row1_col1" class="data row1 col1" >1.000000</td>
-      <td id="T_963d9_row1_col2" class="data row1 col2" >0.125146</td>
-      <td id="T_963d9_row1_col3" class="data row1 col3" >0.080972</td>
-      <td id="T_963d9_row1_col4" class="data row1 col4" >0.143689</td>
+      <th id="T_2eb94_level0_row1" class="row_heading level0 row1" >education-num</th>
+      <td id="T_2eb94_row1_col0" class="data row1 col0" >0.030940</td>
+      <td id="T_2eb94_row1_col1" class="data row1 col1" >1.000000</td>
+      <td id="T_2eb94_row1_col2" class="data row1 col2" >0.125146</td>
+      <td id="T_2eb94_row1_col3" class="data row1 col3" >0.080972</td>
+      <td id="T_2eb94_row1_col4" class="data row1 col4" >0.143689</td>
     </tr>
     <tr>
-      <th id="T_963d9_level0_row2" class="row_heading level0 row2" >capital-gain</th>
-      <td id="T_963d9_row2_col0" class="data row2 col0" >0.077229</td>
-      <td id="T_963d9_row2_col1" class="data row2 col1" >0.125146</td>
-      <td id="T_963d9_row2_col2" class="data row2 col2" >1.000000</td>
-      <td id="T_963d9_row2_col3" class="data row2 col3" >-0.031441</td>
-      <td id="T_963d9_row2_col4" class="data row2 col4" >0.082157</td>
+      <th id="T_2eb94_level0_row2" class="row_heading level0 row2" >capital-gain</th>
+      <td id="T_2eb94_row2_col0" class="data row2 col0" >0.077229</td>
+      <td id="T_2eb94_row2_col1" class="data row2 col1" >0.125146</td>
+      <td id="T_2eb94_row2_col2" class="data row2 col2" >1.000000</td>
+      <td id="T_2eb94_row2_col3" class="data row2 col3" >-0.031441</td>
+      <td id="T_2eb94_row2_col4" class="data row2 col4" >0.082157</td>
     </tr>
     <tr>
-      <th id="T_963d9_level0_row3" class="row_heading level0 row3" >capital-loss</th>
-      <td id="T_963d9_row3_col0" class="data row3 col0" >0.056944</td>
-      <td id="T_963d9_row3_col1" class="data row3 col1" >0.080972</td>
-      <td id="T_963d9_row3_col2" class="data row3 col2" >-0.031441</td>
-      <td id="T_963d9_row3_col3" class="data row3 col3" >1.000000</td>
-      <td id="T_963d9_row3_col4" class="data row3 col4" >0.054467</td>
+      <th id="T_2eb94_level0_row3" class="row_heading level0 row3" >capital-loss</th>
+      <td id="T_2eb94_row3_col0" class="data row3 col0" >0.056944</td>
+      <td id="T_2eb94_row3_col1" class="data row3 col1" >0.080972</td>
+      <td id="T_2eb94_row3_col2" class="data row3 col2" >-0.031441</td>
+      <td id="T_2eb94_row3_col3" class="data row3 col3" >1.000000</td>
+      <td id="T_2eb94_row3_col4" class="data row3 col4" >0.054467</td>
     </tr>
     <tr>
-      <th id="T_963d9_level0_row4" class="row_heading level0 row4" >hours-per-week</th>
-      <td id="T_963d9_row4_col0" class="data row4 col0" >0.071558</td>
-      <td id="T_963d9_row4_col1" class="data row4 col1" >0.143689</td>
-      <td id="T_963d9_row4_col2" class="data row4 col2" >0.082157</td>
-      <td id="T_963d9_row4_col3" class="data row4 col3" >0.054467</td>
-      <td id="T_963d9_row4_col4" class="data row4 col4" >1.000000</td>
+      <th id="T_2eb94_level0_row4" class="row_heading level0 row4" >hours-per-week</th>
+      <td id="T_2eb94_row4_col0" class="data row4 col0" >0.071558</td>
+      <td id="T_2eb94_row4_col1" class="data row4 col1" >0.143689</td>
+      <td id="T_2eb94_row4_col2" class="data row4 col2" >0.082157</td>
+      <td id="T_2eb94_row4_col3" class="data row4 col3" >0.054467</td>
+      <td id="T_2eb94_row4_col4" class="data row4 col4" >1.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1379,12 +1314,12 @@ variables.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-7a_26_0.png" src="../_images/lesson-7a_26_0.png" />
+<img alt="../_images/dae454578908202a7748e1acd48be47af5fc0e6f0ef0d8ddbd3bfd665a5ec58b.png" src="../_images/dae454578908202a7748e1acd48be47af5fc0e6f0ef0d8ddbd3bfd665a5ec58b.png" />
 </div>
 </div>
-</div>
-<div class="section" id="creating-decision-rules-by-hand">
-<h2>Creating decision rules by hand<a class="headerlink" href="#creating-decision-rules-by-hand" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="creating-decision-rules-by-hand">
+<h2>Creating decision rules by hand<a class="headerlink" href="#creating-decision-rules-by-hand" title="Link to this heading">#</a></h2>
 <p>By looking at the previous plots, we could create some hand-written rules
 that predicts whether someone has a high- or low-income.</p>
 <div class="attention admonition">
@@ -1405,7 +1340,7 @@ that predicts whether someone has a high- or low-income.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-7a_30_0.png" src="../_images/lesson-7a_30_0.png" />
+<img alt="../_images/dd07438e84176897d075059db179348df1a52015499a1bb3a8ed4d98d3bc340b.png" src="../_images/dd07438e84176897d075059db179348df1a52015499a1bb3a8ed4d98d3bc340b.png" />
 </div>
 </div>
 <p>The data points (circles) show the distribution of <code class="docutils literal notranslate"><span class="pre">hours-per-week</span></code> and <code class="docutils literal notranslate"><span class="pre">age</span></code> in the dataset. Blue points mean low-income and orange points mean high-income. This part of the plot is the same as the bottom-left plot in the pairplot above.</p>
@@ -1434,7 +1369,7 @@ that predicts whether someone has a high- or low-income.</p>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-7a_32_0.png" src="../_images/lesson-7a_32_0.png" />
+<img alt="../_images/034632f41d3a4746e4efd03caef6b46a14439c8b5740367fe66a7316593552c0.png" src="../_images/034632f41d3a4746e4efd03caef6b46a14439c8b5740367fe66a7316593552c0.png" />
 </div>
 </div>
 <ul class="simple">
@@ -1447,30 +1382,30 @@ many blue points and only a few orange points.</p></li>
 we see a mix of blue points and orange points. It seems complicated to
 chose which class we should predict in this region.</p></li>
 </ul>
-</div>
-<div class="section" id="unbiased-decision-rules">
-<h2>Unbiased decision rules<a class="headerlink" href="#unbiased-decision-rules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="unbiased-decision-rules">
+<h2>Unbiased decision rules<a class="headerlink" href="#unbiased-decision-rules" title="Link to this heading">#</a></h2>
 <p>It is interesting to note that some machine learning models (i.e. decision trees) will work similarly to what we did. However, ML models chose the “best” decision rules based on the data without human intervention or inspection.</p>
 <p>ML models are extremely helpful when creating rules by hand is not straightforward, for example because we are in high dimension (many
 features) or because there are no simple and obvious rules that separate the two classes as in the top-right region of the previous plot.</p>
 <p>To sum up, the important thing to remember is that in a machine-learning setting, a model automatically creates the “rules” from the data in order to
 make predictions on new unseen data. <strong>And this is where we’ll turn our attention to in future lessons.</strong></p>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="admonition-questions admonition">
 <p class="admonition-title">Questions:</p>
 <p>Using the <strong>ames_clean.csv</strong> data:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Assess the distribution of the response variable (<code class="docutils literal notranslate"><span class="pre">SalePrice</span></code>)</p></li>
 <li><p>How many features are numeric vs. categorical?</p></li>
 <li><p>Pick a numeric feature that you believe would be influential on a home’s <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code>. Assess the distribution of the numeric feature. Assess the relationship between that feature and the <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code>.</p></li>
 <li><p>Pick a categorical feature that you believe would be influential on a home’s <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code>. Assess the distribution of the categorical feature. Assess the relationship between that feature and the <code class="docutils literal notranslate"><span class="pre">SalePrice</span></code>.</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="computing-environment">
-<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
@@ -1480,20 +1415,20 @@ make predictions on new unseen data. <strong>And this is where we’ll turn our 
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.9.12
-IPython version      : 8.2.0
+Python version       : 3.12.4
+IPython version      : 8.26.0
 
-jupyterlab: 3.3.2
-pandas    : 1.4.2
-numpy     : 1.21.5
-seaborn   : 0.11.2
-matplotlib: 3.5.1
+jupyterlab: 4.2.3
+pandas    : 2.2.2
+numpy     : 2.0.0
+seaborn   : 0.13.2
+matplotlib: 3.8.4
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1507,7 +1442,7 @@ matplotlib: 3.5.1
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./07-module"
         },
         predefinedOutput: true
@@ -1515,44 +1450,111 @@ matplotlib: 3.5.1
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="overview.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Overview</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="overview.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Overview</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="lesson-7b.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="lesson-7b.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lesson 7b: First model with scikit-learn</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Bradley C. Boehmke<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-the-adult-census-dataset">Loading the adult census dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#response-variable">Response variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features">Features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visual-inspection-of-the-data">Visual inspection of the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-decision-rules-by-hand">Creating decision rules by hand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-decision-rules">Unbiased decision rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bradley C. Boehmke
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

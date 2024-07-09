@@ -1,739 +1,506 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Lesson 6C: Writing functions &#8212; UC BANA 6043 Statistical Computing</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '06-module/lesson-6c';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview" href="../07-module/overview.html" />
     <link rel="prev" title="Lesson 6b: Iteration statement" href="lesson-6b.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Statistical Computing
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Module 0 (Pre-class)
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="UC BANA 6043 Statistical Computing - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="UC BANA 6043 Statistical Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 0 (Pre-class)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00-module/lesson-0b.html">
-   Lesson 0: Configuring your computer
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../00-module/lesson-0b.html">Lesson 0: Configuring your computer</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1a.html">
-   Lesson 1a: Introduction to JupyterLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators &amp; types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators &amp; conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1d.html">
-   Lesson 1d: Data structures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1a.html">Lesson 1a: Introduction to JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1b.html">Lesson 1b: Variables, operators &amp; types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1c.html">Lesson 1c: More operators &amp; conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1d.html">Lesson 1d: Data structures</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2a.html">
-   Lesson 2a: Packages, libraries &amp; modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2b.html">
-   Lesson 2b: Importing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2c.html">
-   Lesson 2c: Deeper dive on DataFrames
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2a.html">Lesson 2a: Packages, libraries &amp; modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2b.html">Lesson 2b: Importing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2c.html">Lesson 2c: Deeper dive on DataFrames</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3a.html">
-   Lesson 3a: Subsetting data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3b.html">
-   Lesson 3b: Manipulating data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3c.html">
-   Lesson 3c: Summarizing data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3a.html">Lesson 3a: Subsetting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3b.html">Lesson 3b: Manipulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3c.html">Lesson 3c: Summarizing data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4a.html">
-   Lession 4a: Tidy data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4b.html">
-   Lesson 4b: Relational data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4c.html">
-   Lesson 4c: Handling text data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4a.html">Lession 4a: Tidy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4b.html">Lesson 4b: Relational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4c.html">Lesson 4c: Handling text data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5a.html">
-   Lession 5a: Plotting with Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5b.html">
-   Lesson 5b: Plotting with Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5c.html">
-   Lesson 5c: Plotting with Bokeh
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5a.html">Lession 5a: Plotting with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5b.html">Lesson 5b: Plotting with Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5c.html">Lesson 5c: Plotting with Bokeh</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 6</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-6a.html">
-   Lession 6a: Conditional statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-6b.html">
-   Lesson 6b: Iteration statement
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lesson 6C: Writing functions
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-6a.html">Lession 6a: Conditional statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-6b.html">Lesson 6b: Iteration statement</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 6C: Writing functions</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7a.html">
-   Lesson 7a: Data Exploration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7b.html">
-   Lesson 7b: First model with scikit-learn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7c.html">
-   Lesson 7c: Feature Engineering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7d.html">
-   Lesson 7d: Model Evaluation &amp; Selection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7a.html">Lesson 7a: Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7b.html">Lesson 7b: First model with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7c.html">Lesson 7c: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7d.html">Lesson 7d: Model Evaluation &amp; Selection</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/06-module/lesson-6c.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F06-module/lesson-6c.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/06-module/lesson-6c.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/06-module/lesson-6c.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F06-module/lesson-6c.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/06-module/lesson-6c.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/06-module/lesson-6c.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson 6C: Writing functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#when-to-write-functions">
-   When to write functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-vs-methods">
-   Functions vs methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameters-vs-arguments">
-   Parameters vs arguments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#keyword-arguments">
-     Keyword arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#default-arguments">
-     Default arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#args-and-kwargs">
-     *args and **kwargs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#type-hints">
-     Type hints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docstrings">
-   Docstrings
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#errors-and-exceptions">
-   Errors and exceptions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validating-arguments">
-     Validating arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assert-statements">
-     Assert statements
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-and-except">
-     Try and except
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scoping">
-   Scoping
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#searching-for-variables">
-     Searching for variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#changing-variables">
-     Changing variables
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anonymous-functions">
-   Anonymous functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-write-functions">When to write functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-vs-methods">Functions vs methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-functions">Defining functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-vs-arguments">Parameters vs arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-arguments">Keyword arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-arguments">Default arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#args-and-kwargs">*args and **kwargs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-hints">Type hints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-exceptions">Errors and exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-arguments">Validating arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assert-statements">Assert statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-and-except">Try and except</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scoping">Scoping</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-variables">Searching for variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-variables">Changing variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonymous-functions">Anonymous functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 6C: Writing functions</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#when-to-write-functions">
-   When to write functions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#functions-vs-methods">
-   Functions vs methods
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#defining-functions">
-   Defining functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#parameters-vs-arguments">
-   Parameters vs arguments
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#keyword-arguments">
-     Keyword arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#default-arguments">
-     Default arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#args-and-kwargs">
-     *args and **kwargs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#type-hints">
-     Type hints
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id2">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#docstrings">
-   Docstrings
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#errors-and-exceptions">
-   Errors and exceptions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#validating-arguments">
-     Validating arguments
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assert-statements">
-     Assert statements
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#try-and-except">
-     Try and except
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id4">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#scoping">
-   Scoping
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#searching-for-variables">
-     Searching for variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#changing-variables">
-     Changing variables
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anonymous-functions">
-   Anonymous functions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-6c-writing-functions">
-<h1>Lesson 6C: Writing functions<a class="headerlink" href="#lesson-6c-writing-functions" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-6c-writing-functions">
+<h1>Lesson 6C: Writing functions<a class="headerlink" href="#lesson-6c-writing-functions" title="Link to this heading">#</a></h1>
 <p>Functions are an essential part of any scripting language and as a data scientist, you’ll constantly need to write your own functions to solve problems that your data poses to you. Writing functions allows you to reduce your code, minimize errors, and make it more explicit in the actions being taken.  This lesson will get you started writing your own functions to improve your data analyses.</p>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lesson you will be able to:</p>
 <ul class="simple">
 <li><p>Explain when to write functions</p></li>
@@ -754,9 +521,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>First, check out this video for a simple introduction to writing functions. Then move on to the lesson that follows which will reiterate and build upon these basic concepts.</p>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_okqz4cvf&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_hnoifbgw" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 | Python Tutorial for Beginners 8: Functions"></iframe>
 </div>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -768,9 +535,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="when-to-write-functions">
-<h2>When to write functions<a class="headerlink" href="#when-to-write-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="when-to-write-functions">
+<h2>When to write functions<a class="headerlink" href="#when-to-write-functions" title="Link to this heading">#</a></h2>
 <p>You should consider writing a function whenever you’ve copied and pasted a block of code more than twice (i.e. you now have three copies of the same code). For example, take a look at this code. What does it do?</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -801,21 +568,21 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.79882196, 0.        , 0.63291805, 1.        , 0.67628976,
-        0.85449383, 0.21740158, 0.3928153 , 0.84347625, 0.05630605],
-       [1.        , 0.38420133, 0.78614167, 0.        , 0.60469202,
-        0.47085719, 0.39803966, 0.91226131, 0.73877887, 0.9079893 ],
-       [0.09984341, 1.        , 0.13157581, 0.40402155, 0.43002542,
-        0.        , 0.00857417, 0.87397615, 0.78929133, 0.4674958 ],
-       [0.65530407, 0.10196804, 0.        , 0.83969465, 1.        ,
-        0.68729707, 0.0015783 , 0.354641  , 0.34662782, 0.52565252]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.49930254, 0.43049079, 0.        , 0.01065056, 1.        ,
+        0.51014472, 0.48052234, 0.40388615, 0.46992992, 0.76293952],
+       [1.        , 0.79890404, 0.53287853, 0.        , 0.73774922,
+        0.22855229, 0.82869542, 0.61133011, 0.24629633, 0.04575927],
+       [0.92532763, 0.02248809, 0.94872531, 0.33477236, 1.        ,
+        0.42797324, 0.        , 0.62606781, 0.21303964, 0.30663464],
+       [0.18140073, 0.47260678, 0.        , 0.59681443, 0.16952227,
+        0.63688261, 0.45957061, 0.67436247, 0.55698494, 1.        ]])
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="functions-vs-methods">
-<h2>Functions vs methods<a class="headerlink" href="#functions-vs-methods" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="functions-vs-methods">
+<h2>Functions vs methods<a class="headerlink" href="#functions-vs-methods" title="Link to this heading">#</a></h2>
 <p>Functions and methods are very similar, and beginners to object oriented programming languages such as Python often refer to them synonymously. Although they are very similar, it is always good to distinguish between the two as it will help you explain code situations more explicitly.</p>
 <p>A method refers to a function which is part of a class. You access it with an instance or object of the class. A function doesn’t have this restriction: it just refers to a standalone function. This means that all methods are functions, but not all functions are methods.</p>
 <div class="cell docutils container">
@@ -826,8 +593,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.55396944, 1.48616936, 1.55063553, 2.24371621, 2.7110072 ,
-       2.01264809, 0.62559371, 2.53369375, 2.71817427, 1.95744367])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
+       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
 </pre></div>
 </div>
 </div>
@@ -840,8 +607,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.55396944, 1.48616936, 1.55063553, 2.24371621, 2.7110072 ,
-       2.01264809, 0.62559371, 2.53369375, 2.71817427, 1.95744367])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
+       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
 </pre></div>
 </div>
 </div>
@@ -855,7 +622,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20.393051216518487
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(19.151205316273074)
 </pre></div>
 </div>
 </div>
@@ -868,8 +635,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.55396944, 1.48616936, 1.55063553, 2.24371621, 2.7110072 ,
-       2.01264809, 0.62559371, 2.53369375, 2.71817427, 1.95744367])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
+       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
 </pre></div>
 </div>
 </div>
@@ -882,17 +649,17 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([5.47252277, 6.20296134, 4.20480363, 4.51276347])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.56786654, 5.03016521, 4.80502873, 4.74814484])
 </pre></div>
 </div>
 </div>
 </div>
 <p>Nonetheless, being able to create stand alone functions is a critical task. And, if you delve into building your own object classes down the road, defining methods is a piece of cake if you know how to define stand alone functions.</p>
-</div>
-<div class="section" id="defining-functions">
-<h2>Defining functions<a class="headerlink" href="#defining-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="defining-functions">
+<h2>Defining functions<a class="headerlink" href="#defining-functions" title="Link to this heading">#</a></h2>
 <p>There are four main steps to defining a function:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Use the keyword <code class="docutils literal notranslate"><span class="pre">def</span></code> to declare the function and follow this up with the function name.</p></li>
 <li><p>Add parameters to the function: they should be within the parentheses of the function. End your line with a colon.</p></li>
 <li><p>Add statements that the functions should execute.</p></li>
@@ -927,16 +694,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(395.6)
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="knowledge-check">
-<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+<section id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Define a function titled <code class="docutils literal notranslate"><span class="pre">ratio</span></code> that takes arguments <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> and returns their ratio, <span class="math notranslate nohighlight">\(\frac{x}{y}\)</span>.</p></li>
 <li><p>Now add a third variable <code class="docutils literal notranslate"><span class="pre">digits</span></code> that allows you to round the output to a specified decimal.</p></li>
 </ol>
@@ -945,18 +712,18 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vcBz0bie3sc?si=7AYXfUT-5uIbdYuG" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="parameters-vs-arguments">
-<h2>Parameters vs arguments<a class="headerlink" href="#parameters-vs-arguments" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="parameters-vs-arguments">
+<h2>Parameters vs arguments<a class="headerlink" href="#parameters-vs-arguments" title="Link to this heading">#</a></h2>
 <p>People often refer to function parameters and arguments synonymously but, technically, they represent two different things. Parameters are the names used when defining a function or a method, and into which arguments will be mapped. In other words, arguments are the things which are supplied to any function or method call, while the function or method code refers to the arguments by their parameter names.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Being specific about the term <em>‘parameters’</em> versus <em>‘arguments’</em> can be helpful when discussing specific details regarding a function or inputs, especially during debugging.</p>
 </div>
 <p>Python accepts a variety of parameter-argument calls. The following discusses some of the more common implementations you’ll see.</p>
-<div class="section" id="keyword-arguments">
-<h3>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Permalink to this headline">¶</a></h3>
+<section id="keyword-arguments">
+<h3>Keyword arguments<a class="headerlink" href="#keyword-arguments" title="Link to this heading">#</a></h3>
 <p>Keyword arguments are simply named arguments in the function call. Consider our <code class="docutils literal notranslate"><span class="pre">store_sales()</span></code> function, we can specify parameter arguments in two different ways. The first is positional, in which we supply our arguments in the same position as the parameter. However, this is less explicit and if we happen to switch our <code class="docutils literal notranslate"><span class="pre">store</span></code> and <code class="docutils literal notranslate"><span class="pre">week</span></code> argument placement then we may get different results then anticipated.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -966,7 +733,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.39
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(60.39)
 </pre></div>
 </div>
 </div>
@@ -979,7 +746,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(0.0)
 </pre></div>
 </div>
 </div>
@@ -997,14 +764,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>60.39
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(60.39)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="default-arguments">
-<h3>Default arguments<a class="headerlink" href="#default-arguments" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="default-arguments">
+<h3>Default arguments<a class="headerlink" href="#default-arguments" title="Link to this heading">#</a></h3>
 <p>Default arguments are those that take a default value if no argument value is passed during the function call. You can assign this default value by with the assignment operator <code class="docutils literal notranslate"><span class="pre">=</span></code>, just like in the below example. For example, if your analysis routinely analyzes transactions for all quantities but sometimes you only focus on sales for when quantity purchased meets some threshold, you could add a new parameter with a default value.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -1023,7 +790,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(395.6)
 </pre></div>
 </div>
 </div>
@@ -1036,14 +803,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>92.73
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(92.73)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="args-and-kwargs">
-<h3>*args and **kwargs<a class="headerlink" href="#args-and-kwargs" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="args-and-kwargs">
+<h3>*args and **kwargs<a class="headerlink" href="#args-and-kwargs" title="Link to this heading">#</a></h3>
 <p>*args and **kwargs allow you to pass a variable number of arguments to a function. This can be usefule when you do not know before hand how many arguments will be passed to your function by the user or if you want to allow users to pass arguments through to an embedded function.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1102,9 +869,9 @@ student3 = Sally
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="type-hints">
-<h3>Type hints<a class="headerlink" href="#type-hints" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="type-hints">
+<h3>Type hints<a class="headerlink" href="#type-hints" title="Link to this heading">#</a></h3>
 <p>Python 3.5 added a new library called typing that adds <a class="reference external" href="https://docs.python.org/3/library/typing.html"><em><strong>type hinting</strong></em></a> to Python. Type hinting is part of a larger functionality called Type Checking (see <a class="reference external" href="https://realpython.com/python-type-checking/">this tutorial</a> for a comprehensive Type Checking guide). Type hinting provides a way to help users better understand what type of arguments a function takes and the expected output.</p>
 <p>For example, let’s look at a simple function:</p>
 <div class="cell docutils container">
@@ -1155,10 +922,12 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 <p>Even better, most IDEs support type hints so that they can give you feedback as you are typing:</p>
-<div class="figure align-default" id="id1">
+<figure class="align-default" id="id1">
 <a class="reference internal image-reference" href="../_images/type_hints.png"><img alt="Type hints" src="../_images/type_hints.png" style="width: 65%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 13 </span><span class="caption-text">Type hints often show up when you hover over the function in most IDEs.</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Type hints often show up when you hover over the function in most IDEs.</span><a class="headerlink" href="#id1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>When declaring types, you can use any of the built-in Python data types. This includes, but is not limited to:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">float</span></code>, <code class="docutils literal notranslate"><span class="pre">str</span></code>, <code class="docutils literal notranslate"><span class="pre">bool</span></code></p></li>
@@ -1185,18 +954,18 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>395.6
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(395.6)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id2">
-<h3>Knowledge check<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id2">
+<h3>Knowledge check<a class="headerlink" href="#id2" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
 <p>Build on to your <code class="docutils literal notranslate"><span class="pre">ratio()</span></code> function by:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Setting the <code class="docutils literal notranslate"><span class="pre">digits</span></code> parameter to default to 2.</p></li>
 <li><p>Add type hints that specify <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> to be numeric, <code class="docutils literal notranslate"><span class="pre">digits</span></code> to be <code class="docutils literal notranslate"><span class="pre">int</span></code> and the output returned to be <code class="docutils literal notranslate"><span class="pre">float</span></code>.</p></li>
 </ol>
@@ -1205,10 +974,10 @@ some_function(name: str, age: int) -&gt; str
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7wujc-vDFks?si=TQp8EEMTVSTf8yMg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="docstrings">
-<h2>Docstrings<a class="headerlink" href="#docstrings" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="docstrings">
+<h2>Docstrings<a class="headerlink" href="#docstrings" title="Link to this heading">#</a></h2>
 <p>Type hints are great for guiding users; however, they only provide small hints. Python docstrings are a much more robust way to document a Python function (docstrings can also be used to document modules, classes, and methods). Docstrings are used to provide users with descriptive information about the function, required inputs, expected outputs, example usage and more. Also, it is a common practice to generate online (html) documentation automatically from docstrings using tools such as Sphinx.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1218,7 +987,7 @@ some_function(name: str, age: int) -&gt; str
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Compute total store sales.</span>
 
 <span class="sd">    This function computes the total sales for a given</span>
@@ -1261,8 +1030,8 @@ some_function(name: str, age: int) -&gt; str
 <p class="admonition-title">Tip</p>
 <p>There are some typical Pythonic conventions used when writing docstrings. Rather than reiterate them here, we highly suggest using the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/development/contributing_docstring.html">Pandas</a> and <a class="reference external" href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpy</a> docstring guide standards when writing your docstrings.</p>
 </div>
-<div class="section" id="id3">
-<h3>Knowledge check<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<section id="id3">
+<h3>Knowledge check<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Task:</p>
 <p>Go back to the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> function you created in the last knowledge check and add docstrings. Be sure to include a general description of what the function does, documentation on the parameters and return output, along with including examples.</p>
@@ -1271,14 +1040,14 @@ some_function(name: str, age: int) -&gt; str
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bhp0TNILZTY?si=w8E9o-Z0D-wr4xlC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="errors-and-exceptions">
-<h2>Errors and exceptions<a class="headerlink" href="#errors-and-exceptions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="errors-and-exceptions">
+<h2>Errors and exceptions<a class="headerlink" href="#errors-and-exceptions" title="Link to this heading">#</a></h2>
 <p>For functions that will be used over and over again, and especially for those used by someone other than the creator of the function, it is good to include procedures to check for errors that may derail function execution. This may include ensuring the user supplies proper argument types, the computation can perform with the values supplied, or even that execution can be performed in a reasonable amount of time.</p>
 <p>This falls under the umbrella of exception handling and is actually far broader than what we can cover here. In this section, we’ll demonstrate some of the basics.</p>
-<div class="section" id="validating-arguments">
-<h3>Validating arguments<a class="headerlink" href="#validating-arguments" title="Permalink to this headline">¶</a></h3>
+<section id="validating-arguments">
+<h3>Validating arguments<a class="headerlink" href="#validating-arguments" title="Link to this heading">#</a></h3>
 <p>A common problem is when the user supplies invalid argument types or values. Although we have seen how to use type hints and docstrings to inform users, we can also include useful exception calls for when users supply improper argument types and values. For example, the following will check if the arguments of the correct type by using <code class="docutils literal notranslate"><span class="pre">isinstance</span></code> and, if they are not, we <code class="docutils literal notranslate"><span class="pre">raise</span></code> an <code class="docutils literal notranslate"><span class="pre">Exception</span></code> and include an informative error.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1300,12 +1069,12 @@ some_function(name: str, age: int) -&gt; str
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">Exception</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">24</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>     <span class="n">total_sales</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;sales_value&#39;</span><span class="p">][</span><span class="n">filt</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span>     <span class="k">return</span> <span class="n">total_sales</span>
 <span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">store_sales</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="s1">&#39;309&#39;</span><span class="p">,</span> <span class="n">week</span><span class="o">=</span><span class="mi">48</span><span class="p">)</span>
 
-<span class="nn">Input In [24],</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
+<span class="nn">Cell In[24], line 4,</span> in <span class="ni">store_sales</span><span class="nt">(data, store, week)</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="k">def</span> <span class="nf">store_sales</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">,</span> <span class="n">store</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">week</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span>      <span class="c1"># argument validation</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span> <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s1">&#39;`data` should be a Pandas DataFrame&#39;</span><span class="p">)</span>
@@ -1411,9 +1180,9 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="assert-statements">
-<h3>Assert statements<a class="headerlink" href="#assert-statements" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="assert-statements">
+<h3>Assert statements<a class="headerlink" href="#assert-statements" title="Link to this heading">#</a></h3>
 <p>Python’s <code class="docutils literal notranslate"><span class="pre">assert</span></code> statement is a debugging aid that tests a condition. If the condition is true, it does nothing and your program just continues to execute. But if the assert condition evaluates to false, it raises an <code class="docutils literal notranslate"><span class="pre">AssertionError</span></code> exception with an optional error message. This seems very similar to the example in the last section where we checked if the supplied store ID exists. However, the proper use of assertions is to inform users about unrecoverable errors in a program. They’re not intended to signal expected error conditions, like “store ID not found”, where a user can take corrective action or just try again.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1502,9 +1271,9 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="try-and-except">
-<h3>Try and except<a class="headerlink" href="#try-and-except" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="try-and-except">
+<h3>Try and except<a class="headerlink" href="#try-and-except" title="Link to this heading">#</a></h3>
 <p>In the prior sections, we looked at ways to identify errors that may occur. The result of our exception handling is to signal an error occurred and stop the program. However, there are often times when we do not want to stop the program. For example, if the program has a database connection that should be closed after execution then we need our program to continue running even if an error occurs to ensure the connection is closed.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">try</span> <span class="pre">except</span></code> procedure allows us to try execute code. If it works, great! If not, rather than just throw an exception error, we define what the program should continue to do. For example, the following tries the <code class="docutils literal notranslate"><span class="pre">apply_discount()</span></code> function with a pre-defined discount value. If it throws and exception then we adjust the discount value (if discount is greater than 100% of product price we adjust it to the largest acceptable value, if its less than 0 we just set it to 0%).</p>
 <div class="cell docutils container">
@@ -1585,13 +1354,13 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="id4">
-<h3>Knowledge check<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3>Knowledge check<a class="headerlink" href="#id4" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
 <p>Going back to the <code class="docutils literal notranslate"><span class="pre">ratio</span></code> function:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Add a procdure to validate that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> inputs are numeric and <code class="docutils literal notranslate"><span class="pre">digits</span></code> is an integer.</p></li>
 <li><p>Add a try and except procedure where if a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code> is thrown for <code class="docutils literal notranslate"><span class="pre">digits</span></code> because it is a float then the <code class="docutils literal notranslate"><span class="pre">digits</span></code> value is rounded to the nearest integer and applied.</p></li>
 </ol>
@@ -1600,19 +1369,19 @@ some_function(name: str, age: int) -&gt; str
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/5bCiJatTtzg?si=L40B2SUHstkSoJh9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="scoping">
-<h2>Scoping<a class="headerlink" href="#scoping" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="scoping">
+<h2>Scoping<a class="headerlink" href="#scoping" title="Link to this heading">#</a></h2>
 <p>Scoping refers to the set of rules a programming language uses to lookup the value to variables and/or symbols. The following illustrates the basic concept behind the lexical scoping rules that Python follows. In short, Python follows a nested environment structure and uses what is commonly referred to as the <em><strong>LEGB</strong></em> search rule:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Search <strong>l</strong>ocal scope first,</p></li>
 <li><p>then the local scopes of <strong>e</strong>nclosing functions,</p></li>
 <li><p>then the <strong>g</strong>lobal scope,</p></li>
 <li><p>and finally the <strong>b</strong>uilt-in scope</p></li>
 </ol>
-<div class="section" id="searching-for-variables">
-<h3>Searching for variables<a class="headerlink" href="#searching-for-variables" title="Permalink to this headline">¶</a></h3>
+<section id="searching-for-variables">
+<h3>Searching for variables<a class="headerlink" href="#searching-for-variables" title="Link to this heading">#</a></h3>
 <p>What exactly does this mean?  A function has its own environment and when you assign an argument in the <code class="docutils literal notranslate"><span class="pre">def</span></code> header of the function, the function creates a separate environment that keeps that variable separate from any variable in the global environment. This is why you can have an <code class="docutils literal notranslate"><span class="pre">x</span></code> variable in the global environment that won’t be confused with an <code class="docutils literal notranslate"><span class="pre">x</span></code> variable in your function:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1694,9 +1463,9 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="changing-variables">
-<h3>Changing variables<a class="headerlink" href="#changing-variables" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="changing-variables">
+<h3>Changing variables<a class="headerlink" href="#changing-variables" title="Link to this heading">#</a></h3>
 <p>It is possible to change variable values that are outside of the active environment. This is rarely necessary, and is usually not good practice, but it is good to know about. For example, the following changes the global variable <code class="docutils literal notranslate"><span class="pre">y</span></code> by including the keyword-variable statement <code class="docutils literal notranslate"><span class="pre">global</span> <span class="pre">y</span></code> prior to making the assignment of the new value for <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1735,10 +1504,10 @@ some_function(name: str, age: int) -&gt; str
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="anonymous-functions">
-<h2>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="anonymous-functions">
+<h2>Anonymous functions<a class="headerlink" href="#anonymous-functions" title="Link to this heading">#</a></h2>
 <p>So far we have been discussing defined functions; however, Python allows you to generate <em>anonymous</em> functions on the fly. These are often referred to as <strong>lambdas</strong>.  Lambdas allow for an alternative approach when creating short and simple functions that are only used once or twice.</p>
 <p>For example, the following two functions are equivalent:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># defined function</span>
@@ -1820,19 +1589,19 @@ Length: 155848, dtype: float64
 </div>
 </div>
 </div>
-<div class="section" id="id5">
-<h3>Knowledge check<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<section id="id5">
+<h3>Knowledge check<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Task:</p>
 <p>Let’s focus on the transaction timestamp for each transaction (<code class="docutils literal notranslate"><span class="pre">df['transaction_timestamp']</span></code>). Use the <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> method along with a lambda function to assign each transaction to ‘weekday’ or ‘weekend’. To do this check out the <code class="docutils literal notranslate"><span class="pre">.day_name()</span></code> method (i.e. <code class="docutils literal notranslate"><span class="pre">df['transaction_timestamp'][0].day_name()</span></code>)</p>
 </div>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
-<ol>
+<ol class="arabic">
 <li><p>Load in the companies.csv data (in the data folder).</p></li>
 <li><p>Write a function <code class="docutils literal notranslate"><span class="pre">is_incorporated</span></code> that checks whether an input string, <code class="docutils literal notranslate"><span class="pre">name</span></code>, contains the substring “inc” or “Inc”. Its definition should look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_incorporated</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
@@ -1846,9 +1615,9 @@ Length: 155848, dtype: float64
 <li><p>Now rewrite the code for #4 using the <code class="docutils literal notranslate"><span class="pre">Series.apply</span></code> method – apply the function to the Series and print the resulting Series.</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="computing-environment">
-<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
@@ -1857,8 +1626,8 @@ Length: 155848, dtype: float64
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1872,7 +1641,7 @@ Length: 155848, dtype: float64
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./06-module"
         },
         predefinedOutput: true
@@ -1880,44 +1649,140 @@ Length: 155848, dtype: float64
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lesson-6b.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lesson 6b: Iteration statement</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson-6b.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lesson 6b: Iteration statement</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../07-module/overview.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../07-module/overview.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Bradley C. Boehmke<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#when-to-write-functions">When to write functions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-vs-methods">Functions vs methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-functions">Defining functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-vs-arguments">Parameters vs arguments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#keyword-arguments">Keyword arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#default-arguments">Default arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#args-and-kwargs">*args and **kwargs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-hints">Type hints</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#docstrings">Docstrings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#errors-and-exceptions">Errors and exceptions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#validating-arguments">Validating arguments</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assert-statements">Assert statements</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#try-and-except">Try and except</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scoping">Scoping</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#searching-for-variables">Searching for variables</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#changing-variables">Changing variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonymous-functions">Anonymous functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bradley C. Boehmke
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

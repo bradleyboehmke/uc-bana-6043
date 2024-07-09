@@ -1,708 +1,490 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Lesson 5b: Plotting with Matplotlib &#8212; UC BANA 6043 Statistical Computing</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '05-module/lesson-5b';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Lesson 5c: Plotting with Bokeh" href="lesson-5c.html" />
     <link rel="prev" title="Lession 5a: Plotting with Pandas" href="lesson-5a.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Statistical Computing
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Module 0 (Pre-class)
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="UC BANA 6043 Statistical Computing - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="UC BANA 6043 Statistical Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 0 (Pre-class)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00-module/lesson-0b.html">
-   Lesson 0: Configuring your computer
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../00-module/lesson-0b.html">Lesson 0: Configuring your computer</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1a.html">
-   Lesson 1a: Introduction to JupyterLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators &amp; types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators &amp; conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1d.html">
-   Lesson 1d: Data structures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1a.html">Lesson 1a: Introduction to JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1b.html">Lesson 1b: Variables, operators &amp; types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1c.html">Lesson 1c: More operators &amp; conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1d.html">Lesson 1d: Data structures</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2a.html">
-   Lesson 2a: Packages, libraries &amp; modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2b.html">
-   Lesson 2b: Importing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2c.html">
-   Lesson 2c: Deeper dive on DataFrames
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2a.html">Lesson 2a: Packages, libraries &amp; modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2b.html">Lesson 2b: Importing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2c.html">Lesson 2c: Deeper dive on DataFrames</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3a.html">
-   Lesson 3a: Subsetting data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3b.html">
-   Lesson 3b: Manipulating data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3c.html">
-   Lesson 3c: Summarizing data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3a.html">Lesson 3a: Subsetting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3b.html">Lesson 3b: Manipulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3c.html">Lesson 3c: Summarizing data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 4</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4a.html">
-   Lession 4a: Tidy data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4b.html">
-   Lesson 4b: Relational data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../04-module/lesson-4c.html">
-   Lesson 4c: Handling text data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4a.html">Lession 4a: Tidy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4b.html">Lesson 4b: Relational data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../04-module/lesson-4c.html">Lesson 4c: Handling text data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 5</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-5a.html">
-   Lession 5a: Plotting with Pandas
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lesson 5b: Plotting with Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-5c.html">
-   Lesson 5c: Plotting with Bokeh
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-5a.html">Lession 5a: Plotting with Pandas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 5b: Plotting with Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-5c.html">Lesson 5c: Plotting with Bokeh</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6a.html">
-   Lession 6a: Conditional statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6b.html">
-   Lesson 6b: Iteration statement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6c.html">
-   Lesson 6C: Writing functions
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6a.html">Lession 6a: Conditional statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6b.html">Lesson 6b: Iteration statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6c.html">Lesson 6C: Writing functions</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7a.html">
-   Lesson 7a: Data Exploration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7b.html">
-   Lesson 7b: First model with scikit-learn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7c.html">
-   Lesson 7c: Feature Engineering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7d.html">
-   Lesson 7d: Model Evaluation &amp; Selection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7a.html">Lesson 7a: Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7b.html">Lesson 7b: First model with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7c.html">Lesson 7c: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7d.html">Lesson 7d: Model Evaluation &amp; Selection</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/05-module/lesson-5b.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F05-module/lesson-5b.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/05-module/lesson-5b.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/05-module/lesson-5b.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F05-module/lesson-5b.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/05-module/lesson-5b.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/05-module/lesson-5b.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson 5b: Plotting with Matplotlib</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomy-of-a-figure">
-   Anatomy of a Figure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-pyplot-module">
-   Importing the pyplot module
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figures-and-axes">
-   Figures and axes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">
-     Distinguishing the Figure from the Axes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">
-     Setting the size of the Figure upon creation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">
-     Calling Axes methods -
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       get_
-      </span>
-     </code>
-     and
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       set_
-      </span>
-     </code>
-     methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">
-       Getting and setting the title of the Axes
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">
-       Getting and setting the x and y limits
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">
-       Getting and setting the location of the x and y ticks
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">
-       Getting and setting the x and y tick labels
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-text-styles">
-     Setting text styles
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-data">
-   Plotting Data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-plots">
-     Line
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       plot
-      </span>
-     </code>
-     s
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-plots">
-     Other plots
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-more-dimensions">
-     Adding more dimensions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiple-plots">
-     Multiple plots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#video-tutorial">
-   Video Tutorial
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-pyplot-module">Importing the pyplot module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-and-axes">Figures and axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">Distinguishing the Figure from the Axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">Setting the size of the Figure upon creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">Calling Axes methods - <code class="docutils literal notranslate"><span class="pre">get_</span></code> and <code class="docutils literal notranslate"><span class="pre">set_</span></code> methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">Getting and setting the title of the Axes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">Getting and setting the x and y limits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">Getting and setting the location of the x and y ticks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">Getting and setting the x and y tick labels</a></li>
 </ul>
-
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-text-styles">Setting text styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plots">Line <code class="docutils literal notranslate"><span class="pre">plot</span></code>s</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-plots">Other plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-more-dimensions">Adding more dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">Multiple plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-tutorial">Video Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 5b: Plotting with Matplotlib</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#anatomy-of-a-figure">
-   Anatomy of a Figure
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#importing-the-pyplot-module">
-   Importing the pyplot module
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#figures-and-axes">
-   Figures and axes
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">
-     Distinguishing the Figure from the Axes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">
-     Setting the size of the Figure upon creation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">
-     Calling Axes methods -
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       get_
-      </span>
-     </code>
-     and
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       set_
-      </span>
-     </code>
-     methods
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">
-       Getting and setting the title of the Axes
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">
-       Getting and setting the x and y limits
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">
-       Getting and setting the location of the x and y ticks
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">
-       Getting and setting the x and y tick labels
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#setting-text-styles">
-     Setting text styles
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#plotting-data">
-   Plotting Data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-plots">
-     Line
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       plot
-      </span>
-     </code>
-     s
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#other-plots">
-     Other plots
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#adding-more-dimensions">
-     Adding more dimensions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiple-plots">
-     Multiple plots
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#video-tutorial">
-   Video Tutorial
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-5b-plotting-with-matplotlib">
-<h1>Lesson 5b: Plotting with Matplotlib<a class="headerlink" href="#lesson-5b-plotting-with-matplotlib" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-5b-plotting-with-matplotlib">
+<h1>Lesson 5b: Plotting with Matplotlib<a class="headerlink" href="#lesson-5b-plotting-with-matplotlib" title="Link to this heading">#</a></h1>
 <p><a class="reference external" href="https://matplotlib.org/3.1.1/index.html">Matplotlib</a> is probably the most widely used data visualization library in Python and is often used in publications. It was originally built to mimic the functionality of plotting with <a class="reference external" href="https://en.wikipedia.org/wiki/MATLAB">Matlab</a>. In fact, with Matplotlib being a <a class="reference external" href="https://pyviz.org/tools.html#core">“core” Python visualization library</a>, many higher-level visualization libraries (i.e. Pandas, seaborn, altair) are built on top of the Matplotlib foundation.</p>
 <p>Consequently, once you have strong fundamental understanding of Matplotlib you can transfer that knowledge to many other visualization libraries. This lesson seeks to provide that fundamental understanding</p>
 <div class="admonition note">
@@ -710,40 +492,44 @@ const thebe_selector_output = ".output, .cell_output"
 <p>Work through this lesson to create your first Matplotlib plots and gain an overview of how Matplotlib works. Then at the end of this lesson is a longer video tutorial that provides a comprehensive introduction to Matplotlib.</p>
 <p>You can also check out this <a class="reference external" href="https://www.youtube.com/playlist?list=PL-osiE80TeTvipOqomVEeZ1HRrcEvtZB_">series of Matplotlib tutorials</a> provided by Corey Schafer. They are excellent!</p>
 </div>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lesson you will be able to:</p>
 <ul class="simple">
 <li><p>Manipulate Matplotlib’s Figure and Axes.</p></li>
 <li><p>Create a variety of plots such as line, scatter, box plots and more.</p></li>
 <li><p>Combine multiple plots into one overall figure.</p></li>
 </ul>
-</div>
-<div class="section" id="anatomy-of-a-figure">
-<h2>Anatomy of a Figure<a class="headerlink" href="#anatomy-of-a-figure" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="anatomy-of-a-figure">
+<h2>Anatomy of a Figure<a class="headerlink" href="#anatomy-of-a-figure" title="Link to this heading">#</a></h2>
 <p>There is a hierarchy you must understand when plotting with Matplotlib. The highest and outermost part of a plot is the <strong>Figure</strong>. The Figure contains all the other plotting elements. Typically, you do not interact with it much. Inside the Figure is the <strong>Axes</strong>. This is the actual plotting surface that you normally would refer to as a ‘plot’.</p>
 <p>A Figure may contain any number of these <strong>Axes</strong>. The <strong>Axes</strong> is a container for all of the other physical pixels that get drawn onto your screen. This includes the x and y axis, lines, text, points, legends, images, etc…</p>
-<div class="figure align-default" id="figures-axes">
+<figure class="align-default" id="figures-axes">
 <a class="reference internal image-reference" href="../_images/figax.png"><img alt="Figures-axes" src="../_images/figax.png" style="width: 90%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 11 </span><span class="caption-text">Anatomy of Matplotlib figures.</span><a class="headerlink" href="#figures-axes" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Anatomy of Matplotlib figures.</span><a class="headerlink" href="#figures-axes" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Within Matplotlib the term <strong>Axes</strong> is not actually plural and does not mean more than one axis. It literally stands for a single ‘plot’. It’s unfortunate that this fundamental element has a name that is so confusing.</p>
 </div>
-</div>
-<div class="section" id="importing-the-pyplot-module">
-<h2>Importing the pyplot module<a class="headerlink" href="#importing-the-pyplot-module" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="importing-the-pyplot-module">
+<h2>Importing the pyplot module<a class="headerlink" href="#importing-the-pyplot-module" title="Link to this heading">#</a></h2>
 <p>Importing matplotlib into your workspace is done a little differently than NumPy or Pandas. You rarely will import matplotlib itself directly like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
 </pre></div>
 </div>
 <p>The above is perfectly valid code, but the matplotlib developers decided not to put all the main functionality in the top level module.</p>
 <p>When you <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">pandas</span> <span class="pre">as</span> <span class="pre">pd</span></code>, you get access to nearly all of the available functions and classes of the Pandas library. This isn’t true with Matplotlib. Instead, much of the functionality for quickly plotting is found in the pyplot module. If you navigate to the matplotlib source directory, found in your site-packages directory, you will see a <code class="docutils literal notranslate"><span class="pre">pyplot.py</span></code> file. This is the module that you are importing into your workspace.</p>
-<div class="figure align-default" id="pyplot-dir">
+<figure class="align-default" id="pyplot-dir">
 <a class="reference internal image-reference" href="../_images/pyplot_dir.png"><img alt="pyplot submodule" src="../_images/pyplot_dir.png" style="width: 70%;" /></a>
-<p class="caption"><span class="caption-number">Fig. 12 </span><span class="caption-text">pyplot submodule within matplotlib library.</span><a class="headerlink" href="#pyplot-dir" title="Permalink to this image">¶</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">pyplot submodule within matplotlib library.</span><a class="headerlink" href="#pyplot-dir" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>There is some functionality in other matplotlib submodules; however, vast majority of what you will use starting out is isolated to the pyplot submodule.</p>
@@ -756,9 +542,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="figures-and-axes">
-<h2>Figures and axes<a class="headerlink" href="#figures-and-axes" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="figures-and-axes">
+<h2>Figures and axes<a class="headerlink" href="#figures-and-axes" title="Link to this heading">#</a></h2>
 <p>pyplot does provide lots of useful functions, one of which creates a <strong>Figure</strong> and any number of <strong>Axes</strong> that you desire. You can do this without pyplot, but it involves more syntax. It’s also quite standard to begin the object-oriented approach by laying out your Figure and Axes first with pyplot and then proceed by calling methods from these objects.</p>
 <p>The pyplot <strong><code class="docutils literal notranslate"><span class="pre">subplots()</span></code></strong> function creates a single Figure and any number of Axes. If you call it with the default parameters it will create a single Axes within a Figure.</p>
 <div class="admonition note">
@@ -772,7 +558,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_7_0.png" src="../_images/lesson-5b_7_0.png" />
+<img alt="../_images/ed677fe7b0f5f38d48caa0ab8c4daf4732bb40f161b78a8109858b641c89bf0d.png" src="../_images/ed677fe7b0f5f38d48caa0ab8c4daf4732bb40f161b78a8109858b641c89bf0d.png" />
 </div>
 </div>
 <p>Let’s verify that we indeed have a Figure and Axes.</p>
@@ -795,13 +581,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib.axes._subplots.AxesSubplot
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>matplotlib.axes._axes.Axes
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="distinguishing-the-figure-from-the-axes">
-<h3>Distinguishing the Figure from the Axes<a class="headerlink" href="#distinguishing-the-figure-from-the-axes" title="Permalink to this headline">¶</a></h3>
+<section id="distinguishing-the-figure-from-the-axes">
+<h3>Distinguishing the Figure from the Axes<a class="headerlink" href="#distinguishing-the-figure-from-the-axes" title="Link to this heading">#</a></h3>
 <p>It’s not obvious, from looking at the plot which part is the Figure and which is the Axes. We will call our first method, <strong><code class="docutils literal notranslate"><span class="pre">set_facecolor</span></code></strong> in an object-oriented fashion from both the Figure and Axes objects. We pass it a name of a color (more on colors later).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -815,16 +601,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_12_0.png" src="../_images/lesson-5b_12_0.png" />
+<img alt="../_images/50433a0463583bc5b0c4396e5dfcef0432dd9c8e3620c1a828eab7367fdf4397.png" src="../_images/50433a0463583bc5b0c4396e5dfcef0432dd9c8e3620c1a828eab7367fdf4397.png" />
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Notice, that the two calls above to the <code class="docutils literal notranslate"><span class="pre">set_facecolor</span></code> method were made without an assignment statement. Both of these operations happened <strong>in-place</strong>. The calling Figure and Axes objects were updated without a new one getting created.</p>
 </div>
-</div>
-<div class="section" id="setting-the-size-of-the-figure-upon-creation">
-<h3>Setting the size of the Figure upon creation<a class="headerlink" href="#setting-the-size-of-the-figure-upon-creation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="setting-the-size-of-the-figure-upon-creation">
+<h3>Setting the size of the Figure upon creation<a class="headerlink" href="#setting-the-size-of-the-figure-upon-creation" title="Link to this heading">#</a></h3>
 <p>The default Figure is fairly small. We can change this when creating it with the <code class="docutils literal notranslate"><span class="pre">figsize</span></code> parameter. Pass a two-item tuple to configure the height and width of the figure as we did in the previous lesson with Pandas plotting. By default, these dimensions are 6 by 4. They represent <strong>inches</strong> and are literally the inches that your figure would be if you printed out on paper.</p>
 <p>Below, we create a new Figure that is 8 inches in width by 4 inches in height. We also color the faces of the both the Figure and Axes again.</p>
 <div class="cell docutils container">
@@ -836,14 +622,14 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_14_0.png" src="../_images/lesson-5b_14_0.png" />
+<img alt="../_images/8c03c0f4407faf9689559e3aa4fd1f20ee1bf7ede8451b5e26f58c22c5f441a6.png" src="../_images/8c03c0f4407faf9689559e3aa4fd1f20ee1bf7ede8451b5e26f58c22c5f441a6.png" />
 </div>
 </div>
 <p>Everything on our plot is a separate object. Each of these objects may be explicitly referenced by a variable. Once we have a reference to a particular object, we can then modify it by calling methods on it.</p>
 <p>Thus far we have two references, <code class="docutils literal notranslate"><span class="pre">fig</span></code> and <code class="docutils literal notranslate"><span class="pre">ax</span></code>. There are many other objects on our Axes that we can reference such as the x and y axis, tick marks, tick labels, and others. We do not yet have references to these objects.</p>
-</div>
-<div class="section" id="calling-axes-methods-get-and-set-methods">
-<h3>Calling Axes methods - <code class="docutils literal notranslate"><span class="pre">get_</span></code> and <code class="docutils literal notranslate"><span class="pre">set_</span></code> methods<a class="headerlink" href="#calling-axes-methods-get-and-set-methods" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="calling-axes-methods-get-and-set-methods">
+<h3>Calling Axes methods - <code class="docutils literal notranslate"><span class="pre">get_</span></code> and <code class="docutils literal notranslate"><span class="pre">set_</span></code> methods<a class="headerlink" href="#calling-axes-methods-get-and-set-methods" title="Link to this heading">#</a></h3>
 <p>Before we start referencing these other objects, let’s change some of the properties of our Axes by calling some methods on it. Many methods begin with either <code class="docutils literal notranslate"><span class="pre">get_</span></code> or <code class="docutils literal notranslate"><span class="pre">set_</span></code> followed by the part of the Axes that will get retrieved or modified. The following list shows several of the most common properties that can be set on our Axes. We will see examples of each one below.</p>
 <ul class="simple">
 <li><p>title</p></li>
@@ -852,8 +638,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>xticks/yticks</p></li>
 <li><p>xticklabels/yticklabels</p></li>
 </ul>
-<div class="section" id="getting-and-setting-the-title-of-the-axes">
-<h4>Getting and setting the title of the Axes<a class="headerlink" href="#getting-and-setting-the-title-of-the-axes" title="Permalink to this headline">¶</a></h4>
+<section id="getting-and-setting-the-title-of-the-axes">
+<h4>Getting and setting the title of the Axes<a class="headerlink" href="#getting-and-setting-the-title-of-the-axes" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">get_title</span></code> method will return the title of the Axes as a string. There is no title at this moment so it returns an empty string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -888,7 +674,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_20_0.png" src="../_images/lesson-5b_20_0.png" />
+<img alt="../_images/887933883e98ef9ad9d3916d96fea421be30b03476464e14d5f9a5a59f0e966d.png" src="../_images/887933883e98ef9ad9d3916d96fea421be30b03476464e14d5f9a5a59f0e966d.png" />
 </div>
 </div>
 <p>Now, if we run the <code class="docutils literal notranslate"><span class="pre">get_title</span></code> method again, we will get the string that was used as the title.</p>
@@ -904,9 +690,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="getting-and-setting-the-x-and-y-limits">
-<h4>Getting and setting the x and y limits<a class="headerlink" href="#getting-and-setting-the-x-and-y-limits" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="getting-and-setting-the-x-and-y-limits">
+<h4>Getting and setting the x and y limits<a class="headerlink" href="#getting-and-setting-the-x-and-y-limits" title="Link to this heading">#</a></h4>
 <p>By default, the limits of both the x and y axis are 0 to 1. We can change this with the <code class="docutils literal notranslate"><span class="pre">set_xlim</span></code> and <code class="docutils literal notranslate"><span class="pre">set_ylim</span></code> methods. Pass these methods a new left and right boundary to change the limits. These methods actually return a tuple of the limits.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -915,7 +701,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.0), np.float64(1.0))
 </pre></div>
 </div>
 </div>
@@ -927,7 +713,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.0, 1.0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(np.float64(0.0), np.float64(1.0))
 </pre></div>
 </div>
 </div>
@@ -941,16 +727,16 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_26_0.png" src="../_images/lesson-5b_26_0.png" />
+<img alt="../_images/b1bb59fbc84be002d618028f7eeedacccc889ebfcc31a60b3ca883e5d65eb50e.png" src="../_images/b1bb59fbc84be002d618028f7eeedacccc889ebfcc31a60b3ca883e5d65eb50e.png" />
 </div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Notice, that the size of the figure remains the same. Only the limits of the x and y axis have changed.</p>
 </div>
-</div>
-<div class="section" id="getting-and-setting-the-location-of-the-x-and-y-ticks">
-<h4>Getting and setting the location of the x and y ticks<a class="headerlink" href="#getting-and-setting-the-location-of-the-x-and-y-ticks" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="getting-and-setting-the-location-of-the-x-and-y-ticks">
+<h4>Getting and setting the location of the x and y ticks<a class="headerlink" href="#getting-and-setting-the-location-of-the-x-and-y-ticks" title="Link to this heading">#</a></h4>
 <p>In the graph above, it has chosen to place ticks every 1 unit for the x and every 10 units for the y. Matplotlib chooses reasonable default values. Let’s see the location of these ticks with the <code class="docutils literal notranslate"><span class="pre">get_xticks</span></code> and <code class="docutils literal notranslate"><span class="pre">get_yticks</span></code> methods.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -990,12 +776,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_31_0.png" src="../_images/lesson-5b_31_0.png" />
+<img alt="../_images/34a5540e7a99dbb87d905357d43e320b58532633818731550084fa507719162d.png" src="../_images/34a5540e7a99dbb87d905357d43e320b58532633818731550084fa507719162d.png" />
 </div>
 </div>
-</div>
-<div class="section" id="getting-and-setting-the-x-and-y-tick-labels">
-<h4>Getting and setting the x and y tick labels<a class="headerlink" href="#getting-and-setting-the-x-and-y-tick-labels" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="getting-and-setting-the-x-and-y-tick-labels">
+<h4>Getting and setting the x and y tick labels<a class="headerlink" href="#getting-and-setting-the-x-and-y-tick-labels" title="Link to this heading">#</a></h4>
 <p>The current tick labels for the x-axis and y-axis are the same as the tick locations. Let’s first view the current tick labels. The output displays a list of <code class="docutils literal notranslate"><span class="pre">Text</span></code> objects that contain <code class="docutils literal notranslate"><span class="pre">Text(xaxis_location,</span> <span class="pre">yaxis_location,</span> <span class="pre">tick_label)</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1019,7 +805,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_35_0.png" src="../_images/lesson-5b_35_0.png" />
+<img alt="../_images/a8f5db60b719f99220cca696ee9d8e2c3de3e01b35afff1e4ec69eb38ac07e4c.png" src="../_images/a8f5db60b719f99220cca696ee9d8e2c3de3e01b35afff1e4ec69eb38ac07e4c.png" />
 </div>
 </div>
 <div class="admonition tip">
@@ -1027,10 +813,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>The tick locations are a completely separate concept than the tick labels. The tick locations are always numeric and determine where on the plot the tick mark will appear. The tick labels on the other hand are the strings that are used on the graph.</p>
 <p>The tick labels are defaulted to be a string of the tick location, but you can set them to be any string you want, as we did above. But use this wisely otherwise you may lead viewers of your plots astray!</p>
 </div>
-</div>
-</div>
-<div class="section" id="setting-text-styles">
-<h3>Setting text styles<a class="headerlink" href="#setting-text-styles" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="setting-text-styles">
+<h3>Setting text styles<a class="headerlink" href="#setting-text-styles" title="Link to this heading">#</a></h3>
 <p>All the text we placed on our plot was plain. We can add styling to it by changing the text properties. See the documentation for a list of all the <a class="reference external" href="https://matplotlib.org/tutorials/text/text_props.html">text properties</a>.</p>
 <p>Common text properties:</p>
 <ul class="simple">
@@ -1055,7 +841,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_38_0.png" src="../_images/lesson-5b_38_0.png" />
+<img alt="../_images/f8e42a5c06ac5725b1dcc97adf8dd009de62d9b797400bc49d8a66532179368b.png" src="../_images/f8e42a5c06ac5725b1dcc97adf8dd009de62d9b797400bc49d8a66532179368b.png" />
 </div>
 </div>
 <p>Any other text may be stylized with those same parameters. Below we do so with the x labels.</p>
@@ -1073,12 +859,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_40_0.png" src="../_images/lesson-5b_40_0.png" />
+<img alt="../_images/4f674fcc2f7d0822b951c4f4b2b1b7c92fc269fff51657d24c52320c06274ff1.png" src="../_images/4f674fcc2f7d0822b951c4f4b2b1b7c92fc269fff51657d24c52320c06274ff1.png" />
 </div>
 </div>
-</div>
-<div class="section" id="knowledge-check">
-<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Link to this heading">#</a></h3>
 <div class="admonition-exercises admonition">
 <p class="admonition-title">Exercises:</p>
 <p>Create a Figure with a single Axes. Modify the Axes by using all of the methods in this notebook.</p>
@@ -1089,10 +875,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p><code class="docutils literal notranslate"><span class="pre">xticks/yticks</span></code>: set the xticks to be in increments of 10 and yticks to be in increments of 5.</p></li>
 </ul>
 </div>
-</div>
-</div>
-<div class="section" id="plotting-data">
-<h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="plotting-data">
+<h2>Plotting Data<a class="headerlink" href="#plotting-data" title="Link to this heading">#</a></h2>
 <p>In previous section, we created Figure and Axes objects, and proceeded to change their properties without plotting any actual data. In this section, we will learn how to create some of the same plots that we created in the Plotting with Pandas lesson.</p>
 <p>The <a class="reference external" href="https://matplotlib.org/api/axes_api.html">matplotlib documentation</a> has a nice layout of the Axes API. There are around 300 different calls you make with an Axes object. The API page categorizes and groups each method by its functionality. The first third (approximately) of the categories in the API are used to create plots.</p>
 <p>The simplest and most common plots are found in the Basics category and include <code class="docutils literal notranslate"><span class="pre">plot</span></code>, <code class="docutils literal notranslate"><span class="pre">scatter</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code>, <code class="docutils literal notranslate"><span class="pre">pie</span></code>, and others.</p>
@@ -1184,18 +970,18 @@ const thebe_selector_output = ".output, .cell_output"
       <th>1</th>
       <td>900</td>
       <td>330</td>
-      <td>31541475196</td>
-      <td>1095275</td>
+      <td>31198570047</td>
+      <td>9878513</td>
       <td>1</td>
-      <td>0.25</td>
-      <td>0.25</td>
+      <td>0.99</td>
+      <td>0.10</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5</td>
+      <td>1</td>
       <td>...</td>
-      <td>ROLLS</td>
-      <td>ROLLS: BAGELS</td>
-      <td>4 OZ</td>
+      <td>FACIAL TISS/DNR NAPKIN</td>
+      <td>FACIAL TISSUE &amp; PAPER HANDKE</td>
+      <td>85 CT</td>
       <td>35-44</td>
       <td>35-49K</td>
       <td>Homeowner</td>
@@ -1206,83 +992,83 @@ const thebe_selector_output = ".output, .cell_output"
     </tr>
     <tr>
       <th>2</th>
-      <td>900</td>
-      <td>330</td>
-      <td>31672350129</td>
-      <td>1095275</td>
+      <td>1228</td>
+      <td>406</td>
+      <td>31198655051</td>
+      <td>1041453</td>
       <td>1</td>
-      <td>0.25</td>
-      <td>0.25</td>
+      <td>1.43</td>
+      <td>0.15</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5</td>
+      <td>1</td>
       <td>...</td>
-      <td>ROLLS</td>
-      <td>ROLLS: BAGELS</td>
-      <td>4 OZ</td>
-      <td>35-44</td>
-      <td>35-49K</td>
-      <td>Homeowner</td>
-      <td>Married</td>
-      <td>2</td>
-      <td>2 Adults No Kids</td>
+      <td>BAG SNACKS</td>
+      <td>POTATO CHIPS</td>
+      <td>11.5 OZ</td>
+      <td>45-54</td>
+      <td>100-124K</td>
+      <td>None</td>
+      <td>Unmarried</td>
+      <td>1</td>
+      <td>1 Adult No Kids</td>
       <td>0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>900</td>
-      <td>330</td>
-      <td>31883555076</td>
-      <td>1095275</td>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1020156</td>
       <td>1</td>
-      <td>0.50</td>
-      <td>0.00</td>
+      <td>1.50</td>
+      <td>0.29</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>8</td>
+      <td>1</td>
       <td>...</td>
-      <td>ROLLS</td>
-      <td>ROLLS: BAGELS</td>
-      <td>4 OZ</td>
-      <td>35-44</td>
-      <td>35-49K</td>
+      <td>REFRGRATD DOUGH PRODUCTS</td>
+      <td>REFRIGERATED BAGELS</td>
+      <td>17.1 OZ</td>
+      <td>55-64</td>
+      <td>Under 15K</td>
       <td>Homeowner</td>
       <td>Married</td>
       <td>2</td>
-      <td>2 Adults No Kids</td>
-      <td>0</td>
+      <td>1 Adult Kids</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>900</td>
-      <td>330</td>
-      <td>31944515097</td>
-      <td>1095275</td>
+      <td>906</td>
+      <td>319</td>
+      <td>31198705046</td>
+      <td>1053875</td>
+      <td>2</td>
+      <td>2.78</td>
+      <td>0.80</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>1</td>
-      <td>0.50</td>
-      <td>0.00</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>8</td>
       <td>...</td>
-      <td>ROLLS</td>
-      <td>ROLLS: BAGELS</td>
-      <td>4 OZ</td>
-      <td>35-44</td>
-      <td>35-49K</td>
+      <td>SEAFOOD - SHELF STABLE</td>
+      <td>TUNA</td>
+      <td>5.0 OZ</td>
+      <td>55-64</td>
+      <td>Under 15K</td>
       <td>Homeowner</td>
       <td>Married</td>
       <td>2</td>
-      <td>2 Adults No Kids</td>
-      <td>0</td>
+      <td>1 Adult Kids</td>
+      <td>1</td>
     </tr>
   </tbody>
 </table>
 <p>5 rows × 24 columns</p>
 </div></div></div>
 </div>
-<div class="section" id="line-plots">
-<h3>Line <code class="docutils literal notranslate"><span class="pre">plot</span></code>s<a class="headerlink" href="#line-plots" title="Permalink to this headline">¶</a></h3>
+<section id="line-plots">
+<h3>Line <code class="docutils literal notranslate"><span class="pre">plot</span></code>s<a class="headerlink" href="#line-plots" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">plot</span></code> method’s primary purpose is to create line plots. It does have the ability to create scatter plots as well, but that task is best reserved for <code class="docutils literal notranslate"><span class="pre">scatter</span></code>. The <code class="docutils literal notranslate"><span class="pre">plot</span></code> method is very flexible and can take a variety of different inputs (i.e. lists, numpy arrays, Pandas Series) but our examples will focus on using Matplotlib with a DataFrame.</p>
 <p>Let’s compute the total daily sales and create a line plot:</p>
 <div class="cell docutils container">
@@ -1360,7 +1146,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_47_0.png" src="../_images/lesson-5b_47_0.png" />
+<img alt="../_images/df69665fef43c15f03df3b763a01058c6419676716b510b92b3f3add7e3ff5a4.png" src="../_images/df69665fef43c15f03df3b763a01058c6419676716b510b92b3f3add7e3ff5a4.png" />
 </div>
 </div>
 <p>We can change several properties of this plot. For example, we can change the line style and color of our line directly in the <code class="docutils literal notranslate"><span class="pre">ax.plot</span></code> call along with adding plot a</p>
@@ -1389,7 +1175,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_49_0.png" src="../_images/lesson-5b_49_0.png" />
+<img alt="../_images/da2068b360569a07ff1628701a41b014926fd16fbf08188505653069e74eaf2a.png" src="../_images/da2068b360569a07ff1628701a41b014926fd16fbf08188505653069e74eaf2a.png" />
 </div>
 </div>
 <p>We can even add additional features such as gridlines and text/arrows to call out certain parts of the plot.</p>
@@ -1430,12 +1216,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_51_0.png" src="../_images/lesson-5b_51_0.png" />
+<img alt="../_images/8e09c1df79a17eceb12894e7c910aefa53001fb490e23439ab8dc6d0d51c5fe7.png" src="../_images/8e09c1df79a17eceb12894e7c910aefa53001fb490e23439ab8dc6d0d51c5fe7.png" />
 </div>
 </div>
-</div>
-<div class="section" id="other-plots">
-<h3>Other plots<a class="headerlink" href="#other-plots" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="other-plots">
+<h3>Other plots<a class="headerlink" href="#other-plots" title="Link to this heading">#</a></h3>
 <p>We can create many of the other forms of plots that we saw in the previous lesson. The following are just a few examples that recreate the histogram, boxplot, and scatter plots that we made in the Plotting with Pandas lesson.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1448,7 +1234,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_53_0.png" src="../_images/lesson-5b_53_0.png" />
+<img alt="../_images/777ff8945cd2a055391878209c7e6c5e90b44e2db26a3705a7137647c88aec54.png" src="../_images/777ff8945cd2a055391878209c7e6c5e90b44e2db26a3705a7137647c88aec54.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1465,7 +1251,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_54_0.png" src="../_images/lesson-5b_54_0.png" />
+<img alt="../_images/6f9e4f7adbb7c6dd90db9ae97e127cc12a084037518f3ea7b3ffd1766f7ba55a.png" src="../_images/6f9e4f7adbb7c6dd90db9ae97e127cc12a084037518f3ea7b3ffd1766f7ba55a.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1477,12 +1263,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_55_0.png" src="../_images/lesson-5b_55_0.png" />
+<img alt="../_images/0c0d816883dee97da46be5e0e714bc236f3837e28cb2be17644fd31734d17b05.png" src="../_images/0c0d816883dee97da46be5e0e714bc236f3837e28cb2be17644fd31734d17b05.png" />
 </div>
 </div>
-</div>
-<div class="section" id="adding-more-dimensions">
-<h3>Adding more dimensions<a class="headerlink" href="#adding-more-dimensions" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="adding-more-dimensions">
+<h3>Adding more dimensions<a class="headerlink" href="#adding-more-dimensions" title="Link to this heading">#</a></h3>
 <p>In some cases we can even add additional dimensions to our data. For example, say we have the following data set that has total quantity and sales_value plus a third variable that indicates the number of transactions for each store.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1585,12 +1371,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_59_0.png" src="../_images/lesson-5b_59_0.png" />
+<img alt="../_images/44abd4575ee950871417ba9e96fab72d68619b94bcf1933d3dc0853225b9fe43.png" src="../_images/44abd4575ee950871417ba9e96fab72d68619b94bcf1933d3dc0853225b9fe43.png" />
 </div>
 </div>
-</div>
-<div class="section" id="multiple-plots">
-<h3>Multiple plots<a class="headerlink" href="#multiple-plots" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="multiple-plots">
+<h3>Multiple plots<a class="headerlink" href="#multiple-plots" title="Link to this heading">#</a></h3>
 <p>We can create multiple plots (“Axes”) within our figure. For example, the following will create 4 plots (2 rows x 2 colums).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1599,7 +1385,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_61_0.png" src="../_images/lesson-5b_61_0.png" />
+<img alt="../_images/66df2f20f85d1a4cfccaacedb41d7e6122ac40b6bfc88bfd3f540ad65affa279.png" src="../_images/66df2f20f85d1a4cfccaacedb41d7e6122ac40b6bfc88bfd3f540ad65affa279.png" />
 </div>
 </div>
 <p>Whenever you create multiple Axes on a figure with <strong><code class="docutils literal notranslate"><span class="pre">subplots</span></code></strong>, you will be returned a NumPy array of Axes objects. Let’s verify that the type and shape of this array.</p>
@@ -1635,8 +1421,8 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;],
-       [&lt;AxesSubplot:&gt;, &lt;AxesSubplot:&gt;]], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;Axes: &gt;, &lt;Axes: &gt;],
+       [&lt;Axes: &gt;, &lt;Axes: &gt;]], dtype=object)
 </pre></div>
 </div>
 </div>
@@ -1709,24 +1495,24 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/lesson-5b_71_0.png" src="../_images/lesson-5b_71_0.png" />
+<img alt="../_images/e45b313c906ac8a7db111f61ad2f733ee3df64397900e222625a95e1a462687f.png" src="../_images/e45b313c906ac8a7db111f61ad2f733ee3df64397900e222625a95e1a462687f.png" />
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="video-tutorial">
-<h2>Video Tutorial<a class="headerlink" href="#video-tutorial" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="video-tutorial">
+<h2>Video Tutorial<a class="headerlink" href="#video-tutorial" title="Link to this heading">#</a></h2>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
 <p>The following video is from the SciPy 2018 conference. It is an extended (3 hours) introduction to Matplotlib and has been a very popular training offered at <a class="reference external" href="https://conference.scipy.org/">SciPy conferences</a> over the years.</p>
 <iframe id="kaltura_player" src="https://cdnapisec.kaltura.com/p/1492301/sp/149230100/embedIframeJs/uiconf_id/49148882/partner_id/1492301?iframeembed=true&playerId=kaltura_player&entry_id=1_fw1yn11m&flashvars[streamerType]=auto&amp;flashvars[localizationCode]=en_US&amp;flashvars[forceMobileHTML5]=true&amp;flashvars[scrubber.sliderPreview]=false&amp;flashvars[Kaltura.addCrossoriginToIframe]=true&amp;&wid=1_rsi40826" width="640" height="610" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" sandbox="allow-downloads allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="BANA 6043 | Anatomy of Matplotlib (Beginner Level) | SciPy 2018 Tutorial | Benjamin Root &amp; Hannah Aizenman"></iframe>
 </div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="attention admonition">
 <p class="admonition-title">Questions:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Identify all different products that contain “pizza” in their <code class="docutils literal notranslate"><span class="pre">product_type</span></code> description.</p></li>
 <li><p>Using Matplotlib:</p>
 <ul class="simple">
@@ -1739,31 +1525,37 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ol>
 </div>
-</div>
-<div class="section" id="computing-environment">
-<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
 <span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,completejourney_py,matplotlib
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.9.12
-IPython version      : 8.2.0
+Python version       : 3.12.4
+IPython version      : 8.26.0
 
-jupyterlab        : 3.3.2
-pandas            : 1.4.2
+jupyterlab        : 4.2.3
+pandas            : 2.2.2
 completejourney_py: 0.0.3
-matplotlib        : 3.5.1
+matplotlib        : 3.8.4
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1777,7 +1569,7 @@ matplotlib        : 3.5.1
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./05-module"
         },
         predefinedOutput: true
@@ -1785,44 +1577,129 @@ matplotlib        : 3.5.1
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lesson-5a.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lession 5a: Plotting with Pandas</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson-5a.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lession 5a: Plotting with Pandas</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="lesson-5c.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="lesson-5c.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Lesson 5c: Plotting with Bokeh</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Bradley C. Boehmke<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anatomy-of-a-figure">Anatomy of a Figure</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#importing-the-pyplot-module">Importing the pyplot module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#figures-and-axes">Figures and axes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distinguishing-the-figure-from-the-axes">Distinguishing the Figure from the Axes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-size-of-the-figure-upon-creation">Setting the size of the Figure upon creation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calling-axes-methods-get-and-set-methods">Calling Axes methods - <code class="docutils literal notranslate"><span class="pre">get_</span></code> and <code class="docutils literal notranslate"><span class="pre">set_</span></code> methods</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-title-of-the-axes">Getting and setting the title of the Axes</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-limits">Getting and setting the x and y limits</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-location-of-the-x-and-y-ticks">Getting and setting the location of the x and y ticks</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-and-setting-the-x-and-y-tick-labels">Getting and setting the x and y tick labels</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-text-styles">Setting text styles</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-data">Plotting Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-plots">Line <code class="docutils literal notranslate"><span class="pre">plot</span></code>s</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-plots">Other plots</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-more-dimensions">Adding more dimensions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-plots">Multiple plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#video-tutorial">Video Tutorial</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bradley C. Boehmke
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

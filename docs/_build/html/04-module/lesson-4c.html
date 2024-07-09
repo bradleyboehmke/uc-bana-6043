@@ -1,689 +1,500 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Lesson 4c: Handling text data &#8212; UC BANA 6043 Statistical Computing</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
-
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script >let toggleHintShow = 'Click to show';</script>
-    <script >let toggleHintHide = 'Click to hide';</script>
-    <script >let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script >const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '04-module/lesson-4c';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Overview" href="../05-module/overview.html" />
     <link rel="prev" title="Lesson 4b: Relational data" href="lesson-4b.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="../_static/logo.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">UC BANA 6043 Statistical Computing</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Statistical Computing
-  </a>
- </li>
-</ul>
-<p class="caption">
- <span class="caption-text">
-  Module 0 (Pre-class)
- </span>
-</p>
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="UC BANA 6043 Statistical Computing - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="UC BANA 6043 Statistical Computing - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Statistical Computing
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 0 (Pre-class)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../00-module/lesson-0b.html">
-   Lesson 0: Configuring your computer
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../00-module/lesson-0b.html">Lesson 0: Configuring your computer</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 1
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 1</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1a.html">
-   Lesson 1a: Introduction to JupyterLab
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1b.html">
-   Lesson 1b: Variables, operators &amp; types
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1c.html">
-   Lesson 1c: More operators &amp; conditionals
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../01-module/lesson-1d.html">
-   Lesson 1d: Data structures
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1a.html">Lesson 1a: Introduction to JupyterLab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1b.html">Lesson 1b: Variables, operators &amp; types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1c.html">Lesson 1c: More operators &amp; conditionals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../01-module/lesson-1d.html">Lesson 1d: Data structures</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 2
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 2</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2a.html">
-   Lesson 2a: Packages, libraries &amp; modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2b.html">
-   Lesson 2b: Importing data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../02-module/lesson-2c.html">
-   Lesson 2c: Deeper dive on DataFrames
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2a.html">Lesson 2a: Packages, libraries &amp; modules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2b.html">Lesson 2b: Importing data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../02-module/lesson-2c.html">Lesson 2c: Deeper dive on DataFrames</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 3
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 3</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3a.html">
-   Lesson 3a: Subsetting data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3b.html">
-   Lesson 3b: Manipulating data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../03-module/lesson-3c.html">
-   Lesson 3c: Summarizing data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3a.html">Lesson 3a: Subsetting data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3b.html">Lesson 3b: Manipulating data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../03-module/lesson-3c.html">Lesson 3c: Summarizing data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 4
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 4</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-4a.html">
-   Lession 4a: Tidy data
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="lesson-4b.html">
-   Lesson 4b: Relational data
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Lesson 4c: Handling text data
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-4a.html">Lession 4a: Tidy data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lesson-4b.html">Lesson 4b: Relational data</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lesson 4c: Handling text data</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 5
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 5</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5a.html">
-   Lession 5a: Plotting with Pandas
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5b.html">
-   Lesson 5b: Plotting with Matplotlib
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../05-module/lesson-5c.html">
-   Lesson 5c: Plotting with Bokeh
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5a.html">Lession 5a: Plotting with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5b.html">Lesson 5b: Plotting with Matplotlib</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../05-module/lesson-5c.html">Lesson 5c: Plotting with Bokeh</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 6
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 6</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6a.html">
-   Lession 6a: Conditional statements
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6b.html">
-   Lesson 6b: Iteration statement
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../06-module/lesson-6c.html">
-   Lesson 6C: Writing functions
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6a.html">Lession 6a: Conditional statements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6b.html">Lesson 6b: Iteration statement</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../06-module/lesson-6c.html">Lesson 6C: Writing functions</a></li>
 </ul>
-<p class="caption">
- <span class="caption-text">
-  Module 7
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Module 7</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/overview.html">
-   Overview
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7a.html">
-   Lesson 7a: Data Exploration
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7b.html">
-   Lesson 7b: First model with scikit-learn
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7c.html">
-   Lesson 7c: Feature Engineering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../07-module/lesson-7d.html">
-   Lesson 7d: Model Evaluation &amp; Selection
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7a.html">Lesson 7a: Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7b.html">Lesson 7b: First model with scikit-learn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7c.html">Lesson 7c: Feature Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../07-module/lesson-7d.html">Lesson 7d: Model Evaluation &amp; Selection</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/04-module/lesson-4c.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F04-module/lesson-4c.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/04-module/lesson-4c.ipynb"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/edit/main/book/_build/04-module/lesson-4c.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/bradleyboehmke/uc-bana-6043/issues/new?title=Issue%20on%20page%20%2F04-module/lesson-4c.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/bradleyboehmke/uc-bana-6043/main?urlpath=tree/book/_build/04-module/lesson-4c.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/04-module/lesson-4c.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lesson 4c: Handling text data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#string-basics">
-   String basics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#case-conversion">
-     Case conversion
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#value-counts">
-     Value counts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#character-counts">
-     Character counts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detecting-words">
-     Detecting words
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-parts-of-strings">
-     Extracting parts of strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replacing-parts-of-strings">
-     Replacing parts of strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-expressions">
-   Regular expressions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regex-basics">
-     Regex basics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiple-words">
-     Multiple words
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-anchors">
-     Line anchors
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#metacharacters">
-     Metacharacters
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#character-classes">
-     Character classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shorthand-character-classes">
-     Shorthand character classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#repetition">
-     Repetition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#putting-it-altogether">
-     Putting it altogether
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-basics">String basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-conversion">Case conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">Value counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-counts">Character counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-words">Detecting words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parts-of-strings">Extracting parts of strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-parts-of-strings">Replacing parts of strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regex-basics">Regex basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-words">Multiple words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-anchors">Line anchors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metacharacters">Metacharacters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-classes">Character classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shorthand-character-classes">Shorthand character classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition">Repetition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-altogether">Putting it altogether</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Lesson 4c: Handling text data</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#learning-objectives">
-   Learning objectives
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#prerequisites">
-   Prerequisites
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#string-basics">
-   String basics
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#case-conversion">
-     Case conversion
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#value-counts">
-     Value counts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#character-counts">
-     Character counts
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#detecting-words">
-     Detecting words
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#extracting-parts-of-strings">
-     Extracting parts of strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#replacing-parts-of-strings">
-     Replacing parts of strings
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#knowledge-check">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regular-expressions">
-   Regular expressions
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#regex-basics">
-     Regex basics
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#multiple-words">
-     Multiple words
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#line-anchors">
-     Line anchors
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#metacharacters">
-     Metacharacters
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#character-classes">
-     Character classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#shorthand-character-classes">
-     Shorthand character classes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#repetition">
-     Repetition
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#putting-it-altogether">
-     Putting it altogether
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     Knowledge check
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#exercises">
-   Exercises
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#computing-environment">
-   Computing environment
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="lesson-4c-handling-text-data">
-<h1>Lesson 4c: Handling text data<a class="headerlink" href="#lesson-4c-handling-text-data" title="Permalink to this headline">¶</a></h1>
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="lesson-4c-handling-text-data">
+<h1>Lesson 4c: Handling text data<a class="headerlink" href="#lesson-4c-handling-text-data" title="Link to this heading">#</a></h1>
 <p>Dealing with character strings is often under-emphasized in data analysis training. The focus typically remains on numeric values; however, the growth in data collection is also resulting in greater bits of information embedded in text. Consequently, handling, cleaning and processing character strings is becoming a prerequisite in daily data analysis. This lesson is meant to give you the foundation of working with character strings.</p>
-<div class="section" id="learning-objectives">
-<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this headline">¶</a></h2>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Link to this heading">#</a></h2>
 <p>By the end of this lesson you’ll be able to:</p>
 <ul class="simple">
 <li><p>Perform basic character string manipulations.</p></li>
 <li><p>Use regular expressions to identify and manipulate patterns in character strings.</p></li>
 </ul>
-</div>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h2>
 <p>The Python standard library has lots of built-in capabilities to manipulate character strings. Pandas has incorporated many of these capabilities and even expanded upon them. In this lesson, we will demonstrate different character string capabilities with the <code class="docutils literal notranslate"><span class="pre">.str.xxx()</span></code> methods provided by Pandas.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -851,9 +662,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>92331 rows × 7 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="string-basics">
-<h2>String basics<a class="headerlink" href="#string-basics" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="string-basics">
+<h2>String basics<a class="headerlink" href="#string-basics" title="Link to this heading">#</a></h2>
 <p>Basic string manipulation typically includes case conversion, counting characters, and extracting parts of a string. The following will demonstrate some of these basic string methods on a Pandas DataFrame but realize that Pandas provides many more string methods. Refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">docs</a> to learn more about the many string methods.</p>
 <div class="admonition-video admonition">
 <p class="admonition-title">Video 🎥:</p>
@@ -863,8 +674,8 @@ const thebe_selector_output = ".output, .cell_output"
 <p class="admonition-title">Tip</p>
 <p>The string methods provided by Pandas are accessed by appending the object with <code class="docutils literal notranslate"><span class="pre">.str</span></code> followed by another dot and then the specific string method. Think of the term ‘accessor’ as giving the object access to specialized string methods.</p>
 </div>
-<div class="section" id="case-conversion">
-<h3>Case conversion<a class="headerlink" href="#case-conversion" title="Permalink to this headline">¶</a></h3>
+<section id="case-conversion">
+<h3>Case conversion<a class="headerlink" href="#case-conversion" title="Link to this heading">#</a></h3>
 <p>To change the case of a character string we can use <code class="docutils literal notranslate"><span class="pre">.str.lower()</span></code> and <code class="docutils literal notranslate"><span class="pre">.str.upper()</span></code>:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -900,9 +711,9 @@ Name: product_category, dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="value-counts">
-<h3>Value counts<a class="headerlink" href="#value-counts" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="value-counts">
+<h3>Value counts<a class="headerlink" href="#value-counts" title="Link to this heading">#</a></h3>
 <p>We’ve already seen this method in a previous lesson but it’s worth discussing more. The <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> method is one of the most valuable methods for string columns. It returns the count of each unique value in the Series and sorts it from most to least common.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -912,18 +723,19 @@ Name: product_category, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GREETING CARDS/WRAP/PARTY SPLY    2785
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>product_category
+GREETING CARDS/WRAP/PARTY SPLY    2785
 CANDY - PACKAGED                  2475
 MAKEUP AND TREATMENT              2467
 HAIR CARE PRODUCTS                1744
 SOFT DRINKS                       1704
                                   ... 
-EASTER LILY                          1
 BOUQUET (NON ROSE)                   1
 MISCELLANEOUS CROUTONS               1
+EASTER LILY                          1
 PKG.SEAFOOD MISC                     1
 FROZEN PACKAGE MEAT                  1
-Name: product_category, Length: 303, dtype: int64
+Name: count, Length: 303, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -936,18 +748,19 @@ Name: product_category, Length: 303, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GREETING CARDS/WRAP/PARTY SPLY    0.030341
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>product_category
+GREETING CARDS/WRAP/PARTY SPLY    0.030341
 CANDY - PACKAGED                  0.026963
 MAKEUP AND TREATMENT              0.026876
 HAIR CARE PRODUCTS                0.019000
 SOFT DRINKS                       0.018564
                                     ...   
-EASTER LILY                       0.000011
 BOUQUET (NON ROSE)                0.000011
 MISCELLANEOUS CROUTONS            0.000011
+EASTER LILY                       0.000011
 PKG.SEAFOOD MISC                  0.000011
 FROZEN PACKAGE MEAT               0.000011
-Name: product_category, Length: 303, dtype: float64
+Name: proportion, Length: 303, dtype: float64
 </pre></div>
 </div>
 </div>
@@ -961,19 +774,20 @@ Name: product_category, Length: 303, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2017-05-28 15:19:55    161
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>transaction_timestamp
+2017-05-28 15:19:55    161
 2017-06-11 19:07:33    155
 2017-01-04 00:55:24    153
 2017-05-09 20:41:28    146
 2017-12-05 17:58:13    144
-Name: transaction_timestamp, dtype: int64
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="character-counts">
-<h3>Character counts<a class="headerlink" href="#character-counts" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="character-counts">
+<h3>Character counts<a class="headerlink" href="#character-counts" title="Link to this heading">#</a></h3>
 <p>We can get the count of the entire character string with <code class="docutils literal notranslate"><span class="pre">len()</span></code>. This returns the total number of characters in a string to include white space and other non-alphanumeric characters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1001,14 +815,14 @@ Name: product_category, dtype: float64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4875.0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(4875.0)
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="detecting-words">
-<h3>Detecting words<a class="headerlink" href="#detecting-words" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="detecting-words">
+<h3>Detecting words<a class="headerlink" href="#detecting-words" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">contains()</span></code> method returns a boolean whether or not the passed string is contained somewhere within the string. We can use this to filter for particular words or expressions. For example, the following finds all products where <code class="docutils literal notranslate"><span class="pre">product_category</span></code> contains ‘meat’.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1165,9 +979,9 @@ Name: product_category, dtype: float64
 <p>3607 rows × 7 columns</p>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="extracting-parts-of-strings">
-<h3>Extracting parts of strings<a class="headerlink" href="#extracting-parts-of-strings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="extracting-parts-of-strings">
+<h3>Extracting parts of strings<a class="headerlink" href="#extracting-parts-of-strings" title="Link to this heading">#</a></h3>
 <p>We can use traditional index-styling to extract or slice parts of a character string. For example, the following gets the first and last 5 characters in each string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1203,9 +1017,9 @@ Name: product_category, dtype: object
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="replacing-parts-of-strings">
-<h3>Replacing parts of strings<a class="headerlink" href="#replacing-parts-of-strings" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="replacing-parts-of-strings">
+<h3>Replacing parts of strings<a class="headerlink" href="#replacing-parts-of-strings" title="Link to this heading">#</a></h3>
 <p>Sometimes we may want to clean up character strings by replacing certain words or phrases. For example, this data contains the word ‘frzn’ in place of ‘frozen’. If we wanted to fix this we could use the <code class="docutils literal notranslate"><span class="pre">replace()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1389,12 +1203,12 @@ Name: product_category, dtype: object
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="knowledge-check">
-<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="knowledge-check">
+<h3>Knowledge check<a class="headerlink" href="#knowledge-check" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Questions</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">product_type</span></code> column, which product has the longest description? How about the shortest?</p></li>
 <li><p>Which <code class="docutils literal notranslate"><span class="pre">package_size</span></code> values are most common in our data? Which is the least common?</p></li>
 <li><p>Replace all instances of ‘DSH’ with ‘dish’ in the <code class="docutils literal notranslate"><span class="pre">product_category</span></code> column. How many products does this impact?</p></li>
@@ -1404,14 +1218,14 @@ Name: product_category, dtype: object
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xuncB4e2QkI?si=Jf2cOKX5cUkjsb0Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="regular-expressions">
-<h2>Regular expressions<a class="headerlink" href="#regular-expressions" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="regular-expressions">
+<h2>Regular expressions<a class="headerlink" href="#regular-expressions" title="Link to this heading">#</a></h2>
 <p>A regular expression (aka regex) is a sequence of characters that define a search pattern, mainly for use in pattern matching with text strings. Typically, regex patterns consist of a combination of alphanumeric characters as well as special characters. The pattern can also be as simple as a single character or it can be more complex and include several combinations of characters.</p>
 <p>To understand how to work with regular expressions in Python, we need to consider two primary features of regular expressions. One has to do with the syntax, or the way regex patterns are expressed in Python. The other has to do with the functions used for regex matching in Python. You will be exposed to both of these in the following sections.</p>
-<div class="section" id="regex-basics">
-<h3>Regex basics<a class="headerlink" href="#regex-basics" title="Permalink to this headline">¶</a></h3>
+<section id="regex-basics">
+<h3>Regex basics<a class="headerlink" href="#regex-basics" title="Link to this heading">#</a></h3>
 <p>Python’s standard library, and Pandas adoption of these string methods provides us a convenient approach to regular expressions. Many of the methods used in the previous sections can be used with regex. The common pattern for our method calls consist of:</p>
 <center>
 <code>string_object.str.*(pattern)</code>
@@ -1576,9 +1390,9 @@ Name: product_category, dtype: object
 </div></div></div>
 </div>
 <p>There are wide variety of <code class="docutils literal notranslate"><span class="pre">.str.</span></code> methods. See the previous sections for some of the more common ones or peruse the Pandas <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/text.html">Working with Text Data documentation</a> for examples of more.</p>
-</div>
-<div class="section" id="multiple-words">
-<h3>Multiple words<a class="headerlink" href="#multiple-words" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="multiple-words">
+<h3>Multiple words<a class="headerlink" href="#multiple-words" title="Link to this heading">#</a></h3>
 <p>In the previous section you saw that you can search for a given word using some of the <code class="docutils literal notranslate"><span class="pre">.str.</span></code> methods. We can build onto this and search for multiple words. For example, you can search for the phrase “summer” or “fall”. One may initially think about performing this search with the following in which case we use traditional word matching and then subsetting. This is known as a ‘literal’ search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1672,7 +1486,7 @@ Name: product_category, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>This works, but as our searches get more complex this approach become quite tedious. Instead, we can start using regex search patterns to simplify this process.  The below approach will search for observations that include the word “summer”, “fall”, or a combination of the two. This is equivalent to the above statement but more succinct. This is truly a regex, as instead of searching for a literal statement, we are looking for a pattern of of letter/word combinations.</p>
+<p>This works, but as our searches get more complex this approach becomes quite tedious. Instead, we can start using regex search patterns to simplify this process.  The below approach will search for observations that include the word “summer”, “fall”, or a combination of the two. This is equivalent to the above statement but more succinct. This is truly a regex, as instead of searching for a literal statement, we are looking for a pattern of letter/word combinations.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">summer_or_fall</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;summer|fall&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -1763,7 +1577,7 @@ Name: product_category, dtype: object
 </table>
 </div></div></div>
 </div>
-<p>We can see that our regex of ‘summer|fall’ returns more observations than our literal search.</p>
+<p>In this example, we can see that our regex of ‘summer|fall’ returns the same number of observations as our literal search.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">literal_count</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="n">summer_products</span> <span class="o">|</span> <span class="n">fall_products</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1781,9 +1595,9 @@ Regex approach: 651 rows
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="line-anchors">
-<h3>Line anchors<a class="headerlink" href="#line-anchors" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="line-anchors">
+<h3>Line anchors<a class="headerlink" href="#line-anchors" title="Link to this heading">#</a></h3>
 <p>Line anchors are used to identify patterns at the beginning or end of an element.  To find a pattern at the beginning of the element we use <code class="docutils literal notranslate"><span class="pre">^</span></code> and a pattern at the end of the element is found with <code class="docutils literal notranslate"><span class="pre">$</span></code>.  For example, if you wanted to find any observations with the word “fruit” in the <code class="docutils literal notranslate"><span class="pre">product_category</span></code> column we can use the following as we saw earlier:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2153,23 +1967,18 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="metacharacters">
-<h3>Metacharacters<a class="headerlink" href="#metacharacters" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="metacharacters">
+<h3>Metacharacters<a class="headerlink" href="#metacharacters" title="Link to this heading">#</a></h3>
 <p>Metacharacters consist of non-alphanumeric symbols such as:</p>
 <p>
 <center>
 . &nbsp;&nbsp; &#92; &nbsp;&nbsp; | &nbsp;&nbsp; ( &nbsp;&nbsp; ) &nbsp;&nbsp; [ &nbsp;&nbsp; { &nbsp;&nbsp; $ &nbsp;&nbsp; &#x2A; &nbsp;&nbsp; + &nbsp;&nbsp;?
 </center>
 </p>
-<p>To match metacharacters in regex you need to <em>escape</em>. In R, we escape them with a double backslash “&quot;.  The following displays the general escape syntax for the most common metacharacters:</p>
-<table class="table" id="escaping-characters">
-<caption><span class="caption-number">Table 2 </span><span class="caption-text">Escaping metacharacters.</span><a class="headerlink" href="#escaping-characters" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
+<p>To match metacharacters in regex you need to <em>escape</em>. In Python, we escape them with a single or double backslash “<code class="docutils literal notranslate"><span class="pre">\</span></code>”.  The following displays the general escape syntax for the most common metacharacters:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="escaping-characters">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">Escaping metacharacters.</span><a class="headerlink" href="#escaping-characters" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Metacharacter</p></th>
 <th class="head"><p>Literal Meaning</p></th>
@@ -2179,7 +1988,7 @@ Regex approach: 651 rows
 <tbody>
 <tr class="row-even"><td><p>.</p></td>
 <td><p>period or dot</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">\.</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\\.</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>$</p></td>
 <td><p>dollar sign</p></td>
@@ -2219,6 +2028,7 @@ Regex approach: 651 rows
 </tr>
 </tbody>
 </table>
+</div>
 <p>The reason we need to escape these characters is because most of these actually have meaning when declaring regular expressions. For example, say we wanted to identify any <code class="docutils literal notranslate"><span class="pre">product_category</span></code> that contains a period (“.”). If we simply use the following we actually get <em><strong>all</strong></em> our records back.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2317,7 +2127,7 @@ Regex approach: 651 rows
 <p>So, we need to use an <strong>escape</strong> (“”) to tell the regular expression you want to match a literal metacharacter.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">includes_dot</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\.&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">includes_dot</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_category&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">.&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">includes_dot</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2405,16 +2215,12 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="character-classes">
-<h3>Character classes<a class="headerlink" href="#character-classes" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="character-classes">
+<h3>Character classes<a class="headerlink" href="#character-classes" title="Link to this heading">#</a></h3>
 <p>To match one of several characters in a specified set we can enclose the characters of concern with square brackets <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">]</span></code>. In addition, to matching any characters <strong>not</strong> in a specified character set we can include the caret <code class="docutils literal notranslate"><span class="pre">^</span></code> at the beginning of the set within the brackets. The following displays the general syntax for common character classes but these can be altered easily as shown in the examples that follow:</p>
-<table class="table" id="common-characters-classes">
-<caption><span class="caption-number">Table 3 </span><span class="caption-text">Common character classes.</span><a class="headerlink" href="#common-characters-classes" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<div class="pst-scrollable-table-container"><table class="table" id="common-characters-classes">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">Common character classes.</span><a class="headerlink" href="#common-characters-classes" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Character class</p></th>
 <th class="head"><p>Description</p></th>
@@ -2450,10 +2256,11 @@ Regex approach: 651 rows
 </tr>
 </tbody>
 </table>
-<p>For example, say we wanted to find any products where the <code class="docutils literal notranslate"><span class="pre">package_size</span></code> is not a round numeric size in ounces. The following identifies any rows where <code class="docutils literal notranslate"><span class="pre">package_size</span></code> contains a dot (remember, we need to escape that character with <code class="docutils literal notranslate"><span class="pre">\.</span></code>) followed by “oz”.</p>
+</div>
+<p>For example, say we wanted to find any products where the <code class="docutils literal notranslate"><span class="pre">package_size</span></code> is not a round numeric size in ounces. The following identifies any rows where <code class="docutils literal notranslate"><span class="pre">package_size</span></code> contains a dot (remember, we need to escape that character with <code class="docutils literal notranslate"><span class="pre">\\.</span></code>) followed by “oz”.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decimal_ounces</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\.[0-9] oz&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decimal_ounces</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">.[0-9] oz&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">decimal_ounces</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2546,7 +2353,7 @@ Regex approach: 651 rows
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decimal_ounces_or_lbs</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\.[0-9] oz|lb&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">.[0-9] oz|lb&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">products</span><span class="p">[</span><span class="n">decimal_ounces_or_lbs</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2636,8 +2443,8 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-<p>Wait! The first observation is in pounds but its a round number and not a decimal.  This is because our regex (<code class="docutils literal notranslate"><span class="pre">\.[0-9]</span> <span class="pre">oz|lb</span></code>) is actually looking for any package size where its a decimal of ounces (<code class="docutils literal notranslate"><span class="pre">\.[0-9]</span> <span class="pre">oz</span></code>) <em><strong>or</strong></em> in pounds (<code class="docutils literal notranslate"><span class="pre">lb</span></code>).</p>
-<p>We need to modify our regex just a tad. If we change it to <code class="docutils literal notranslate"><span class="pre">\.[0-9]</span> <span class="pre">(oz|lb)</span></code> (note that <code class="docutils literal notranslate"><span class="pre">oz|lb</span></code> is now in parenthesis), we are now specifying to search for <code class="docutils literal notranslate"><span class="pre">\.[0-9]</span></code> followed by “oz” or “lb”.</p>
+<p>Wait! The first observation is in pounds but its a round number and not a decimal.  This is because our regex (<code class="docutils literal notranslate"><span class="pre">\\.[0-9]</span> <span class="pre">oz|lb</span></code>) is actually looking for any package size where its a decimal of ounces (<code class="docutils literal notranslate"><span class="pre">\\.[0-9]</span> <span class="pre">oz</span></code>) <em><strong>or</strong></em> in pounds (<code class="docutils literal notranslate"><span class="pre">lb</span></code>).</p>
+<p>We need to modify our regex just a tad. If we change it to <code class="docutils literal notranslate"><span class="pre">\\.[0-9]</span> <span class="pre">(oz|lb)</span></code> (note that <code class="docutils literal notranslate"><span class="pre">oz|lb</span></code> is now in parenthesis), we are now specifying to search for <code class="docutils literal notranslate"><span class="pre">\\.[0-9]</span></code> followed by “oz” or “lb”.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Using parentheses such as <code class="docutils literal notranslate"><span class="pre">(oz|lb)</span></code> is known as grouping. If we simply use <code class="docutils literal notranslate"><span class="pre">(oz|lb)</span></code> then it will be treated as a <a class="reference external" href="https://www.regular-expressions.info/brackets.html">capture grouping</a> and Pandas will throw a warning letting you know that you could extract the matching groups if you prefer. If this warning bothers you then you can add <code class="docutils literal notranslate"><span class="pre">?:</span></code> at the begining (<code class="docutils literal notranslate"><span class="pre">(?:oz|lb)</span></code>)to tell Pandas that you just care about matching this pattern and not capturing each group to extract.</p>
@@ -2646,7 +2453,7 @@ Regex approach: 651 rows
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">decimal_ounces_or_lbs</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\.[0-9] (oz|lb)&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">.[0-9] (oz|lb)&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">products</span><span class="p">[</span><span class="n">decimal_ounces_or_lbs</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2654,8 +2461,8 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_69791/1279328171.py:2: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
-  products[&#39;package_size&#39;]
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_27980/923952225.py:3: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
+  .str.contains(&#39;\\.[0-9] (oz|lb)&#39;, case=False, na=False)
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -2745,7 +2552,7 @@ Regex approach: 651 rows
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">smaller_sizes</span> <span class="o">=</span> <span class="p">(</span>
     <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span>
-    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\.[0-4] (?:oz|lb)&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">.[0-4] (?:oz|lb)&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">)</span>
 
 <span class="n">products</span><span class="p">[</span><span class="n">smaller_sizes</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -2835,53 +2642,50 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="shorthand-character-classes">
-<h3>Shorthand character classes<a class="headerlink" href="#shorthand-character-classes" title="Permalink to this headline">¶</a></h3>
-<p>Since certain character classes are used often, a series of shorthand character classes are available. For example, rather than use <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code> every time we are searching for a number in a regex, we can use just use <code class="docutils literal notranslate"><span class="pre">\d</span></code> to match any digit. The following are a few of the commonly used shorthand character classes:</p>
-<table class="table" id="common-shorthand-characters">
-<caption><span class="caption-number">Table 4 </span><span class="caption-text">Common shorthand character classes.</span><a class="headerlink" href="#common-shorthand-characters" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+</section>
+<section id="shorthand-character-classes">
+<h3>Shorthand character classes<a class="headerlink" href="#shorthand-character-classes" title="Link to this heading">#</a></h3>
+<p>Since certain character classes are used often, a series of shorthand character classes are available. For example, rather than use <code class="docutils literal notranslate"><span class="pre">[0-9]</span></code> every time we are searching for a number in a regex, we can use just use <code class="docutils literal notranslate"><span class="pre">\\d</span></code> to match any digit. The following are a few of the commonly used shorthand character classes:</p>
+<div class="pst-scrollable-table-container"><table class="table" id="common-shorthand-characters">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Common shorthand character classes.</span><a class="headerlink" href="#common-shorthand-characters" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Syntax</p></th>
 <th class="head"><p>Description</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\d</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\\d</span></code></p></td>
 <td><p>match any digit</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\D</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\\D</span></code></p></td>
 <td><p>match any non-digit</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\s</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\\s</span></code></p></td>
 <td><p>match a space character</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\S</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\\S</span></code></p></td>
 <td><p>match a non-space character</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\w</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\\w</span></code></p></td>
 <td><p>match a word</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\W</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\\W</span></code></p></td>
 <td><p>match a non-word</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\b</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">\\b</span></code></p></td>
 <td><p>match a word boundary</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\B</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">\\B</span></code></p></td>
 <td><p>match a non-word boundary</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>We can use these to find patterns such as…</p>
 <p>Find all products where the <code class="docutils literal notranslate"><span class="pre">package_size</span></code> starts with a numeric digit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starts_with_digit</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^\d&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starts_with_digit</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^</span><span class="se">\\</span><span class="s1">d&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">starts_with_digit</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2972,7 +2776,7 @@ Regex approach: 651 rows
 <p>Or all products where the <code class="docutils literal notranslate"><span class="pre">package_size</span></code> starts with a non-digit:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starts_with_nondigit</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^\D&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">starts_with_nondigit</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^</span><span class="se">\\</span><span class="s1">D&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">starts_with_nondigit</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3060,16 +2864,12 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="repetition">
-<h3>Repetition<a class="headerlink" href="#repetition" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="repetition">
+<h3>Repetition<a class="headerlink" href="#repetition" title="Link to this heading">#</a></h3>
 <p>When we want to match a <strong>certain number</strong> of characters that meet a certain criteria we can apply repetition operators to our pattern searches. Common repetition operators include:</p>
-<table class="table" id="common-repitions">
-<caption><span class="caption-number">Table 5 </span><span class="caption-text">Common repetition operators.</span><a class="headerlink" href="#common-repitions" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
+<div class="pst-scrollable-table-container"><table class="table" id="common-repitions">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Common repetition operators.</span><a class="headerlink" href="#common-repitions" title="Link to this table">#</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Syntax</p></th>
 <th class="head"><p>Description</p></th>
@@ -3099,10 +2899,11 @@ Regex approach: 651 rows
 </tr>
 </tbody>
 </table>
+</div>
 <p>For example, say we want to find all products where the <code class="docutils literal notranslate"><span class="pre">package_size</span></code> contains at least 3 digits:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">three_digits</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;\d{3,}&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">three_digits</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\\</span><span class="s1">d{3,}&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">three_digits</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3190,19 +2991,15 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-<p>One thing you probably notice is that the above syntax will match three or more digits within the entire character string. But what if we wanted to identify repetition of a pattern sequence. For example, say we wanted to find <code class="docutils literal notranslate"><span class="pre">product_id</span></code>s where the number “8” is repeated. We can use a <strong><a class="reference external" href="https://www.regular-expressions.info/backref.html">backreference</a></strong> to do so. A backreference will match the same text as previously matched within parentheses. So, in this example, we look for any repeated sequences of the number 8 in <code class="docutils literal notranslate"><span class="pre">product_id</span></code>.</p>
+<p>One thing you probably notice is that the above syntax will match three or more digits within the entire character string. But what if we wanted to identify repetition of a pattern sequence. For example, say we wanted to find <code class="docutils literal notranslate"><span class="pre">product_id</span></code>s where the number “8” is repeated. We simply combine 8 with the corresponding repitition operator from above.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prod_id_8s</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;(8)</span><span class="se">\\</span><span class="s1">1&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prod_id_8s</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;8{2,}&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">prod_id_8s</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_69791/3233621946.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
-  prod_id_8s = products[&#39;product_id&#39;].astype(str).str.contains(&#39;(8)\\1&#39;, na=False)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3285,19 +3082,15 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-<p>What if we wanted to look for <code class="docutils literal notranslate"><span class="pre">product_id</span></code>s that contain three “8”s in a row then we need to repeat that pattern:</p>
+<p>What if we wanted to look for <code class="docutils literal notranslate"><span class="pre">product_id</span></code>s that contain two, but no more than three “8”s in a row:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prod_id_8s</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;(8)</span><span class="se">\\</span><span class="s1">1</span><span class="si">{2}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prod_id_8s</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;product_id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;8{2,3}&#39;</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">products</span><span class="p">[</span><span class="n">prod_id_8s</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_69791/1949681077.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
-  prod_id_8s = products[&#39;product_id&#39;].astype(str).str.contains(&#39;(8)\\1{2}&#39;, na=False)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3327,6 +3120,16 @@ Regex approach: 651 rows
   </thead>
   <tbody>
     <tr>
+      <th>11</th>
+      <td>26889</td>
+      <td>32</td>
+      <td>DRUG GM</td>
+      <td>National</td>
+      <td>MAGAZINE</td>
+      <td>TV/MOVIE-MAGAZINE</td>
+      <td>None</td>
+    </tr>
+    <tr>
       <th>88</th>
       <td>28889</td>
       <td>69</td>
@@ -3335,6 +3138,26 @@ Regex approach: 651 rows
       <td>SEAFOOD - FROZEN</td>
       <td>SEAFOOD-FRZ-RAW FILLETS</td>
       <td>12 OZ</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>28892</td>
+      <td>69</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>FROZEN PIZZA</td>
+      <td>SNACKS/APPETIZERS</td>
+      <td>20 OZ</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>28897</td>
+      <td>69</td>
+      <td>GROCERY</td>
+      <td>Private</td>
+      <td>EGGS</td>
+      <td>EGGS - X-LARGE</td>
+      <td>A D   1 DZ</td>
     </tr>
     <tr>
       <th>199</th>
@@ -3346,50 +3169,20 @@ Regex approach: 651 rows
       <td>SNACK CRACKERS</td>
       <td>8.5 OZ</td>
     </tr>
-    <tr>
-      <th>1065</th>
-      <td>62888</td>
-      <td>69</td>
-      <td>GROCERY</td>
-      <td>Private</td>
-      <td>LAUNDRY ADDITIVES</td>
-      <td>FABRIC SOFTENER LIQUID</td>
-      <td>60 LOADS</td>
-    </tr>
-    <tr>
-      <th>1368</th>
-      <td>75888</td>
-      <td>1448</td>
-      <td>GROCERY</td>
-      <td>National</td>
-      <td>CAT LITTER</td>
-      <td>LITTER ACCESSORIES</td>
-      <td>12 CT</td>
-    </tr>
-    <tr>
-      <th>1436</th>
-      <td>78888</td>
-      <td>1051</td>
-      <td>DRUG GM</td>
-      <td>National</td>
-      <td>ELECTRICAL SUPPPLIES</td>
-      <td>DECOR BULBS</td>
-      <td>2 CT</td>
-    </tr>
   </tbody>
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="putting-it-altogether">
-<h3>Putting it altogether<a class="headerlink" href="#putting-it-altogether" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="putting-it-altogether">
+<h3>Putting it altogether<a class="headerlink" href="#putting-it-altogether" title="Link to this heading">#</a></h3>
 <p>Ok, let’s use a few tools we’ve learned to answer a question we may get asked by our boss. Say we were asked to identify the top 5 products that have the most total sales; however, we only want to focus on those products that weigh 10lbs or more. We can apply the following steps:</p>
-<ol class="simple">
-<li><p>filter for regex <code class="docutils literal notranslate"><span class="pre">&quot;^\d{2,}(\.)?.*lb&quot;</span></code> which means:</p>
+<ol class="arabic simple">
+<li><p>filter for regex <code class="docutils literal notranslate"><span class="pre">&quot;^\\d{2,}\\.?.*lb&quot;</span></code> which means:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">^\d{2,}</span></code>: starts with at least 2 numeric digits</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">(\.)?.</span></code>: followed by an optional decimal</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">.*lb</span></code>: followed by a character zero or more times</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^\\d{2,}</span></code>: starts with at least 2 numeric digits</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\\.?.</span></code>: followed by an optional decimal</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.*lb</span></code>: followed by a character zero or more times and then the identifier for pounds (lb).</p></li>
 </ul>
 </li>
 <li><p>take the resulting product list and inner join with transactions so we only retain those transactions and products that have a matching product ID in both tables,</p></li>
@@ -3398,7 +3191,7 @@ Regex approach: 651 rows
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size_filter</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^\d{2,}(\.)?.*lb&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">size_filter</span> <span class="o">=</span> <span class="n">products</span><span class="p">[</span><span class="s1">&#39;package_size&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s1">&#39;^</span><span class="se">\\</span><span class="s1">d{2,}</span><span class="se">\\</span><span class="s1">.?.*lb&#39;</span><span class="p">,</span> <span class="n">case</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="p">(</span>
     <span class="n">products</span><span class="p">[</span><span class="n">size_filter</span><span class="p">]</span>
     <span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">cj_data</span><span class="p">[</span><span class="s1">&#39;transactions&#39;</span><span class="p">],</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;product_id&#39;</span><span class="p">)</span>
@@ -3410,10 +3203,6 @@ Regex approach: 651 rows
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/8f/c06lv6q17tjbyjv2nkt0_s4s1sh0tg/T/ipykernel_69791/3801605409.py:1: UserWarning: This pattern is interpreted as a regular expression, and has match groups. To actually get the groups, use str.extract.
-  size_filter = products[&#39;package_size&#39;].str.contains(&#39;^\d{2,}(\.)?.*lb&#39;, case=False, na=False)
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -3466,12 +3255,12 @@ Regex approach: 651 rows
 </table>
 </div></div></div>
 </div>
-</div>
-<div class="section" id="id1">
-<h3>Knowledge check<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id1">
+<h3>Knowledge check<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
 <div class="attention admonition">
 <p class="admonition-title">Questions:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>How many <code class="docutils literal notranslate"><span class="pre">products</span></code> contain the word “bulk” in <code class="docutils literal notranslate"><span class="pre">product_type</span></code>?</p></li>
 <li><p>How many <code class="docutils literal notranslate"><span class="pre">products</span></code> do not contain punctuation in their <code class="docutils literal notranslate"><span class="pre">package_size</span></code>?</p></li>
 <li><p>Find all frozen pizza products. Be careful, this is not straight forward!</p></li>
@@ -3481,43 +3270,49 @@ Regex approach: 651 rows
 <p class="admonition-title">Video 🎥:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Xg8y3UkQDpo?si=egVqYMvYj5mf3YVT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
-</div>
-</div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Link to this heading">#</a></h2>
 <div class="attention admonition">
 <p class="admonition-title">Questions:</p>
 <p>To answer these questions you’ll need to use the <code class="docutils literal notranslate"><span class="pre">products</span></code> and <code class="docutils literal notranslate"><span class="pre">transactions</span></code> data frames.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Identify all different products that contain “pizza” in their <code class="docutils literal notranslate"><span class="pre">product_type</span></code> description. Which product produces the greatest amount of total sales?</p></li>
 <li><p>Identify all products that are categorized (<code class="docutils literal notranslate"><span class="pre">product_category</span></code>) as pizza but are considered a snack or appetizer (<code class="docutils literal notranslate"><span class="pre">product_type</span></code>). Which of these products have the most sales (measured by quantity)?</p></li>
 <li><p>How many products contain <code class="docutils literal notranslate"><span class="pre">package_size</span></code>s that do not contain a numeric value.</p></li>
 </ol>
 </div>
-</div>
-<div class="section" id="computing-environment">
-<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="computing-environment">
+<h2>Computing environment<a class="headerlink" href="#computing-environment" title="Link to this heading">#</a></h2>
 <div class="cell tag_hide-input docutils container">
+<details class="hide above-input">
+<summary aria-label="Toggle hidden content">
+<span class="collapsed">Show code cell source</span>
+<span class="expanded">Hide code cell source</span>
+</summary>
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> watermark
 <span class="o">%</span><span class="k">watermark</span> -v -p jupyterlab,pandas,completejourney_py
 </pre></div>
 </div>
 </div>
+</details>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Python implementation: CPython
-Python version       : 3.9.12
-IPython version      : 8.4.0
+Python version       : 3.12.4
+IPython version      : 8.26.0
 
-jupyterlab        : 3.3.2
-pandas            : 1.4.2
+jupyterlab        : 4.2.3
+pandas            : 2.2.2
 completejourney_py: 0.0.3
 </pre></div>
 </div>
 </div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -3531,7 +3326,7 @@ completejourney_py: 0.0.3
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./04-module"
         },
         predefinedOutput: true
@@ -3539,44 +3334,128 @@ completejourney_py: 0.0.3
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="lesson-4b.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Lesson 4b: Relational data</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lesson-4b.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lesson 4b: Relational data</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../05-module/overview.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../05-module/overview.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Overview</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
+                </footer>
+              
+            </div>
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By Bradley C. Boehmke<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
 
-      </div>
-    </div>
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#string-basics">String basics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#case-conversion">Case conversion</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-counts">Value counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-counts">Character counts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-words">Detecting words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extracting-parts-of-strings">Extracting parts of strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#replacing-parts-of-strings">Replacing parts of strings</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#knowledge-check">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regular-expressions">Regular expressions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#regex-basics">Regex basics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-words">Multiple words</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#line-anchors">Line anchors</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metacharacters">Metacharacters</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#character-classes">Character classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#shorthand-character-classes">Shorthand character classes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition">Repetition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-altogether">Putting it altogether</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Knowledge check</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercises">Exercises</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-environment">Computing environment</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By Bradley C. Boehmke
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
