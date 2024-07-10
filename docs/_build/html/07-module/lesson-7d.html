@@ -600,7 +600,7 @@ document.write(`
 <figure class="align-default" id="resampling">
 <a class="reference internal image-reference" href="../_images/resampling.svg"><img alt="Resampling" src="../_images/resampling.svg" width="90%" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Illustration of resampling.</span><a class="headerlink" href="#resampling" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Illustration of resampling.</span><a class="headerlink" href="#resampling" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -616,7 +616,7 @@ document.write(`
 <figure class="align-default" id="kfold">
 <a class="reference internal image-reference" href="../_images/cross_validation_diagram.png"><img alt="kfold" src="../_images/cross_validation_diagram.png" style="width: 90%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Illustration of k-fold sampling across a data sets index.</span><a class="headerlink" href="#kfold" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Illustration of k-fold sampling across a data sets index.</span><a class="headerlink" href="#kfold" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The model is fit on <span class="math notranslate nohighlight">\(k-1\)</span> folds and then the remaining fold is used to compute model performance.  This procedure is repeated <em>k</em> times; each time, a different fold is treated as the validation set.</p>
@@ -624,7 +624,7 @@ document.write(`
 <figure class="align-default" id="kfold-2">
 <a class="reference internal image-reference" href="../_images/cv.png"><img alt="kfold cv" src="../_images/cv.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Illustration of a 5-fold cross validation procedure.</span><a class="headerlink" href="#kfold-2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Illustration of a 5-fold cross validation procedure.</span><a class="headerlink" href="#kfold-2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>In scikit-learn, the function <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html"><code class="docutils literal notranslate"><span class="pre">cross_validate</span></code></a> allows us to perform cross-validation and you need to pass it the model, the data, and the target. Since there exists several cross-validation strategies, cross_validate takes a parameter <code class="docutils literal notranslate"><span class="pre">cv</span></code> which defines the splitting strategy.</p>
@@ -921,7 +921,7 @@ weighted avg       0.96      0.96      0.96       569
 <figure class="align-default" id="bias-variance-comparison">
 <a class="reference internal image-reference" href="../_images/bias-variance-comparison.png"><img alt="bias-vs-variance" src="../_images/bias-variance-comparison.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">Between model A and B, which do you think is better?</span><a class="headerlink" href="#bias-variance-comparison" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Between model A and B, which do you think is better?</span><a class="headerlink" href="#bias-variance-comparison" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The image above illustrates the fact that prediction errors can be decomposed into two main subcomponents we care about:</p>
@@ -937,7 +937,7 @@ weighted avg       0.96      0.96      0.96       569
 <figure class="align-default" id="bias-models">
 <a class="reference internal image-reference" href="../_images/modeling-process-bias-model-2.png"><img alt="bias" src="../_images/modeling-process-bias-model-2.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">A biased polynomial model fit to a single data set does not capture the underlying non-linear, non-monotonic data structure (left). Models fit to 25 bootstrapped replicates of the data are underterred by the noise and generates similar, yet still biased, predictions (right).</span><a class="headerlink" href="#bias-models" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">A biased polynomial model fit to a single data set does not capture the underlying non-linear, non-monotonic data structure (left). Models fit to 25 bootstrapped replicates of the data are underterred by the noise and generates similar, yet still biased, predictions (right).</span><a class="headerlink" href="#bias-models" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -949,7 +949,7 @@ weighted avg       0.96      0.96      0.96       569
 <figure class="align-default" id="variance-models">
 <a class="reference internal image-reference" href="../_images/modeling-process-variance-model-2.png"><img alt="variance" src="../_images/modeling-process-variance-model-2.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">A high variance k-nearest neighbor model fit to a single data set captures the underlying non-linear, non-monotonic data structure well but also overfits to individual data points (left). Models fit to 25 bootstrapped replicates of the data are deterred by the noise and generate highly variable predictions (right).</span><a class="headerlink" href="#variance-models" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">A high variance k-nearest neighbor model fit to a single data set captures the underlying non-linear, non-monotonic data structure well but also overfits to individual data points (left). Models fit to 25 bootstrapped replicates of the data are deterred by the noise and generate highly variable predictions (right).</span><a class="headerlink" href="#variance-models" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
@@ -961,7 +961,7 @@ weighted avg       0.96      0.96      0.96       569
 <figure class="align-default" id="knn-tuned">
 <a class="reference internal image-reference" href="../_images/modeling-process-knn-options-1.png"><img alt="knn-tuned" src="../_images/modeling-process-knn-options-1.png" style="width: 95%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">k-nearest neighbor model with differing values for k.</span><a class="headerlink" href="#knn-tuned" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">k-nearest neighbor model with differing values for k.</span><a class="headerlink" href="#knn-tuned" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <p>While other models such as gradient boosted machines (GBMs) and deep learning models can have many.</p>
@@ -1060,7 +1060,7 @@ Wall time: 3min 16s
 <figure class="align-default" id="id2">
 <a class="reference internal image-reference" href="../_images/random_search.png"><img alt="random-search" src="../_images/random_search.png" style="width: 60%;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Random search compared to standard grid search.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Random search compared to standard grid search.</span><a class="headerlink" href="#id2" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
