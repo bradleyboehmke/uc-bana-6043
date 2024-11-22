@@ -568,14 +568,14 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.49930254, 0.43049079, 0.        , 0.01065056, 1.        ,
-        0.51014472, 0.48052234, 0.40388615, 0.46992992, 0.76293952],
-       [1.        , 0.79890404, 0.53287853, 0.        , 0.73774922,
-        0.22855229, 0.82869542, 0.61133011, 0.24629633, 0.04575927],
-       [0.92532763, 0.02248809, 0.94872531, 0.33477236, 1.        ,
-        0.42797324, 0.        , 0.62606781, 0.21303964, 0.30663464],
-       [0.18140073, 0.47260678, 0.        , 0.59681443, 0.16952227,
-        0.63688261, 0.45957061, 0.67436247, 0.55698494, 1.        ]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[0.50475175, 0.80928846, 0.28327491, 0.38321256, 0.05749253,
+        0.60500482, 0.57551787, 0.71852192, 0.        , 1.        ],
+       [0.65269814, 0.        , 0.774404  , 0.33147167, 0.18897655,
+        0.14346463, 0.57583307, 1.        , 0.01509521, 0.08945202],
+       [0.58646585, 0.        , 1.        , 0.2638952 , 0.84271971,
+        0.27966978, 0.15564258, 0.7000213 , 0.25984522, 0.5981378 ],
+       [0.        , 0.68737965, 0.76725394, 0.10129944, 1.        ,
+        0.69064351, 0.83062867, 0.48978433, 0.26614598, 0.78396373]])
 </pre></div>
 </div>
 </div>
@@ -593,8 +593,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
-       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.74391574, 1.49666811, 2.82493285, 1.07987886, 2.08918879,
+       1.71878273, 2.1376222 , 2.90832756, 0.54108641, 2.47155355])
 </pre></div>
 </div>
 </div>
@@ -607,8 +607,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
-       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.74391574, 1.49666811, 2.82493285, 1.07987886, 2.08918879,
+       1.71878273, 2.1376222 , 2.90832756, 0.54108641, 2.47155355])
 </pre></div>
 </div>
 </div>
@@ -622,7 +622,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(19.151205316273074)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(19.01195680477057)
 </pre></div>
 </div>
 </div>
@@ -635,8 +635,8 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([2.60603091, 1.72448971, 1.48160384, 0.94223734, 2.90727149,
-       1.80355286, 1.76878836, 2.31564655, 1.48625083, 2.11533343])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([1.74391574, 1.49666811, 2.82493285, 1.07987886, 2.08918879,
+       1.71878273, 2.1376222 , 2.90832756, 0.54108641, 2.47155355])
 </pre></div>
 </div>
 </div>
@@ -649,7 +649,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.56786654, 5.03016521, 4.80502873, 4.74814484])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([4.93706483, 3.7713953 , 4.68639744, 5.61709924])
 </pre></div>
 </div>
 </div>
@@ -1602,7 +1602,7 @@ Length: 155848, dtype: float64
 <div class="attention admonition">
 <p class="admonition-title">Tasks:</p>
 <ol class="arabic">
-<li><p>Load in the companies.csv data (in the data folder).</p></li>
+<li><p>Load in the <a class="reference external" href="https://github.com/bradleyboehmke/uc-bana-6043/blob/main/book/data/companies.csv">companies.csv data</a>.</p></li>
 <li><p>Write a function <code class="docutils literal notranslate"><span class="pre">is_incorporated</span></code> that checks whether an input string, <code class="docutils literal notranslate"><span class="pre">name</span></code>, contains the substring “inc” or “Inc”. Its definition should look like this:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_incorporated</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
     <span class="o">...</span>
